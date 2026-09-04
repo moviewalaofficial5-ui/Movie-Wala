@@ -39,7 +39,7 @@ a{
     align-items:center;
     gap:22px;
     padding:10px 22px;
-    background:rgba(5,7,8,.97);
+    background:rgba(5,7,8,.98);
     border-bottom:1px solid #292d30;
     backdrop-filter:blur(12px);
 }
@@ -66,6 +66,7 @@ a{
 .brand-name{
     font-size:22px;
     font-weight:900;
+    letter-spacing:.3px;
 }
 
 .brand-name span{
@@ -178,6 +179,11 @@ a{
     justify-content:center;
 }
 
+.menu-toggle:hover{
+    border-color:#e50914;
+    color:#e50914;
+}
+
 /* ================= HERO ================= */
 
 .hero{
@@ -269,9 +275,17 @@ a{
     border:1px solid #ff3131;
 }
 
+.btn-red:hover{
+    background:#ff1018;
+}
+
 .btn-dark{
     background:rgba(0,0,0,.55);
     border:1px solid #777;
+}
+
+.btn-dark:hover{
+    border-color:#fff;
 }
 
 .live-now{
@@ -285,34 +299,29 @@ a{
     display:inline-flex;
     align-items:center;
     gap:8px;
-    background:#c9080c;
+    background:#1b1d1f;
+    border:1px solid #e50914;
     padding:9px 14px;
     border-radius:7px;
-    font-size:14px;
+    font-size:13px;
     font-weight:900;
 }
 
 .live-dot{
     width:9px;
     height:9px;
-    background:#fff;
+    background:#e50914;
     border-radius:50%;
-    box-shadow:0 0 12px #fff;
-    animation:pulse 1.2s infinite;
+    box-shadow:0 0 12px rgba(229,9,20,.8);
 }
 
 .live-now small{
     display:block;
     text-align:center;
     margin-top:7px;
+    color:#ccc;
+    font-size:9px;
     font-weight:800;
-}
-
-@keyframes pulse{
-    50%{
-        opacity:.3;
-        transform:scale(.8);
-    }
 }
 
 .arrow{
@@ -328,6 +337,11 @@ a{
     color:#fff;
     font-size:28px;
     cursor:pointer;
+}
+
+.arrow:hover{
+    background:#e50914;
+    border-color:#e50914;
 }
 
 .arrow.left{
@@ -579,9 +593,30 @@ a{
     animation:rotate 7s linear infinite;
 }
 
+.live-box:after{
+    content:"";
+    position:absolute;
+    width:170px;
+    height:170px;
+    right:65px;
+    top:60px;
+    border:1px solid rgba(229,9,20,.22);
+    border-radius:50%;
+    box-shadow:
+        0 0 35px rgba(229,9,20,.18),
+        inset 0 0 30px rgba(229,9,20,.08);
+    animation:rotateReverse 10s linear infinite;
+}
+
 @keyframes rotate{
     to{
         transform:rotate(360deg);
+    }
+}
+
+@keyframes rotateReverse{
+    to{
+        transform:rotate(-360deg);
     }
 }
 
@@ -667,6 +702,10 @@ a{
     background:#111416;
     border:1px solid #444;
     border-radius:7px;
+}
+
+.follow:hover{
+    border-color:#e50914;
 }
 
 .follow-icon{
@@ -773,6 +812,10 @@ a{
     font-size:11px;
     font-weight:900;
     background:#0b0e10;
+}
+
+.genre:hover{
+    border-color:#e50914;
 }
 
 .genre:nth-child(1){color:#ff3030}
@@ -949,11 +992,11 @@ footer{
 
     .live-label{
         padding:7px 10px;
-        font-size:11px;
+        font-size:10px;
     }
 
     .live-now small{
-        font-size:9px;
+        font-size:8px;
     }
 
     .arrow{
@@ -1059,6 +1102,11 @@ footer{
     .genre-row{
         grid-template-columns:repeat(2,1fr);
     }
+
+    .live-box:after{
+        right:-30px;
+        top:90px;
+    }
 }
 </style>
 </head>
@@ -1105,11 +1153,14 @@ Har Scene Mein Entertainment
 <div class="actions">
 
 <div class="search">
+
 <input
 type="text"
 id="searchInput"
 placeholder="Search movies...">
+
 <span>⌕</span>
+
 </div>
 
 <div class="social-mini">
@@ -1117,6 +1168,7 @@ placeholder="Search movies...">
 <a
 href="https://www.youtube.com/@MovieWalaOfficial.10"
 target="_blank"
+rel="noopener noreferrer"
 aria-label="YouTube">
 
 <svg class="yt" viewBox="0 0 24 24">
@@ -1128,6 +1180,7 @@ aria-label="YouTube">
 <a
 href="https://www.facebook.com/share/1MR6Lxzy4f/"
 target="_blank"
+rel="noopener noreferrer"
 aria-label="Facebook">
 
 <svg class="fb" viewBox="0 0 24 24">
@@ -1139,6 +1192,7 @@ aria-label="Facebook">
 <a
 href="https://www.instagram.com/moviewalaofficial.10/"
 target="_blank"
+rel="noopener noreferrer"
 aria-label="Instagram">
 
 <svg class="ig" viewBox="0 0 24 24">
@@ -1226,22 +1280,31 @@ WATCH LIVE
 
 <div class="live-label">
 <span class="live-dot"></span>
-LIVE NOW
+LIVE CHANNEL
 </div>
 
-<small>Movie Wala Entertainment</small>
+<small>Movie Wala Official</small>
 
 </div>
 
-<button class="arrow left" onclick="changeSlide(-1)">
+<button
+class="arrow left"
+onclick="changeSlide(-1)"
+aria-label="Previous Slide">
 ‹
 </button>
 
-<button class="arrow right" onclick="changeSlide(1)">
+<button
+class="arrow right"
+onclick="changeSlide(1)"
+aria-label="Next Slide">
 ›
 </button>
 
-<div class="dots" id="dots"></div>
+<div
+class="dots"
+id="dots">
+</div>
 
 </section>
 
@@ -1252,9 +1315,12 @@ LIVE NOW
 
 <div class="layout">
 
+
 <!-- ================= MOVIES ================= -->
 
-<section class="panel" id="movies">
+<section
+class="panel"
+id="movies">
 
 <div class="title">
 <i class="bar"></i>
@@ -1266,9 +1332,18 @@ MOVIES
 <div class="movie-card">
 
 <div class="poster p1">
+
 <span class="hd">HD</span>
-<h3>Action<br>Night</h3>
-<span class="rating">★ 8.5</span>
+
+<h3>
+Action<br>
+Night
+</h3>
+
+<span class="rating">
+★ 8.5
+</span>
+
 </div>
 
 <div class="movie-name">
@@ -1277,12 +1352,22 @@ Action Night
 
 </div>
 
+
 <div class="movie-card">
 
 <div class="poster p2">
+
 <span class="hd">HD</span>
-<h3>Dark<br>World</h3>
-<span class="rating">★ 8.2</span>
+
+<h3>
+Dark<br>
+World
+</h3>
+
+<span class="rating">
+★ 8.2
+</span>
+
 </div>
 
 <div class="movie-name">
@@ -1291,12 +1376,22 @@ Dark World
 
 </div>
 
+
 <div class="movie-card">
 
 <div class="poster p3">
+
 <span class="hd">4K</span>
-<h3>Golden<br>Story</h3>
-<span class="rating">★ 8.7</span>
+
+<h3>
+Golden<br>
+Story
+</h3>
+
+<span class="rating">
+★ 8.7
+</span>
+
 </div>
 
 <div class="movie-name">
@@ -1305,12 +1400,22 @@ Golden Story
 
 </div>
 
+
 <div class="movie-card">
 
 <div class="poster p4">
+
 <span class="hd">HD</span>
-<h3>Ocean<br>Rise</h3>
-<span class="rating">★ 8.1</span>
+
+<h3>
+Ocean<br>
+Rise
+</h3>
+
+<span class="rating">
+★ 8.1
+</span>
+
 </div>
 
 <div class="movie-name">
@@ -1319,12 +1424,22 @@ Ocean Rise
 
 </div>
 
+
 <div class="movie-card">
 
 <div class="poster p5">
+
 <span class="hd">4K</span>
-<h3>Empire<br>Code</h3>
-<span class="rating">★ 8.9</span>
+
+<h3>
+Empire<br>
+Code
+</h3>
+
+<span class="rating">
+★ 8.9
+</span>
+
 </div>
 
 <div class="movie-name">
@@ -1340,7 +1455,9 @@ Empire Code
 
 <!-- ================= LIVE ZONE ================= -->
 
-<section class="panel" id="live">
+<section
+class="panel"
+id="live">
 
 <div class="title">
 <i class="bar"></i>
@@ -1349,7 +1466,8 @@ LIVE ZONE
 
 <div class="live-box">
 
-<div class="live-video-overlay"></div>
+<div class="live-video-overlay">
+</div>
 
 <div class="live-content">
 
@@ -1388,7 +1506,10 @@ VIEW LIVE CHANNEL
 
 <!-- ================= TRENDING ================= -->
 
-<section class="panel" id="trending" style="margin-top:10px;">
+<section
+class="panel"
+id="trending"
+style="margin-top:10px;">
 
 <div class="title">
 <i class="bar"></i>
@@ -1424,7 +1545,9 @@ TRENDING NOW
 
 <!-- ================= FEATURED VIDEO ================= -->
 
-<section class="panel" style="margin-top:10px;">
+<section
+class="panel"
+style="margin-top:10px;">
 
 <div class="title">
 <i class="bar"></i>
@@ -1436,7 +1559,7 @@ FEATURED VIDEO
 <iframe
 src="https://www.youtube.com/embed/HzJ0dZ7meZs"
 title="Movie Wala Official Video"
-allow="encrypted-media; picture-in-picture"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 allowfullscreen>
 </iframe>
 
@@ -1447,7 +1570,10 @@ allowfullscreen>
 
 <!-- ================= WEB SERIES ================= -->
 
-<section class="panel" id="series" style="margin-top:10px;">
+<section
+class="panel"
+id="series"
+style="margin-top:10px;">
 
 <div class="title">
 <i class="bar"></i>
@@ -1483,7 +1609,9 @@ WEB SERIES
 
 <!-- ================= FOLLOW ================= -->
 
-<section class="panel" style="margin-top:10px;">
+<section
+class="panel"
+style="margin-top:10px;">
 
 <div class="title">
 <i class="bar"></i>
@@ -1492,10 +1620,12 @@ FOLLOW MOVIE WALA
 
 <div class="follow-grid">
 
+
 <a
 class="follow"
 href="https://www.youtube.com/@MovieWalaOfficial.10"
-target="_blank">
+target="_blank"
+rel="noopener noreferrer">
 
 <div class="follow-icon follow-yt">
 
@@ -1516,7 +1646,8 @@ target="_blank">
 <a
 class="follow"
 href="https://www.facebook.com/share/1MR6Lxzy4f/"
-target="_blank">
+target="_blank"
+rel="noopener noreferrer">
 
 <div class="follow-icon follow-fb">
 
@@ -1537,7 +1668,8 @@ target="_blank">
 <a
 class="follow"
 href="https://www.instagram.com/moviewalaofficial.10/"
-target="_blank">
+target="_blank"
+rel="noopener noreferrer">
 
 <div class="follow-icon follow-ig">
 
@@ -1566,27 +1698,70 @@ target="_blank">
 <section class="stats">
 
 <div class="stat">
-<div class="stat-icon">🎬</div>
-<strong>100+</strong>
-<small>Movies</small>
+
+<div class="stat-icon">
+🎬
 </div>
 
-<div class="stat">
-<div class="stat-icon">📺</div>
-<strong>50+</strong>
-<small>Web Series</small>
+<strong>
+100+
+</strong>
+
+<small>
+Movies
+</small>
+
 </div>
 
-<div class="stat">
-<div class="stat-icon">🔥</div>
-<strong>24/7</strong>
-<small>Entertainment</small>
-</div>
 
 <div class="stat">
-<div class="stat-icon">⭐</div>
-<strong>100%</strong>
-<small>Entertainment</small>
+
+<div class="stat-icon">
+📺
+</div>
+
+<strong>
+50+
+</strong>
+
+<small>
+Web Series
+</small>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-icon">
+🔥
+</div>
+
+<strong>
+24/7
+</strong>
+
+<small>
+Entertainment
+</small>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-icon">
+⭐
+</div>
+
+<strong>
+100%
+</strong>
+
+<small>
+Entertainment
+</small>
+
 </div>
 
 </section>
@@ -1594,7 +1769,9 @@ target="_blank">
 
 <!-- ================= GENRES ================= -->
 
-<section class="genres" id="genres">
+<section
+class="genres"
+id="genres">
 
 <div class="title">
 <i class="bar"></i>
@@ -1620,7 +1797,9 @@ GENRES
 
 <!-- ================= ABOUT ================= -->
 
-<section class="about" id="about">
+<section
+class="about"
+id="about">
 
 <h2>
 ABOUT <span>MOVIE WALA</span>
@@ -1661,37 +1840,54 @@ Har Scene Mein Entertainment
 
 /* ================= MOBILE MENU ================= */
 
-const menuToggle = document.getElementById("menuToggle");
-const mainNav = document.getElementById("mainNav");
+const menuToggle =
+document.getElementById("menuToggle");
 
-menuToggle.addEventListener("click", function(){
+const mainNav =
+document.getElementById("mainNav");
+
+
+menuToggle.addEventListener("click",function(){
 
     mainNav.classList.toggle("open");
 
     if(mainNav.classList.contains("open")){
 
-        menuToggle.innerHTML = "✕";
-        menuToggle.setAttribute("aria-label","Close Menu");
+        menuToggle.innerHTML="✕";
+
+        menuToggle.setAttribute(
+            "aria-label",
+            "Close Menu"
+        );
 
     }else{
 
-        menuToggle.innerHTML = "☰";
-        menuToggle.setAttribute("aria-label","Open Menu");
+        menuToggle.innerHTML="☰";
+
+        menuToggle.setAttribute(
+            "aria-label",
+            "Open Menu"
+        );
 
     }
 
 });
 
 
-/* CLOSE MOBILE MENU AFTER CLICK */
+/* CLOSE MENU AFTER LINK CLICK */
 
 document.querySelectorAll(".nav a").forEach(function(link){
 
-    link.addEventListener("click", function(){
+    link.addEventListener("click",function(){
 
         mainNav.classList.remove("open");
 
-        menuToggle.innerHTML = "☰";
+        menuToggle.innerHTML="☰";
+
+        menuToggle.setAttribute(
+            "aria-label",
+            "Open Menu"
+        );
 
     });
 
@@ -1700,57 +1896,75 @@ document.querySelectorAll(".nav a").forEach(function(link){
 
 /* ================= HERO SLIDER ================= */
 
-const slides = document.querySelectorAll(".slide");
-const dotsBox = document.getElementById("dots");
+const slides =
+document.querySelectorAll(".slide");
 
-let currentSlide = 0;
+const dotsBox =
+document.getElementById("dots");
+
+let currentSlide=0;
 
 
 /* CREATE DOTS */
 
 slides.forEach(function(slide,index){
 
-    const dot = document.createElement("button");
+    const dot =
+    document.createElement("button");
 
-    dot.className = "dot";
+    dot.className="dot";
 
-    if(index === 0){
+    if(index===0){
         dot.classList.add("active");
     }
 
-    dot.addEventListener("click",function(){
-        showSlide(index);
-    });
+    dot.addEventListener(
+        "click",
+        function(){
+            showSlide(index);
+        }
+    );
 
     dotsBox.appendChild(dot);
 
 });
 
 
-const dots = document.querySelectorAll(".dot");
+const dots =
+document.querySelectorAll(".dot");
 
 
 function showSlide(index){
 
     slides.forEach(function(slide){
+
         slide.classList.remove("active");
+
     });
 
     dots.forEach(function(dot){
+
         dot.classList.remove("active");
+
     });
 
-    currentSlide = (index + slides.length) % slides.length;
+    currentSlide =
+    (index + slides.length) % slides.length;
 
-    slides[currentSlide].classList.add("active");
-    dots[currentSlide].classList.add("active");
+    slides[currentSlide]
+    .classList.add("active");
+
+    dots[currentSlide]
+    .classList.add("active");
 
 }
 
 
 function changeSlide(direction){
 
-    showSlide(currentSlide + direction);
+    showSlide(
+        currentSlide + direction
+    );
 
 }
 
@@ -1759,34 +1973,106 @@ function changeSlide(direction){
 
 setInterval(function(){
 
-    showSlide(currentSlide + 1);
+    showSlide(
+        currentSlide + 1
+    );
 
 },5000);
 
 
 /* ================= SEARCH ================= */
 
-const searchInput = document.getElementById("searchInput");
+const searchInput =
+document.getElementById("searchInput");
 
-searchInput.addEventListener("input",function(){
 
-    const value = this.value.toLowerCase().trim();
+searchInput.addEventListener(
+    "input",
+    function(){
 
-    const movieCards = document.querySelectorAll(".movie-card");
+        const value =
+        this.value
+        .toLowerCase()
+        .trim();
 
-    movieCards.forEach(function(card){
+        const movieCards =
+        document.querySelectorAll(
+            ".movie-card"
+        );
 
-        const text = card.innerText.toLowerCase();
 
-        if(text.includes(value)){
-            card.style.display = "";
-        }else{
-            card.style.display = "none";
-        }
+        movieCards.forEach(function(card){
 
-    });
+            const text =
+            card.innerText
+            .toLowerCase();
 
-});
+            if(text.includes(value)){
+
+                card.style.display="";
+
+            }else{
+
+                card.style.display="none";
+
+            }
+
+        });
+
+    }
+);
+
+
+/* ================= ACTIVE MENU ================= */
+
+const sections =
+document.querySelectorAll(
+    "section[id]"
+);
+
+const navLinks =
+document.querySelectorAll(
+    ".nav a"
+);
+
+
+window.addEventListener(
+    "scroll",
+    function(){
+
+        let current="home";
+
+        sections.forEach(function(section){
+
+            const sectionTop =
+            section.offsetTop - 120;
+
+            if(
+                window.scrollY >= sectionTop
+            ){
+                current=section.id;
+            }
+
+        });
+
+
+        navLinks.forEach(function(link){
+
+            link.classList.remove("active");
+
+            if(
+                link.getAttribute("href")
+                === "#" + current
+            ){
+
+                link.classList.add("active");
+
+            }
+
+        });
+
+    }
+);
 
 </script>
 
