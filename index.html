@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Movie Wala | Har Scene Mein Entertainment</title>
 
 <style>
@@ -30,15 +31,15 @@ a{
 /* ================= HEADER ================= */
 
 .navbar{
-    height:78px;
+    min-height:72px;
     position:sticky;
     top:0;
     z-index:9999;
     display:flex;
     align-items:center;
-    gap:25px;
-    padding:0 22px;
-    background:rgba(5,7,8,.96);
+    gap:20px;
+    padding:8px 22px;
+    background:rgba(5,7,8,.97);
     border-bottom:1px solid #292d30;
     backdrop-filter:blur(12px);
 }
@@ -46,24 +47,23 @@ a{
 .brand{
     display:flex;
     align-items:center;
-    gap:11px;
-    min-width:285px;
+    gap:10px;
+    min-width:270px;
 }
 
 .logo{
-    width:52px;
-    height:52px;
-    flex:0 0 52px;
+    width:46px;
+    height:46px;
+    flex:0 0 46px;
     border-radius:50%;
     object-fit:contain;
-    object-position:center;
     border:2px solid #e6aa00;
     background:#050708;
     display:block;
 }
 
 .brand-name{
-    font-size:23px;
+    font-size:22px;
     font-weight:900;
 }
 
@@ -72,23 +72,23 @@ a{
 }
 
 .tagline{
-    color:#ccc;
-    font-size:12px;
-    margin-top:4px;
+    color:#aaa;
+    font-size:11px;
+    margin-top:3px;
 }
 
 .nav{
     display:flex;
     align-items:center;
     justify-content:center;
-    gap:25px;
+    gap:21px;
     flex:1;
 }
 
 .nav a{
-    font-size:13px;
+    font-size:12px;
     font-weight:800;
-    padding:30px 0 27px;
+    padding:25px 0 22px;
     border-bottom:2px solid transparent;
 }
 
@@ -100,12 +100,12 @@ a{
 .actions{
     display:flex;
     align-items:center;
-    gap:15px;
+    gap:12px;
 }
 
 .search{
-    width:245px;
-    height:40px;
+    width:220px;
+    height:38px;
     border:1px solid #444;
     border-radius:25px;
     display:flex;
@@ -123,12 +123,12 @@ a{
 }
 
 .search span{
-    font-size:20px;
+    font-size:18px;
 }
 
 .social-mini{
     display:flex;
-    gap:13px;
+    gap:9px;
 }
 
 .social-mini a{
@@ -140,22 +140,8 @@ a{
 }
 
 .social-mini svg{
-    width:25px;
-    height:25px;
-}
-
-.yt{
-    fill:#ff0000;
-}
-
-.fb{
-    fill:#2775dc;
-}
-
-.ig{
-    fill:none;
-    stroke:#ff3d8d;
-    stroke-width:2;
+    width:23px;
+    height:23px;
 }
 
 /* ================= HERO ================= */
@@ -188,14 +174,14 @@ a{
     background:
     linear-gradient(
         90deg,
-        rgba(0,0,0,.78),
-        rgba(0,0,0,.15) 65%,
-        rgba(0,0,0,.4)
+        rgba(0,0,0,.82),
+        rgba(0,0,0,.18) 65%,
+        rgba(0,0,0,.45)
     ),
     linear-gradient(
         0deg,
-        rgba(0,0,0,.75),
-        transparent 45%
+        rgba(0,0,0,.78),
+        transparent 50%
     );
 }
 
@@ -203,15 +189,15 @@ a{
     position:absolute;
     z-index:5;
     left:6.3%;
-    top:42px;
-    max-width:500px;
+    top:55px;
+    max-width:520px;
 }
 
 .welcome{
     display:inline-block;
     background:#690b0d;
     padding:7px 12px;
-    border-radius:6px;
+    border-radius:5px;
     font-size:12px;
     font-weight:900;
     margin-bottom:14px;
@@ -239,7 +225,7 @@ a{
     display:inline-block;
     padding:12px 18px;
     border-radius:6px;
-    font-size:13px;
+    font-size:12px;
     font-weight:900;
     margin-right:8px;
 }
@@ -250,14 +236,14 @@ a{
 }
 
 .btn-dark{
-    background:rgba(0,0,0,.5);
+    background:rgba(0,0,0,.55);
     border:1px solid #777;
 }
 
 .live-now{
     position:absolute;
     right:7%;
-    top:38px;
+    top:32px;
     z-index:5;
 }
 
@@ -268,23 +254,23 @@ a{
     background:#c9080c;
     padding:9px 14px;
     border-radius:7px;
-    font-size:15px;
+    font-size:14px;
     font-weight:900;
 }
 
 .live-dot{
-    width:10px;
-    height:10px;
-    background:red;
+    width:9px;
+    height:9px;
+    background:#fff;
     border-radius:50%;
-    box-shadow:0 0 12px red;
+    box-shadow:0 0 12px #fff;
     animation:pulse 1.2s infinite;
 }
 
 .live-now small{
     display:block;
     text-align:center;
-    margin-top:7px;
+    margin-top:6px;
     font-weight:800;
 }
 
@@ -304,18 +290,18 @@ a{
     height:44px;
     border:1px solid #aaa;
     border-radius:50%;
-    background:rgba(0,0,0,.35);
+    background:rgba(0,0,0,.4);
     color:white;
-    font-size:30px;
+    font-size:28px;
     cursor:pointer;
 }
 
 .arrow.left{
-    left:25px;
+    left:22px;
 }
 
 .arrow.right{
-    right:25px;
+    right:22px;
 }
 
 .dots{
@@ -325,7 +311,7 @@ a{
     left:50%;
     transform:translateX(-50%);
     display:flex;
-    gap:10px;
+    gap:9px;
 }
 
 .dot{
@@ -346,7 +332,7 @@ a{
 /* ================= MAIN ================= */
 
 .main{
-    padding:8px 24px 25px;
+    padding:10px 24px 25px;
 }
 
 .layout{
@@ -363,18 +349,18 @@ a{
 }
 
 .title{
-    height:38px;
+    height:42px;
     display:flex;
     align-items:center;
     gap:8px;
     padding:0 12px;
-    font-size:17px;
+    font-size:16px;
     font-weight:900;
 }
 
 .bar{
     width:5px;
-    height:16px;
+    height:17px;
     border-radius:2px;
     background:#ed1016;
 }
@@ -385,11 +371,11 @@ a{
     display:grid;
     grid-template-columns:repeat(5,1fr);
     gap:10px;
-    padding:0 6px 10px;
+    padding:0 7px 10px;
 }
 
 .poster{
-    height:182px;
+    height:180px;
     position:relative;
     border:1px solid #3a3e40;
     border-radius:7px;
@@ -404,16 +390,16 @@ a{
     position:absolute;
     inset:0;
     background:linear-gradient(
-        transparent 35%,
-        rgba(0,0,0,.9)
+        transparent 30%,
+        rgba(0,0,0,.92)
     );
 }
 
 .poster h3{
     position:relative;
     z-index:2;
-    font-size:17px;
-    line-height:.95;
+    font-size:16px;
+    line-height:1;
 }
 
 .hd{
@@ -424,7 +410,7 @@ a{
     background:#c90d12;
     padding:4px 6px;
     border-radius:4px;
-    font-size:10px;
+    font-size:9px;
 }
 
 .rating{
@@ -433,82 +419,41 @@ a{
     right:7px;
     bottom:7px;
     color:#ffc400;
-    font-size:12px;
+    font-size:11px;
     font-weight:bold;
 }
 
-.movie-name{
-    font-size:12px;
-    padding-top:5px;
-}
-
 .p1{
-    background:
-    radial-gradient(
-        circle at 60% 25%,
-        #9b3515,
-        #280909 50%,
-        #050606
-    );
+    background:radial-gradient(circle at 60% 25%,#9b3515,#280909 50%,#050606);
 }
 
 .p2{
-    background:
-    radial-gradient(
-        circle at 50% 25%,
-        #1a5a78,
-        #071a2b 50%,
-        #040607
-    );
+    background:radial-gradient(circle at 50% 25%,#1a5a78,#071a2b 50%,#040607);
 }
 
 .p3{
-    background:
-    radial-gradient(
-        circle at 60% 25%,
-        #ad5113,
-        #351506 50%,
-        #050606
-    );
+    background:radial-gradient(circle at 60% 25%,#ad5113,#351506 50%,#050606);
 }
 
 .p4{
-    background:
-    radial-gradient(
-        circle at 55% 25%,
-        #227277,
-        #082d32 50%,
-        #050708
-    );
+    background:radial-gradient(circle at 55% 25%,#227277,#082d32 50%,#050708);
 }
 
 .p5{
-    background:
-    radial-gradient(
-        circle at 60% 20%,
-        #a06b1b,
-        #382008 50%,
-        #050606
-    );
+    background:radial-gradient(circle at 60% 20%,#a06b1b,#382008 50%,#050606);
 }
 
-/* ================= SMALL ROWS ================= */
-
-.two{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
-}
+/* ================= SMALL ROW ================= */
 
 .small-row{
     display:grid;
     grid-template-columns:repeat(5,1fr);
     gap:6px;
-    padding:0 6px 8px;
+    padding:0 7px 9px;
 }
 
 .small{
-    height:130px;
+    height:125px;
     border:1px solid #333;
     border-radius:6px;
     display:flex;
@@ -522,8 +467,7 @@ a{
     content:"";
     position:absolute;
     inset:0;
-    background:
-    linear-gradient(
+    background:linear-gradient(
         transparent,
         rgba(0,0,0,.9)
     );
@@ -536,48 +480,23 @@ a{
 }
 
 .s1{
-    background:
-    linear-gradient(
-        135deg,
-        #17314d,
-        #080909
-    );
+    background:linear-gradient(135deg,#17314d,#080909);
 }
 
 .s2{
-    background:
-    linear-gradient(
-        135deg,
-        #47210c,
-        #080909
-    );
+    background:linear-gradient(135deg,#47210c,#080909);
 }
 
 .s3{
-    background:
-    linear-gradient(
-        135deg,
-        #0b4e70,
-        #080909
-    );
+    background:linear-gradient(135deg,#0b4e70,#080909);
 }
 
 .s4{
-    background:
-    linear-gradient(
-        135deg,
-        #4b1015,
-        #080909
-    );
+    background:linear-gradient(135deg,#4b1015,#080909);
 }
 
 .s5{
-    background:
-    linear-gradient(
-        135deg,
-        #44370f,
-        #080909
-    );
+    background:linear-gradient(135deg,#44370f,#080909);
 }
 
 /* ================= LIVE ZONE ================= */
@@ -589,11 +508,10 @@ a{
     border-radius:14px;
     position:relative;
     overflow:hidden;
-
     background:
     radial-gradient(
         circle at 78% 45%,
-        rgba(229,9,20,.28),
+        rgba(229,9,20,.25),
         transparent 22%
     ),
     radial-gradient(
@@ -616,52 +534,15 @@ a{
     height:390px;
     right:-105px;
     top:-105px;
-    border:1px solid rgba(255,35,35,.45);
+    border:1px solid rgba(255,35,35,.4);
     border-radius:50%;
-    box-shadow:
-        0 0 55px rgba(255,0,0,.22) inset;
+    box-shadow:0 0 55px rgba(255,0,0,.2) inset;
     animation:rotate 7s linear infinite;
-}
-
-.live-box:after{
-    content:"LIVE";
-    position:absolute;
-    right:12%;
-    top:50%;
-    transform:translateY(-50%);
-    width:92px;
-    height:92px;
-    border-radius:50%;
-    border:2px solid #ff2525;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:rgba(229,9,20,.88);
-    color:#fff;
-    font-size:16px;
-    font-weight:900;
-    letter-spacing:1px;
-    box-shadow:
-        0 0 25px rgba(255,0,0,.65),
-        0 0 65px rgba(255,0,0,.28);
-    animation:livePulse 1.8s ease-in-out infinite;
-    z-index:4;
 }
 
 @keyframes rotate{
     to{
         transform:rotate(360deg);
-    }
-}
-
-@keyframes livePulse{
-
-    0%,100%{
-        transform:translateY(-50%) scale(1);
-    }
-
-    50%{
-        transform:translateY(-50%) scale(1.08);
     }
 }
 
@@ -672,27 +553,26 @@ a{
     background:
     linear-gradient(
         90deg,
-        rgba(0,0,0,.84),
-        rgba(0,0,0,.42) 58%,
+        rgba(0,0,0,.86),
+        rgba(0,0,0,.4) 58%,
         rgba(0,0,0,.18)
     ),
     linear-gradient(
         0deg,
-        rgba(0,0,0,.62),
+        rgba(0,0,0,.65),
         transparent 65%
     );
-    pointer-events:none;
 }
 
 .live-content{
     position:relative;
     z-index:5;
-    padding:28px;
-    max-width:70%;
+    padding:30px;
+    max-width:78%;
 }
 
 .live-heading{
-    font-size:28px;
+    font-size:27px;
     font-weight:950;
 }
 
@@ -702,15 +582,17 @@ a{
 
 .live-sub{
     color:#ffc400;
-    font-size:13px;
+    font-size:12px;
     font-weight:900;
     margin:10px 0;
 }
 
 .live-content p{
     font-size:12px;
-    line-height:1.55;
+    line-height:1.65;
     color:#eee;
+    max-width:500px;
+    margin-bottom:20px;
 }
 
 /* ================= FOLLOW ================= */
@@ -757,8 +639,7 @@ a{
 }
 
 .follow-ig{
-    background:
-    linear-gradient(
+    background:linear-gradient(
         135deg,
         #7b2cbf,
         #e50914,
@@ -782,7 +663,7 @@ a{
 .stats{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    margin-top:7px;
+    margin-top:8px;
     border:1px solid #252b2e;
     border-radius:8px;
 }
@@ -799,13 +680,13 @@ a{
 
 .stat-icon{
     color:#ffc000;
-    font-size:23px;
+    font-size:22px;
 }
 
 .stat strong{
     display:block;
     color:#ffc000;
-    font-size:20px;
+    font-size:19px;
     margin-top:2px;
 }
 
@@ -816,7 +697,7 @@ a{
 /* ================= GENRES ================= */
 
 .genres{
-    margin-top:7px;
+    margin-top:8px;
     padding-bottom:9px;
     border:1px solid #252b2e;
     border-radius:8px;
@@ -834,7 +715,7 @@ a{
     border-radius:6px;
     padding:11px 5px;
     text-align:center;
-    font-size:12px;
+    font-size:11px;
     font-weight:900;
     background:#0b0e10;
 }
@@ -870,20 +751,20 @@ footer{
     color:#e7ad00;
 }
 
-/* ================= MOBILE ================= */
+/* ================= RESPONSIVE ================= */
 
 @media(max-width:1200px){
 
     .nav{
-        gap:14px;
+        gap:13px;
     }
 
     .nav a{
-        font-size:11px;
+        font-size:10px;
     }
 
     .search{
-        width:190px;
+        width:170px;
     }
 
     .layout{
@@ -898,8 +779,8 @@ footer{
 @media(max-width:800px){
 
     .navbar{
-        height:auto;
-        padding:10px 14px;
+        min-height:auto;
+        padding:9px 12px;
         flex-wrap:wrap;
     }
 
@@ -908,9 +789,17 @@ footer{
     }
 
     .logo{
-        width:48px;
-        height:48px;
-        flex-basis:48px;
+        width:44px;
+        height:44px;
+        flex-basis:44px;
+    }
+
+    .brand-name{
+        font-size:19px;
+    }
+
+    .tagline{
+        font-size:9px;
     }
 
     .nav{
@@ -922,7 +811,8 @@ footer{
     }
 
     .nav a{
-        padding:10px 0;
+        padding:9px 0;
+        white-space:nowrap;
     }
 
     .search,
@@ -936,7 +826,8 @@ footer{
 
     .hero-content{
         left:6%;
-        max-width:75%;
+        max-width:78%;
+        top:45px;
     }
 
     .hero h1{
@@ -947,8 +838,8 @@ footer{
         grid-template-columns:repeat(3,1fr);
     }
 
-    .two{
-        grid-template-columns:1fr;
+    .small-row{
+        grid-template-columns:repeat(3,1fr);
     }
 
     .genre-row{
@@ -958,19 +849,38 @@ footer{
 
 @media(max-width:520px){
 
+    .hero{
+        height:460px;
+    }
+
     .hero-content{
         max-width:88%;
+        top:42px;
     }
 
     .hero h1{
-        font-size:32px;
+        font-size:31px;
     }
 
     .hero p{
         font-size:12px;
     }
 
+    .live-now{
+        right:5%;
+        top:18px;
+    }
+
+    .live-label{
+        font-size:11px;
+        padding:7px 10px;
+    }
+
     .movie-row{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .small-row{
         grid-template-columns:repeat(2,1fr);
     }
 
@@ -983,11 +893,8 @@ footer{
         min-height:330px;
     }
 
-    .live-box:after{
-        right:8%;
-        width:65px;
-        height:65px;
-        font-size:12px;
+    .live-heading{
+        font-size:24px;
     }
 
     .follow-grid{
@@ -1004,6 +911,16 @@ footer{
 
     .genre-row{
         grid-template-columns:repeat(2,1fr);
+    }
+
+    .main{
+        padding:7px 10px 20px;
+    }
+
+    .arrow{
+        width:36px;
+        height:36px;
+        font-size:23px;
     }
 }
 </style>
@@ -1036,125 +953,88 @@ Har Scene Mein Entertainment
 
 </a>
 
-
 <nav class="nav">
 
-<a href="#home" class="active">
-HOME
-</a>
-
-<a href="#live">
-LIVE
-</a>
-
-<a href="#movies">
-MOVIES
-</a>
-
-<a href="#series">
-WEB SERIES
-</a>
-
-<a href="#trending">
-TRENDING
-</a>
-
-<a href="#genres">
-GENRES
-</a>
-
-<a href="#about">
-ABOUT
-</a>
+<a href="#home" class="active">HOME</a>
+<a href="#live">LIVE</a>
+<a href="#movies">MOVIES</a>
+<a href="#series">WEB SERIES</a>
+<a href="#trending">TRENDING</a>
+<a href="#genres">GENRES</a>
+<a href="#about">ABOUT</a>
 
 </nav>
-
 
 <div class="actions">
 
 <div class="search">
-
 <input
-id="searchInput"
 type="text"
-placeholder="Search movies, series...">
-
-<span>
-⌕
-</span>
-
+id="searchInput"
+placeholder="Search movies...">
+<span>⌕</span>
 </div>
-
 
 <div class="social-mini">
 
 <a
 href="https://www.youtube.com/@MovieWalaOfficial.10"
-target="_blank"
-rel="noopener noreferrer">
+target="_blank">
 
-<svg
-class="yt"
-viewBox="0 0 24 24">
-
-<path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.8V8.2l6.5 3.8-6.5 3.8z"/>
-
+<svg viewBox="0 0 24 24">
+<path fill="#ff0000"
+d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8z"/>
+<path fill="#fff"
+d="M9.6 15.9 15.8 12 9.6 8.1z"/>
 </svg>
 
 </a>
-
 
 <a
 href="https://www.facebook.com/share/1MR6Lxzy4f/"
-target="_blank"
-rel="noopener noreferrer">
+target="_blank">
 
-<svg
-class="fb"
-viewBox="0 0 24 24">
-
-<path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5h1.7V4a21 21 0 0 0-2.4-.1c-2.4 0-4 1.5-4 4.1V10H7.7v3h2.7v8h3.1z"/>
-
+<svg viewBox="0 0 24 24">
+<path fill="#2775dc"
+d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5h1.7V4a21 21 0 0 0-2.4-.1c-2.4 0-4 1.5-4 4.1V10H7.7v3h2.7v8z"/>
 </svg>
 
 </a>
 
-
 <a
 href="https://www.instagram.com/moviewalaofficial.10/"
-target="_blank"
-rel="noopener noreferrer">
+target="_blank">
 
-<svg
-class="ig"
-viewBox="0 0 24 24">
+<svg viewBox="0 0 24 24">
 
 <rect
 x="3"
 y="3"
 width="18"
 height="18"
-rx="5"/>
+rx="5"
+fill="none"
+stroke="#ff3d8d"
+stroke-width="2"/>
 
 <circle
 cx="12"
 cy="12"
-r="4"/>
+r="4"
+fill="none"
+stroke="#ff3d8d"
+stroke-width="2"/>
 
 <circle
 cx="17.3"
 cy="6.8"
-r="1"/>
+r="1"
+fill="#ff3d8d"/>
 
 </svg>
 
 </a>
 
-</div>
-
-
-<div style="font-size:24px;color:#aaa">
-☰
 </div>
 
 </div>
@@ -1164,34 +1044,27 @@ r="1"/>
 
 <!-- ================= HERO ================= -->
 
-<section
-class="hero"
-id="home">
-
+<section class="hero" id="home">
 
 <div
 class="slide active"
 style="background-image:url('movie-wala-banner.jpeg')">
 </div>
 
-
 <div
 class="slide"
 style="background-image:url('movie-wala-banner-2[1].jpg')">
 </div>
-
 
 <div
 class="slide"
 style="background-image:url('movie-wala-banner-3[1].jpg')">
 </div>
 
-
 <div
 class="slide"
 style="background-image:url('movie-wala-banner-4[1].jpg')">
 </div>
-
 
 <div
 class="slide"
@@ -1205,39 +1078,27 @@ style="background-image:url('movie-wala-banner-5[1].jpg')">
 WELCOME TO MOVIE WALA
 </div>
 
-
 <h1>
-
 HAR SCENE MEIN
-
-<span>
-ENTERTAINMENT
-</span>
-
+<span>ENTERTAINMENT</span>
 </h1>
 
-
 <p>
-Latest movies, web series, updates, reviews and live entertainment —
-sab kuch sirf Movie Wala par.
+Discover the latest movies, web series, trending stories,
+exclusive updates and everything happening in the world
+of entertainment.
 </p>
-
 
 <a
 href="#movies"
 class="btn btn-red">
-
-▶ &nbsp; EXPLORE MOVIES
-
+EXPLORE MOVIES
 </a>
-
 
 <a
 href="#live"
 class="btn btn-dark">
-
-▶ &nbsp; WATCH LIVE
-
+VIEW LIVE
 </a>
 
 </div>
@@ -1247,16 +1108,14 @@ class="btn btn-dark">
 
 <div class="live-label">
 
-<span class="live-dot">
-</span>
+<span class="live-dot"></span>
 
 LIVE NOW
 
 </div>
 
-
 <small>
-Entertainment 24/7
+Movie Wala Entertainment
 </small>
 
 </div>
@@ -1264,29 +1123,24 @@ Entertainment 24/7
 
 <button
 class="arrow left"
-id="prev">
-
+onclick="changeSlide(-1)">
 ‹
-
 </button>
-
 
 <button
 class="arrow right"
-id="next">
-
+onclick="changeSlide(1)">
 ›
-
 </button>
 
 
 <div class="dots">
 
-<button class="dot active"></button>
-<button class="dot"></button>
-<button class="dot"></button>
-<button class="dot"></button>
-<button class="dot"></button>
+<button class="dot active" onclick="goSlide(0)"></button>
+<button class="dot" onclick="goSlide(1)"></button>
+<button class="dot" onclick="goSlide(2)"></button>
+<button class="dot" onclick="goSlide(3)"></button>
+<button class="dot" onclick="goSlide(4)"></button>
 
 </div>
 
@@ -1300,310 +1154,70 @@ id="next">
 <div class="layout">
 
 
-<!-- ================= LEFT ================= -->
+<!-- ================= MOVIES ================= -->
 
-<section>
-
-
-<div
-class="panel"
-id="movies">
+<section class="panel" id="movies">
 
 <div class="title">
-
 <i class="bar"></i>
-
-TRENDING MOVIES
-
+LATEST MOVIES
 </div>
-
 
 <div class="movie-row">
 
-
-<div class="card">
-
 <div class="poster p1">
-
-<b class="hd">
-HD
-</b>
-
-<h3>
-RED<br>
-SHADOW
-</h3>
-
-<span class="rating">
-★ 8.7
-</span>
-
+<span class="hd">HD</span>
+<h3>Action<br>Night</h3>
+<span class="rating">★ 8.4</span>
 </div>
-
-<div class="movie-name">
-Red Shadow
-</div>
-
-</div>
-
-
-<div class="card">
 
 <div class="poster p2">
-
-<b class="hd">
-HD
-</b>
-
-<h3>
-THE LAST<br>
-MISSION
-</h3>
-
-<span class="rating">
-★ 8.4
-</span>
-
+<span class="hd">HD</span>
+<h3>Dark<br>Mission</h3>
+<span class="rating">★ 8.1</span>
 </div>
-
-<div class="movie-name">
-The Last Mission
-</div>
-
-</div>
-
-
-<div class="card">
 
 <div class="poster p3">
-
-<b class="hd">
-HD
-</b>
-
-<h3>
-DARK<br>
-CITY
-</h3>
-
-<span class="rating">
-★ 8.6
-</span>
-
+<span class="hd">HD</span>
+<h3>Final<br>Chapter</h3>
+<span class="rating">★ 7.9</span>
 </div>
-
-<div class="movie-name">
-Dark City
-</div>
-
-</div>
-
-
-<div class="card">
 
 <div class="poster p4">
-
-<b class="hd">
-HD
-</b>
-
-<h3>
-DEADLY<br>
-GAME
-</h3>
-
-<span class="rating">
-★ 8.3
-</span>
-
+<span class="hd">HD</span>
+<h3>Ocean<br>Storm</h3>
+<span class="rating">★ 8.2</span>
 </div>
-
-<div class="movie-name">
-Deadly Game
-</div>
-
-</div>
-
-
-<div class="card">
 
 <div class="poster p5">
-
-<b class="hd">
-HD
-</b>
-
-<h3>
-ULTIMATE<br>
-WARRIOR
-</h3>
-
-<span class="rating">
-★ 8.5
-</span>
-
+<span class="hd">HD</span>
+<h3>Golden<br>Empire</h3>
+<span class="rating">★ 8.6</span>
 </div>
-
-<div class="movie-name">
-Ultimate Warrior
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-<!-- ================= TOP + SERIES ================= -->
-
-<div
-class="two"
-id="trending">
-
-
-<div class="panel">
-
-<div class="title">
-
-<i class="bar"></i>
-
-TOP RATED
 
 </div>
 
 
 <div class="small-row">
 
-
 <div class="small s1">
-
-<b>
-INTERSTELLAR<br>
-WAR
-</b>
-
+<b>THE LAST RIDE</b>
 </div>
-
 
 <div class="small s2">
-
-<b>
-THE HIDDEN<br>
-TRUTH
-</b>
-
+<b>RED SIGNAL</b>
 </div>
-
 
 <div class="small s3">
-
-<b>
-BEYOND<br>
-LIMITS
-</b>
-
+<b>MISSION X</b>
 </div>
-
 
 <div class="small s4">
-
-<b>
-THE FINAL<br>
-CODE
-</b>
-
+<b>THE HUNTER</b>
 </div>
-
 
 <div class="small s5">
-
-<b>
-MIND<br>
-HACKER
-</b>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-<div
-class="panel"
-id="series">
-
-<div class="title">
-
-<i class="bar"></i>
-
-WEB SERIES
-
-</div>
-
-
-<div class="small-row">
-
-
-<div class="small s2">
-
-<b>
-THE<br>
-CODE<br>
-SEASON 1
-</b>
-
-</div>
-
-
-<div class="small s1">
-
-<b>
-UNKNOWN<br>
-SEASON 1
-</b>
-
-</div>
-
-
-<div class="small s4">
-
-<b>
-THE<br>
-HUNTER<br>
-SEASON 2
-</b>
-
-</div>
-
-
-<div class="small s5">
-
-<b>
-FINAL<br>
-CALL<br>
-SEASON 1
-</b>
-
-</div>
-
-
-<div class="small s3">
-
-<b>
-BLACK<br>
-FILES<br>
-SEASON 1
-</b>
-
-</div>
-
-
-</div>
-
+<b>LEGACY</b>
 </div>
 
 </div>
@@ -1611,76 +1225,42 @@ SEASON 1
 </section>
 
 
-<!-- ================= RIGHT ================= -->
+<!-- ================= LIVE ================= -->
 
-<aside>
-
-
-<!-- ================= LIVE ZONE ================= -->
-
-<section
-class="panel"
-id="live">
+<section class="panel" id="live">
 
 <div class="title">
-
 <i class="bar"></i>
-
 LIVE ZONE
-
 </div>
-
 
 <div class="live-box">
 
-
-<div class="live-video-overlay">
-</div>
-
+<div class="live-video-overlay"></div>
 
 <div class="live-content">
 
-
 <div class="live-heading">
-
-<span>
-LIVE
-</span>
-
-ZONE
-
+<span>LIVE</span> ENTERTAINMENT
 </div>
-
 
 <div class="live-sub">
-
 YOUR CINEMA & ENTERTAINMENT HUB
-
 </div>
 
-
 <p>
-
-Get the latest movie updates, exclusive news,
-special announcements and entertainment
-highlights — all in one place.
-
+Stay updated with the latest movie news, exclusive
+announcements, trending stories and special
+entertainment highlights from Movie Wala.
 </p>
-
-
-<br>
-
 
 <a
 href="https://www.youtube.com/@MovieWalaOfficial.10/live"
 target="_blank"
 rel="noopener noreferrer"
 class="btn btn-red">
-
-▶ WATCH LIVE NOW
-
+VIEW LIVE CHANNEL
 </a>
-
 
 </div>
 
@@ -1689,21 +1269,86 @@ class="btn btn-red">
 </section>
 
 
-<!-- ================= FOLLOW ================= -->
+<!-- ================= TRENDING ================= -->
 
-<section
-class="panel"
-style="margin-top:7px"
-id="about">
+<section class="panel" id="trending">
 
 <div class="title">
-
 <i class="bar"></i>
+TRENDING NOW
+</div>
 
-FOLLOW MOVIE WALA
+<div class="small-row">
+
+<div class="small s4">
+<b>TOP MOVIES</b>
+</div>
+
+<div class="small s1">
+<b>VIRAL STORIES</b>
+</div>
+
+<div class="small s2">
+<b>NEW RELEASES</b>
+</div>
+
+<div class="small s3">
+<b>WEB SERIES</b>
+</div>
+
+<div class="small s5">
+<b>TOP RATED</b>
+</div>
 
 </div>
 
+</section>
+
+
+<!-- ================= WEB SERIES ================= -->
+
+<section class="panel" id="series">
+
+<div class="title">
+<i class="bar"></i>
+WEB SERIES
+</div>
+
+<div class="small-row">
+
+<div class="small s3">
+<b>CRIME STORIES</b>
+</div>
+
+<div class="small s4">
+<b>THRILLER ZONE</b>
+</div>
+
+<div class="small s1">
+<b>DRAMA SERIES</b>
+</div>
+
+<div class="small s2">
+<b>ACTION SERIES</b>
+</div>
+
+<div class="small s5">
+<b>NEW SERIES</b>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= SOCIAL ================= -->
+
+<aside class="panel">
+
+<div class="title">
+<i class="bar"></i>
+FOLLOW MOVIE WALA
+</div>
 
 <div class="follow-grid">
 
@@ -1711,30 +1356,26 @@ FOLLOW MOVIE WALA
 <a
 class="follow"
 href="https://www.youtube.com/@MovieWalaOfficial.10"
-target="_blank"
-rel="noopener noreferrer">
+target="_blank">
 
 <div class="follow-icon follow-yt">
 
 <svg viewBox="0 0 24 24">
 
-<path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.8V8.2l6.5 3.8-6.5 3.8z"/>
+<path
+d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8z"/>
+
+<path
+fill="#fff"
+d="M9.6 15.9 15.8 12 9.6 8.1z"/>
 
 </svg>
 
 </div>
 
-
 <div>
-
-<b>
-YouTube
-</b>
-
-<small>
-Videos & Live
-</small>
-
+<b>YouTube</b>
+<small>Movies & Entertainment</small>
 </div>
 
 </a>
@@ -1743,30 +1384,22 @@ Videos & Live
 <a
 class="follow"
 href="https://www.facebook.com/share/1MR6Lxzy4f/"
-target="_blank"
-rel="noopener noreferrer">
+target="_blank">
 
 <div class="follow-icon follow-fb">
 
 <svg viewBox="0 0 24 24">
 
-<path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5h1.7V4a21 21 0 0 0-2.4-.1c-2.4 0-4 1.5-4 4.1V10H7.7v3h2.7v8h3.1z"/>
+<path
+d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5h1.7V4a21 21 0 0 0-2.4-.1c-2.4 0-4 1.5-4 4.1V10H7.7v3h2.7v8z"/>
 
 </svg>
 
 </div>
 
-
 <div>
-
-<b>
-Facebook
-</b>
-
-<small>
-Updates & Community
-</small>
-
+<b>Facebook</b>
+<small>Updates & Community</small>
 </div>
 
 </a>
@@ -1775,8 +1408,7 @@ Updates & Community
 <a
 class="follow"
 href="https://www.instagram.com/moviewalaofficial.10/"
-target="_blank"
-rel="noopener noreferrer">
+target="_blank">
 
 <div class="follow-icon follow-ig">
 
@@ -1810,99 +1442,62 @@ fill="#fff"/>
 
 </div>
 
-
 <div>
-
-<b>
-Instagram
-</b>
-
-<small>
-Reels & Updates
-</small>
-
+<b>Instagram</b>
+<small>Reels & Updates</small>
 </div>
 
 </a>
 
-
 </div>
-
-</section>
 
 
 <!-- ================= STATS ================= -->
 
 <div class="stats">
 
-
 <div class="stat">
 
-<div class="stat-icon">
-👥
-</div>
+<div class="stat-icon">👥</div>
 
-<strong>
-10K+
-</strong>
+<strong>10K+</strong>
 
-<small>
-Movie Lovers
-</small>
+<small>Movie Lovers</small>
 
 </div>
 
 
 <div class="stat">
 
-<div class="stat-icon">
-🎬
-</div>
+<div class="stat-icon">🎬</div>
 
-<strong>
-100+
-</strong>
+<strong>100+</strong>
 
-<small>
-Updates
-</small>
+<small>Updates</small>
 
 </div>
 
 
 <div class="stat">
 
-<div class="stat-icon">
-◷
-</div>
+<div class="stat-icon">◷</div>
 
-<strong>
-24/7
-</strong>
+<strong>24/7</strong>
 
-<small>
-Entertainment
-</small>
+<small>Entertainment</small>
 
 </div>
 
 
 <div class="stat">
 
-<div class="stat-icon">
-☆
-</div>
+<div class="stat-icon">☆</div>
 
-<strong>
-∞
-</strong>
+<strong>∞</strong>
 
-<small>
-Passion
-</small>
+<small>Passion</small>
 
 </div>
-
 
 </div>
 
@@ -1913,58 +1508,57 @@ Passion
 
 <!-- ================= GENRES ================= -->
 
-<section
-class="genres"
-id="genres">
+<section class="genres" id="genres">
 
 <div class="title">
-
 <i class="bar"></i>
-
 BROWSE BY GENRES
-
 </div>
-
 
 <div class="genre-row">
 
+<div class="genre">⚔ ACTION</div>
+<div class="genre">◉ THRILLER</div>
+<div class="genre">☯ DRAMA</div>
+<div class="genre">☺ COMEDY</div>
+<div class="genre">➤ ADVENTURE</div>
+<div class="genre">♞ CRIME</div>
+<div class="genre">☠ HORROR</div>
+<div class="genre">◎ SCI-FI</div>
+<div class="genre">♥ ROMANCE</div>
 
-<div class="genre">
-⚔ ACTION
 </div>
 
-<div class="genre">
-◉ THRILLER
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section
+class="panel"
+id="about"
+style="margin-top:8px;padding-bottom:18px;">
+
+<div class="title">
+<i class="bar"></i>
+ABOUT MOVIE WALA
 </div>
 
-<div class="genre">
-☯ DRAMA
-</div>
+<div style="
+padding:0 15px;
+color:#bbb;
+font-size:13px;
+line-height:1.7;
+">
 
-<div class="genre">
-☺ COMEDY
-</div>
+Movie Wala is your entertainment destination for the
+latest movie updates, trending stories, web series,
+cinema news and entertainment highlights.
 
-<div class="genre">
-➤ ADVENTURE
-</div>
+<br><br>
 
-<div class="genre">
-♞ CRIME
-</div>
-
-<div class="genre">
-☠ HORROR
-</div>
-
-<div class="genre">
-◎ SCI-FI
-</div>
-
-<div class="genre">
-♥ ROMANCE
-</div>
-
+Stay connected with Movie Wala and never miss the
+latest entertainment updates.
 
 </div>
 
@@ -1978,20 +1572,13 @@ BROWSE BY GENRES
 <footer>
 
 <div class="footer-brand">
-
-Ⓜ MOVIE <span>WALA</span>
-
+MOVIE <span>WALA</span>
 </div>
 
-
 <div>
-
 © 2026 Movie Wala. All Rights Reserved.
-
 &nbsp; • &nbsp;
-
 Har Scene Mein Entertainment ❤️
-
 </div>
 
 </footer>
@@ -2001,147 +1588,106 @@ Har Scene Mein Entertainment ❤️
 
 <script>
 
-const slides =
-document.querySelectorAll(".slide");
+/* ================= SLIDER ================= */
 
-const dots =
-document.querySelectorAll(".dot");
+let currentSlide = 0;
 
-let current = 0;
+const slides = document.querySelectorAll(".slide");
+const dots = document.querySelectorAll(".dot");
 
-let timer;
+function showSlide(index){
 
-
-function showSlide(number){
-
-    current =
-    (number + slides.length)
-    % slides.length;
-
-
-    slides.forEach(
-        (slide,index)=>{
-
-            slide.classList.toggle(
-                "active",
-                index === current
-            );
-
-        }
-    );
-
-
-    dots.forEach(
-        (dot,index)=>{
-
-            dot.classList.toggle(
-                "active",
-                index === current
-            );
-
-        }
-    );
-
-}
-
-
-function restartSlider(){
-
-    clearInterval(timer);
-
-
-    timer =
-    setInterval(
-        ()=>{
-            showSlide(current + 1);
-        },
-        6000
-    );
-
-}
-
-
-document
-.getElementById("next")
-.addEventListener(
-    "click",
-    ()=>{
-
-        showSlide(current + 1);
-
-        restartSlider();
-
+    if(index >= slides.length){
+        currentSlide = 0;
     }
-);
 
-
-document
-.getElementById("prev")
-.addEventListener(
-    "click",
-    ()=>{
-
-        showSlide(current - 1);
-
-        restartSlider();
-
+    else if(index < 0){
+        currentSlide = slides.length - 1;
     }
-);
 
+    else{
+        currentSlide = index;
+    }
 
-dots.forEach(
-    (dot,index)=>{
-
-        dot.addEventListener(
-            "click",
-            ()=>{
-
-                showSlide(index);
-
-                restartSlider();
-
-            }
+    slides.forEach((slide,i)=>{
+        slide.classList.toggle(
+            "active",
+            i === currentSlide
         );
+    });
 
-    }
-);
+    dots.forEach((dot,i)=>{
+        dot.classList.toggle(
+            "active",
+            i === currentSlide
+        );
+    });
+}
 
+function changeSlide(direction){
+    showSlide(currentSlide + direction);
+}
 
-restartSlider();
+function goSlide(index){
+    showSlide(index);
+}
+
+setInterval(()=>{
+    changeSlide(1);
+},6000);
 
 
 /* ================= SEARCH ================= */
 
-document
-.getElementById("searchInput")
-.addEventListener(
-    "input",
-    function(){
+const searchInput =
+document.getElementById("searchInput");
 
-        const search =
-        this.value
-        .toLowerCase()
-        .trim();
+searchInput.addEventListener("input",function(){
+
+    const value =
+    this.value.toLowerCase().trim();
+
+    const items =
+    document.querySelectorAll(
+        ".poster,.small"
+    );
+
+    items.forEach(item=>{
+
+        const text =
+        item.innerText.toLowerCase();
+
+        if(!value || text.includes(value)){
+            item.style.display="";
+        }
+
+        else{
+            item.style.display="none";
+        }
+
+    });
+
+});
 
 
-        document
-        .querySelectorAll(".card")
-        .forEach(
-            card=>{
+/* ================= ACTIVE NAV ================= */
 
-                card.style.display =
-                !search ||
-                card.innerText
-                .toLowerCase()
-                .includes(search)
-                ? ""
-                : "none";
+const navLinks =
+document.querySelectorAll(".nav a");
 
-            }
-        );
+navLinks.forEach(link=>{
 
-    }
-);
+    link.addEventListener("click",()=>{
+
+        navLinks.forEach(item=>{
+            item.classList.remove("active");
+        });
+
+        link.classList.add("active");
+
+    });
+
+});
 
 </script>
 
