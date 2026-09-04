@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Movie Wala | Har Scene Mein Entertainment</title>
+<title>Movie Wala - Entertainment Hub</title>
 
 <style>
 *{
@@ -19,151 +19,87 @@ html{
 
 body{
     font-family:Arial,Helvetica,sans-serif;
-    background:#050708;
+    background:#080808;
     color:#fff;
+    overflow-x:hidden;
 }
 
 a{
-    text-decoration:none;
     color:inherit;
+    text-decoration:none;
+}
+
+img{
+    max-width:100%;
+    display:block;
 }
 
 /* ================= HEADER ================= */
 
-.navbar{
-    min-height:78px;
+.header{
     position:sticky;
     top:0;
-    z-index:9999;
+    z-index:999;
+    background:rgba(5,5,5,.96);
+    border-bottom:1px solid #252525;
+    backdrop-filter:blur(12px);
+}
+
+.header-inner{
+    max-width:1250px;
+    margin:auto;
+    min-height:78px;
+    padding:10px 20px;
     display:flex;
     align-items:center;
-    gap:22px;
-    padding:10px 22px;
-    background:rgba(5,7,8,.98);
-    border-bottom:1px solid #292d30;
-    backdrop-filter:blur(12px);
+    gap:15px;
+    flex-wrap:wrap;
 }
 
 .brand{
     display:flex;
     align-items:center;
     gap:10px;
-    min-width:270px;
+    margin-right:auto;
 }
 
 .logo{
-    width:46px;
-    height:46px;
-    flex:0 0 46px;
+    width:52px;
+    height:52px;
+    object-fit:cover;
     border-radius:50%;
-    object-fit:contain;
-    object-position:center;
-    border:2px solid #e6aa00;
-    background:#050708;
-    display:block;
+    border:2px solid #e50914;
 }
 
-.brand-name{
-    font-size:22px;
+.brand-text{
+    font-size:20px;
     font-weight:900;
-    letter-spacing:.3px;
+    letter-spacing:1px;
 }
 
-.brand-name span{
-    color:#e7ad00;
-}
-
-.tagline{
-    color:#aaa;
-    font-size:10px;
-    margin-top:3px;
+.brand-text span{
+    color:#e50914;
 }
 
 .nav{
     display:flex;
     align-items:center;
-    justify-content:center;
-    gap:20px;
-    flex:1;
+    gap:4px;
 }
 
 .nav a{
-    font-size:12px;
-    font-weight:800;
-    padding:25px 0 22px;
-    border-bottom:2px solid transparent;
-    white-space:nowrap;
+    padding:10px 11px;
+    font-size:13px;
+    font-weight:700;
+    border-radius:6px;
+    transition:.25s;
 }
 
 .nav a:hover,
 .nav a.active{
-    border-color:#e50914;
     color:#fff;
+    background:#e50914;
 }
-
-.actions{
-    display:flex;
-    align-items:center;
-    gap:13px;
-}
-
-.search{
-    width:210px;
-    height:38px;
-    border:1px solid #444;
-    border-radius:25px;
-    display:flex;
-    align-items:center;
-    padding:0 12px;
-    background:#111416;
-}
-
-.search input{
-    width:100%;
-    border:0;
-    outline:0;
-    background:transparent;
-    color:#fff;
-    font-size:12px;
-}
-
-.search span{
-    font-size:18px;
-}
-
-.social-mini{
-    display:flex;
-    gap:9px;
-}
-
-.social-mini a{
-    width:28px;
-    height:28px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.social-mini svg{
-    width:23px;
-    height:23px;
-}
-
-.yt{
-    fill:#ff0000;
-}
-
-.fb{
-    fill:#2775dc;
-}
-
-.ig{
-    fill:none;
-    stroke:#ff3d8d;
-    stroke-width:2;
-}
-
-/* ================= HAMBURGER ================= */
 
 .menu-toggle{
     display:none;
@@ -179,576 +115,411 @@ a{
     justify-content:center;
 }
 
-.menu-toggle:hover{
-    border-color:#e50914;
-    color:#e50914;
-}
-
 /* ================= HERO ================= */
 
 .hero{
-    height:430px;
     position:relative;
+    height:570px;
     overflow:hidden;
-    background:#080909;
+    background:#000;
 }
 
-.slide{
+.hero-slide{
     position:absolute;
     inset:0;
-    background:center/cover no-repeat;
     opacity:0;
-    transform:scale(1.06);
-    transition:opacity 1s ease,transform 6s ease;
+    transition:opacity 1s ease;
 }
 
-.slide.active{
+.hero-slide.active{
     opacity:1;
-    transform:scale(1);
 }
 
-.slide:after{
+.hero-slide img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.hero-slide::after{
     content:"";
     position:absolute;
     inset:0;
     background:
-    linear-gradient(
-        90deg,
-        rgba(0,0,0,.82),
-        rgba(0,0,0,.18) 65%,
-        rgba(0,0,0,.42)
-    ),
-    linear-gradient(
-        0deg,
-        rgba(0,0,0,.78),
-        transparent 50%
-    );
+        linear-gradient(90deg,rgba(0,0,0,.92) 0%,rgba(0,0,0,.58) 45%,rgba(0,0,0,.15) 100%),
+        linear-gradient(0deg,#080808 0%,transparent 35%);
 }
 
 .hero-content{
-    position:absolute;
-    z-index:5;
-    left:6.3%;
-    top:50px;
-    max-width:500px;
+    position:relative;
+    z-index:2;
+    max-width:1250px;
+    margin:auto;
+    height:100%;
+    padding:80px 25px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
 }
 
-.welcome{
-    display:inline-block;
-    background:#690b0d;
-    padding:7px 12px;
-    border-radius:6px;
-    font-size:11px;
+.hero-badge{
+    display:inline-flex;
+    width:max-content;
+    padding:8px 13px;
+    background:#e50914;
+    border-radius:5px;
+    font-size:12px;
     font-weight:900;
-    margin-bottom:14px;
+    letter-spacing:1px;
+    margin-bottom:18px;
 }
 
 .hero h1{
-    font-size:50px;
-    line-height:.98;
-    font-weight:950;
+    max-width:650px;
+    font-size:56px;
+    line-height:1;
+    margin-bottom:18px;
     text-transform:uppercase;
 }
 
 .hero h1 span{
-    color:#f0b500;
+    color:#e50914;
 }
 
 .hero p{
-    font-size:14px;
-    line-height:1.6;
-    margin:18px 0;
-    color:#eee;
+    max-width:600px;
+    color:#ddd;
+    line-height:1.7;
+    font-size:15px;
+    margin-bottom:25px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
 }
 
 .btn{
-    display:inline-block;
-    padding:12px 18px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:13px 20px;
     border-radius:6px;
-    font-size:12px;
-    font-weight:900;
-    margin-right:8px;
+    font-size:13px;
+    font-weight:800;
+    border:1px solid transparent;
+    transition:.25s;
 }
 
 .btn-red{
-    background:#df080d;
-    border:1px solid #ff3131;
+    background:#e50914;
 }
 
 .btn-red:hover{
-    background:#ff1018;
+    background:#b80710;
 }
 
 .btn-dark{
-    background:rgba(0,0,0,.55);
-    border:1px solid #777;
+    background:rgba(0,0,0,.65);
+    border-color:#555;
 }
 
 .btn-dark:hover{
-    border-color:#fff;
-}
-
-.live-now{
-    position:absolute;
-    right:7%;
-    top:38px;
-    z-index:5;
-}
-
-.live-label{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    background:#1b1d1f;
-    border:1px solid #e50914;
-    padding:9px 14px;
-    border-radius:7px;
-    font-size:13px;
-    font-weight:900;
-}
-
-.live-dot{
-    width:9px;
-    height:9px;
-    background:#e50914;
-    border-radius:50%;
-    box-shadow:0 0 12px rgba(229,9,20,.8);
-}
-
-.live-now small{
-    display:block;
-    text-align:center;
-    margin-top:7px;
-    color:#ccc;
-    font-size:9px;
-    font-weight:800;
-}
-
-.arrow{
-    position:absolute;
-    z-index:8;
-    top:50%;
-    transform:translateY(-50%);
-    width:44px;
-    height:44px;
-    border:1px solid #aaa;
-    border-radius:50%;
-    background:rgba(0,0,0,.4);
-    color:#fff;
-    font-size:28px;
-    cursor:pointer;
-}
-
-.arrow:hover{
-    background:#e50914;
     border-color:#e50914;
 }
 
-.arrow.left{
-    left:25px;
+/* ================= GENERAL ================= */
+
+.container{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 20px;
 }
 
-.arrow.right{
-    right:25px;
-}
-
-.dots{
-    position:absolute;
-    z-index:9;
-    bottom:15px;
-    left:50%;
-    transform:translateX(-50%);
+.section-head{
     display:flex;
-    gap:10px;
+    justify-content:space-between;
+    align-items:end;
+    gap:20px;
+    margin-bottom:28px;
 }
 
-.dot{
-    width:9px;
-    height:9px;
-    border:0;
-    border-radius:50%;
-    background:#fff;
-    cursor:pointer;
+.section-title{
+    font-size:30px;
+    text-transform:uppercase;
 }
 
-.dot.active{
-    width:23px;
-    border-radius:8px;
-    background:#e50914;
+.section-title span{
+    color:#e50914;
 }
 
-/* ================= MAIN ================= */
-
-.main{
-    padding:12px 24px 25px;
+.section-subtitle{
+    color:#888;
+    font-size:13px;
+    margin-top:7px;
 }
 
-.layout{
-    display:grid;
-    grid-template-columns:2fr 1.05fr;
-    gap:10px;
-}
+/* ================= MOVIE CARDS ================= */
 
-.panel{
-    background:linear-gradient(145deg,#0a0e10,#050708);
-    border:1px solid #252b2e;
-    border-radius:10px;
-    overflow:hidden;
-}
-
-.title{
-    height:42px;
-    display:flex;
-    align-items:center;
-    gap:8px;
-    padding:0 12px;
-    font-size:17px;
-    font-weight:900;
-}
-
-.bar{
-    width:5px;
-    height:17px;
-    border-radius:2px;
-    background:#ed1016;
-}
-
-/* ================= MOVIES ================= */
-
-.movie-row{
+.movie-grid{
     display:grid;
     grid-template-columns:repeat(5,1fr);
-    gap:10px;
-    padding:0 7px 10px;
+    gap:18px;
+}
+
+.movie-card{
+    background:#111;
+    border:1px solid #222;
+    border-radius:10px;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.movie-card:hover{
+    transform:translateY(-7px);
+    border-color:#e50914;
+    box-shadow:0 15px 35px rgba(229,9,20,.15);
 }
 
 .poster{
-    height:182px;
+    height:290px;
+    background:#1b1b1b;
     position:relative;
-    border:1px solid #3a3e40;
-    border-radius:7px;
     overflow:hidden;
-    display:flex;
-    align-items:flex-end;
-    padding:9px;
 }
 
-.poster:after{
-    content:"";
+.poster img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.4s;
+}
+
+.movie-card:hover .poster img{
+    transform:scale(1.06);
+}
+
+.quality{
     position:absolute;
-    inset:0;
-    background:linear-gradient(
-        transparent 35%,
-        rgba(0,0,0,.92)
-    );
-}
-
-.poster h3{
-    position:relative;
-    z-index:2;
-    font-size:16px;
-    line-height:.98;
-}
-
-.hd{
-    position:absolute;
-    z-index:3;
-    top:7px;
-    left:7px;
-    background:#c90d12;
-    padding:4px 6px;
+    top:10px;
+    left:10px;
+    background:#e50914;
+    padding:5px 8px;
     border-radius:4px;
-    font-size:9px;
+    font-size:10px;
+    font-weight:900;
 }
 
-.rating{
-    position:absolute;
-    z-index:3;
-    right:7px;
-    bottom:7px;
-    color:#ffc400;
-    font-size:11px;
-    font-weight:bold;
+.movie-info{
+    padding:14px;
 }
 
-.movie-name{
+.movie-info h3{
+    font-size:15px;
+    margin-bottom:7px;
+}
+
+.movie-info p{
+    color:#888;
     font-size:12px;
-    padding-top:5px;
-}
-
-.p1{
-    background:radial-gradient(circle at 60% 25%,#9b3515,#280909 50%,#050606);
-}
-
-.p2{
-    background:radial-gradient(circle at 50% 25%,#1a5a78,#071a2b 50%,#040607);
-}
-
-.p3{
-    background:radial-gradient(circle at 60% 25%,#ad5113,#351506 50%,#050606);
-}
-
-.p4{
-    background:radial-gradient(circle at 55% 25%,#227277,#082d32 50%,#050708);
-}
-
-.p5{
-    background:radial-gradient(circle at 60% 20%,#a06b1b,#382008 50%,#050606);
-}
-
-/* ================= TRENDING ================= */
-
-.small-row{
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:6px;
-    padding:0 7px 9px;
-}
-
-.small{
-    height:125px;
-    border:1px solid #333;
-    border-radius:6px;
-    display:flex;
-    align-items:flex-end;
-    padding:7px;
-    position:relative;
-    overflow:hidden;
-}
-
-.small:after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(
-        transparent,
-        rgba(0,0,0,.92)
-    );
-}
-
-.small b{
-    position:relative;
-    z-index:2;
-    font-size:11px;
-}
-
-.s1{
-    background:linear-gradient(135deg,#17314d,#080909);
-}
-
-.s2{
-    background:linear-gradient(135deg,#47210c,#080909);
-}
-
-.s3{
-    background:linear-gradient(135deg,#0b4e70,#080909);
-}
-
-.s4{
-    background:linear-gradient(135deg,#4b1015,#080909);
-}
-
-.s5{
-    background:linear-gradient(135deg,#44370f,#080909);
 }
 
 /* ================= LIVE ZONE ================= */
 
+.live-section{
+    background:
+        linear-gradient(rgba(0,0,0,.78),rgba(0,0,0,.9)),
+        url("movie-wala-banner.jpeg") center/cover no-repeat;
+    border-top:1px solid #222;
+    border-bottom:1px solid #222;
+}
+
 .live-box{
-    margin:0 10px 10px;
-    min-height:290px;
-    border:1px solid #e50914;
-    border-radius:14px;
+    min-height:310px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
     position:relative;
     overflow:hidden;
-    background:
-    radial-gradient(
-        circle at 78% 45%,
-        rgba(229,9,20,.28),
-        transparent 22%
-    ),
-    radial-gradient(
-        circle at 25% 20%,
-        rgba(229,9,20,.12),
-        transparent 28%
-    ),
-    linear-gradient(
-        135deg,
-        #180306,
-        #050708 58%,
-        #0e0203
-    );
 }
 
-.live-box:before{
+.live-box::before,
+.live-box::after{
     content:"";
     position:absolute;
-    width:390px;
-    height:390px;
-    right:-105px;
-    top:-105px;
-    border:1px solid rgba(255,35,35,.45);
+    border:1px solid rgba(229,9,20,.45);
     border-radius:50%;
-    box-shadow:0 0 55px rgba(255,0,0,.22) inset;
-    animation:rotate 7s linear infinite;
+    width:240px;
+    height:240px;
+    animation:pulse 3s infinite;
 }
 
-.live-box:after{
-    content:"";
-    position:absolute;
-    width:170px;
-    height:170px;
-    right:65px;
-    top:60px;
-    border:1px solid rgba(229,9,20,.22);
-    border-radius:50%;
-    box-shadow:
-        0 0 35px rgba(229,9,20,.18),
-        inset 0 0 30px rgba(229,9,20,.08);
-    animation:rotateReverse 10s linear infinite;
+.live-box::after{
+    width:340px;
+    height:340px;
+    animation-delay:1s;
 }
 
-@keyframes rotate{
-    to{
-        transform:rotate(360deg);
+@keyframes pulse{
+    0%{
+        transform:scale(.7);
+        opacity:.1;
     }
-}
-
-@keyframes rotateReverse{
-    to{
-        transform:rotate(-360deg);
+    50%{
+        opacity:.5;
     }
-}
-
-.live-video-overlay{
-    position:absolute;
-    inset:0;
-    z-index:2;
-    background:
-    linear-gradient(
-        90deg,
-        rgba(0,0,0,.86),
-        rgba(0,0,0,.42) 58%,
-        rgba(0,0,0,.18)
-    ),
-    linear-gradient(
-        0deg,
-        rgba(0,0,0,.65),
-        transparent 65%
-    );
+    100%{
+        transform:scale(1.2);
+        opacity:0;
+    }
 }
 
 .live-content{
     position:relative;
-    z-index:5;
-    padding:28px;
-    max-width:78%;
+    z-index:2;
 }
 
-.live-heading{
-    font-size:28px;
-    font-weight:950;
-}
-
-.live-heading span{
-    color:#e50914;
-}
-
-.live-sub{
-    color:#ffc400;
-    font-size:12px;
+.live-badge{
+    display:inline-block;
+    background:#e50914;
+    padding:7px 14px;
+    border-radius:5px;
+    font-size:11px;
     font-weight:900;
-    margin:10px 0;
+    letter-spacing:1px;
+    margin-bottom:15px;
+}
+
+.live-content h2{
+    font-size:42px;
+    margin-bottom:8px;
+}
+
+.live-content h3{
+    font-size:18px;
+    color:#ddd;
+    margin-bottom:12px;
 }
 
 .live-content p{
-    font-size:12px;
-    line-height:1.55;
-    color:#eee;
+    max-width:620px;
+    color:#aaa;
+    line-height:1.6;
+    margin:0 auto 20px;
+    font-size:13px;
 }
 
-/* ================= FEATURED VIDEO ================= */
+/* ================= VIDEO ================= */
 
 .video-box{
-    margin:0 10px 10px;
-    background:#000;
-    border:1px solid #333;
-    border-radius:10px;
+    max-width:900px;
+    margin:auto;
+    background:#111;
+    border:1px solid #252525;
+    border-radius:12px;
     overflow:hidden;
 }
 
-.video-box iframe{
+.video-frame{
+    position:relative;
     width:100%;
-    height:300px;
-    display:block;
+    padding-top:56.25%;
+}
+
+.video-frame iframe{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
     border:0;
 }
 
-/* ================= FOLLOW ================= */
+/* ================= TRENDING ================= */
 
-.follow-grid{
+.trending-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.trend-card{
+    min-height:190px;
+    border-radius:10px;
+    overflow:hidden;
+    position:relative;
+    border:1px solid #252525;
+}
+
+.trend-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.trend-card::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(0deg,rgba(0,0,0,.9),transparent 65%);
+}
+
+.trend-content{
+    position:absolute;
+    left:15px;
+    right:15px;
+    bottom:14px;
+    z-index:2;
+}
+
+.trend-content span{
+    color:#e50914;
+    font-size:10px;
+    font-weight:900;
+}
+
+.trend-content h3{
+    margin-top:5px;
+    font-size:17px;
+}
+
+/* ================= SOCIAL ================= */
+
+.social-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:8px;
-    padding:0 8px 8px;
+    gap:18px;
 }
 
-.follow{
-    height:65px;
-    display:flex;
-    align-items:center;
-    gap:8px;
-    padding:7px;
-    background:#111416;
-    border:1px solid #444;
-    border-radius:7px;
+.social-card{
+    background:#111;
+    border:1px solid #252525;
+    border-radius:10px;
+    padding:25px;
+    text-align:center;
+    transition:.3s;
 }
 
-.follow:hover{
+.social-card:hover{
+    transform:translateY(-5px);
     border-color:#e50914;
 }
 
-.follow-icon{
-    width:43px;
-    height:43px;
-    border-radius:8px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+.social-icon{
+    width:48px;
+    height:48px;
+    margin:0 auto 12px;
 }
 
-.follow-icon svg{
-    width:25px;
-    height:25px;
-    fill:#fff;
+.social-card h3{
+    margin-bottom:7px;
 }
 
-.follow-yt{
-    background:#e50914;
-}
-
-.follow-fb{
-    background:#2775dc;
-}
-
-.follow-ig{
-    background:linear-gradient(
-        135deg,
-        #7b2cbf,
-        #e50914,
-        #f5a000
-    );
-}
-
-.follow b{
-    font-size:11px;
-}
-
-.follow small{
-    display:block;
-    color:#aaa;
-    font-size:9px;
-    margin-top:3px;
+.social-card p{
+    color:#888;
+    font-size:12px;
+    margin-bottom:16px;
 }
 
 /* ================= STATS ================= */
@@ -756,177 +527,107 @@ a{
 .stats{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    margin-top:8px;
-    border:1px solid #252b2e;
-    border-radius:8px;
+    gap:15px;
+    margin-top:30px;
 }
 
 .stat{
+    background:#111;
+    border:1px solid #222;
+    border-radius:9px;
+    padding:25px;
     text-align:center;
-    padding:12px;
-    border-right:1px solid #303437;
 }
 
-.stat:last-child{
-    border-right:0;
+.stat h2{
+    color:#e50914;
+    font-size:30px;
+    margin-bottom:6px;
 }
 
-.stat-icon{
-    color:#ffc000;
-    font-size:21px;
-}
-
-.stat strong{
-    display:block;
-    color:#ffc000;
-    font-size:19px;
-    margin-top:2px;
-}
-
-.stat small{
-    color:#eee;
-    font-size:10px;
+.stat p{
+    color:#888;
+    font-size:12px;
 }
 
 /* ================= GENRES ================= */
 
-.genres{
-    margin-top:8px;
-    padding-bottom:9px;
-    border:1px solid #252b2e;
-    border-radius:8px;
-}
-
-.genre-row{
-    display:grid;
-    grid-template-columns:repeat(9,1fr);
-    gap:8px;
-    padding:0 9px;
+.genre-grid{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
 }
 
 .genre{
-    border:1px solid #3c4144;
-    border-radius:6px;
-    padding:11px 5px;
-    text-align:center;
-    font-size:11px;
-    font-weight:900;
-    background:#0b0e10;
+    padding:11px 17px;
+    border:1px solid #333;
+    border-radius:20px;
+    color:#bbb;
+    font-size:12px;
+    transition:.25s;
 }
 
 .genre:hover{
+    background:#e50914;
     border-color:#e50914;
+    color:#fff;
 }
-
-.genre:nth-child(1){color:#ff3030}
-.genre:nth-child(2){color:#4aa8ff}
-.genre:nth-child(3){color:#ffc400}
-.genre:nth-child(4){color:#49df66}
-.genre:nth-child(5){color:#ff8b00}
-.genre:nth-child(6){color:#b867ff}
-.genre:nth-child(7){color:#ff4141}
-.genre:nth-child(8){color:#28d8e7}
-.genre:nth-child(9){color:#ff4f8b}
 
 /* ================= ABOUT ================= */
 
 .about{
-    margin-top:8px;
-    padding:18px;
-    border:1px solid #252b2e;
-    border-radius:8px;
-    background:linear-gradient(145deg,#0a0e10,#050708);
-}
-
-.about h2{
-    font-size:19px;
-    margin-bottom:8px;
-}
-
-.about h2 span{
-    color:#e7ad00;
+    background:#0d0d0d;
+    border:1px solid #222;
+    border-radius:12px;
+    padding:30px;
 }
 
 .about p{
-    color:#bbb;
-    font-size:12px;
-    line-height:1.7;
+    color:#aaa;
+    line-height:1.8;
+    font-size:14px;
 }
 
 /* ================= FOOTER ================= */
 
-footer{
+.footer{
+    background:#050505;
+    border-top:1px solid #222;
+    padding:35px 20px;
     text-align:center;
-    padding:20px;
-    border-top:1px solid #24282a;
-    color:#777;
-    font-size:10px;
 }
 
-.footer-brand{
-    font-size:20px;
-    color:#eee;
+.footer-logo{
+    font-size:22px;
     font-weight:900;
-    margin-bottom:5px;
+    margin-bottom:10px;
 }
 
-.footer-brand span{
-    color:#e7ad00;
+.footer-logo span{
+    color:#e50914;
 }
 
-/* ================= TABLET ================= */
-
-@media(max-width:1200px){
-
-    .nav{
-        gap:12px;
-    }
-
-    .nav a{
-        font-size:10px;
-    }
-
-    .search{
-        width:170px;
-    }
-
-    .layout{
-        grid-template-columns:1fr;
-    }
-
-    .genre-row{
-        grid-template-columns:repeat(5,1fr);
-    }
+.footer p{
+    color:#666;
+    font-size:11px;
 }
 
-/* ================= MOBILE ================= */
+/* ================= MOBILE MENU ================= */
 
 @media(max-width:800px){
 
-    .navbar{
-        min-height:auto;
-        padding:9px 12px;
-        flex-wrap:wrap;
-        gap:0;
-    }
-
-    .brand{
-        min-width:0;
-        flex:1;
+    .header-inner{
+        min-height:68px;
+        padding:9px 14px;
     }
 
     .logo{
-        width:44px;
-        height:44px;
-        flex-basis:44px;
+        width:48px;
+        height:48px;
     }
 
-    .brand-name{
-        font-size:19px;
-    }
-
-    .tagline{
-        font-size:9px;
+    .brand-text{
+        font-size:17px;
     }
 
     .menu-toggle{
@@ -934,6 +635,10 @@ footer{
         margin-left:10px;
     }
 
+    /*
+       MOBILE MENU:
+       Banner background + dark cinematic overlay
+    */
     .nav{
         display:none;
         order:5;
@@ -942,8 +647,18 @@ footer{
         align-items:stretch;
         gap:0;
         margin-top:9px;
-        background:#080a0b;
-        border-top:1px solid #292d30;
+
+        background:
+            linear-gradient(
+                rgba(0,0,0,.72),
+                rgba(0,0,0,.88)
+            ),
+            url("movie-wala-banner.jpeg") center/cover no-repeat;
+
+        border:1px solid #333;
+        border-radius:10px;
+        overflow:hidden;
+        box-shadow:0 15px 35px rgba(0,0,0,.7);
     }
 
     .nav.open{
@@ -952,138 +667,56 @@ footer{
 
     .nav a{
         width:100%;
-        padding:13px 12px;
+        padding:14px 15px;
         font-size:12px;
-        border-bottom:1px solid #24282a;
+        border-bottom:1px solid rgba(255,255,255,.12);
+        background:rgba(0,0,0,.25);
+    }
+
+    .nav a:last-child{
+        border-bottom:0;
     }
 
     .nav a:hover,
     .nav a.active{
-        background:#160708;
+        background:rgba(229,9,20,.8);
         border-bottom-color:#e50914;
     }
 
-    .actions{
-        display:none;
-    }
-
     .hero{
-        height:450px;
+        height:500px;
     }
 
     .hero-content{
-        left:6%;
-        top:45px;
-        max-width:86%;
+        padding:50px 20px;
     }
 
     .hero h1{
-        font-size:36px;
+        font-size:38px;
     }
 
     .hero p{
-        font-size:12px;
+        font-size:13px;
     }
 
-    .live-now{
-        right:6%;
-        top:18px;
-    }
-
-    .live-label{
-        padding:7px 10px;
-        font-size:10px;
-    }
-
-    .live-now small{
-        font-size:8px;
-    }
-
-    .arrow{
-        width:36px;
-        height:36px;
-        font-size:22px;
-    }
-
-    .arrow.left{
-        left:10px;
-    }
-
-    .arrow.right{
-        right:10px;
-    }
-
-    .main{
-        padding:8px 10px 20px;
-    }
-
-    .movie-row{
-        grid-template-columns:repeat(3,1fr);
+    .movie-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
     }
 
     .poster{
-        height:155px;
-    }
-
-    .small-row{
-        grid-template-columns:repeat(3,1fr);
-    }
-
-    .video-box iframe{
         height:230px;
     }
 
-    .genre-row{
-        grid-template-columns:repeat(3,1fr);
-    }
-}
-
-/* ================= SMALL MOBILE ================= */
-
-@media(max-width:520px){
-
-    .hero{
-        height:460px;
-    }
-
-    .hero h1{
-        font-size:31px;
-    }
-
-    .hero p{
-        font-size:11px;
-    }
-
-    .movie-row{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .poster{
-        height:165px;
-    }
-
-    .small-row{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .small{
-        height:115px;
-    }
-
-    .live-box{
-        min-height:310px;
-    }
-
-    .live-content{
-        max-width:100%;
-        padding:22px;
-    }
-
-    .live-heading{
+    .section-title{
         font-size:25px;
     }
 
-    .follow-grid{
+    .trending-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .social-grid{
         grid-template-columns:1fr;
     }
 
@@ -1091,21 +724,47 @@ footer{
         grid-template-columns:repeat(2,1fr);
     }
 
-    .stat:nth-child(2){
-        border-right:0;
+    .live-content h2{
+        font-size:32px;
     }
 
-    .stat:nth-child(3){
-        border-top:1px solid #303437;
+    .live-content h3{
+        font-size:15px;
+    }
+}
+
+@media(max-width:480px){
+
+    .hero{
+        height:460px;
     }
 
-    .genre-row{
+    .hero h1{
+        font-size:32px;
+    }
+
+    .movie-grid{
         grid-template-columns:repeat(2,1fr);
     }
 
-    .live-box:after{
-        right:-30px;
-        top:90px;
+    .poster{
+        height:210px;
+    }
+
+    .movie-info{
+        padding:11px;
+    }
+
+    .movie-info h3{
+        font-size:13px;
+    }
+
+    .trending-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .container{
+        padding:50px 14px;
     }
 }
 </style>
@@ -1115,105 +774,39 @@ footer{
 
 <!-- ================= HEADER ================= -->
 
-<header class="navbar">
+<header class="header">
+    <div class="header-inner">
 
-<a href="#home" class="brand">
+        <a href="#home" class="brand">
+            <img
+                class="logo"
+                src="movie-wala-logo.jpeg"
+                alt="Movie Wala Logo"
+            >
+            <div class="brand-text">
+                MOVIE <span>WALA</span>
+            </div>
+        </a>
 
-<img
-src="movie-wala-logo.jpeg"
-class="logo"
-alt="Movie Wala Logo">
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Open Menu"
+        >☰</button>
 
-<div>
+        <nav class="nav" id="navMenu">
 
-<div class="brand-name">
-MOVIE <span>WALA</span>
-</div>
+            <a href="#home" class="active">HOME</a>
+            <a href="#live">LIVE</a>
+            <a href="#movies">MOVIES</a>
+            <a href="#trending">TRENDING</a>
+            <a href="#series">WEB SERIES</a>
+            <a href="#genres">GENRES</a>
+            <a href="#about">ABOUT</a>
 
-<div class="tagline">
-Har Scene Mein Entertainment
-</div>
+        </nav>
 
-</div>
-
-</a>
-
-<nav class="nav" id="mainNav">
-
-<a href="#home" class="active">HOME</a>
-<a href="#live">LIVE</a>
-<a href="#movies">MOVIES</a>
-<a href="#series">WEB SERIES</a>
-<a href="#trending">TRENDING</a>
-<a href="#genres">GENRES</a>
-<a href="#about">ABOUT</a>
-
-</nav>
-
-<div class="actions">
-
-<div class="search">
-
-<input
-type="text"
-id="searchInput"
-placeholder="Search movies...">
-
-<span>⌕</span>
-
-</div>
-
-<div class="social-mini">
-
-<a
-href="https://www.youtube.com/@MovieWalaOfficial.10"
-target="_blank"
-rel="noopener noreferrer"
-aria-label="YouTube">
-
-<svg class="yt" viewBox="0 0 24 24">
-<path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.8V8.2l6.5 3.8-6.5 3.8z"/>
-</svg>
-
-</a>
-
-<a
-href="https://www.facebook.com/share/1MR6Lxzy4f/"
-target="_blank"
-rel="noopener noreferrer"
-aria-label="Facebook">
-
-<svg class="fb" viewBox="0 0 24 24">
-<path d="M24 12a12 12 0 1 0-13.9 11.9v-8.4H7.1V12h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.6.2 2.6.2v2.9h-1.5c-1.5 0-2 .9-2 1.9V12h3.4l-.5 3.5h-2.9v8.4A12 12 0 0 0 24 12z"/>
-</svg>
-
-</a>
-
-<a
-href="https://www.instagram.com/moviewalaofficial.10/"
-target="_blank"
-rel="noopener noreferrer"
-aria-label="Instagram">
-
-<svg class="ig" viewBox="0 0 24 24">
-<rect x="3" y="3" width="18" height="18" rx="5"/>
-<circle cx="12" cy="12" r="4"/>
-<circle cx="17.5" cy="6.5" r="1"/>
-</svg>
-
-</a>
-
-</div>
-
-</div>
-
-<button
-class="menu-toggle"
-id="menuToggle"
-aria-label="Open Menu">
-☰
-</button>
-
+    </div>
 </header>
 
 
@@ -1221,668 +814,598 @@ aria-label="Open Menu">
 
 <section class="hero" id="home">
 
-<div
-class="slide active"
-style="background-image:url('movie-wala-banner.jpeg')">
-</div>
+    <div class="hero-slide active">
+        <img src="movie-wala-banner.jpeg" alt="Movie Wala Banner">
+    </div>
 
-<div
-class="slide"
-style="background-image:url('movie-wala-banner-2[1].jpg')">
-</div>
+    <div class="hero-slide">
+        <img src="movie-wala-banner-2[1].jpg" alt="Movie Wala Banner">
+    </div>
 
-<div
-class="slide"
-style="background-image:url('movie-wala-banner-3[1].jpg')">
-</div>
+    <div class="hero-slide">
+        <img src="movie-wala-banner-3[1].jpg" alt="Movie Wala Banner">
+    </div>
 
-<div
-class="slide"
-style="background-image:url('movie-wala-banner-4[1].jpg')">
-</div>
+    <div class="hero-slide">
+        <img src="movie-wala-banner-4[1].jpg" alt="Movie Wala Banner">
+    </div>
 
-<div
-class="slide"
-style="background-image:url('movie-wala-banner-5[1].jpg')">
-</div>
+    <div class="hero-slide">
+        <img src="movie-wala-banner-5[1].jpg" alt="Movie Wala Banner">
+    </div>
 
-<div class="hero-content">
+    <div class="hero-content">
 
-<div class="welcome">
-WELCOME TO MOVIE WALA
-</div>
+        <div class="hero-badge">
+            LIVE CHANNEL
+        </div>
 
-<h1>
-HAR SCENE MEIN
-<span>ENTERTAINMENT</span>
-</h1>
+        <h1>
+            HAR SCENE MEIN
+            <span>ENTERTAINMENT</span>
+        </h1>
 
-<p>
-Your ultimate destination for movies, web series,
-trending entertainment, latest updates and cinematic stories.
-</p>
+        <p>
+            Welcome to Movie Wala — your entertainment destination
+            for movies, web series, trending content and cinematic
+            updates.
+        </p>
 
-<a
-href="#movies"
-class="btn btn-red">
-EXPLORE MOVIES
-</a>
+        <div class="hero-buttons">
 
-<a
-href="#live"
-class="btn btn-dark">
-WATCH LIVE
-</a>
+            <a href="#movies" class="btn btn-red">
+                ▶ EXPLORE MOVIES
+            </a>
 
-</div>
+            <a href="#live" class="btn btn-dark">
+                WATCH LIVE
+            </a>
 
-<div class="live-now">
+        </div>
 
-<div class="live-label">
-<span class="live-dot"></span>
-LIVE CHANNEL
-</div>
-
-<small>Movie Wala Official</small>
-
-</div>
-
-<button
-class="arrow left"
-onclick="changeSlide(-1)"
-aria-label="Previous Slide">
-‹
-</button>
-
-<button
-class="arrow right"
-onclick="changeSlide(1)"
-aria-label="Next Slide">
-›
-</button>
-
-<div
-class="dots"
-id="dots">
-</div>
+    </div>
 
 </section>
-
-
-<!-- ================= MAIN ================= -->
-
-<main class="main">
-
-<div class="layout">
 
 
 <!-- ================= MOVIES ================= -->
 
-<section
-class="panel"
-id="movies">
+<section class="container" id="movies">
 
-<div class="title">
-<i class="bar"></i>
-MOVIES
-</div>
+    <div class="section-head">
 
-<div class="movie-row">
+        <div>
+            <h2 class="section-title">
+                Latest <span>Movies</span>
+            </h2>
 
-<div class="movie-card">
+            <p class="section-subtitle">
+                Latest entertainment picks
+            </p>
+        </div>
 
-<div class="poster p1">
+    </div>
 
-<span class="hd">HD</span>
+    <div class="movie-grid">
 
-<h3>
-Action<br>
-Night
-</h3>
+        <div class="movie-card">
+            <div class="poster">
+                <img src="movie-wala-banner-2[1].jpg" alt="Movie">
+                <span class="quality">HD</span>
+            </div>
+            <div class="movie-info">
+                <h3>Movie Wala Special</h3>
+                <p>Entertainment • HD</p>
+            </div>
+        </div>
 
-<span class="rating">
-★ 8.5
-</span>
+        <div class="movie-card">
+            <div class="poster">
+                <img src="movie-wala-banner-3[1].jpg" alt="Movie">
+                <span class="quality">HD</span>
+            </div>
+            <div class="movie-info">
+                <h3>Cinematic Collection</h3>
+                <p>Movies • HD</p>
+            </div>
+        </div>
 
-</div>
+        <div class="movie-card">
+            <div class="poster">
+                <img src="movie-wala-banner-4[1].jpg" alt="Movie">
+                <span class="quality">HD</span>
+            </div>
+            <div class="movie-info">
+                <h3>Entertainment Night</h3>
+                <p>Drama • HD</p>
+            </div>
+        </div>
 
-<div class="movie-name">
-Action Night
-</div>
+        <div class="movie-card">
+            <div class="poster">
+                <img src="movie-wala-banner-5[1].jpg" alt="Movie">
+                <span class="quality">HD</span>
+            </div>
+            <div class="movie-info">
+                <h3>Movie Wala Picks</h3>
+                <p>Action • HD</p>
+            </div>
+        </div>
 
-</div>
+        <div class="movie-card">
+            <div class="poster">
+                <img src="movie-wala-banner.jpeg" alt="Movie">
+                <span class="quality">HD</span>
+            </div>
+            <div class="movie-info">
+                <h3>Featured Cinema</h3>
+                <p>Special • HD</p>
+            </div>
+        </div>
 
-
-<div class="movie-card">
-
-<div class="poster p2">
-
-<span class="hd">HD</span>
-
-<h3>
-Dark<br>
-World
-</h3>
-
-<span class="rating">
-★ 8.2
-</span>
-
-</div>
-
-<div class="movie-name">
-Dark World
-</div>
-
-</div>
-
-
-<div class="movie-card">
-
-<div class="poster p3">
-
-<span class="hd">4K</span>
-
-<h3>
-Golden<br>
-Story
-</h3>
-
-<span class="rating">
-★ 8.7
-</span>
-
-</div>
-
-<div class="movie-name">
-Golden Story
-</div>
-
-</div>
-
-
-<div class="movie-card">
-
-<div class="poster p4">
-
-<span class="hd">HD</span>
-
-<h3>
-Ocean<br>
-Rise
-</h3>
-
-<span class="rating">
-★ 8.1
-</span>
-
-</div>
-
-<div class="movie-name">
-Ocean Rise
-</div>
-
-</div>
-
-
-<div class="movie-card">
-
-<div class="poster p5">
-
-<span class="hd">4K</span>
-
-<h3>
-Empire<br>
-Code
-</h3>
-
-<span class="rating">
-★ 8.9
-</span>
-
-</div>
-
-<div class="movie-name">
-Empire Code
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
-<!-- ================= LIVE ZONE ================= -->
+<!-- ================= LIVE ================= -->
 
-<section
-class="panel"
-id="live">
+<section class="live-section" id="live">
 
-<div class="title">
-<i class="bar"></i>
-LIVE ZONE
-</div>
+    <div class="container">
 
-<div class="live-box">
+        <div class="live-box">
 
-<div class="live-video-overlay">
-</div>
+            <div class="live-content">
 
-<div class="live-content">
+                <div class="live-badge">
+                    LIVE CHANNEL
+                </div>
 
-<div class="live-heading">
-<span>LIVE</span> ENTERTAINMENT
-</div>
+                <h2>
+                    LIVE ENTERTAINMENT
+                </h2>
 
-<div class="live-sub">
-YOUR CINEMA & ENTERTAINMENT HUB
-</div>
+                <h3>
+                    YOUR CINEMA & ENTERTAINMENT HUB
+                </h3>
 
-<p>
-Stay updated with the latest movie news,
-exclusive announcements, trending stories and
-special entertainment highlights from Movie Wala.
-</p>
+                <p>
+                    Watch Movie Wala Official for entertainment,
+                    movie updates, shorts, special videos and
+                    upcoming live broadcasts.
+                </p>
 
-<br>
+                <a
+                    href="https://www.youtube.com/@MovieWalaOfficial.10/live"
+                    target="_blank"
+                    class="btn btn-red"
+                >
+                    ▶ VIEW LIVE CHANNEL
+                </a>
 
-<a
-href="https://www.youtube.com/@MovieWalaOfficial.10/live"
-target="_blank"
-rel="noopener noreferrer"
-class="btn btn-red">
-VIEW LIVE CHANNEL
-</a>
+            </div>
 
-</div>
+        </div>
 
-</div>
-
-</section>
-
-</div>
-
-
-<!-- ================= TRENDING ================= -->
-
-<section
-class="panel"
-id="trending"
-style="margin-top:10px;">
-
-<div class="title">
-<i class="bar"></i>
-TRENDING NOW
-</div>
-
-<div class="small-row">
-
-<div class="small s1">
-<b>Trending Action</b>
-</div>
-
-<div class="small s2">
-<b>Latest Releases</b>
-</div>
-
-<div class="small s3">
-<b>Top Web Series</b>
-</div>
-
-<div class="small s4">
-<b>Popular Stories</b>
-</div>
-
-<div class="small s5">
-<b>Editor's Choice</b>
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
 <!-- ================= FEATURED VIDEO ================= -->
 
-<section
-class="panel"
-style="margin-top:10px;">
+<section class="container">
 
-<div class="title">
-<i class="bar"></i>
-FEATURED VIDEO
-</div>
+    <div class="section-head">
 
-<div class="video-box">
+        <div>
+            <h2 class="section-title">
+                Featured <span>Video</span>
+            </h2>
 
-<iframe
-src="https://www.youtube.com/embed/HzJ0dZ7meZs"
-title="Movie Wala Official Video"
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-allowfullscreen>
-</iframe>
+            <p class="section-subtitle">
+                Watch Movie Wala Official
+            </p>
+        </div>
 
-</div>
+    </div>
+
+    <div class="video-box">
+
+        <div class="video-frame">
+
+            <iframe
+                src="https://www.youtube.com/embed/HzJ0dZ7meZs"
+                title="Movie Wala Official Video"
+                allow="encrypted-media; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TRENDING ================= -->
+
+<section class="container" id="trending">
+
+    <div class="section-head">
+
+        <div>
+            <h2 class="section-title">
+                Trending <span>Now</span>
+            </h2>
+
+            <p class="section-subtitle">
+                What's hot on Movie Wala
+            </p>
+        </div>
+
+    </div>
+
+    <div class="trending-grid">
+
+        <div class="trend-card">
+            <img src="movie-wala-banner.jpeg" alt="Trending">
+            <div class="trend-content">
+                <span>#01 TRENDING</span>
+                <h3>Movie Wala Entertainment</h3>
+            </div>
+        </div>
+
+        <div class="trend-card">
+            <img src="movie-wala-banner-2[1].jpg" alt="Trending">
+            <div class="trend-content">
+                <span>#02 TRENDING</span>
+                <h3>Latest Cinema</h3>
+            </div>
+        </div>
+
+        <div class="trend-card">
+            <img src="movie-wala-banner-3[1].jpg" alt="Trending">
+            <div class="trend-content">
+                <span>#03 TRENDING</span>
+                <h3>Top Entertainment</h3>
+            </div>
+        </div>
+
+        <div class="trend-card">
+            <img src="movie-wala-banner-4[1].jpg" alt="Trending">
+            <div class="trend-content">
+                <span>#04 TRENDING</span>
+                <h3>Popular Picks</h3>
+            </div>
+        </div>
+
+    </div>
 
 </section>
 
 
 <!-- ================= WEB SERIES ================= -->
 
-<section
-class="panel"
-id="series"
-style="margin-top:10px;">
+<section class="container" id="series">
 
-<div class="title">
-<i class="bar"></i>
-WEB SERIES
-</div>
+    <div class="section-head">
 
-<div class="small-row">
+        <div>
+            <h2 class="section-title">
+                Web <span>Series</span>
+            </h2>
 
-<div class="small s4">
-<b>Crime Files</b>
-</div>
+            <p class="section-subtitle">
+                Explore your favourite web entertainment
+            </p>
+        </div>
 
-<div class="small s1">
-<b>Action Stories</b>
-</div>
+    </div>
 
-<div class="small s3">
-<b>Dark Tales</b>
-</div>
+    <div class="movie-grid">
 
-<div class="small s2">
-<b>Drama World</b>
-</div>
+        <div class="movie-card">
+            <div class="poster">
+                <img src="movie-wala-banner-2[1].jpg" alt="Web Series">
+                <span class="quality">SERIES</span>
+            </div>
+            <div class="movie-info">
+                <h3>Series Spotlight</h3>
+                <p>Web Series</p>
+            </div>
+        </div>
 
-<div class="small s5">
-<b>Top Picks</b>
-</div>
+        <div class="movie-card">
+            <div class="poster">
+                <img src="movie-wala-banner-3[1].jpg" alt="Web Series">
+                <span class="quality">SERIES</span>
+            </div>
+            <div class="movie-info">
+                <h3>Drama Collection</h3>
+                <p>Web Series</p>
+            </div>
+        </div>
 
-</div>
+        <div class="movie-card">
+            <div class="poster">
+                <img src="movie-wala-banner-4[1].jpg" alt="Web Series">
+                <span class="quality">SERIES</span>
+            </div>
+            <div class="movie-info">
+                <h3>Action Series</h3>
+                <p>Web Series</p>
+            </div>
+        </div>
+
+        <div class="movie-card">
+            <div class="poster">
+                <img src="movie-wala-banner-5[1].jpg" alt="Web Series">
+                <span class="quality">SERIES</span>
+            </div>
+            <div class="movie-info">
+                <h3>Popular Series</h3>
+                <p>Web Series</p>
+            </div>
+        </div>
+
+        <div class="movie-card">
+            <div class="poster">
+                <img src="movie-wala-banner.jpeg" alt="Web Series">
+                <span class="quality">SERIES</span>
+            </div>
+            <div class="movie-info">
+                <h3>Featured Series</h3>
+                <p>Web Series</p>
+            </div>
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- ================= FOLLOW ================= -->
+<!-- ================= SOCIAL ================= -->
 
-<section
-class="panel"
-style="margin-top:10px;">
+<section class="container">
 
-<div class="title">
-<i class="bar"></i>
-FOLLOW MOVIE WALA
-</div>
+    <div class="section-head">
 
-<div class="follow-grid">
+        <div>
+            <h2 class="section-title">
+                Follow <span>Movie Wala</span>
+            </h2>
 
+            <p class="section-subtitle">
+                Stay connected with us
+            </p>
+        </div>
 
-<a
-class="follow"
-href="https://www.youtube.com/@MovieWalaOfficial.10"
-target="_blank"
-rel="noopener noreferrer">
+    </div>
 
-<div class="follow-icon follow-yt">
+    <div class="social-grid">
 
-<svg viewBox="0 0 24 24">
-<path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.8V8.2l6.5 3.8-6.5 3.8z"/>
-</svg>
+        <div class="social-card">
 
-</div>
+            <svg class="social-icon" viewBox="0 0 24 24" fill="#ff0000">
+                <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8z"/>
+                <path d="M9.6 15.5 15.8 12 9.6 8.5v7z" fill="#fff"/>
+            </svg>
 
-<div>
-<b>YouTube</b>
-<small>Movie Wala Official</small>
-</div>
+            <h3>YouTube</h3>
 
-</a>
+            <p>
+                Watch our latest videos and Shorts.
+            </p>
 
+            <a
+                href="https://www.youtube.com/@MovieWalaOfficial.10"
+                target="_blank"
+                class="btn btn-red"
+            >
+                VISIT CHANNEL
+            </a>
 
-<a
-class="follow"
-href="https://www.facebook.com/share/1MR6Lxzy4f/"
-target="_blank"
-rel="noopener noreferrer">
-
-<div class="follow-icon follow-fb">
-
-<svg viewBox="0 0 24 24">
-<path d="M24 12a12 12 0 1 0-13.9 11.9v-8.4H7.1V12h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.6.2 2.6.2v2.9h-1.5c-1.5 0-2 .9-2 1.9V12h3.4l-.5 3.5h-2.9v8.4A12 12 0 0 0 24 12z"/>
-</svg>
-
-</div>
-
-<div>
-<b>Facebook</b>
-<small>Movie Wala Official</small>
-</div>
-
-</a>
+        </div>
 
 
-<a
-class="follow"
-href="https://www.instagram.com/moviewalaofficial.10/"
-target="_blank"
-rel="noopener noreferrer">
+        <div class="social-card">
 
-<div class="follow-icon follow-ig">
+            <svg class="social-icon" viewBox="0 0 24 24" fill="#1877f2">
+                <path d="M24 12a12 12 0 1 0-13.9 11.8v-8.3H7.1V12h3V9.4c0-3 1.8-4.7 4.6-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9V12h3.4l-.5 3.5h-2.9v8.3A12 12 0 0 0 24 12z"/>
+            </svg>
 
-<svg viewBox="0 0 24 24">
-<rect x="3" y="3" width="18" height="18" rx="5"/>
-<circle cx="12" cy="12" r="4"/>
-<circle cx="17.5" cy="6.5" r="1"/>
-</svg>
+            <h3>Facebook</h3>
 
-</div>
+            <p>
+                Follow Movie Wala updates.
+            </p>
 
-<div>
-<b>Instagram</b>
-<small>@moviewalaofficial.10</small>
-</div>
+            <a
+                href="https://www.facebook.com/share/1MR6Lxzy4f/"
+                target="_blank"
+                class="btn btn-red"
+            >
+                FOLLOW US
+            </a>
 
-</a>
+        </div>
 
-</div>
+
+        <div class="social-card">
+
+            <svg class="social-icon" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="3" width="18" height="18" rx="5" stroke="#e1306c" stroke-width="2"/>
+                <circle cx="12" cy="12" r="4" stroke="#e1306c" stroke-width="2"/>
+                <circle cx="17.5" cy="6.5" r="1.2" fill="#e1306c"/>
+            </svg>
+
+            <h3>Instagram</h3>
+
+            <p>
+                Behind the scenes and updates.
+            </p>
+
+            <a
+                href="https://www.instagram.com/moviewalaofficial.10/"
+                target="_blank"
+                class="btn btn-red"
+            >
+                FOLLOW US
+            </a>
+
+        </div>
+
+    </div>
 
 </section>
 
 
 <!-- ================= STATS ================= -->
 
-<section class="stats">
+<section class="container">
 
-<div class="stat">
+    <div class="stats">
 
-<div class="stat-icon">
-🎬
-</div>
+        <div class="stat">
+            <h2>24/7</h2>
+            <p>Entertainment</p>
+        </div>
 
-<strong>
-100+
-</strong>
+        <div class="stat">
+            <h2>HD</h2>
+            <p>Cinematic Content</p>
+        </div>
 
-<small>
-Movies
-</small>
+        <div class="stat">
+            <h2>LIVE</h2>
+            <p>Channel Updates</p>
+        </div>
 
-</div>
+        <div class="stat">
+            <h2>100%</h2>
+            <p>Entertainment</p>
+        </div>
 
-
-<div class="stat">
-
-<div class="stat-icon">
-📺
-</div>
-
-<strong>
-50+
-</strong>
-
-<small>
-Web Series
-</small>
-
-</div>
-
-
-<div class="stat">
-
-<div class="stat-icon">
-🔥
-</div>
-
-<strong>
-24/7
-</strong>
-
-<small>
-Entertainment
-</small>
-
-</div>
-
-
-<div class="stat">
-
-<div class="stat-icon">
-⭐
-</div>
-
-<strong>
-100%
-</strong>
-
-<small>
-Entertainment
-</small>
-
-</div>
+    </div>
 
 </section>
 
 
 <!-- ================= GENRES ================= -->
 
-<section
-class="genres"
-id="genres">
+<section class="container" id="genres">
 
-<div class="title">
-<i class="bar"></i>
-GENRES
-</div>
+    <div class="section-head">
 
-<div class="genre-row">
+        <div>
+            <h2 class="section-title">
+                Explore <span>Genres</span>
+            </h2>
 
-<div class="genre">ACTION</div>
-<div class="genre">COMEDY</div>
-<div class="genre">DRAMA</div>
-<div class="genre">ROMANCE</div>
-<div class="genre">THRILLER</div>
-<div class="genre">HORROR</div>
-<div class="genre">CRIME</div>
-<div class="genre">SCI-FI</div>
-<div class="genre">FANTASY</div>
+            <p class="section-subtitle">
+                Choose your entertainment mood
+            </p>
+        </div>
 
-</div>
+    </div>
+
+    <div class="genre-grid">
+
+        <div class="genre">Action</div>
+        <div class="genre">Drama</div>
+        <div class="genre">Comedy</div>
+        <div class="genre">Romance</div>
+        <div class="genre">Thriller</div>
+        <div class="genre">Horror</div>
+        <div class="genre">Crime</div>
+        <div class="genre">Adventure</div>
+        <div class="genre">Sci-Fi</div>
+        <div class="genre">Fantasy</div>
+        <div class="genre">Web Series</div>
+        <div class="genre">Entertainment</div>
+
+    </div>
 
 </section>
 
 
 <!-- ================= ABOUT ================= -->
 
-<section
-class="about"
-id="about">
+<section class="container" id="about">
 
-<h2>
-ABOUT <span>MOVIE WALA</span>
-</h2>
+    <div class="section-head">
 
-<p>
-Movie Wala is your destination for movies, web series,
-trending entertainment stories, latest updates and
-cinematic content. Stay connected with Movie Wala
-across YouTube, Facebook and Instagram.
-</p>
+        <div>
+            <h2 class="section-title">
+                About <span>Movie Wala</span>
+            </h2>
+        </div>
+
+    </div>
+
+    <div class="about">
+
+        <p>
+            Movie Wala is an entertainment platform created for
+            movie lovers. Explore cinematic content, trending
+            entertainment, web series updates, featured videos
+            and Movie Wala Official social channels — all in one
+            place.
+        </p>
+
+    </div>
 
 </section>
-
-</main>
 
 
 <!-- ================= FOOTER ================= -->
 
-<footer>
+<footer class="footer">
 
-<div class="footer-brand">
-MOVIE <span>WALA</span>
-</div>
+    <div class="footer-logo">
+        MOVIE <span>WALA</span>
+    </div>
 
-Har Scene Mein Entertainment
-
-<br><br>
-
-© 2026 Movie Wala. All Rights Reserved.
+    <p>
+        © 2026 Movie Wala. All Rights Reserved.
+    </p>
 
 </footer>
 
-
-<!-- ================= JAVASCRIPT ================= -->
 
 <script>
 
 /* ================= MOBILE MENU ================= */
 
-const menuToggle =
-document.getElementById("menuToggle");
+const menuToggle = document.getElementById("menuToggle");
+const navMenu = document.getElementById("navMenu");
 
-const mainNav =
-document.getElementById("mainNav");
+menuToggle.addEventListener("click", function(){
 
+    navMenu.classList.toggle("open");
 
-menuToggle.addEventListener("click",function(){
-
-    mainNav.classList.toggle("open");
-
-    if(mainNav.classList.contains("open")){
-
-        menuToggle.innerHTML="✕";
-
-        menuToggle.setAttribute(
-            "aria-label",
-            "Close Menu"
-        );
-
+    if(navMenu.classList.contains("open")){
+        menuToggle.textContent = "✕";
+        menuToggle.setAttribute("aria-label","Close Menu");
     }else{
-
-        menuToggle.innerHTML="☰";
-
-        menuToggle.setAttribute(
-            "aria-label",
-            "Open Menu"
-        );
-
+        menuToggle.textContent = "☰";
+        menuToggle.setAttribute("aria-label","Open Menu");
     }
 
 });
 
 
-/* CLOSE MENU AFTER LINK CLICK */
+/* Close menu after clicking a link */
 
 document.querySelectorAll(".nav a").forEach(function(link){
 
     link.addEventListener("click",function(){
 
-        mainNav.classList.remove("open");
+        navMenu.classList.remove("open");
 
-        menuToggle.innerHTML="☰";
+        menuToggle.textContent = "☰";
 
         menuToggle.setAttribute(
             "aria-label",
@@ -1896,183 +1419,42 @@ document.querySelectorAll(".nav a").forEach(function(link){
 
 /* ================= HERO SLIDER ================= */
 
-const slides =
-document.querySelectorAll(".slide");
+const slides = document.querySelectorAll(".hero-slide");
 
-const dotsBox =
-document.getElementById("dots");
-
-let currentSlide=0;
-
-
-/* CREATE DOTS */
-
-slides.forEach(function(slide,index){
-
-    const dot =
-    document.createElement("button");
-
-    dot.className="dot";
-
-    if(index===0){
-        dot.classList.add("active");
-    }
-
-    dot.addEventListener(
-        "click",
-        function(){
-            showSlide(index);
-        }
-    );
-
-    dotsBox.appendChild(dot);
-
-});
-
-
-const dots =
-document.querySelectorAll(".dot");
-
-
-function showSlide(index){
-
-    slides.forEach(function(slide){
-
-        slide.classList.remove("active");
-
-    });
-
-    dots.forEach(function(dot){
-
-        dot.classList.remove("active");
-
-    });
-
-    currentSlide =
-    (index + slides.length) % slides.length;
-
-    slides[currentSlide]
-    .classList.add("active");
-
-    dots[currentSlide]
-    .classList.add("active");
-
-}
-
-
-function changeSlide(direction){
-
-    showSlide(
-        currentSlide + direction
-    );
-
-}
-
-
-/* AUTO SLIDER */
+let currentSlide = 0;
 
 setInterval(function(){
 
-    showSlide(
-        currentSlide + 1
-    );
+    slides[currentSlide].classList.remove("active");
+
+    currentSlide++;
+
+    if(currentSlide >= slides.length){
+        currentSlide = 0;
+    }
+
+    slides[currentSlide].classList.add("active");
 
 },5000);
 
 
-/* ================= SEARCH ================= */
-
-const searchInput =
-document.getElementById("searchInput");
-
-
-searchInput.addEventListener(
-    "input",
-    function(){
-
-        const value =
-        this.value
-        .toLowerCase()
-        .trim();
-
-        const movieCards =
-        document.querySelectorAll(
-            ".movie-card"
-        );
-
-
-        movieCards.forEach(function(card){
-
-            const text =
-            card.innerText
-            .toLowerCase();
-
-            if(text.includes(value)){
-
-                card.style.display="";
-
-            }else{
-
-                card.style.display="none";
-
-            }
-
-        });
-
-    }
-);
-
-
 /* ================= ACTIVE MENU ================= */
 
-const sections =
-document.querySelectorAll(
-    "section[id]"
-);
+const navLinks = document.querySelectorAll(".nav a");
 
-const navLinks =
-document.querySelectorAll(
-    ".nav a"
-);
+navLinks.forEach(function(link){
 
+    link.addEventListener("click",function(){
 
-window.addEventListener(
-    "scroll",
-    function(){
-
-        let current="home";
-
-        sections.forEach(function(section){
-
-            const sectionTop =
-            section.offsetTop - 120;
-
-            if(
-                window.scrollY >= sectionTop
-            ){
-                current=section.id;
-            }
-
+        navLinks.forEach(function(item){
+            item.classList.remove("active");
         });
 
+        this.classList.add("active");
 
-        navLinks.forEach(function(link){
+    });
 
-            link.classList.remove("active");
-
-            if(
-                link.getAttribute("href")
-                === "#" + current
-            ){
-
-                link.classList.add("active");
-
-            }
-
-        });
-
-    }
-);
+});
 
 </script>
 
