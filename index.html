@@ -2,696 +2,347 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#050505">
 <title>Movie Wala | Har Scene Mein Entertainment</title>
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
   font-family:Arial,Helvetica,sans-serif;
-  background:#070707;
-  color:#fff;
-  overflow-x:hidden;
+  background:#070707;color:#fff;overflow-x:hidden
 }
+a{color:inherit;text-decoration:none}
 
-a{
-  color:inherit;
-  text-decoration:none;
-}
-
-/* ================= NAVBAR ================= */
-
+/* NAVBAR */
 .navbar{
-  height:78px;
-  background:#050505;
-  border-bottom:1px solid #222;
-  display:flex;
-  align-items:center;
-  padding:0 5%;
-  position:sticky;
-  top:0;
-  z-index:1000;
+  height:78px;background:#050505;border-bottom:1px solid #222;
+  display:flex;align-items:center;padding:0 5%;
+  position:sticky;top:0;z-index:1000
 }
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  flex-shrink:0;
-}
-
+.brand{display:flex;align-items:center;gap:14px}
 .logo{
-  width:54px;
-  height:54px;
-  border-radius:50%;
-  object-fit:cover;
-  border:2px solid #e50914;
+  width:54px;height:54px;border-radius:50%;
+  object-fit:cover;border:2px solid #e50914
 }
-
-.brand-name{
-  font-size:29px;
-  font-weight:900;
-  letter-spacing:1px;
-}
-
-.brand-name span{
-  color:#e50914;
-}
-
-.nav{
-  margin-left:auto;
-  display:flex;
-  align-items:center;
-  gap:22px;
-}
-
-.nav a{
-  font-size:14px;
-  font-weight:700;
-  color:#ddd;
-}
-
-.nav a:hover{
-  color:#e50914;
-}
-
+.brand-name{font-size:29px;font-weight:900;letter-spacing:1px}
+.brand-name span{color:#e50914}
+.nav{margin-left:auto;display:flex;align-items:center;gap:22px}
+.nav a{font-size:14px;font-weight:700;color:#ddd}
+.nav a:hover{color:#e50914}
 .menu-btn{
-  display:none;
-  margin-left:auto;
-  width:52px;
-  height:48px;
-  border:1px solid #34596b;
-  border-radius:7px;
-  background:#16465d;
-  color:#bceaff;
-  font-size:30px;
-  cursor:pointer;
-  position:relative;
-  z-index:20;
+  display:none;margin-left:auto;width:52px;height:48px;
+  border:1px solid #34596b;border-radius:7px;
+  background:#16465d;color:#bceaff;font-size:30px;cursor:pointer;
+  position:relative;z-index:20
 }
 
-/* ================= HERO ================= */
-
+/* HERO */
 .hero{
-  min-height:650px;
   position:relative;
-  overflow:hidden;
-  display:flex;
-  align-items:center;
   background:#050505;
+  overflow:hidden
 }
 
+/* banner image area */
+.hero-banner{
+  position:relative;
+  width:100%;
+  height:520px;
+  overflow:hidden;
+  background:#050505
+}
 .hero-slide{
   position:absolute;
   inset:0;
   background-repeat:no-repeat;
-  background-size:cover;
   background-position:center;
+  background-size:cover;
   opacity:0;
-  transition:opacity .8s ease;
+  transition:opacity .8s ease
 }
+.hero-slide.active{opacity:1}
 
-.hero-slide.active{
-  opacity:1;
-}
-
-.hero-overlay{
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(0,0,0,.90) 0%,
-      rgba(0,0,0,.62) 48%,
-      rgba(0,0,0,.25) 100%
-    );
-}
-
-.hero-content{
-  position:relative;
-  z-index:2;
-  width:90%;
-  max-width:900px;
-  margin:0 auto;
-  padding-top:80px;
-}
-
-.live-badge{
-  display:inline-block;
-  background:#ed101a;
-  padding:14px 24px;
-  border-radius:8px;
-  font-size:18px;
-  font-weight:900;
-  margin-bottom:30px;
-}
-
-.hero h1{
-  font-size:62px;
-  line-height:1.02;
-  font-weight:900;
-  max-width:800px;
-}
-
-.hero h1 span{
-  color:#ed101a;
-}
-
-.hero p{
-  max-width:720px;
-  margin:28px 0;
-  color:#ddd;
-  font-size:20px;
-  line-height:1.7;
-}
-
-.buttons{
-  display:flex;
-  gap:18px;
-  flex-wrap:wrap;
-}
-
-.btn{
-  padding:17px 30px;
-  border-radius:7px;
-  font-weight:900;
-  font-size:16px;
-  display:inline-block;
-  border:1px solid #555;
-}
-
-.btn-red{
-  background:#ed101a;
-  border-color:#ed101a;
-}
-
-.btn-dark{
-  background:#090909;
-}
-
-/* ================= COMMON ================= */
-
-section{
-  padding:70px 5%;
-}
-
-.section-title{
-  font-size:36px;
-  font-weight:900;
-  margin-bottom:8px;
-}
-
-.section-title span{
-  color:#ed101a;
-}
-
-.section-sub{
-  color:#999;
-  font-size:17px;
-  margin-bottom:35px;
-}
-
-/* ================= MOVIES ================= */
-
-.movie-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:20px;
-}
-
-.movie-card{
-  background:#111;
-  border:1px solid #242424;
-  border-radius:10px;
-  overflow:hidden;
-}
-
-.movie-poster{
-  height:300px;
-  background-size:cover;
-  background-position:center;
-}
-
-.movie-info{
-  padding:17px;
-}
-
-.movie-info h3{
-  font-size:18px;
-  margin-bottom:7px;
-}
-
-.movie-info p{
-  color:#999;
-  font-size:13px;
-}
-
-/* ================= LIVE ================= */
-
-.live-zone{
-  position:relative;
-  overflow:hidden;
-  background-image:url("movie-wala-banner-2[1].jpg");
-  background-size:cover;
-  background-position:center;
-}
-
-.live-zone::before{
+.hero-banner::after{
   content:"";
   position:absolute;
   inset:0;
-  background:rgba(0,0,0,.72);
+  background:linear-gradient(
+    180deg,
+    rgba(0,0,0,.05) 0%,
+    rgba(0,0,0,.15) 55%,
+    rgba(5,5,5,.95) 100%
+  )
 }
 
-.live-content{
+/* hero text */
+.hero-content{
   position:relative;
-  z-index:2;
-  max-width:850px;
+  z-index:3;
+  margin-top:-100px;
+  padding:0 5% 65px;
+  max-width:950px
 }
-
-.live-label{
-  color:#ed101a;
+.live-badge{
+  display:inline-block;
+  background:#ed101a;
+  padding:13px 22px;
+  border-radius:7px;
+  font-size:17px;
   font-weight:900;
-  font-size:15px;
-  letter-spacing:2px;
-  margin-bottom:15px;
+  margin-bottom:24px
 }
-
-.live-content h2{
-  font-size:48px;
-  margin-bottom:15px;
+.hero h1{
+  font-size:60px;
+  line-height:1.03;
+  font-weight:900
 }
-
-.live-content h2 span{
-  color:#ed101a;
+.hero h1 span{color:#ed101a}
+.hero p{
+  max-width:720px;margin:25px 0;
+  color:#ddd;font-size:19px;line-height:1.65
 }
+.buttons{display:flex;gap:15px;flex-wrap:wrap}
+.btn{
+  padding:16px 27px;border-radius:7px;
+  font-weight:900;font-size:15px;
+  display:inline-block;border:1px solid #555
+}
+.btn-red{background:#ed101a;border-color:#ed101a}
+.btn-dark{background:#090909}
 
+/* COMMON */
+section{padding:70px 5%}
+.section-title{font-size:36px;font-weight:900;margin-bottom:8px}
+.section-title span{color:#ed101a}
+.section-sub{color:#999;font-size:17px;margin-bottom:35px}
+
+/* MOVIES */
+.movie-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:20px
+}
+.movie-card{
+  background:#111;border:1px solid #242424;
+  border-radius:10px;overflow:hidden
+}
+.movie-poster{
+  height:300px;background-size:cover;background-position:center
+}
+.movie-info{padding:17px}
+.movie-info h3{font-size:18px;margin-bottom:7px}
+.movie-info p{color:#999;font-size:13px}
+
+/* LIVE */
+.live-zone{
+  position:relative;overflow:hidden;
+  background:url("movie-wala-banner-2[1].jpg") center/cover
+}
+.live-zone::before{
+  content:"";position:absolute;inset:0;background:rgba(0,0,0,.75)
+}
+.live-content{position:relative;z-index:2;max-width:850px}
+.live-label{
+  color:#ed101a;font-weight:900;font-size:15px;
+  letter-spacing:2px;margin-bottom:15px
+}
+.live-content h2{font-size:48px;margin-bottom:15px}
+.live-content h2 span{color:#ed101a}
 .live-content p{
-  color:#ccc;
-  font-size:18px;
-  line-height:1.7;
-  margin-bottom:28px;
+  color:#ccc;font-size:18px;line-height:1.7;margin-bottom:28px
 }
 
-/* ================= VIDEO ================= */
-
+/* VIDEO */
 .video-box{
-  max-width:900px;
-  margin:auto;
-  background:#111;
-  border:1px solid #282828;
-  border-radius:12px;
-  overflow:hidden;
-  aspect-ratio:16/9;
+  max-width:900px;margin:auto;background:#111;
+  border:1px solid #282828;border-radius:12px;
+  overflow:hidden;aspect-ratio:16/9
 }
+.video-box iframe{width:100%;height:100%;border:0}
 
-.video-box iframe{
-  width:100%;
-  height:100%;
-  border:0;
-}
-
-/* ================= CARDS ================= */
-
+/* CARDS */
 .simple-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:20px
 }
-
 .simple-card{
-  min-height:180px;
-  border:1px solid #242424;
-  border-radius:10px;
-  padding:28px;
-  background:#111;
+  min-height:180px;border:1px solid #242424;
+  border-radius:10px;padding:28px;background:#111
 }
+.simple-card h3{margin-bottom:12px;font-size:21px}
+.simple-card p{color:#999;line-height:1.6}
 
-.simple-card h3{
-  margin-bottom:12px;
-  font-size:21px;
-}
-
-.simple-card p{
-  color:#999;
-  line-height:1.6;
-}
-
-/* ================= STATS ================= */
-
+/* STATS */
 .stats{
-  background:#111;
-  display:grid;
+  background:#111;display:grid;
   grid-template-columns:repeat(4,1fr);
-  text-align:center;
-  gap:20px;
+  text-align:center;gap:20px
 }
+.stat h2{color:#ed101a;font-size:38px}
+.stat p{color:#999;margin-top:7px}
 
-.stat h2{
-  color:#ed101a;
-  font-size:38px;
-}
-
-.stat p{
-  color:#999;
-  margin-top:7px;
-}
-
-/* ================= SOCIAL ================= */
-
+/* SOCIAL */
 .social-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:20px
 }
-
 .social-card{
-  background:#111;
-  border:1px solid #292929;
-  padding:25px;
-  border-radius:10px;
-  display:flex;
-  align-items:center;
-  gap:18px;
+  background:#111;border:1px solid #292929;
+  padding:25px;border-radius:10px;
+  display:flex;align-items:center;gap:18px
 }
+.social-icon{width:45px;height:45px;flex-shrink:0}
+.social-card h3{margin-bottom:5px}
+.social-card p{color:#999;font-size:13px}
 
-.social-icon{
-  width:45px;
-  height:45px;
-  flex-shrink:0;
-}
-
-.social-card h3{
-  margin-bottom:5px;
-}
-
-.social-card p{
-  color:#999;
-  font-size:13px;
-}
-
-/* ================= GENRES ================= */
-
-.genres{
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-}
-
+/* GENRES */
+.genres{display:flex;flex-wrap:wrap;gap:12px}
 .genre{
-  padding:11px 18px;
-  border:1px solid #333;
-  border-radius:30px;
-  color:#ccc;
+  padding:11px 18px;border:1px solid #333;
+  border-radius:30px;color:#ccc
 }
 
-/* ================= FOOTER ================= */
-
+/* FOOTER */
 footer{
-  background:#030303;
-  border-top:1px solid #222;
-  text-align:center;
-  padding:35px 20px;
-  color:#777;
+  background:#030303;border-top:1px solid #222;
+  text-align:center;padding:35px 20px;color:#777
 }
+footer strong{color:#fff}
 
-footer strong{
-  color:#fff;
-}
+/* MENU BACKGROUND */
+.menu-bg-slider{display:none}
 
-/* ================= MENU SLIDER ================= */
-
-.menu-bg-slider{
-  display:none;
-}
-
-/* ================= TABLET ================= */
-
+/* TABLET */
 @media(max-width:900px){
 
-  .navbar{
-    height:82px;
-    padding:0 20px;
-  }
+  .navbar{height:82px;padding:0 20px}
+  .logo{width:54px;height:54px}
+  .brand-name{font-size:26px}
 
-  .logo{
-    width:54px;
-    height:54px;
-  }
-
-  .brand-name{
-    font-size:26px;
-  }
-
-  .menu-btn{
-    display:block;
-  }
+  .menu-btn{display:block}
 
   .nav{
-    display:none;
-    position:fixed;
-    left:0;
-    right:0;
-    top:82px;
-    bottom:0;
-    margin:0;
-    padding:70px 30px 40px;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    gap:25px;
-    overflow:hidden;
-    background:#080808;
+    display:none;position:fixed;left:0;right:0;top:82px;bottom:0;
+    margin:0;padding:70px 30px 40px;
+    flex-direction:column;align-items:center;
+    justify-content:center;gap:25px;
+    overflow:hidden;background:#080808
   }
-
-  .nav.open{
-    display:flex;
-  }
+  .nav.open{display:flex}
 
   .menu-bg-slider{
-    display:block;
-    position:absolute;
-    inset:0;
-    z-index:-2;
-    overflow:hidden;
-    background:#070707;
+    display:block;position:absolute;inset:0;
+    z-index:-2;overflow:hidden;background:#070707
   }
-
   .menu-bg-slide{
-    position:absolute;
-    inset:0;
+    position:absolute;inset:0;
     background-repeat:no-repeat;
-
-    /* IMPORTANT: no zoom */
-    background-size:100% auto;
     background-position:center top;
-
-    opacity:0;
-    transition:opacity 1s ease;
+    background-size:cover;
+    opacity:0;transition:opacity 1s ease
   }
-
-  .menu-bg-slide.active{
-    opacity:1;
-  }
+  .menu-bg-slide.active{opacity:1}
 
   .nav::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    z-index:-1;
-    background:rgba(0,0,0,.78);
+    content:"";position:absolute;inset:0;
+    z-index:-1;background:rgba(0,0,0,.78)
   }
-
   .nav a{
-    position:relative;
-    z-index:3;
-    font-size:21px;
-    color:#fff;
-    padding:5px 15px;
+    position:relative;z-index:3;
+    font-size:21px;color:#fff;padding:5px 15px
   }
 
-  .hero{
-    min-height:680px;
-  }
-
+  .hero-banner{height:430px}
   .hero-content{
-    width:90%;
-    padding-top:100px;
+    margin-top:-70px;padding:0 5% 55px
   }
+  .hero h1{font-size:46px}
+  .hero p{font-size:17px}
 
-  .hero h1{
-    font-size:45px;
-  }
-
-  .hero p{
-    font-size:17px;
-    line-height:1.6;
-  }
-
-  .movie-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .movie-poster{
-    height:250px;
-  }
-
-  .simple-grid,
-  .social-grid{
-    grid-template-columns:1fr;
-  }
-
-  .stats{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .live-content h2{
-    font-size:38px;
-  }
+  .movie-grid{grid-template-columns:repeat(2,1fr)}
+  .movie-poster{height:250px}
+  .simple-grid,.social-grid{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .live-content h2{font-size:38px}
 }
 
-/* ================= MOBILE ================= */
-
+/* MOBILE */
 @media(max-width:500px){
 
-  .navbar{
-    padding:0 14px;
-  }
+  .navbar{padding:0 14px}
+  .brand{gap:10px}
+  .logo{width:50px;height:50px}
+  .brand-name{font-size:23px}
+  .menu-btn{width:50px;height:46px;font-size:28px}
 
-  .brand{
-    gap:10px;
-  }
+  /* ===== MOBILE HERO ===== */
 
-  .logo{
-    width:50px;
-    height:50px;
-  }
-
-  .brand-name{
-    font-size:23px;
-  }
-
-  .menu-btn{
-    width:50px;
-    height:46px;
-    font-size:28px;
-  }
-
-  /* ===== HERO MOBILE FIX ===== */
-
-  .hero{
-    min-height:650px;
-    display:block;
-    padding-top:1px;
-    background:#050505;
+  .hero-banner{
+    height:auto;
+    aspect-ratio:16/10;
+    min-height:210px;
+    max-height:270px;
+    background:#050505
   }
 
   .hero-slide{
-    inset:0;
-    height:100%;
-
-    /*
-      Full banner width.
-      No zoom / no aggressive crop.
-    */
-    background-size:100% auto;
-    background-position:center top;
-    background-repeat:no-repeat;
+    background-size:100% 100%;
+    background-position:center;
   }
 
-  .hero-overlay{
-    background:
-      linear-gradient(
-        180deg,
-        rgba(0,0,0,.18) 0%,
-        rgba(0,0,0,.42) 30%,
-        rgba(0,0,0,.90) 72%,
-        #050505 100%
-      );
+  .hero-banner::after{
+    background:linear-gradient(
+      180deg,
+      rgba(0,0,0,0) 45%,
+      rgba(5,5,5,.25) 70%,
+      #050505 100%
+    )
   }
 
   .hero-content{
-    width:auto;
-    margin:0;
-    padding:300px 20px 50px;
+    margin-top:0;
+    padding:20px 20px 45px;
+    background:#050505
   }
 
   .live-badge{
-    font-size:15px;
-    padding:11px 17px;
-    margin-bottom:20px;
+    font-size:14px;
+    padding:10px 16px;
+    margin-bottom:18px
   }
 
   .hero h1{
-    font-size:40px;
-    line-height:1.05;
-    max-width:100%;
+    font-size:38px;
+    line-height:1.05
   }
 
   .hero p{
     font-size:16px;
     line-height:1.55;
-    margin:22px 0;
+    margin:20px 0
   }
 
-  .buttons{
-    gap:10px;
-  }
+  .buttons{gap:10px}
 
   .btn{
-    padding:14px 17px;
-    font-size:13px;
+    padding:14px 16px;
+    font-size:13px
   }
 
-  section{
-    padding:55px 20px;
-  }
-
-  .section-title{
-    font-size:31px;
-  }
+  section{padding:55px 20px}
+  .section-title{font-size:31px}
 
   .movie-grid{
     grid-template-columns:1fr 1fr;
-    gap:12px;
+    gap:12px
   }
 
-  .movie-poster{
-    height:210px;
-  }
+  .movie-poster{height:210px}
+  .movie-info{padding:12px}
+  .movie-info h3{font-size:15px}
 
-  .movie-info{
-    padding:12px;
-  }
-
-  .movie-info h3{
-    font-size:15px;
-  }
-
-  .live-content h2{
-    font-size:34px;
-  }
-
-  /* Menu banner also full-width, no zoom */
-
-  .menu-bg-slide{
-    background-size:100% auto;
-    background-position:center top;
-    background-repeat:no-repeat;
-  }
+  .live-content h2{font-size:34px}
 
   .nav{
-    padding-top:120px;
+    padding-top:110px
   }
 }
 </style>
@@ -699,56 +350,34 @@ footer strong{
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
-
+<!-- NAVBAR -->
 <header class="navbar">
 
   <a href="#home" class="brand">
-    <img
-      src="movie-wala-logo.jpeg"
-      class="logo"
-      alt="Movie Wala Logo">
-      
-    <div class="brand-name">
-      MOVIE <span>WALA</span>
-    </div>
+    <img src="movie-wala-logo.jpeg" class="logo" alt="Movie Wala Logo">
+    <div class="brand-name">MOVIE <span>WALA</span></div>
   </a>
 
-  <button
-    class="menu-btn"
-    id="menuBtn"
-    aria-label="Open Menu">
-    ☰
-  </button>
+  <button class="menu-btn" id="menuBtn">☰</button>
 
   <nav class="nav" id="navMenu">
 
     <div class="menu-bg-slider">
 
-      <div
-        class="menu-bg-slide active"
-        style="background-image:url('movie-wala-banner.jpeg')">
-      </div>
+      <div class="menu-bg-slide active"
+        style="background-image:url('movie-wala-banner.jpeg')"></div>
 
-      <div
-        class="menu-bg-slide"
-        style="background-image:url('movie-wala-banner-2[1].jpg')">
-      </div>
+      <div class="menu-bg-slide"
+        style="background-image:url('movie-wala-banner-2[1].jpg')"></div>
 
-      <div
-        class="menu-bg-slide"
-        style="background-image:url('movie-wala-banner-3[1].jpg')">
-      </div>
+      <div class="menu-bg-slide"
+        style="background-image:url('movie-wala-banner-3[1].jpg')"></div>
 
-      <div
-        class="menu-bg-slide"
-        style="background-image:url('movie-wala-banner-4[1].jpg')">
-      </div>
+      <div class="menu-bg-slide"
+        style="background-image:url('movie-wala-banner-4[1].jpg')"></div>
 
-      <div
-        class="menu-bg-slide"
-        style="background-image:url('movie-wala-banner-5[1].jpg')">
-      </div>
+      <div class="menu-bg-slide"
+        style="background-image:url('movie-wala-banner-5[1].jpg')"></div>
 
     </div>
 
@@ -761,46 +390,34 @@ footer strong{
     <a href="#about">ABOUT</a>
 
   </nav>
-
 </header>
 
 
-<!-- ================= HERO ================= -->
-
+<!-- HERO -->
 <section class="hero" id="home">
 
-  <div
-    class="hero-slide active"
-    style="background-image:url('movie-wala-banner.jpeg')">
-  </div>
+  <div class="hero-banner">
 
-  <div
-    class="hero-slide"
-    style="background-image:url('movie-wala-banner-2[1].jpg')">
-  </div>
+    <div class="hero-slide active"
+      style="background-image:url('movie-wala-banner.jpeg')"></div>
 
-  <div
-    class="hero-slide"
-    style="background-image:url('movie-wala-banner-3[1].jpg')">
-  </div>
+    <div class="hero-slide"
+      style="background-image:url('movie-wala-banner-2[1].jpg')"></div>
 
-  <div
-    class="hero-slide"
-    style="background-image:url('movie-wala-banner-4[1].jpg')">
-  </div>
+    <div class="hero-slide"
+      style="background-image:url('movie-wala-banner-3[1].jpg')"></div>
 
-  <div
-    class="hero-slide"
-    style="background-image:url('movie-wala-banner-5[1].jpg')">
-  </div>
+    <div class="hero-slide"
+      style="background-image:url('movie-wala-banner-4[1].jpg')"></div>
 
-  <div class="hero-overlay"></div>
+    <div class="hero-slide"
+      style="background-image:url('movie-wala-banner-5[1].jpg')"></div>
+
+  </div>
 
   <div class="hero-content">
 
-    <div class="live-badge">
-      LIVE CHANNEL
-    </div>
+    <div class="live-badge">LIVE CHANNEL</div>
 
     <h1>
       HAR SCENE MEIN
@@ -809,21 +426,16 @@ footer strong{
 
     <p>
       Welcome to Movie Wala — your entertainment destination
-      for movies, web series, trending content and cinematic
-      updates.
+      for movies, web series, trending content and cinematic updates.
     </p>
 
     <div class="buttons">
 
-      <a
-        href="#movies"
-        class="btn btn-red">
+      <a href="#movies" class="btn btn-red">
         ▶ EXPLORE MOVIES
       </a>
 
-      <a
-        href="#live"
-        class="btn btn-dark">
+      <a href="#live" class="btn btn-dark">
         WATCH LIVE
       </a>
 
@@ -834,97 +446,65 @@ footer strong{
 </section>
 
 
-<!-- ================= MOVIES ================= -->
-
+<!-- MOVIES -->
 <section id="movies">
 
   <h2 class="section-title">
     LATEST <span>MOVIES</span>
   </h2>
 
-  <p class="section-sub">
-    Latest entertainment picks
-  </p>
+  <p class="section-sub">Latest entertainment picks</p>
 
   <div class="movie-grid">
 
     <article class="movie-card">
-
-      <div
-        class="movie-poster"
-        style="background-image:url('movie-wala-banner.jpeg')">
-      </div>
-
+      <div class="movie-poster"
+        style="background-image:url('movie-wala-banner.jpeg')"></div>
       <div class="movie-info">
         <h3>Movie Wala Special</h3>
         <p>Cinematic Entertainment</p>
       </div>
-
     </article>
 
-
     <article class="movie-card">
-
-      <div
-        class="movie-poster"
-        style="background-image:url('movie-wala-banner-2[1].jpg')">
-      </div>
-
+      <div class="movie-poster"
+        style="background-image:url('movie-wala-banner-2[1].jpg')"></div>
       <div class="movie-info">
         <h3>Trending Cinema</h3>
         <p>Latest Updates</p>
       </div>
-
     </article>
 
-
     <article class="movie-card">
-
-      <div
-        class="movie-poster"
-        style="background-image:url('movie-wala-banner-3[1].jpg')">
-      </div>
-
+      <div class="movie-poster"
+        style="background-image:url('movie-wala-banner-3[1].jpg')"></div>
       <div class="movie-info">
         <h3>Action Zone</h3>
         <p>Action & Entertainment</p>
       </div>
-
     </article>
 
-
     <article class="movie-card">
-
-      <div
-        class="movie-poster"
-        style="background-image:url('movie-wala-banner-4[1].jpg')">
-      </div>
-
+      <div class="movie-poster"
+        style="background-image:url('movie-wala-banner-4[1].jpg')"></div>
       <div class="movie-info">
         <h3>Entertainment Hub</h3>
         <p>Movie Wala Picks</p>
       </div>
-
     </article>
 
   </div>
-
 </section>
 
 
-<!-- ================= LIVE ================= -->
-
+<!-- LIVE -->
 <section class="live-zone" id="live">
 
   <div class="live-content">
 
-    <div class="live-label">
-      ● LIVE ZONE
-    </div>
+    <div class="live-label">● LIVE ZONE</div>
 
-    <h2>
-      LIVE <span>ENTERTAINMENT</span>
-    </h2>
+    <h2>LIVE <span>ENTERTAINMENT</span></h2>
 
     <p>
       Watch Movie Wala Official for entertainment updates,
@@ -933,15 +513,13 @@ footer strong{
 
     <div class="buttons">
 
-      <a
-        class="btn btn-red"
+      <a class="btn btn-red"
         href="https://www.youtube.com/@MovieWalaOfficial.10/live"
         target="_blank">
         ▶ VIEW LIVE CHANNEL
       </a>
 
-      <a
-        class="btn btn-dark"
+      <a class="btn btn-dark"
         href="https://www.youtube.com/@MovieWalaOfficial.10"
         target="_blank">
         YOUTUBE CHANNEL
@@ -950,21 +528,17 @@ footer strong{
     </div>
 
   </div>
-
 </section>
 
 
-<!-- ================= FEATURED VIDEO ================= -->
-
+<!-- FEATURED VIDEO -->
 <section>
 
   <h2 class="section-title">
     FEATURED <span>VIDEO</span>
   </h2>
 
-  <p class="section-sub">
-    Movie Wala Official
-  </p>
+  <p class="section-sub">Movie Wala Official</p>
 
   <div class="video-box">
 
@@ -977,21 +551,17 @@ footer strong{
     </iframe>
 
   </div>
-
 </section>
 
 
-<!-- ================= TRENDING ================= -->
-
+<!-- TRENDING -->
 <section id="trending">
 
   <h2 class="section-title">
     TRENDING <span>NOW</span>
   </h2>
 
-  <p class="section-sub">
-    What's hot in entertainment
-  </p>
+  <p class="section-sub">What's hot in entertainment</p>
 
   <div class="simple-grid">
 
@@ -1018,52 +588,40 @@ footer strong{
     </div>
 
   </div>
-
 </section>
 
 
-<!-- ================= WEB SERIES ================= -->
-
+<!-- WEB SERIES -->
 <section id="webseries">
 
   <h2 class="section-title">
     WEB <span>SERIES</span>
   </h2>
 
-  <p class="section-sub">
-    Binge-worthy entertainment
-  </p>
+  <p class="section-sub">Binge-worthy entertainment</p>
 
   <div class="simple-grid">
 
     <div class="simple-card">
       <h3>New Releases</h3>
-      <p>
-        Explore the latest web series and digital entertainment.
-      </p>
+      <p>Explore the latest web series and digital entertainment.</p>
     </div>
 
     <div class="simple-card">
       <h3>Popular Series</h3>
-      <p>
-        Discover trending shows and audience favourites.
-      </p>
+      <p>Discover trending shows and audience favourites.</p>
     </div>
 
     <div class="simple-card">
       <h3>Must Watch</h3>
-      <p>
-        Entertainment picks selected for movie and series lovers.
-      </p>
+      <p>Entertainment picks selected for movie and series lovers.</p>
     </div>
 
   </div>
-
 </section>
 
 
-<!-- ================= STATS ================= -->
-
+<!-- STATS -->
 <section class="stats">
 
   <div class="stat">
@@ -1089,20 +647,16 @@ footer strong{
 </section>
 
 
-<!-- ================= GENRES ================= -->
-
+<!-- GENRES -->
 <section id="genres">
 
   <h2 class="section-title">
     EXPLORE <span>GENRES</span>
   </h2>
 
-  <p class="section-sub">
-    Find your favourite entertainment
-  </p>
+  <p class="section-sub">Find your favourite entertainment</p>
 
   <div class="genres">
-
     <div class="genre">Action</div>
     <div class="genre">Comedy</div>
     <div class="genre">Drama</div>
@@ -1112,38 +666,28 @@ footer strong{
     <div class="genre">Sci-Fi</div>
     <div class="genre">Web Series</div>
     <div class="genre">Trending</div>
-
   </div>
 
 </section>
 
 
-<!-- ================= SOCIAL ================= -->
-
+<!-- SOCIAL -->
 <section>
 
   <h2 class="section-title">
     FOLLOW <span>MOVIE WALA</span>
   </h2>
 
-  <p class="section-sub">
-    Connect with us on social media
-  </p>
+  <p class="section-sub">Connect with us on social media</p>
 
   <div class="social-grid">
 
-    <a
-      class="social-card"
+    <a class="social-card"
       href="https://www.youtube.com/@MovieWalaOfficial.10"
       target="_blank">
 
-      <svg
-        class="social-icon"
-        viewBox="0 0 24 24"
-        fill="white">
-
+      <svg class="social-icon" viewBox="0 0 24 24" fill="white">
         <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.9V8.1l6.5 3.9-6.5 3.9z"/>
-
       </svg>
 
       <div>
@@ -1153,19 +697,12 @@ footer strong{
 
     </a>
 
-
-    <a
-      class="social-card"
+    <a class="social-card"
       href="https://www.facebook.com/share/1MR6Lxzy4f/"
       target="_blank">
 
-      <svg
-        class="social-icon"
-        viewBox="0 0 24 24"
-        fill="white">
-
+      <svg class="social-icon" viewBox="0 0 24 24" fill="white">
         <path d="M24 12a12 12 0 1 0-13.9 11.8v-8.3H7.1V12h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 1-2 2V12h3.4l-.5 3.5h-2.9v8.3A12 12 0 0 0 24 12z"/>
-
       </svg>
 
       <div>
@@ -1175,37 +712,17 @@ footer strong{
 
     </a>
 
-
-    <a
-      class="social-card"
+    <a class="social-card"
       href="https://www.instagram.com/moviewalaofficial.10/"
       target="_blank">
 
-      <svg
-        class="social-icon"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="white"
-        stroke-width="1.8">
+      <svg class="social-icon" viewBox="0 0 24 24"
+        fill="none" stroke="white" stroke-width="1.8">
 
-        <rect
-          x="3"
-          y="3"
-          width="18"
-          height="18"
-          rx="5"/>
-
-        <circle
-          cx="12"
-          cy="12"
-          r="4"/>
-
-        <circle
-          cx="17.5"
-          cy="6.5"
-          r="1"
-          fill="white"
-          stroke="none"/>
+        <rect x="3" y="3" width="18" height="18" rx="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r="1"
+          fill="white" stroke="none"/>
 
       </svg>
 
@@ -1217,21 +734,17 @@ footer strong{
     </a>
 
   </div>
-
 </section>
 
 
-<!-- ================= ABOUT ================= -->
-
+<!-- ABOUT -->
 <section id="about">
 
   <h2 class="section-title">
     ABOUT <span>MOVIE WALA</span>
   </h2>
 
-  <p class="section-sub">
-    Har Scene Mein Entertainment
-  </p>
+  <p class="section-sub">Har Scene Mein Entertainment</p>
 
   <div class="simple-card">
 
@@ -1246,15 +759,14 @@ footer strong{
 </section>
 
 
-<!-- ================= FOOTER ================= -->
-
+<!-- FOOTER -->
 <footer>
 
   <p>
     © 2026 <strong>MOVIE WALA</strong>. All Rights Reserved.
   </p>
 
-  <p style="margin-top:10px;">
+  <p style="margin-top:10px">
     Har Scene Mein Entertainment 🎬
   </p>
 
@@ -1263,34 +775,32 @@ footer strong{
 
 <script>
 
-/* ================= MENU ================= */
+/* MENU */
+const menuBtn=document.getElementById("menuBtn");
+const navMenu=document.getElementById("navMenu");
+const menuSlides=document.querySelectorAll(".menu-bg-slide");
 
-const menuBtn = document.getElementById("menuBtn");
-const navMenu = document.getElementById("navMenu");
-const menuSlides = document.querySelectorAll(".menu-bg-slide");
-
-let menuTimer = null;
-let menuIndex = 0;
+let menuTimer=null;
+let menuIndex=0;
 
 function startMenuSlider(){
 
-  if(menuTimer) return;
+  if(menuTimer)return;
 
-  menuIndex = 0;
+  menuIndex=0;
 
-  menuSlides.forEach((slide,index)=>{
-    slide.classList.toggle("active",index === 0);
+  menuSlides.forEach((slide,i)=>{
+    slide.classList.toggle("active",i===0);
   });
 
-  menuTimer = setInterval(()=>{
+  menuTimer=setInterval(()=>{
 
     menuSlides[menuIndex].classList.remove("active");
 
     menuIndex++;
 
-    if(menuIndex >= menuSlides.length){
-      menuIndex = 0;
-    }
+    if(menuIndex>=menuSlides.length)
+      menuIndex=0;
 
     menuSlides[menuIndex].classList.add("active");
 
@@ -1299,41 +809,32 @@ function startMenuSlider(){
 
 function stopMenuSlider(){
 
-  if(menuTimer !== null){
-
+  if(menuTimer!==null){
     clearInterval(menuTimer);
-    menuTimer = null;
-
+    menuTimer=null;
   }
 }
 
 menuBtn.addEventListener("click",()=>{
 
-  const opened = navMenu.classList.toggle("open");
+  const opened=navMenu.classList.toggle("open");
 
   if(opened){
-
-    menuBtn.textContent = "✕";
+    menuBtn.textContent="✕";
     startMenuSlider();
-
   }else{
-
-    menuBtn.textContent = "☰";
+    menuBtn.textContent="☰";
     stopMenuSlider();
-
   }
 
 });
-
-
-/* ================= CLOSE MENU ================= */
 
 document.querySelectorAll(".nav a").forEach(link=>{
 
   link.addEventListener("click",()=>{
 
     navMenu.classList.remove("open");
-    menuBtn.textContent = "☰";
+    menuBtn.textContent="☰";
     stopMenuSlider();
 
   });
@@ -1341,11 +842,9 @@ document.querySelectorAll(".nav a").forEach(link=>{
 });
 
 
-/* ================= HERO SLIDER ================= */
-
-const heroSlides = document.querySelectorAll(".hero-slide");
-
-let heroIndex = 0;
+/* HERO SLIDER */
+const heroSlides=document.querySelectorAll(".hero-slide");
+let heroIndex=0;
 
 setInterval(()=>{
 
@@ -1353,23 +852,21 @@ setInterval(()=>{
 
   heroIndex++;
 
-  if(heroIndex >= heroSlides.length){
-    heroIndex = 0;
-  }
+  if(heroIndex>=heroSlides.length)
+    heroIndex=0;
 
   heroSlides[heroIndex].classList.add("active");
 
 },5000);
 
 
-/* ================= ESC ================= */
+/* ESC */
+document.addEventListener("keydown",(e)=>{
 
-document.addEventListener("keydown",(event)=>{
-
-  if(event.key === "Escape"){
+  if(e.key==="Escape"){
 
     navMenu.classList.remove("open");
-    menuBtn.textContent = "☰";
+    menuBtn.textContent="☰";
     stopMenuSlider();
 
   }
