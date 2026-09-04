@@ -3,107 +3,829 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Movie Wala — Entertainment</title>
+
+<title>Movie Wala | Movies & Web Series</title>
+
 <style>
-:root{--bg:#070707;--card:#141414;--red:#e50914;--gold:#ffbf00;--muted:#aaa}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:#fff}
-.nav{position:fixed;top:0;left:0;right:0;z-index:20;height:72px;display:flex;align-items:center;padding:0 5%;gap:28px;background:linear-gradient(#050505,rgba(5,5,5,.72),transparent)}
-.logo{width:120px;height:58px;object-fit:contain;border-radius:8px}
-.nav a{color:#ddd;text-decoration:none;font-size:14px}.nav a:hover{color:#fff}
-.search{margin-left:auto;background:#171717;border:1px solid #333;color:#fff;padding:11px 15px;border-radius:6px;width:190px;outline:none}
-.hero{min-height:650px;padding:120px 6% 70px;display:flex;align-items:flex-end;position:relative;background:
-linear-gradient(90deg,#050505 0%,rgba(5,5,5,.78) 34%,rgba(5,5,5,.22) 70%,#070707 100%),
-linear-gradient(0deg,#070707 0%,transparent 28%),
-url("movie-wala-banner.jpeg") center/cover no-repeat}
-.hero-content{max-width:560px}.tag{display:inline-block;background:var(--red);padding:7px 12px;border-radius:4px;font-size:12px;font-weight:bold;margin-bottom:15px}
-h1{font-size:58px;line-height:.98;margin-bottom:16px;text-shadow:0 5px 25px #000}
-.hero p{color:#ddd;line-height:1.6;margin-bottom:22px}
-.btn{display:inline-block;border:0;border-radius:5px;padding:12px 20px;font-weight:bold;cursor:pointer;text-decoration:none;margin-right:8px}
-.primary{background:#fff;color:#000}.secondary{background:#333;color:#fff}.primary:hover{background:#ddd}.secondary:hover{background:#444}
-.section{padding:30px 5% 10px}.section h2{font-size:23px;margin-bottom:18px}
-.row{display:grid;grid-template-columns:repeat(6,1fr);gap:15px}
-.card{background:var(--card);border-radius:7px;overflow:hidden;transition:.25s;position:relative;min-height:235px;border:1px solid #202020}
-.card:hover{transform:scale(1.04);z-index:3;box-shadow:0 14px 35px #000}
-.poster{height:170px;background:linear-gradient(135deg,#202020,#3b0d0d 55%,#111);display:flex;align-items:center;justify-content:center;font-size:38px}
-.info{padding:11px}.title{font-weight:bold;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:12px;color:var(--muted);margin-top:6px}
-.rating{color:var(--gold);font-weight:bold}
-.badge{position:absolute;top:8px;left:8px;background:var(--red);padding:4px 7px;border-radius:4px;font-size:10px;font-weight:bold}
-.about{margin:50px 5% 70px;padding:28px;border:1px solid #262626;background:#101010;border-radius:10px}
-.about p{color:#aaa;line-height:1.7;margin-top:10px}
-.footer{text-align:center;padding:30px;color:#777;border-top:1px solid #222}
-@media(max-width:1000px){.row{grid-template-columns:repeat(4,1fr)}}
-@media(max-width:700px){.nav{gap:12px;height:62px}.nav a{display:none}.search{width:150px}.hero{min-height:570px;padding:100px 5% 45px}h1{font-size:42px}.row{grid-template-columns:repeat(2,1fr)}.poster{height:190px}}
+:root{
+  --red:#e50914;
+  --dark:#050505;
+  --card:#151515;
+  --text:#fff;
+  --muted:#aaa;
+  --gold:#ffc107;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#050505;
+  color:white;
+}
+
+/* NAVBAR */
+.nav{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  height:76px;
+  z-index:1000;
+
+  display:flex;
+  align-items:center;
+  gap:28px;
+  padding:0 6%;
+
+  background:rgba(0,0,0,.88);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+  width:135px;
+  height:60px;
+  object-fit:contain;
+  border-radius:10px;
+}
+
+.nav a{
+  color:#ddd;
+  text-decoration:none;
+  font-size:15px;
+  transition:.3s;
+}
+
+.nav a:hover{
+  color:#fff;
+}
+
+.search{
+  margin-left:auto;
+  width:220px;
+  padding:12px 16px;
+  border-radius:25px;
+  border:1px solid #333;
+  background:#161616;
+  color:white;
+  outline:none;
+}
+
+.search:focus{
+  border-color:var(--red);
+}
+
+/* HERO */
+.hero{
+  min-height:720px;
+  padding:180px 7% 100px;
+
+  display:flex;
+  align-items:center;
+
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.98) 0%,rgba(0,0,0,.72) 40%,rgba(0,0,0,.35) 75%,rgba(0,0,0,.85) 100%),
+    linear-gradient(0deg,#050505 0%,transparent 25%),
+    url("./movie-wala-banner.jpeg") center/cover no-repeat;
+}
+
+.hero-content{
+  max-width:650px;
+}
+
+.tag{
+  display:inline-block;
+  background:var(--red);
+  padding:9px 15px;
+  border-radius:5px;
+  font-size:13px;
+  font-weight:bold;
+  margin-bottom:20px;
+}
+
+.hero h1{
+  font-size:64px;
+  line-height:1.03;
+  margin-bottom:20px;
+  text-shadow:0 5px 25px #000;
+}
+
+.hero p{
+  color:#ddd;
+  font-size:18px;
+  line-height:1.7;
+  margin-bottom:28px;
+}
+
+.buttons{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  display:inline-block;
+  padding:15px 24px;
+  border-radius:6px;
+  text-decoration:none;
+  font-weight:bold;
+  transition:.3s;
+}
+
+.primary{
+  background:white;
+  color:black;
+}
+
+.primary:hover{
+  transform:translateY(-3px);
+  background:#eee;
+}
+
+.secondary{
+  background:#333;
+  color:white;
+}
+
+.secondary:hover{
+  background:var(--red);
+  transform:translateY(-3px);
+}
+
+/* SECTION */
+.section{
+  padding:75px 6%;
+}
+
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:28px;
+}
+
+.section-title h2{
+  font-size:32px;
+}
+
+.section-title span{
+  color:var(--red);
+  font-size:14px;
+}
+
+/* GENRES */
+.genres{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom:35px;
+}
+
+.genre{
+  border:1px solid #333;
+  background:#111;
+  color:#ddd;
+  padding:11px 18px;
+  border-radius:25px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.genre:hover,
+.genre.active{
+  background:var(--red);
+  border-color:var(--red);
+  color:white;
+}
+
+/* MOVIE GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:20px;
+}
+
+.card{
+  background:var(--card);
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid #222;
+  transition:.35s;
+  cursor:pointer;
+}
+
+.card:hover{
+  transform:translateY(-9px) scale(1.02);
+  border-color:#444;
+  box-shadow:0 15px 35px rgba(0,0,0,.5);
+}
+
+.poster{
+  height:290px;
+  width:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.card-info{
+  padding:16px;
+}
+
+.card h3{
+  font-size:17px;
+  margin-bottom:9px;
+}
+
+.meta{
+  color:#999;
+  font-size:13px;
+  display:flex;
+  justify-content:space-between;
+}
+
+.rating{
+  color:var(--gold);
+  font-weight:bold;
+}
+
+/* FEATURE BANNER */
+.feature{
+  margin:20px 6% 70px;
+  min-height:300px;
+  border-radius:18px;
+
+  display:flex;
+  align-items:center;
+  padding:50px;
+
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.9),rgba(0,0,0,.35)),
+    url("./movie-wala-banner.jpeg") center/cover;
+
+  border:1px solid #292929;
+}
+
+.feature-content{
+  max-width:560px;
+}
+
+.feature h2{
+  font-size:38px;
+  margin-bottom:14px;
+}
+
+.feature p{
+  color:#ccc;
+  line-height:1.7;
+  margin-bottom:22px;
+}
+
+/* ABOUT */
+.about{
+  margin:0 6% 70px;
+  padding:45px;
+  background:#101010;
+  border:1px solid #252525;
+  border-radius:16px;
+}
+
+.about h2{
+  font-size:32px;
+  margin-bottom:15px;
+}
+
+.about p{
+  color:#aaa;
+  line-height:1.8;
+  max-width:850px;
+}
+
+/* STATS */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+  padding:0 6% 75px;
+}
+
+.stat{
+  text-align:center;
+  padding:30px;
+  background:#111;
+  border:1px solid #252525;
+  border-radius:12px;
+}
+
+.stat strong{
+  display:block;
+  color:var(--red);
+  font-size:32px;
+  margin-bottom:8px;
+}
+
+.stat span{
+  color:#aaa;
+}
+
+/* FOOTER */
+.footer{
+  padding:40px 6%;
+  text-align:center;
+  color:#777;
+  border-top:1px solid #222;
+}
+
+.footer b{
+  color:white;
+}
+
+/* MOBILE */
+@media(max-width:1000px){
+  .grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .hero h1{
+    font-size:50px;
+  }
+}
+
+@media(max-width:700px){
+  .nav{
+    height:65px;
+    padding:0 4%;
+    gap:15px;
+  }
+
+  .logo{
+    width:95px;
+  }
+
+  .nav a{
+    display:none;
+  }
+
+  .search{
+    width:150px;
+  }
+
+  .hero{
+    min-height:650px;
+    padding:150px 6% 70px;
+  }
+
+  .hero h1{
+    font-size:42px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .poster{
+    height:250px;
+  }
+
+  .feature{
+    margin:10px 4% 50px;
+    padding:30px;
+  }
+
+  .feature h2{
+    font-size:28px;
+  }
+
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+    padding:0 4% 55px;
+  }
+}
+
+@media(max-width:450px){
+  .grid{
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+
+  .poster{
+    height:210px;
+  }
+
+  .card-info{
+    padding:11px;
+  }
+
+  .card h3{
+    font-size:14px;
+  }
+
+  .hero h1{
+    font-size:36px;
+  }
+}
 </style>
 </head>
+
 <body>
+
+<!-- NAVBAR -->
 <header class="nav">
-  <img class="logo" src="./movie-wala-logo.jpeg" alt="Movie Wala">
-  <a href="#home">Home</a><a href="#movies">Movies</a><a href="#series">Web Series</a><a href="#about">About</a>
-  <input id="search" class="search" placeholder="🔍 Search movies..." aria-label="Search movies">
+
+  <img
+    class="logo"
+    src="./movie-wala-logo.jpeg"
+    alt="Movie Wala Logo"
+  >
+
+  <a href="#home">Home</a>
+  <a href="#movies">Movies</a>
+  <a href="#series">Web Series</a>
+  <a href="#about">About</a>
+
+  <input
+    id="search"
+    class="search"
+    type="text"
+    placeholder="🔎 Search movies..."
+  >
+
 </header>
 
+
+<!-- HERO -->
 <section id="home" class="hero">
+
   <div class="hero-content">
+
     <span class="tag">MOVIE WALA</span>
-    <h1>Har Scene Mein Entertainment</h1>
-    <p>Discover movies, web series, trailers, reviews and the latest entertainment updates — all in one cinematic place.</p>
-    <a class="btn primary" href="#movies">▶ Explore Movies</a>
-    <a class="btn secondary" href="#series">＋ Web Series</a>
+
+    <h1>
+      Har Scene Mein
+      Entertainment
+    </h1>
+
+    <p>
+      Discover movies, web series, trailers, reviews
+      and the latest entertainment updates —
+      all in one cinematic place.
+    </p>
+
+    <div class="buttons">
+
+      <a href="#movies" class="btn primary">
+        ▶ Explore Movies
+      </a>
+
+      <a href="#series" class="btn secondary">
+        ＋ Web Series
+      </a>
+
+    </div>
+
   </div>
+
 </section>
 
+
+<!-- MOVIES -->
 <section id="movies" class="section">
-  <h2>🔥 Trending Now</h2>
-  <div class="row" id="movieGrid"></div>
+
+  <div class="section-title">
+    <h2>🔥 Popular Movies</h2>
+    <span>VIEW ALL →</span>
+  </div>
+
+  <div class="genres">
+
+    <button class="genre active" data-filter="all">
+      All
+    </button>
+
+    <button class="genre" data-filter="action">
+      Action
+    </button>
+
+    <button class="genre" data-filter="romance">
+      ❤️ Romance
+    </button>
+
+    <button class="genre" data-filter="comedy">
+      😂 Comedy
+    </button>
+
+    <button class="genre" data-filter="thriller">
+      💀 Thriller
+    </button>
+
+  </div>
+
+
+  <div class="grid" id="movieGrid">
+
+    <div class="card" data-category="action">
+      <img
+        class="poster"
+        src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=600&q=80"
+        alt="Action Movie"
+      >
+      <div class="card-info">
+        <h3>Action Night</h3>
+        <div class="meta">
+          <span>2026 • Action</span>
+          <span class="rating">★ 8.7</span>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card" data-category="romance">
+      <img
+        class="poster"
+        src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80"
+        alt="Romance Movie"
+      >
+      <div class="card-info">
+        <h3>Love Story</h3>
+        <div class="meta">
+          <span>2026 • Romance</span>
+          <span class="rating">★ 8.2</span>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card" data-category="comedy">
+      <img
+        class="poster"
+        src="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?auto=format&fit=crop&w=600&q=80"
+        alt="Comedy Movie"
+      >
+      <div class="card-info">
+        <h3>Crazy Friends</h3>
+        <div class="meta">
+          <span>2026 • Comedy</span>
+          <span class="rating">★ 8.0</span>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card" data-category="thriller">
+      <img
+        class="poster"
+        src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=600&q=80"
+        alt="Thriller Movie"
+      >
+      <div class="card-info">
+        <h3>Dark Secret</h3>
+        <div class="meta">
+          <span>2026 • Thriller</span>
+          <span class="rating">★ 8.9</span>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card" data-category="action">
+      <img
+        class="poster"
+        src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=600&q=80"
+        alt="Movie"
+      >
+      <div class="card-info">
+        <h3>The Final Mission</h3>
+        <div class="meta">
+          <span>2026 • Action</span>
+          <span class="rating">★ 9.0</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
 </section>
 
-<section class="section">
-  <h2>⭐ Top Rated</h2>
-  <div class="row" id="topGrid"></div>
+
+<!-- FEATURE -->
+<section class="feature">
+
+  <div class="feature-content">
+
+    <h2>🎬 Your Cinema. Your Choice.</h2>
+
+    <p>
+      From blockbuster movies to addictive web series,
+      Movie Wala brings entertainment closer to you.
+      Find your next favourite story and enjoy every scene.
+    </p>
+
+    <a href="#movies" class="btn primary">
+      Start Exploring
+    </a>
+
+  </div>
+
 </section>
 
+
+<!-- WEB SERIES -->
 <section id="series" class="section">
-  <h2>📺 Popular Web Series</h2>
-  <div class="row" id="seriesGrid"></div>
+
+  <div class="section-title">
+    <h2>📺 Trending Web Series</h2>
+    <span>EXPLORE →</span>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <img
+        class="poster"
+        src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=600&q=80"
+        alt="Web Series"
+      >
+      <div class="card-info">
+        <h3>Crime Files</h3>
+        <div class="meta">
+          <span>Season 3</span>
+          <span class="rating">★ 9.1</span>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card">
+      <img
+        class="poster"
+        src="https://images.unsplash.com/photo-1574267432553-4b4628081c31?auto=format&fit=crop&w=600&q=80"
+        alt="Web Series"
+      >
+      <div class="card-info">
+        <h3>Lost City</h3>
+        <div class="meta">
+          <span>Season 1</span>
+          <span class="rating">★ 8.8</span>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card">
+      <img
+        class="poster"
+        src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=600&q=80"
+        alt="Web Series"
+      >
+      <div class="card-info">
+        <h3>Final Chapter</h3>
+        <div class="meta">
+          <span>Season 2</span>
+          <span class="rating">★ 8.6</span>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card">
+      <img
+        class="poster"
+        src="https://images.unsplash.com/photo-1515634928627-2a4e0dae3ddf?auto=format&fit=crop&w=600&q=80"
+        alt="Web Series"
+      >
+      <div class="card-info">
+        <h3>Midnight</h3>
+        <div class="meta">
+          <span>Season 1</span>
+          <span class="rating">★ 8.5</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
 </section>
 
+
+<!-- STATS -->
+<section class="stats">
+
+  <div class="stat">
+    <strong>500+</strong>
+    <span>Movies</span>
+  </div>
+
+  <div class="stat">
+    <strong>100+</strong>
+    <span>Web Series</span>
+  </div>
+
+  <div class="stat">
+    <strong>50K+</strong>
+    <span>Visitors</span>
+  </div>
+
+  <div class="stat">
+    <strong>24/7</strong>
+    <span>Entertainment</span>
+  </div>
+
+</section>
+
+
+<!-- ABOUT -->
 <section id="about" class="about">
-  <h2>🎬 About Movie Wala</h2>
-  <p>Movie Wala is your dark cinematic entertainment hub. Add your own movie data, official trailers and legal viewing links to turn this design into your production website.</p>
+
+  <h2>🍿 About Movie Wala</h2>
+
+  <p>
+    Movie Wala is your entertainment destination for discovering
+    movies, web series, trailers, reviews and the latest cinematic
+    updates. We are building a simple, stylish and fun place for
+    movie lovers.
+  </p>
+
 </section>
 
-<footer class="footer">© 2026 Movie Wala • Har Scene Mein Entertainment</footer>
+
+<!-- FOOTER -->
+<footer class="footer">
+
+  <p>
+    © 2026 <b>Movie Wala</b> • Made for Movie Lovers 🎬
+  </p>
+
+</footer>
+
 
 <script>
-const movies=[
- ["Action Night","2026","Action","8.7"],["City Lights","2025","Drama","8.4"],
- ["Love Story","2026","Romance","8.1"],["Dark Mission","2025","Thriller","8.9"],
- ["Comedy Club","2026","Comedy","7.9"],["The Last Scene","2025","Mystery","8.6"]
-];
-const top=[["The Masterpiece","2024","Drama","9.1"],["Final Chase","2025","Action","8.9"],
-["Hidden Truth","2024","Mystery","8.8"],["Dream City","2025","Romance","8.7"],
-["Wild Road","2023","Adventure","8.6"],["Night Watch","2025","Thriller","8.5"]];
-const series=[["The Agency","2026","Crime","9.0"],["House of Stories","2025","Drama","8.8"],
-["Shadow Line","2026","Thriller","8.7"],["Campus Days","2025","Comedy","8.3"],
-["Royal Game","2026","Action","8.9"],["Beyond Time","2024","Sci-Fi","8.6"]];
 
-function render(list,id){
- const grid=document.getElementById(id);
- grid.innerHTML=list.map((m,i)=>`
- <article class="card" data-title="${m[0].toLowerCase()}">
-   ${i<2?'<span class="badge">NEW</span>':''}
-   <div class="poster">🎬</div>
-   <div class="info"><div class="title">${m[0]}</div><div class="meta">${m[1]} • ${m[2]} • <span class="rating">★ ${m[3]}</span></div></div>
- </article>`).join("");
-}
-render(movies,"movieGrid");render(top,"topGrid");render(series,"seriesGrid");
+/* SEARCH */
+const search = document.getElementById("search");
+const cards = document.querySelectorAll(".card");
 
-document.getElementById("search").addEventListener("input",e=>{
- const q=e.target.value.toLowerCase().trim();
- document.querySelectorAll(".card").forEach(c=>c.style.display=(!q||c.dataset.title.includes(q))?"":"none");
+search.addEventListener("input", function(){
+
+  const value = this.value.toLowerCase();
+
+  cards.forEach(card => {
+
+    const text = card.innerText.toLowerCase();
+
+    card.style.display =
+      text.includes(value) ? "" : "none";
+
+  });
+
 });
+
+
+/* GENRE FILTER */
+const genres = document.querySelectorAll(".genre");
+
+genres.forEach(button => {
+
+  button.addEventListener("click", function(){
+
+    genres.forEach(btn =>
+      btn.classList.remove("active")
+    );
+
+    this.classList.add("active");
+
+    const filter = this.dataset.filter;
+
+    cards.forEach(card => {
+
+      if(filter === "all"){
+        card.style.display = "";
+      }
+      else if(card.dataset.category === filter){
+        card.style.display = "";
+      }
+      else if(card.dataset.category){
+        card.style.display = "none";
+      }
+
+    });
+
+  });
+
+});
+
 </script>
+
 </body>
 </html>
