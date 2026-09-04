@@ -9,9 +9,9 @@
 
 <style>
 
-/* =====================================================
-   BASIC
-===================================================== */
+/* =========================
+   RESET
+========================= */
 
 *{
   margin:0;
@@ -24,7 +24,6 @@ html{
 }
 
 body{
-  margin:0;
   background:#050505;
   color:#fff;
   font-family:Arial,Helvetica,sans-serif;
@@ -37,13 +36,13 @@ a{
 }
 
 
-/* =====================================================
+/* =========================
    HEADER
-===================================================== */
+========================= */
 
 .navbar{
+  height:76px;
   width:100%;
-  height:78px;
 
   display:flex;
   align-items:center;
@@ -51,6 +50,7 @@ a{
   padding:0 5%;
 
   background:#050505;
+
   border-bottom:1px solid #222;
 
   position:sticky;
@@ -58,44 +58,31 @@ a{
   z-index:9999;
 }
 
-
-/* LOGO */
-
 .brand{
   display:flex;
   align-items:center;
-  gap:11px;
-  flex-shrink:0;
+  gap:10px;
 }
 
 .logo{
-  width:56px;
-  height:56px;
+  width:54px;
+  height:54px;
 
-  min-width:56px;
-  min-height:56px;
-
-  display:block;
-
-  border-radius:50%;
-  border:2px solid #e50914;
+  min-width:54px;
 
   object-fit:cover;
   object-position:center;
 
-  background:#111;
+  border-radius:50%;
+  border:2px solid #e50914;
 
-  flex-shrink:0;
+  display:block;
 }
-
-
-/* BRAND NAME */
 
 .brand-name{
   font-size:28px;
   font-weight:900;
-  letter-spacing:.8px;
-  white-space:nowrap;
+  letter-spacing:.5px;
 }
 
 .brand-name span{
@@ -103,9 +90,9 @@ a{
 }
 
 
-/* =====================================================
+/* =========================
    DESKTOP NAV
-===================================================== */
+========================= */
 
 .nav{
   margin-left:auto;
@@ -120,8 +107,6 @@ a{
   color:#ddd;
   font-size:14px;
   font-weight:700;
-
-  transition:color .2s ease;
 }
 
 .nav a:hover{
@@ -129,47 +114,53 @@ a{
 }
 
 
-/* =====================================================
+/* =========================
    MENU BUTTON
-===================================================== */
+========================= */
 
 .menu-btn{
   display:none;
 
   margin-left:auto;
 
-  width:49px;
-  height:45px;
+  width:48px;
+  height:44px;
 
-  border:1px solid #376176;
+  border:1px solid #3a6678;
   border-radius:7px;
 
-  background:#16465d;
-  color:#bdeaff;
+  background:#17475d;
+
+  color:#c7edff;
 
   font-size:27px;
-  line-height:1;
 
   cursor:pointer;
 }
 
 
-/* =====================================================
+/* =========================
+   MOBILE MENU
+========================= */
+
+.mobile-menu-banner{
+  display:none;
+}
+
+
+/* =========================
    HERO
-===================================================== */
+========================= */
 
 .hero{
-  width:100%;
   background:#050505;
 }
 
 
 /*
    IMPORTANT:
-
-   Hero image is NOT stretched.
-
-   The slider has a controlled height.
+   Hero banner always stays 16:9.
+   No stretching.
 */
 
 .hero-slider{
@@ -177,39 +168,28 @@ a{
 
   width:100%;
 
-  height:min(58vw,620px);
-
-  min-height:300px;
-
-  max-height:620px;
+  aspect-ratio:16 / 9;
 
   overflow:hidden;
 
   background:#050505;
 }
 
-
-/* HERO IMAGE */
-
 .hero-slide{
   position:absolute;
 
-  top:0;
-  left:0;
+  inset:0;
 
   width:100%;
   height:100%;
 
-  display:block;
-
   object-fit:cover;
-  object-position:center center;
+
+  object-position:center;
 
   opacity:0;
 
   transition:opacity 1s ease;
-
-  pointer-events:none;
 }
 
 .hero-slide.active{
@@ -217,114 +197,87 @@ a{
 }
 
 
-/* HERO BOTTOM FADE */
-
-.hero-slider:after{
-  content:"";
-
-  position:absolute;
-
-  left:0;
-  right:0;
-  bottom:0;
-
-  height:30%;
-
-  background:linear-gradient(
-    to bottom,
-    rgba(5,5,5,0),
-    #050505
-  );
-
-  pointer-events:none;
-}
-
-
-/* =====================================================
-   HERO CONTENT
-===================================================== */
+/* HERO TEXT */
 
 .hero-content{
-  padding:25px 5% 65px;
-
-  background:#050505;
-
-  position:relative;
-  z-index:2;
+  padding:35px 5% 70px;
 }
 
 .live-badge{
   display:inline-block;
 
-  background:#ed101a;
+  background:#e50914;
 
-  padding:12px 20px;
+  padding:11px 18px;
 
   border-radius:7px;
 
-  font-size:16px;
+  font-size:15px;
   font-weight:900;
 
-  margin-bottom:20px;
+  margin-bottom:18px;
 }
 
 .hero h1{
-  max-width:950px;
+  max-width:900px;
 
   font-size:58px;
+
   line-height:1.03;
 
   font-weight:900;
 }
 
 .hero h1 span{
-  display:block;
-  color:#ed101a;
+  color:#e50914;
 }
 
 .hero p{
-  max-width:760px;
+  max-width:750px;
 
   margin:22px 0;
 
-  color:#ddd;
+  color:#d5d5d5;
 
   font-size:19px;
+
   line-height:1.6;
 }
 
 .buttons{
   display:flex;
   flex-wrap:wrap;
+
   gap:12px;
 }
 
 .btn{
   display:inline-block;
 
-  padding:15px 24px;
+  padding:15px 23px;
 
   border-radius:7px;
 
   border:1px solid #555;
 
   font-size:14px;
+
   font-weight:900;
 }
 
 .btn-red{
-  background:#ed101a;
-  border-color:#ed101a;
+  background:#e50914;
+  border-color:#e50914;
 }
 
 .btn-dark{
-  background:#090909;
+  background:#080808;
 }
 
 
-/* =====================================================
+/* =========================
    SECTIONS
-===================================================== */
+========================= */
 
 section{
   padding:65px 5%;
@@ -338,7 +291,7 @@ section{
 }
 
 .section-title span{
-  color:#ed101a;
+  color:#e50914;
 }
 
 .section-sub{
@@ -350,9 +303,9 @@ section{
 }
 
 
-/* =====================================================
+/* =========================
    MOVIES
-===================================================== */
+========================= */
 
 .movie-grid{
   display:grid;
@@ -363,13 +316,13 @@ section{
 }
 
 .movie-card{
+  overflow:hidden;
+
   background:#111;
 
   border:1px solid #252525;
 
   border-radius:10px;
-
-  overflow:hidden;
 }
 
 .movie-poster{
@@ -381,12 +334,12 @@ section{
 }
 
 .movie-info{
-  padding:16px;
+  padding:15px;
 }
 
 .movie-info h3{
   font-size:17px;
-  margin-bottom:7px;
+  margin-bottom:6px;
 }
 
 .movie-info p{
@@ -395,55 +348,45 @@ section{
 }
 
 
-/* =====================================================
-   LIVE ZONE
-===================================================== */
+/* =========================
+   LIVE
+========================= */
 
 .live-zone{
   position:relative;
 
   overflow:hidden;
 
-  background-image:url("movie-wala-banner-2[1].jpg");
+  background:
+    linear-gradient(rgba(0,0,0,.78),rgba(0,0,0,.82)),
+    url("movie-wala-banner-2[1].jpg");
 
   background-size:cover;
   background-position:center;
 }
 
-.live-zone:before{
-  content:"";
-
-  position:absolute;
-
-  inset:0;
-
-  background:rgba(0,0,0,.78);
-}
-
 .live-content{
-  position:relative;
-  z-index:2;
-
   max-width:850px;
 }
 
 .live-label{
-  color:#ed101a;
+  color:#e50914;
 
   font-weight:900;
 
   letter-spacing:2px;
 
-  margin-bottom:15px;
+  margin-bottom:14px;
 }
 
 .live-content h2{
   font-size:46px;
+
   margin-bottom:15px;
 }
 
 .live-content h2 span{
-  color:#ed101a;
+  color:#e50914;
 }
 
 .live-content p{
@@ -457,9 +400,9 @@ section{
 }
 
 
-/* =====================================================
+/* =========================
    VIDEO
-===================================================== */
+========================= */
 
 .video-box{
   width:100%;
@@ -469,13 +412,13 @@ section{
 
   aspect-ratio:16/9;
 
-  background:#111;
+  overflow:hidden;
 
   border-radius:12px;
 
-  overflow:hidden;
-
   border:1px solid #292929;
+
+  background:#111;
 }
 
 .video-box iframe{
@@ -486,9 +429,9 @@ section{
 }
 
 
-/* =====================================================
+/* =========================
    CARDS
-===================================================== */
+========================= */
 
 .simple-grid{
   display:grid;
@@ -499,15 +442,15 @@ section{
 }
 
 .simple-card{
-  min-height:170px;
+  min-height:160px;
+
+  padding:25px;
 
   background:#111;
 
   border:1px solid #252525;
 
   border-radius:10px;
-
-  padding:26px;
 }
 
 .simple-card h3{
@@ -521,9 +464,9 @@ section{
 }
 
 
-/* =====================================================
+/* =========================
    STATS
-===================================================== */
+========================= */
 
 .stats{
   display:grid;
@@ -538,7 +481,7 @@ section{
 }
 
 .stat h2{
-  color:#ed101a;
+  color:#e50914;
   font-size:38px;
 }
 
@@ -548,14 +491,13 @@ section{
 }
 
 
-/* =====================================================
+/* =========================
    GENRES
-===================================================== */
+========================= */
 
 .genres{
   display:flex;
   flex-wrap:wrap;
-
   gap:12px;
 }
 
@@ -570,9 +512,9 @@ section{
 }
 
 
-/* =====================================================
+/* =========================
    SOCIAL
-===================================================== */
+========================= */
 
 .social-grid{
   display:grid;
@@ -596,14 +538,11 @@ section{
 
   border-radius:12px;
 
-  transition:
-    transform .25s ease,
-    border-color .25s ease;
+  transition:.25s ease;
 }
 
 .social-card:hover{
   transform:translateY(-4px);
-
   border-color:#555;
 }
 
@@ -612,29 +551,23 @@ section{
   height:52px;
 
   min-width:52px;
-
-  display:block;
 }
 
 .social-card h3{
-  margin:0 0 6px;
+  margin-bottom:6px;
 
   font-size:19px;
-  font-weight:800;
 }
 
 .social-card p{
-  margin:0;
-
   color:#999;
-
   font-size:13px;
 }
 
 
-/* =====================================================
+/* =========================
    FOOTER
-===================================================== */
+========================= */
 
 footer{
   padding:35px 20px;
@@ -654,161 +587,161 @@ footer strong{
 
 
 /* =====================================================
-   MOBILE
+   TABLET
 ===================================================== */
 
 @media(max-width:900px){
 
-  .navbar{
-    height:78px;
-    padding:0 18px;
-  }
-
-  .logo{
-    width:54px;
-    height:54px;
-
-    min-width:54px;
-    min-height:54px;
-  }
-
-  .brand-name{
-    font-size:25px;
-  }
-
   .menu-btn{
     display:block;
   }
-
-
-  /* ================================================
-     MOBILE MENU
-  ================================================= */
 
   .nav{
     display:none;
 
     position:fixed;
 
-    top:78px;
+    top:76px;
     left:0;
     right:0;
     bottom:0;
 
     margin:0;
 
-    padding:65px 25px;
-
-    flex-direction:column;
-
-    justify-content:center;
-    align-items:center;
-
-    gap:24px;
-
-    overflow:hidden;
+    padding:0 20px 35px;
 
     background:#050505;
+
+    overflow-y:auto;
+
+    z-index:9998;
   }
 
   .nav.open{
-    display:flex;
+    display:block;
   }
 
 
   /*
-     IMPORTANT:
+     PROPER BANNER AREA
 
-     movie-wala-banner.jpeg
-     IS NOT IN THIS SLIDER.
-
-     Only banner 2,3,4,5.
+     Actual IMG is used.
+     Therefore:
+     - no stretching
+     - no background contain issue
+     - no weird crop
   */
 
-  .menu-bg-slider{
-    position:absolute;
-
-    inset:0;
-
+  .mobile-menu-banner{
     display:block;
+
+    width:100%;
+
+    aspect-ratio:16/9;
+
+    margin:18px auto 28px;
 
     overflow:hidden;
 
-    z-index:-2;
+    border-radius:12px;
 
-    background:#050505;
+    border:1px solid #333;
+
+    position:relative;
+
+    background:#111;
   }
 
 
-  .menu-bg-slide{
-    position:absolute;
+  .menu-slides{
+    display:flex;
 
-    inset:0;
+    width:100%;
+    height:100%;
 
-    /*
-       contain gives full banner visibility.
-       It prevents stretching.
-    */
-
-    background-size:contain;
-
-    background-repeat:no-repeat;
-
-    background-position:center center;
-
-    opacity:0;
-
-    transition:opacity 1.2s ease;
-  }
-
-  .menu-bg-slide.active{
-    opacity:1;
+    transition:transform 1s ease;
   }
 
 
-  /* DARK OVERLAY */
+  .menu-slide{
+    flex:0 0 100%;
 
-  .nav:after{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    object-position:center;
+
+    display:block;
+  }
+
+
+  /* DARK CINEMATIC OVERLAY */
+
+  .mobile-menu-banner:after{
     content:"";
 
     position:absolute;
 
     inset:0;
 
-    z-index:-1;
-
-    background:rgba(0,0,0,.76);
+    background:linear-gradient(
+      to bottom,
+      rgba(0,0,0,.05),
+      rgba(0,0,0,.35)
+    );
 
     pointer-events:none;
   }
 
 
-  .nav a{
-    position:relative;
+  /*
+     MENU LINKS
+  */
 
-    z-index:5;
+  .menu-links{
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:4px;
+
+    padding-bottom:30px;
+  }
+
+  .nav a{
+    display:block;
+
+    width:100%;
+
+    max-width:420px;
+
+    padding:15px 20px;
+
+    text-align:center;
 
     color:#fff;
 
-    font-size:21px;
+    font-size:19px;
 
     font-weight:800;
 
-    text-shadow:
-      0 2px 8px #000;
+    border-bottom:1px solid #222;
+
+    border-radius:7px;
   }
 
   .nav a:hover{
-    color:#ed101a;
+    color:#e50914;
+    background:#111;
   }
 
 
-  /* TABLET */
-
-  .hero-slider{
-    height:55vw;
-
-    min-height:270px;
+  .hero-content{
+    padding:28px 5% 55px;
   }
 
   .hero h1{
@@ -832,7 +765,7 @@ footer strong{
 
 
 /* =====================================================
-   MOBILE PHONE
+   MOBILE
 ===================================================== */
 
 @media(max-width:500px){
@@ -844,26 +777,21 @@ footer strong{
   }
 
 
-  /* LOGO */
-
   .logo{
     width:51px;
     height:51px;
 
     min-width:51px;
-    min-height:51px;
   }
 
   .brand{
-    gap:9px;
+    gap:8px;
   }
 
   .brand-name{
     font-size:22px;
   }
 
-
-  /* MENU BUTTON */
 
   .menu-btn{
     width:48px;
@@ -873,96 +801,69 @@ footer strong{
   }
 
 
-  /* ================================================
-     HERO MOBILE
-  ================================================= */
+  /*
+     HERO:
+
+     Exact 16:9.
+     Mobile par banner stretch nahi hoga.
+  */
 
   .hero-slider{
+    aspect-ratio:16/9;
 
-    /*
-       Reduced height so it doesn't look excessively
-       zoomed on mobile.
-    */
+    min-height:0;
 
-    width:100%;
-
-    height:56vw;
-
-    min-height:205px;
-
-    max-height:290px;
-
-    aspect-ratio:auto;
-
-    overflow:hidden;
+    max-height:none;
   }
 
 
   .hero-slide{
-
-    width:100%;
-    height:100%;
-
     object-fit:cover;
-
-    object-position:center center;
+    object-position:center;
   }
 
 
   .hero-content{
-    padding:18px 20px 45px;
+    padding:20px 20px 48px;
   }
-
 
   .live-badge{
-    font-size:14px;
+    font-size:13px;
 
-    padding:10px 16px;
+    padding:10px 15px;
 
-    margin-bottom:17px;
+    margin-bottom:15px;
   }
-
 
   .hero h1{
     font-size:35px;
 
-    line-height:1.06;
+    line-height:1.05;
   }
-
 
   .hero p{
     font-size:16px;
 
     line-height:1.55;
 
-    margin:18px 0;
+    margin:17px 0;
   }
-
-
-  .buttons{
-    gap:9px;
-  }
-
 
   .btn{
-    padding:14px 15px;
+    padding:13px 15px;
 
-    font-size:13px;
+    font-size:12px;
   }
 
 
-  /* SECTIONS */
-
   section{
-    padding:55px 20px;
+    padding:52px 20px;
   }
 
   .section-title{
-    font-size:31px;
+    font-size:30px;
   }
 
-
-  /* MOVIES */
 
   .movie-grid{
     grid-template-columns:1fr 1fr;
@@ -975,49 +876,71 @@ footer strong{
   }
 
   .movie-info{
-    padding:12px;
+    padding:11px;
   }
 
   .movie-info h3{
-    font-size:15px;
+    font-size:14px;
   }
 
-
-  /* LIVE */
 
   .live-content h2{
     font-size:34px;
   }
 
 
-  /* SOCIAL */
-
-  .social-grid{
-    gap:14px;
-  }
-
   .social-card{
     padding:20px;
   }
 
+  .social-icon{
+    width:48px;
+    height:48px;
 
-  /* MOBILE MENU */
-
-  .nav{
-    top:76px;
-
-    padding:70px 20px;
+    min-width:48px;
   }
 
+
+  /*
+     MOBILE MENU BANNER
+
+     Exact 16:9.
+     No contain.
+     No stretch.
+  */
+
+  .mobile-menu-banner{
+    width:100%;
+
+    aspect-ratio:16/9;
+
+    margin-top:18px;
+    margin-bottom:25px;
+
+    border-radius:10px;
+  }
+
+
+  .menu-slide{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+    object-position:center;
+  }
+
+
   .nav a{
-    font-size:20px;
+    font-size:18px;
+
+    padding:14px 15px;
   }
 
 }
 
 
 /* =====================================================
-   VERY SMALL PHONE
+   SMALL PHONE
 ===================================================== */
 
 @media(max-width:360px){
@@ -1027,37 +950,25 @@ footer strong{
     height:48px;
 
     min-width:48px;
-    min-height:48px;
   }
 
   .brand-name{
     font-size:20px;
   }
 
-  .hero-slider{
-    min-height:190px;
-  }
-
   .hero h1{
-    font-size:32px;
+    font-size:31px;
   }
 
 }
 
 
 /* =====================================================
-   SOCIAL MOBILE ICON
+   DESKTOP NAV MENU WRAPPER
 ===================================================== */
 
-@media(max-width:500px){
-
-  .social-icon{
-    width:48px;
-    height:48px;
-
-    min-width:48px;
-  }
-
+.menu-links{
+  display:contents;
 }
 
 </style>
@@ -1076,25 +987,17 @@ footer strong{
 
   <a href="#home" class="brand">
 
-
-    <!-- REAL MOVIE WALA LOGO -->
-
     <img
       src="movie-wala-logo.jpeg"
       class="logo"
-      alt="Movie Wala Logo"
-      loading="eager">
-
+      alt="Movie Wala Logo">
 
     <div class="brand-name">
       MOVIE <span>WALA</span>
     </div>
 
-
   </a>
 
-
-  <!-- MOBILE MENU BUTTON -->
 
   <button
     class="menu-btn"
@@ -1106,78 +1009,87 @@ footer strong{
   </button>
 
 
-  <!-- NAVIGATION -->
-
   <nav
     class="nav"
     id="navMenu">
 
 
     <!-- =================================================
-         MOBILE MENU BACKGROUND
+         MOBILE MENU BANNER
 
-         ONLY 4 BANNERS
+         IMPORTANT:
+         movie-wala-banner.jpeg is NOT used here.
 
-         Banner 1 intentionally removed.
+         Only 4 banners.
     ================================================= -->
 
-    <div class="menu-bg-slider">
-
-
-      <div
-        class="menu-bg-slide active"
-        style="background-image:url('movie-wala-banner-2[1].jpg')">
-      </div>
-
+    <div class="mobile-menu-banner">
 
       <div
-        class="menu-bg-slide"
-        style="background-image:url('movie-wala-banner-3[1].jpg')">
+        class="menu-slides"
+        id="menuSlides">
+
+
+        <img
+          class="menu-slide"
+          src="movie-wala-banner-2[1].jpg"
+          alt="Movie Wala Banner 2">
+
+
+        <img
+          class="menu-slide"
+          src="movie-wala-banner-3[1].jpg"
+          alt="Movie Wala Banner 3">
+
+
+        <img
+          class="menu-slide"
+          src="movie-wala-banner-4[1].jpg"
+          alt="Movie Wala Banner 4">
+
+
+        <img
+          class="menu-slide"
+          src="movie-wala-banner-5[1].jpg"
+          alt="Movie Wala Banner 5">
+
+
       </div>
-
-
-      <div
-        class="menu-bg-slide"
-        style="background-image:url('movie-wala-banner-4[1].jpg')">
-      </div>
-
-
-      <div
-        class="menu-bg-slide"
-        style="background-image:url('movie-wala-banner-5[1].jpg')">
-      </div>
-
 
     </div>
 
 
-    <a href="#home">
-      HOME
-    </a>
+    <div class="menu-links">
 
-    <a href="#live">
-      LIVE
-    </a>
+      <a href="#home">
+        HOME
+      </a>
 
-    <a href="#movies">
-      MOVIES
-    </a>
+      <a href="#live">
+        LIVE
+      </a>
 
-    <a href="#trending">
-      TRENDING
-    </a>
+      <a href="#movies">
+        MOVIES
+      </a>
 
-    <a href="#webseries">
-      WEB SERIES
-    </a>
+      <a href="#trending">
+        TRENDING
+      </a>
 
-    <a href="#genres">
-      GENRES
-    </a>
+      <a href="#webseries">
+        WEB SERIES
+      </a>
 
-    <a href="#about">
-      ABOUT
-    </a>
+      <a href="#genres">
+        GENRES
+      </a>
+
+      <a href="#about">
+        ABOUT
+      </a>
+
+    </div>
 
 
   </nav>
@@ -1198,15 +1110,11 @@ footer strong{
   <div class="hero-slider">
 
 
-    <!-- BANNER 1 -->
-
     <img
       class="hero-slide active"
       src="movie-wala-banner.jpeg"
       alt="Movie Wala Banner">
 
-
-    <!-- BANNER 2 -->
 
     <img
       class="hero-slide"
@@ -1215,8 +1123,6 @@ footer strong{
       loading="lazy">
 
 
-    <!-- BANNER 3 -->
-
     <img
       class="hero-slide"
       src="movie-wala-banner-3[1].jpg"
@@ -1224,16 +1130,12 @@ footer strong{
       loading="lazy">
 
 
-    <!-- BANNER 4 -->
-
     <img
       class="hero-slide"
       src="movie-wala-banner-4[1].jpg"
       alt="Movie Wala Banner 4"
       loading="lazy">
 
-
-    <!-- BANNER 5 -->
 
     <img
       class="hero-slide"
@@ -1244,9 +1146,6 @@ footer strong{
 
   </div>
 
-
-
-  <!-- HERO TEXT -->
 
   <div class="hero-content">
 
@@ -1299,7 +1198,7 @@ footer strong{
 
 
 <!-- =====================================================
-     LATEST MOVIES
+     MOVIES
 ===================================================== -->
 
 <section id="movies">
@@ -1320,12 +1219,10 @@ footer strong{
 
     <article class="movie-card">
 
-
       <div
         class="movie-poster"
         style="background-image:url('movie-wala-banner.jpeg')">
       </div>
-
 
       <div class="movie-info">
 
@@ -1339,19 +1236,15 @@ footer strong{
 
       </div>
 
-
     </article>
 
 
-
     <article class="movie-card">
-
 
       <div
         class="movie-poster"
         style="background-image:url('movie-wala-banner-2[1].jpg')">
       </div>
-
 
       <div class="movie-info">
 
@@ -1365,19 +1258,15 @@ footer strong{
 
       </div>
 
-
     </article>
 
 
-
     <article class="movie-card">
-
 
       <div
         class="movie-poster"
         style="background-image:url('movie-wala-banner-3[1].jpg')">
       </div>
-
 
       <div class="movie-info">
 
@@ -1391,19 +1280,15 @@ footer strong{
 
       </div>
 
-
     </article>
 
 
-
     <article class="movie-card">
-
 
       <div
         class="movie-poster"
         style="background-image:url('movie-wala-banner-4[1].jpg')">
       </div>
-
 
       <div class="movie-info">
 
@@ -1416,7 +1301,6 @@ footer strong{
         </p>
 
       </div>
-
 
     </article>
 
@@ -1438,7 +1322,6 @@ footer strong{
 
   <div class="live-content">
 
-
     <div class="live-label">
       ● LIVE ZONE
     </div>
@@ -1456,7 +1339,6 @@ footer strong{
 
 
     <div class="buttons">
-
 
       <a
         class="btn btn-red"
@@ -1479,9 +1361,7 @@ footer strong{
 
       </a>
 
-
     </div>
-
 
   </div>
 
@@ -1508,7 +1388,6 @@ footer strong{
 
   <div class="video-box">
 
-
     <iframe
       src="https://www.youtube.com/embed/HzJ0dZ7meZs"
       title="Movie Wala Official Video"
@@ -1516,7 +1395,6 @@ footer strong{
       allow="encrypted-media; picture-in-picture"
       allowfullscreen>
     </iframe>
-
 
   </div>
 
@@ -1738,43 +1616,23 @@ footer strong{
 
   <div class="genres">
 
+    <div class="genre">Action</div>
 
-    <div class="genre">
-      Action
-    </div>
+    <div class="genre">Comedy</div>
 
-    <div class="genre">
-      Comedy
-    </div>
+    <div class="genre">Drama</div>
 
-    <div class="genre">
-      Drama
-    </div>
+    <div class="genre">Thriller</div>
 
-    <div class="genre">
-      Thriller
-    </div>
+    <div class="genre">Romance</div>
 
-    <div class="genre">
-      Romance
-    </div>
+    <div class="genre">Horror</div>
 
-    <div class="genre">
-      Horror
-    </div>
+    <div class="genre">Sci-Fi</div>
 
-    <div class="genre">
-      Sci-Fi
-    </div>
+    <div class="genre">Web Series</div>
 
-    <div class="genre">
-      Web Series
-    </div>
-
-    <div class="genre">
-      Trending
-    </div>
-
+    <div class="genre">Trending</div>
 
   </div>
 
@@ -1802,9 +1660,7 @@ footer strong{
   <div class="social-grid">
 
 
-    <!-- =================================================
-         YOUTUBE
-    ================================================= -->
+    <!-- YOUTUBE -->
 
     <a
       class="social-card"
@@ -1815,9 +1671,7 @@ footer strong{
 
       <svg
         class="social-icon"
-        viewBox="0 0 24 24"
-        aria-hidden="true">
-
+        viewBox="0 0 24 24">
 
         <rect
           x="1"
@@ -1827,11 +1681,9 @@ footer strong{
           rx="5"
           fill="#FF0000"/>
 
-
         <path
           d="M10 8.5L16 12L10 15.5V8.5Z"
-          fill="#FFFFFF"/>
-
+          fill="#fff"/>
 
       </svg>
 
@@ -1853,9 +1705,7 @@ footer strong{
 
 
 
-    <!-- =================================================
-         FACEBOOK
-    ================================================= -->
+    <!-- FACEBOOK -->
 
     <a
       class="social-card"
@@ -1866,9 +1716,7 @@ footer strong{
 
       <svg
         class="social-icon"
-        viewBox="0 0 24 24"
-        aria-hidden="true">
-
+        viewBox="0 0 24 24">
 
         <circle
           cx="12"
@@ -1876,11 +1724,9 @@ footer strong{
           r="12"
           fill="#1877F2"/>
 
-
         <path
           d="M13.5 21V13.1H16.2L16.6 10H13.5V8.05C13.5 7.15 13.75 6.55 15.05 6.55H16.7V3.78C16.42 3.74 15.47 3.65 14.35 3.65C12.02 3.65 10.43 5.07 10.43 7.68V10H7.75V13.1H10.43V21H13.5Z"
-          fill="#FFFFFF"/>
-
+          fill="#fff"/>
 
       </svg>
 
@@ -1902,9 +1748,7 @@ footer strong{
 
 
 
-    <!-- =================================================
-         INSTAGRAM
-    ================================================= -->
+    <!-- INSTAGRAM -->
 
     <a
       class="social-card"
@@ -1915,14 +1759,13 @@ footer strong{
 
       <svg
         class="social-icon"
-        viewBox="0 0 24 24"
-        aria-hidden="true">
+        viewBox="0 0 24 24">
 
 
         <defs>
 
           <linearGradient
-            id="instagramGradient"
+            id="igGradient"
             x1="0%"
             y1="100%"
             x2="100%"
@@ -1955,7 +1798,7 @@ footer strong{
           width="20"
           height="20"
           rx="6"
-          fill="url(#instagramGradient)"/>
+          fill="url(#igGradient)"/>
 
 
         <rect
@@ -1965,7 +1808,7 @@ footer strong{
           height="11"
           rx="3.5"
           fill="none"
-          stroke="#FFFFFF"
+          stroke="#fff"
           stroke-width="1.8"/>
 
 
@@ -1974,7 +1817,7 @@ footer strong{
           cy="12"
           r="2.7"
           fill="none"
-          stroke="#FFFFFF"
+          stroke="#fff"
           stroke-width="1.8"/>
 
 
@@ -1982,7 +1825,7 @@ footer strong{
           cx="17.2"
           cy="6.8"
           r="1.1"
-          fill="#FFFFFF"/>
+          fill="#fff"/>
 
 
       </svg>
@@ -2029,14 +1872,12 @@ footer strong{
 
   <div class="simple-card">
 
-
     <p>
       Movie Wala is an entertainment destination created
       for movie lovers. Explore movies, web series,
       trending entertainment and cinematic updates —
       all in one place.
     </p>
-
 
   </div>
 
@@ -2050,23 +1891,46 @@ footer strong{
 
 <footer>
 
-
   <p>
     © 2026 <strong>MOVIE WALA</strong>.
     All Rights Reserved.
   </p>
 
-
   <p style="margin-top:10px">
     Har Scene Mein Entertainment 🎬
   </p>
-
 
 </footer>
 
 
 
 <script>
+
+/* =====================================================
+   HERO SLIDER
+===================================================== */
+
+const heroSlides =
+  document.querySelectorAll(".hero-slide");
+
+let heroIndex = 0;
+
+setInterval(function(){
+
+  heroSlides[heroIndex]
+    .classList.remove("active");
+
+  heroIndex++;
+
+  if(heroIndex >= heroSlides.length){
+    heroIndex = 0;
+  }
+
+  heroSlides[heroIndex]
+    .classList.add("active");
+
+},5000);
+
 
 /* =====================================================
    MOBILE MENU
@@ -2079,7 +1943,10 @@ const navMenu =
   document.getElementById("navMenu");
 
 const menuSlides =
-  document.querySelectorAll(".menu-bg-slide");
+  document.querySelectorAll(".menu-slide");
+
+const menuSlider =
+  document.getElementById("menuSlides");
 
 let menuIndex = 0;
 
@@ -2090,44 +1957,26 @@ let menuTimer = null;
 
 function startMenuSlider(){
 
-  if(menuTimer !== null){
+  if(menuTimer){
     return;
   }
 
-
   menuIndex = 0;
 
-
-  menuSlides.forEach((slide,index)=>{
-
-    slide.classList.toggle(
-      "active",
-      index === 0
-    );
-
-  });
+  menuSlider.style.transform =
+    "translateX(0%)";
 
 
-  menuTimer = setInterval(()=>{
-
-
-    menuSlides[menuIndex]
-      .classList.remove("active");
-
+  menuTimer = setInterval(function(){
 
     menuIndex++;
 
-
     if(menuIndex >= menuSlides.length){
-
       menuIndex = 0;
-
     }
 
-
-    menuSlides[menuIndex]
-      .classList.add("active");
-
+    menuSlider.style.transform =
+      "translateX(-" + (menuIndex * 100) + "%)";
 
   },3500);
 
@@ -2138,7 +1987,7 @@ function startMenuSlider(){
 
 function stopMenuSlider(){
 
-  if(menuTimer !== null){
+  if(menuTimer){
 
     clearInterval(menuTimer);
 
@@ -2155,21 +2004,27 @@ menuBtn.addEventListener(
   "click",
   function(){
 
-    const opened =
+    const isOpen =
       navMenu.classList.toggle("open");
 
 
-    if(opened){
+    if(isOpen){
 
-      menuBtn.textContent="✕";
+      menuBtn.textContent = "✕";
 
       startMenuSlider();
 
+      document.body.style.overflow =
+        "hidden";
+
     }else{
 
-      menuBtn.textContent="☰";
+      menuBtn.textContent = "☰";
 
       stopMenuSlider();
+
+      document.body.style.overflow =
+        "";
 
     }
 
@@ -2177,7 +2032,7 @@ menuBtn.addEventListener(
 );
 
 
-/* CLOSE MENU AFTER LINK */
+/* CLOSE AFTER CLICK */
 
 document
   .querySelectorAll(".nav a")
@@ -2189,9 +2044,12 @@ document
 
         navMenu.classList.remove("open");
 
-        menuBtn.textContent="☰";
+        menuBtn.textContent = "☰";
 
         stopMenuSlider();
+
+        document.body.style.overflow =
+          "";
 
       }
     );
@@ -2199,43 +2057,7 @@ document
   });
 
 
-/* =====================================================
-   HERO SLIDER
-===================================================== */
-
-const heroSlides =
-  document.querySelectorAll(".hero-slide");
-
-let heroIndex = 0;
-
-
-setInterval(function(){
-
-
-  heroSlides[heroIndex]
-    .classList.remove("active");
-
-
-  heroIndex++;
-
-
-  if(heroIndex >= heroSlides.length){
-
-    heroIndex = 0;
-
-  }
-
-
-  heroSlides[heroIndex]
-    .classList.add("active");
-
-
-},5000);
-
-
-/* =====================================================
-   ESC KEY
-===================================================== */
+/* ESC CLOSE */
 
 document.addEventListener(
   "keydown",
@@ -2245,9 +2067,11 @@ document.addEventListener(
 
       navMenu.classList.remove("open");
 
-      menuBtn.textContent="☰";
+      menuBtn.textContent = "☰";
 
       stopMenuSlider();
+
+      document.body.style.overflow = "";
 
     }
 
