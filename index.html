@@ -4,1612 +4,1076 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Movie Wala - Movies, Web Series & LIVE</title>
+<title>Movie Wala — Entertainment</title>
 
 <style>
+:root{
+  --bg:#050505;
+  --card:#111;
+  --red:#e50914;
+  --gold:#ffbf00;
+  --muted:#aaa;
+}
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 html{
-    scroll-behavior:smooth;
+  scroll-behavior:smooth;
 }
 
 body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:#080808;
-    color:#fff;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:#fff;
 }
 
-/* ================= NAVBAR ================= */
-
-.navbar{
-    position:sticky;
-    top:0;
-    z-index:999;
-    min-height:78px;
-    background:#050505;
-    border-bottom:1px solid #292929;
-
-    display:flex;
-    align-items:center;
-    padding:10px 5%;
-    gap:30px;
+/* NAVBAR */
+.nav{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:50;
+  height:72px;
+  display:flex;
+  align-items:center;
+  padding:0 5%;
+  gap:28px;
+  background:linear-gradient(#050505,rgba(5,5,5,.94));
 }
 
 .logo{
-    width:58px;
-    height:58px;
-    object-fit:cover;
-    border-radius:50%;
+  width:120px;
+  height:58px;
+  object-fit:contain;
+  border-radius:8px;
 }
 
-.brand{
-    font-size:27px;
-    font-weight:bold;
-    margin-left:-18px;
-    white-space:nowrap;
+.nav a{
+  color:#ddd;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:600;
 }
 
-.brand span{
-    color:#ff1515;
+.nav a:hover{
+  color:#fff;
 }
 
-.nav-links{
-    display:flex;
-    gap:25px;
-    margin-left:10px;
-}
-
-.nav-links a{
-    color:#ddd;
-    text-decoration:none;
-    font-size:15px;
-    font-weight:bold;
-    white-space:nowrap;
-}
-
-.nav-links a:hover{
-    color:#ff1515;
+.live-link{
+  color:#fff!important;
+  background:var(--red);
+  padding:9px 13px;
+  border-radius:5px;
 }
 
 .search{
-    margin-left:auto;
-    background:#151515;
-    border:1px solid #444;
-    border-radius:30px;
-    padding:12px 18px;
-    color:#fff;
-    width:220px;
-    outline:none;
+  margin-left:auto;
+  background:#171717;
+  border:1px solid #333;
+  color:#fff;
+  padding:11px 15px;
+  border-radius:7px;
+  width:190px;
+  outline:none;
 }
 
-.search::placeholder{
-    color:#999;
-}
-
-/* ================= HERO ================= */
-
+/* HERO */
 .hero{
-    min-height:450px;
+  min-height:610px;
+  padding:130px 6% 70px;
+  display:flex;
+  align-items:flex-end;
+  position:relative;
+  overflow:hidden;
 
-    background:
-    linear-gradient(
-        to right,
-        rgba(0,0,0,.95),
-        rgba(0,0,0,.35)
-    ),
-    url("movie-wala-banner.jpeg");
+  background:
+  linear-gradient(
+    90deg,
+    #050505 0%,
+    rgba(5,5,5,.72) 36%,
+    rgba(5,5,5,.18) 75%,
+    #050505 100%
+  ),
+  linear-gradient(
+    0deg,
+    #050505 0%,
+    transparent 35%
+  ),
+  url("movie-wala-banner.jpeg") center/cover no-repeat;
+}
 
-    background-size:cover;
-    background-position:center;
+.hero:after{
+  content:"";
+  position:absolute;
+  inset:-20%;
+  background:
+  linear-gradient(
+    115deg,
+    transparent 35%,
+    rgba(255,255,255,.08) 45%,
+    transparent 55%
+  );
+  animation:sweep 7s linear infinite;
+  pointer-events:none;
+}
 
-    display:flex;
-    align-items:center;
-
-    padding:60px 8%;
+@keyframes sweep{
+  0%{
+    transform:translateX(-45%);
+  }
+  100%{
+    transform:translateX(45%);
+  }
 }
 
 .hero-content{
-    max-width:680px;
+  max-width:620px;
+  position:relative;
+  z-index:2;
 }
 
-.hero h1{
-    font-size:58px;
-    line-height:1.1;
-    margin-bottom:18px;
+.tag{
+  display:inline-block;
+  background:var(--red);
+  padding:7px 12px;
+  border-radius:4px;
+  font-size:12px;
+  font-weight:bold;
+  margin-bottom:15px;
 }
 
-.hero h1 span{
-    color:#ff1515;
+h1{
+  font-size:58px;
+  line-height:.98;
+  margin-bottom:16px;
+  text-shadow:0 5px 25px #000;
 }
 
 .hero p{
-    font-size:19px;
-    line-height:1.7;
-    color:#ddd;
-    margin-bottom:28px;
+  color:#ddd;
+  line-height:1.6;
+  margin-bottom:22px;
 }
 
-.hero-buttons{
-    display:flex;
-    gap:15px;
-    flex-wrap:wrap;
+.btn{
+  display:inline-block;
+  border:0;
+  border-radius:6px;
+  padding:12px 20px;
+  font-weight:bold;
+  cursor:pointer;
+  text-decoration:none;
+  margin-right:8px;
 }
 
-.hero-btn{
-    display:inline-block;
-    background:#e50914;
-    color:#fff;
-    text-decoration:none;
-    padding:14px 25px;
-    border-radius:7px;
-    font-weight:bold;
-    transition:.3s;
+.primary{
+  background:#fff;
+  color:#000;
 }
 
-.hero-btn:hover{
-    transform:translateY(-3px);
+.secondary{
+  background:#333;
+  color:#fff;
 }
 
-.hero-btn.secondary{
-    background:#222;
-    border:1px solid #555;
+.primary:hover{
+  background:#ddd;
 }
 
-/* ================= SECTION ================= */
-
-section{
-    width:90%;
-    max-width:1200px;
-    margin:65px auto;
+.secondary:hover{
+  background:#444;
 }
 
-.section-title{
-    font-size:32px;
-    margin-bottom:25px;
+/* LIVE SECTION */
+.live-section{
+  padding:34px 5% 20px;
+  position:relative;
+  overflow:hidden;
+
+  background:
+  radial-gradient(
+    circle at 15% 50%,
+    rgba(229,9,20,.22),
+    transparent 30%
+  ),
+  radial-gradient(
+    circle at 85% 30%,
+    rgba(255,191,0,.12),
+    transparent 28%
+  ),
+  #070707;
 }
 
-.section-title span{
-    color:#ff1515;
+.live-shell{
+  max-width:1450px;
+  margin:auto;
+  border:1px solid #3b2520;
+  border-radius:18px;
+  overflow:hidden;
+  position:relative;
+  background:#080808;
+  box-shadow:0 0 45px rgba(229,9,20,.16);
 }
 
-/* ================= LIVE ================= */
+.live-shell:before{
+  content:"";
+  position:absolute;
+  inset:0;
 
-.live-box{
-    background:
-    linear-gradient(
-        135deg,
-        #1c0000,
-        #0c0c0c
-    );
+  background:
+  linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255,50,30,.10),
+    transparent 70%
+  );
 
-    border:1px solid #3a3a3a;
-    border-radius:18px;
+  animation:lightMove 5s linear infinite;
+  pointer-events:none;
+}
 
-    padding:18px;
+@keyframes lightMove{
+  0%{
+    transform:translateX(-80%);
+  }
 
-    box-shadow:
-    0 0 35px rgba(255,0,0,.12);
+  100%{
+    transform:translateX(80%);
+  }
 }
 
 .live-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+  padding:18px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid #251515;
+  position:relative;
+  z-index:2;
+}
 
-    margin-bottom:16px;
+.live-title{
+  font-size:26px;
+  font-weight:800;
+  letter-spacing:.5px;
+}
+
+.live-title span{
+  color:var(--red);
 }
 
 .live-status{
-    display:flex;
-    align-items:center;
-    gap:9px;
-
-    font-size:18px;
-    font-weight:bold;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-weight:bold;
 }
 
-.live-dot{
-    width:12px;
-    height:12px;
-
-    background:#ff1515;
-
-    border-radius:50%;
-
-    box-shadow:0 0 15px red;
-
-    animation:pulse 1.2s infinite;
+.dot{
+  width:10px;
+  height:10px;
+  background:#ff1d25;
+  border-radius:50%;
+  box-shadow:0 0 14px #ff1d25;
+  animation:pulse 1.2s infinite;
 }
 
 @keyframes pulse{
-
-    0%{
-        opacity:1;
-        transform:scale(1);
-    }
-
-    50%{
-        opacity:.4;
-        transform:scale(.7);
-    }
-
-    100%{
-        opacity:1;
-        transform:scale(1);
-    }
-
+  50%{
+    opacity:.35;
+    transform:scale(.7);
+  }
 }
 
-.channel-btn{
-    background:#ff1010;
-    color:#fff;
-
-    padding:10px 18px;
-
-    border-radius:6px;
-
-    text-decoration:none;
-
-    font-weight:bold;
-    font-size:14px;
-
-    transition:.3s;
+/* LIVE GRID */
+.live-grid{
+  display:grid;
+  grid-template-columns:42% 58%;
+  min-height:390px;
+  position:relative;
+  z-index:2;
 }
 
-.channel-btn:hover{
-    background:#d90000;
+/* CINEMATIC PROMO */
+.live-promo{
+  padding:45px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+
+  background:
+  linear-gradient(
+    90deg,
+    rgba(0,0,0,.95),
+    rgba(25,0,0,.75)
+  ),
+  url("movie-wala-live-cinematic.png") center/cover;
 }
 
-.video-container{
-    position:relative;
+.live-promo:after{
+  content:"";
+  position:absolute;
+  width:240px;
+  height:240px;
+  border-radius:50%;
+  border:1px solid rgba(255,191,0,.5);
+  right:-70px;
+  top:35px;
 
-    width:100%;
+  box-shadow:0 0 50px rgba(255,50,0,.2);
 
-    aspect-ratio:16/9;
-
-    background:#000;
-
-    border-radius:12px;
-
-    overflow:hidden;
+  animation:spin 14s linear infinite;
 }
 
-.video-container iframe{
-    width:100%;
-    height:100%;
-    border:0;
+@keyframes spin{
+  to{
+    transform:rotate(360deg);
+  }
 }
 
-/* ================= MOVIE CARDS ================= */
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:20px;
+.live-kicker{
+  color:#ffbf00;
+  letter-spacing:5px;
+  font-size:13px;
+  font-weight:bold;
 }
 
-.card{
-    background:#141414;
+.live-promo h2{
+  font-size:68px;
+  line-height:.9;
+  margin:12px 0 5px;
 
-    border-radius:12px;
-
-    overflow:hidden;
-
-    border:1px solid #282828;
-
-    transition:.3s;
+  text-shadow:
+  0 0 25px rgba(255,30,0,.45);
 }
 
-.card:hover{
-    transform:translateY(-7px);
-
-    border-color:#e50914;
-
-    box-shadow:
-    0 10px 30px rgba(255,0,0,.12);
+.live-promo h2 span{
+  color:var(--red);
 }
 
-.poster{
-    height:270px;
-
-    background:
-    linear-gradient(
-        135deg,
-        #290000,
-        #222
-    );
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    font-size:55px;
+.live-promo p{
+  color:#ddd;
+  max-width:430px;
+  line-height:1.6;
+  margin:16px 0 24px;
 }
 
-.card-content{
-    padding:17px;
+.watch{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:max-content;
+
+  background:var(--red);
+  color:#fff;
+  text-decoration:none;
+
+  padding:14px 22px;
+  border-radius:7px;
+  font-weight:800;
+
+  box-shadow:0 0 22px rgba(229,9,20,.35);
 }
 
-.card h3{
-    margin-bottom:8px;
+.watch:hover{
+  transform:translateY(-2px);
+  box-shadow:0 0 30px rgba(229,9,20,.55);
 }
 
-.card p{
-    color:#999;
+/* VIDEO */
+.live-video{
+  padding:18px;
+  background:#020202;
+  display:flex;
+  align-items:center;
 }
 
-/* ================= TRENDING ================= */
+.video-frame{
+  width:100%;
+  aspect-ratio:16/9;
 
-.trending{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
+  border:2px solid #9b1717;
+  border-radius:13px;
+  overflow:hidden;
+
+  box-shadow:0 0 30px rgba(229,9,20,.25);
+
+  background:#000;
 }
 
-.trend{
-    background:#151515;
-
-    padding:25px;
-
-    border-radius:12px;
-
-    border-left:4px solid #e50914;
-
-    transition:.3s;
+.video-frame iframe{
+  width:100%;
+  height:100%;
+  border:0;
 }
 
-.trend:hover{
-    transform:translateY(-5px);
-}
+/* LIVE STATS */
+.live-stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-top:1px solid #2a1717;
 
-.trend-number{
-    font-size:40px;
-
-    font-weight:bold;
-
-    color:#e50914;
-
-    margin-bottom:8px;
-}
-
-.trend p{
-    color:#999;
-
-    margin-top:8px;
-
-    line-height:1.5;
-}
-
-/* ================= STATS ================= */
-
-.stats{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:20px;
-    text-align:center;
+  position:relative;
+  z-index:2;
 }
 
 .stat{
-    background:#121212;
-
-    padding:30px 15px;
-
-    border-radius:12px;
-
-    border:1px solid #242424;
+  padding:18px 22px;
+  border-right:1px solid #2a1717;
 }
 
-.stat h2{
-    color:#ff1515;
-
-    font-size:35px;
-
-    margin-bottom:8px;
+.stat:last-child{
+  border-right:0;
 }
 
-/* ================= SOCIAL MEDIA ================= */
-
-.social-section{
-    background:
-    linear-gradient(
-        135deg,
-        #180000,
-        #0c0c0c
-    );
-
-    border:1px solid #292929;
-
-    border-radius:20px;
-
-    padding:45px 30px;
-
-    text-align:center;
+.stat b{
+  display:block;
+  color:var(--red);
+  font-size:14px;
+  margin-bottom:5px;
 }
 
-.social-section h2{
-    font-size:35px;
-
-    margin-bottom:10px;
+.stat span{
+  color:#bbb;
+  font-size:13px;
 }
 
-.social-section h2 span{
-    color:#ff1515;
+/* MOVIES */
+.section{
+  padding:30px 5% 10px;
 }
 
-.social-section > p{
-    color:#aaa;
-
-    margin-bottom:32px;
+.section h2{
+  font-size:23px;
+  margin-bottom:18px;
 }
 
-.social-grid{
-    display:grid;
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:20px;
-
-    max-width:930px;
-
-    margin:auto;
+.row{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:15px;
 }
 
-.social-card{
-    padding:30px 20px;
-
-    border-radius:16px;
-
-    text-decoration:none;
-
-    color:#fff;
-
-    transition:.35s;
-
-    border:1px solid #333;
-
-    background:#151515;
+.card{
+  background:var(--card);
+  border-radius:7px;
+  overflow:hidden;
+  transition:.25s;
+  position:relative;
+  min-height:235px;
+  border:1px solid #202020;
 }
 
-.social-card:hover{
-    transform:translateY(-8px);
-
-    box-shadow:0 15px 35px rgba(0,0,0,.4);
+.card:hover{
+  transform:scale(1.04);
+  z-index:3;
+  box-shadow:0 14px 35px #000;
 }
 
-/* SOCIAL ICON */
+.poster{
+  height:170px;
 
-.social-icon{
-    width:82px;
-    height:82px;
+  background:
+  linear-gradient(
+    135deg,
+    #202020,
+    #3b0d0d 55%,
+    #111
+  );
 
-    margin:0 auto 17px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:20px;
-
-    transition:.35s;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:38px;
 }
 
-.social-icon svg{
-    width:54px;
-    height:54px;
+.info{
+  padding:11px;
 }
 
-.social-card:hover .social-icon{
-    transform:scale(1.1) rotate(2deg);
+.title{
+  font-weight:bold;
+  font-size:14px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 
-/* YOUTUBE */
-
-.youtube-card:hover{
-    border-color:#ff0000;
+.meta{
+  font-size:12px;
+  color:var(--muted);
+  margin-top:6px;
 }
 
-.youtube-card .social-icon{
-    background:#ff0000;
+.rating{
+  color:var(--gold);
+  font-weight:bold;
 }
 
-.youtube-card .social-icon svg{
-    fill:#fff;
+.badge{
+  position:absolute;
+  top:8px;
+  left:8px;
+  background:var(--red);
+  padding:4px 7px;
+  border-radius:4px;
+  font-size:10px;
+  font-weight:bold;
 }
 
-/* FACEBOOK */
-
-.facebook-card:hover{
-    border-color:#1877f2;
+/* SOCIAL */
+.social{
+  padding:35px 5%;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
 }
 
-.facebook-card .social-icon{
-    background:#1877f2;
+.social a{
+  padding:25px;
+  background:#101010;
+  border:1px solid #262626;
+  border-radius:10px;
+  color:#fff;
+  text-decoration:none;
+  text-align:center;
+  font-weight:bold;
 }
 
-.facebook-card .social-icon svg{
-    fill:#fff;
+.social a:hover{
+  border-color:#e50914;
+  transform:translateY(-3px);
 }
 
-/* INSTAGRAM */
-
-.instagram-card:hover{
-    border-color:#e1306c;
+/* ABOUT */
+.about{
+  margin:35px 5% 70px;
+  padding:28px;
+  border:1px solid #262626;
+  background:#101010;
+  border-radius:10px;
 }
 
-.instagram-card .social-icon{
-    background:
-    linear-gradient(
-        135deg,
-        #833ab4,
-        #fd1d1d,
-        #fcb045
-    );
+.about p{
+  color:#aaa;
+  line-height:1.7;
+  margin-top:10px;
 }
 
-.instagram-card .social-icon svg{
-    fill:#fff;
+/* FOOTER */
+.footer{
+  text-align:center;
+  padding:30px;
+  color:#777;
+  border-top:1px solid #222;
 }
 
-.social-card h3{
-    font-size:21px;
-    margin-bottom:8px;
-}
-
-.social-card p{
-    color:#999;
-
-    font-size:14px;
-
-    margin-bottom:20px;
-}
-
-.social-button{
-    display:inline-block;
-
-    padding:10px 20px;
-
-    border-radius:7px;
-
-    font-size:13px;
-
-    font-weight:bold;
-
-    color:#fff;
-}
-
-/* BUTTON COLORS */
-
-.youtube-card .social-button{
-    background:#ff0000;
-}
-
-.facebook-card .social-button{
-    background:#1877f2;
-}
-
-.instagram-card .social-button{
-    background:#e1306c;
-}
-
-/* ================= FOOTER ================= */
-
-footer{
-    margin-top:70px;
-
-    background:#030303;
-
-    border-top:1px solid #222;
-
-    padding:40px 8%;
-
-    text-align:center;
-
-    color:#777;
-}
-
-footer strong{
-    color:#fff;
-}
-
-footer span{
-    color:#e50914;
-}
-
-.footer-links{
-    display:flex;
-
-    justify-content:center;
-
-    gap:25px;
-
-    margin-top:18px;
-
-    flex-wrap:wrap;
-}
-
-.footer-links a{
-    color:#aaa;
-
-    text-decoration:none;
-
-    font-size:14px;
-}
-
-.footer-links a:hover{
-    color:#ff1515;
-}
-
-/* ================= SEARCH ================= */
-
-.card.hide{
-    display:none;
-}
-
-/* ================= RESPONSIVE ================= */
-
+/* TABLET */
 @media(max-width:1000px){
 
-    .navbar{
-        gap:15px;
-    }
+  .row{
+    grid-template-columns:repeat(4,1fr);
+  }
 
-    .nav-links{
-        gap:12px;
-    }
+  .live-grid{
+    grid-template-columns:1fr;
+  }
 
-    .search{
-        width:160px;
-    }
+  .live-promo{
+    min-height:330px;
+  }
 
-    .cards{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .social-grid{
-        grid-template-columns:repeat(3,1fr);
-    }
-
+  .live-stats{
+    grid-template-columns:repeat(2,1fr);
+  }
 }
 
-@media(max-width:750px){
+/* MOBILE */
+@media(max-width:700px){
 
-    .navbar{
-        flex-wrap:wrap;
-        padding:12px 4%;
-    }
+  .nav{
+    gap:10px;
+    height:62px;
+    padding:0 4%;
+  }
 
-    .brand{
-        font-size:23px;
-    }
+  .nav a{
+    display:none;
+  }
 
-    .nav-links{
-        order:3;
+  .logo{
+    width:105px;
+  }
 
-        width:100%;
+  .search{
+    width:150px;
+  }
 
-        justify-content:center;
+  .hero{
+    min-height:540px;
+    padding:105px 5% 45px;
+  }
 
-        overflow-x:auto;
+  h1{
+    font-size:42px;
+  }
 
-        padding:8px 0;
-    }
+  .live-section{
+    padding:24px 4% 10px;
+  }
 
-    .search{
-        order:4;
+  .live-top{
+    padding:15px;
+  }
 
-        width:100%;
-    }
+  .live-title{
+    font-size:20px;
+  }
 
-    .hero{
-        min-height:400px;
+  .live-promo{
+    padding:30px 24px;
+  }
 
-        padding:50px 6%;
-    }
+  .live-promo h2{
+    font-size:52px;
+  }
 
-    .hero h1{
-        font-size:43px;
-    }
+  .live-video{
+    padding:10px;
+  }
 
-    .hero p{
-        font-size:17px;
-    }
+  .live-stats{
+    grid-template-columns:1fr 1fr;
+  }
 
-    .trending{
-        grid-template-columns:1fr;
-    }
+  .stat{
+    padding:14px;
+  }
 
-    .stats{
-        grid-template-columns:repeat(2,1fr);
-    }
+  .row{
+    grid-template-columns:repeat(2,1fr);
+  }
 
-    .social-grid{
-        grid-template-columns:1fr;
-    }
+  .poster{
+    height:190px;
+  }
 
+  .social{
+    grid-template-columns:1fr;
+    margin:0 4%;
+  }
 }
-
-@media(max-width:500px){
-
-    .logo{
-        width:48px;
-        height:48px;
-    }
-
-    .brand{
-        margin-left:-8px;
-    }
-
-    .hero h1{
-        font-size:36px;
-    }
-
-    .hero p{
-        font-size:16px;
-    }
-
-    section{
-        width:94%;
-        margin:45px auto;
-    }
-
-    .section-title{
-        font-size:27px;
-    }
-
-    .cards{
-        grid-template-columns:repeat(2,1fr);
-        gap:12px;
-    }
-
-    .poster{
-        height:190px;
-        font-size:42px;
-    }
-
-    .card-content{
-        padding:12px;
-    }
-
-    .card h3{
-        font-size:16px;
-    }
-
-    .card p{
-        font-size:13px;
-    }
-
-    .live-top{
-        align-items:flex-start;
-
-        gap:10px;
-
-        flex-direction:column;
-    }
-
-    .social-section{
-        padding:35px 15px;
-    }
-
-}
-
-/* ================= EXTRA MOBILE ================= */
-
-@media(max-width:380px){
-
-    .cards{
-        grid-template-columns:1fr;
-    }
-
-    .stats{
-        grid-template-columns:1fr;
-    }
-
-}
-
 </style>
 </head>
 
-
 <body>
 
+<!-- NAVBAR -->
+<header class="nav">
 
-<!-- ================= NAVBAR ================= -->
+  <img
+    class="logo"
+    src="movie-wala-logo.jpeg"
+    alt="Movie Wala"
+  >
 
-<nav class="navbar">
+  <a href="#home">Home</a>
 
-    <img
-        class="logo"
-        src="movie-wala-logo.jpeg"
-        alt="Movie Wala Logo"
-    >
+  <a href="#movies">Movies</a>
 
-    <div class="brand">
-        Movie <span>Wala</span>
-    </div>
+  <a href="#series">Web Series</a>
 
-    <div class="nav-links">
+  <a class="live-link" href="#live">
+    LIVE
+  </a>
 
-        <a href="#">
-            Home
-        </a>
+  <input
+    id="search"
+    class="search"
+    placeholder="🔍 Search movies..."
+    aria-label="Search movies"
+  >
 
-        <a href="#live">
-            🔴 LIVE
-        </a>
-
-        <a href="#movies">
-            Movies
-        </a>
-
-        <a href="#trending">
-            Trending
-        </a>
-
-        <a href="#series">
-            Web Series
-        </a>
-
-    </div>
-
-    <input
-        class="search"
-        id="searchBox"
-        type="text"
-        placeholder="🔎 Search movies..."
-    >
-
-</nav>
+</header>
 
 
+<!-- HERO -->
+<section id="home" class="hero">
 
-<!-- ================= HERO ================= -->
+  <div class="hero-content">
 
-<div class="hero">
+    <span class="tag">
+      MOVIE WALA
+    </span>
 
-    <div class="hero-content">
+    <h1>
+      Har Scene Mein Entertainment
+    </h1>
 
-        <h1>
-            Welcome to
-            <span>Movie Wala</span>
-        </h1>
+    <p>
+      Movies, web series, trailers, reviews and the latest
+      entertainment updates — all in one cinematic place.
+    </p>
 
-        <p>
-            Movies, Web Series, Trending Entertainment
-            aur Movie Wala Official ke latest videos
-            ek hi jagah.
-        </p>
+    <a class="btn primary" href="#movies">
+      ▶ Explore Movies
+    </a>
 
-        <div class="hero-buttons">
+    <a class="btn secondary" href="#live">
+      🔴 Watch LIVE
+    </a>
 
-            <a
-                href="#live"
-                class="hero-btn">
-                🔴 WATCH LIVE
-            </a>
-
-            <a
-                href="#social"
-                class="hero-btn secondary">
-                ❤️ FOLLOW US
-            </a>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-
-<!-- ================= LIVE ================= -->
-
-<section id="live">
-
-    <h2 class="section-title">
-        🔴 <span>Movie Wala LIVE</span>
-    </h2>
-
-    <div class="live-box">
-
-        <div class="live-top">
-
-            <div class="live-status">
-
-                <span class="live-dot"></span>
-
-                LIVE NOW
-
-            </div>
-
-            <a
-                href="https://www.youtube.com/@MovieWalaOfficial.10/live"
-                target="_blank"
-                class="channel-btn">
-
-                🔴 OPEN YOUTUBE LIVE
-
-            </a>
-
-        </div>
-
-
-        <div class="video-container">
-
-            <iframe
-                src="https://www.youtube.com/embed/live_stream?channel=UCkWNKAneWMny2dSDXebrctQ"
-                title="Movie Wala Official LIVE"
-                allow="autoplay; encrypted-media; picture-in-picture"
-                allowfullscreen>
-            </iframe>
-
-        </div>
-
-    </div>
+  </div>
 
 </section>
 
 
+<!-- LIVE -->
+<section id="live" class="live-section">
 
-<!-- ================= FEATURED VIDEO ================= -->
+  <div class="live-shell">
 
-<section id="featured">
+    <div class="live-top">
 
-    <h2 class="section-title">
+      <div class="live-title">
+        MOVIE WALA
+        <span>LIVE</span>
+      </div>
 
-        🎬 <span>Featured Video</span>
-
-    </h2>
-
-    <div class="live-box">
-
-        <div class="video-container">
-
-            <iframe
-                src="https://www.youtube.com/embed/HzJ0dZ7meZs"
-                title="Movie Wala Official Featured Video"
-                allow="autoplay; encrypted-media; picture-in-picture"
-                allowfullscreen>
-            </iframe>
-
-        </div>
+      <div class="live-status">
+        <i class="dot"></i>
+        LIVE NOW
+      </div>
 
     </div>
 
-</section>
 
+    <div class="live-grid">
 
+      <!-- LEFT CINEMATIC ANIMATION -->
+      <div class="live-promo">
 
-<!-- ================= MOVIES ================= -->
-
-<section id="movies">
-
-    <h2 class="section-title">
-
-        🎬 <span>Popular Movies</span>
-
-    </h2>
-
-
-    <div class="cards" id="movieCards">
-
-
-        <div class="card">
-
-            <div class="poster">
-                🎬
-            </div>
-
-            <div class="card-content">
-
-                <h3>
-                    Latest Bollywood
-                </h3>
-
-                <p>
-                    Trending Movies
-                </p>
-
-            </div>
-
+        <div class="live-kicker">
+          ENTERTAINMENT KI DUNIYA
         </div>
-
-
-        <div class="card">
-
-            <div class="poster">
-                🍿
-            </div>
-
-            <div class="card-content">
-
-                <h3>
-                    Blockbuster Hits
-                </h3>
-
-                <p>
-                    Popular Movies
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="poster">
-                🔥
-            </div>
-
-            <div class="card-content">
-
-                <h3>
-                    Trending Movies
-                </h3>
-
-                <p>
-                    Currently Trending
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="poster">
-                ⭐
-            </div>
-
-            <div class="card-content">
-
-                <h3>
-                    Top Rated
-                </h3>
-
-                <p>
-                    Best Entertainment
-                </p>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- ================= TRENDING ================= -->
-
-<section id="trending">
-
-    <h2 class="section-title">
-
-        🔥 <span>Trending Now</span>
-
-    </h2>
-
-
-    <div class="trending">
-
-
-        <div class="trend">
-
-            <div class="trend-number">
-                01
-            </div>
-
-            <h3>
-                Movie Wala Shorts
-            </h3>
-
-            <p>
-                Latest short videos and entertainment.
-            </p>
-
-        </div>
-
-
-        <div class="trend">
-
-            <div class="trend-number">
-                02
-            </div>
-
-            <h3>
-                Bollywood Updates
-            </h3>
-
-            <p>
-                Latest movie and entertainment updates.
-            </p>
-
-        </div>
-
-
-        <div class="trend">
-
-            <div class="trend-number">
-                03
-            </div>
-
-            <h3>
-                Web Series
-            </h3>
-
-            <p>
-                Popular web series and latest releases.
-            </p>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- ================= WEB SERIES ================= -->
-
-<section id="series">
-
-    <h2 class="section-title">
-
-        📺 <span>Web Series</span>
-
-    </h2>
-
-
-    <div class="cards">
-
-
-        <div class="card">
-
-            <div class="poster">
-                📺
-            </div>
-
-            <div class="card-content">
-
-                <h3>
-                    Popular Series
-                </h3>
-
-                <p>
-                    Latest Web Series
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="poster">
-                🎭
-            </div>
-
-            <div class="card-content">
-
-                <h3>
-                    Drama Series
-                </h3>
-
-                <p>
-                    Top Drama Content
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="poster">
-                ⚡
-            </div>
-
-            <div class="card-content">
-
-                <h3>
-                    Action Series
-                </h3>
-
-                <p>
-                    Action & Thriller
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="poster">
-                ⭐
-            </div>
-
-            <div class="card-content">
-
-                <h3>
-                    Top Series
-                </h3>
-
-                <p>
-                    Best Web Series
-                </p>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- ================= STATS ================= -->
-
-<section>
-
-    <div class="stats">
-
-
-        <div class="stat">
-
-            <h2>
-                100+
-            </h2>
-
-            <p>
-                Movies
-            </p>
-
-        </div>
-
-
-        <div class="stat">
-
-            <h2>
-                50+
-            </h2>
-
-            <p>
-                Web Series
-            </p>
-
-        </div>
-
-
-        <div class="stat">
-
-            <h2>
-                24/7
-            </h2>
-
-            <p>
-                Entertainment
-            </p>
-
-        </div>
-
-
-        <div class="stat">
-
-            <h2>
-                🎬
-            </h2>
-
-            <p>
-                Movie Wala
-            </p>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- ================= SOCIAL MEDIA ================= -->
-
-<section id="social">
-
-    <div class="social-section">
 
         <h2>
-            ❤️ Follow
-            <span>Movie Wala</span>
+          LIVE
+          <br>
+          <span>NOW</span>
         </h2>
 
         <p>
-            Latest videos, LIVE updates aur entertainment
-            ke liye humare social media pages ko follow karein.
+          Movie Wala Official ka cinematic live zone.
+          Jab YouTube par live broadcast active hoga,
+          video yahin play hoga.
         </p>
 
+        <a
+          class="watch"
+          href="https://www.youtube.com/@MovieWalaOfficial.10/live"
+          target="_blank"
+          rel="noopener"
+        >
+          ◉ WATCH LIVE NOW
+        </a>
 
-        <div class="social-grid">
-
-
-            <!-- ================= YOUTUBE ================= -->
-
-            <a
-                href="https://www.youtube.com/@MovieWalaOfficial.10"
-                target="_blank"
-                class="social-card youtube-card">
-
-                <div class="social-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        aria-label="YouTube">
-
-                        <path d="
-                        M23.5 6.2
-                        a3 3 0 0 0-2.1-2.1
-                        C19.5 3.5 12 3.5 12 3.5
-                        s-7.5 0-9.4.6
-                        A3 3 0 0 0 .5 6.2
-                        A31 31 0 0 0 0 12
-                        a31 31 0 0 0 .5 5.8
-                        3 3 0 0 0 2.1 2.1
-                        c1.9.6 9.4.6 9.4.6
-                        s7.5 0 9.4-.6
-                        a3 3 0 0 0 2.1-2.1
-                        A31 31 0 0 0 24 12
-                        a31 31 0 0 0-.5-5.8z"/>
-
-                        <path
-                            fill="#ff0000"
-                            d="M9.5 15.5v-7l6 3.5z"/>
-
-                    </svg>
-
-                </div>
-
-                <h3>
-                    YouTube
-                </h3>
-
-                <p>
-                    Videos, Shorts & LIVE
-                </p>
-
-                <span class="social-button">
-                    SUBSCRIBE
-                </span>
-
-            </a>
+      </div>
 
 
+      <!-- YOUTUBE LIVE -->
+      <div class="live-video">
 
-            <!-- ================= FACEBOOK ================= -->
+        <div class="video-frame">
 
-            <a
-                href="https://www.facebook.com/share/1MR6Lxzy4f/"
-                target="_blank"
-                class="social-card facebook-card">
-
-                <div class="social-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        aria-label="Facebook">
-
-                        <path d="
-                        M24 12.07
-                        C24 5.4 18.63 0 12 0
-                        S0 5.4 0 12.07
-                        C0 18.09 4.39 23.08
-                        10.13 24v-8.44
-                        H7.08v-3.49h3.05V9.41
-                        c0-3.04 1.79-4.72
-                        4.53-4.72
-                        1.31 0 2.68.24
-                        2.68.24v2.97
-                        h-1.51c-1.49 0-1.96.93
-                        -1.96 1.88v2.3h3.33
-                        l-.53 3.49h-2.8V24
-                        C19.61 23.08 24 18.09 24 12.07z"/>
-
-                    </svg>
-
-                </div>
-
-                <h3>
-                    Facebook
-                </h3>
-
-                <p>
-                    Follow us on Facebook
-                </p>
-
-                <span class="social-button">
-                    FOLLOW PAGE
-                </span>
-
-            </a>
-
-
-
-            <!-- ================= INSTAGRAM ================= -->
-
-            <a
-                href="https://www.instagram.com/moviewalaofficial.10/"
-                target="_blank"
-                class="social-card instagram-card">
-
-                <div class="social-icon">
-
-                    <svg
-                        viewBox="0 0 24 24"
-                        aria-label="Instagram">
-
-                        <path d="
-                        M7 2
-                        C4.24 2 2 4.24 2 7
-                        v10c0 2.76 2.24 5 5 5
-                        h10c2.76 0 5-2.24 5-5V7
-                        c0-2.76-2.24-5-5-5H7zm0 2
-                        h10c1.66 0 3 1.34 3 3v10
-                        c0 1.66-1.34 3-3 3H7
-                        c-1.66 0-3-1.34-3-3V7
-                        c0-1.66 1.34-3 3-3zm5
-                        3.5A4.5 4.5 0 1 0 12 16.5
-                        4.5 4.5 0 0 0 12 7.5zm0 2
-                        A2.5 2.5 0 1 1 12 14.5
-                        A2.5 2.5 0 0 1 12 9.5zm5.5-3
-                        a1.1 1.1 0 1 0 0 2.2
-                        1.1 1.1 0 0 0 0-2.2z"/>
-
-                    </svg>
-
-                </div>
-
-                <h3>
-                    Instagram
-                </h3>
-
-                <p>
-                    Reels, Photos & Updates
-                </p>
-
-                <span class="social-button">
-                    FOLLOW US
-                </span>
-
-            </a>
-
+          <iframe
+            src="https://www.youtube.com/embed/live_stream?channel=UCkWNKAneWMny2dSDXebrctQ"
+            title="Movie Wala Official Live"
+            allow="autoplay; encrypted-media; picture-in-picture"
+            allowfullscreen>
+          </iframe>
 
         </div>
 
+      </div>
+
     </div>
+
+
+    <!-- LIVE INFO -->
+    <div class="live-stats">
+
+      <div class="stat">
+        <b>🔴 WE ARE LIVE</b>
+        <span>
+          Join Movie Wala entertainment
+        </span>
+      </div>
+
+      <div class="stat">
+        <b>▶ LIVE STREAM</b>
+        <span>
+          YouTube official broadcast
+        </span>
+      </div>
+
+      <div class="stat">
+        <b>🎬 MOVIE WALA</b>
+        <span>
+          Movies • Web Series • TV
+        </span>
+      </div>
+
+      <div class="stat">
+        <b>⚡ CINEMATIC</b>
+        <span>
+          Premium streaming experience
+        </span>
+      </div>
+
+    </div>
+
+  </div>
 
 </section>
 
 
+<!-- TRENDING -->
+<section id="movies" class="section">
 
-<!-- ================= FOOTER ================= -->
+  <h2>
+    🔥 Trending Now
+  </h2>
 
-<footer>
+  <div class="row" id="movieGrid"></div>
 
-    <p>
-
-        © 2026
-
-        <strong>
-            Movie <span>Wala</span>
-        </strong>
-
-        — All Rights Reserved.
-
-    </p>
+</section>
 
 
-    <div class="footer-links">
+<!-- TOP RATED -->
+<section class="section">
 
-        <a href="#">
-            Home
-        </a>
+  <h2>
+    ⭐ Top Rated
+  </h2>
 
-        <a href="#live">
-            LIVE
-        </a>
+  <div class="row" id="topGrid"></div>
 
-        <a href="#featured">
-            Featured Video
-        </a>
-
-        <a href="#movies">
-            Movies
-        </a>
-
-        <a href="#trending">
-            Trending
-        </a>
-
-        <a href="#series">
-            Web Series
-        </a>
-
-        <a href="#social">
-            Social Media
-        </a>
-
-    </div>
+</section>
 
 
-    <p style="margin-top:20px;">
+<!-- WEB SERIES -->
+<section id="series" class="section">
 
-        🎬 Movies • 📺 Web Series • 🔥 Trending • 🔴 LIVE
+  <h2>
+    📺 Popular Web Series
+  </h2>
 
-    </p>
+  <div class="row" id="seriesGrid"></div>
+
+</section>
+
+
+<!-- SOCIAL -->
+<section class="section">
+
+  <h2>
+    📱 Follow Movie Wala
+  </h2>
+
+  <div class="social">
+
+    <a
+      href="https://www.youtube.com/@MovieWalaOfficial.10"
+      target="_blank"
+      rel="noopener"
+    >
+      ▶ YouTube Official
+    </a>
+
+    <a
+      href="https://www.facebook.com/share/1MR6Lxzy4f/"
+      target="_blank"
+      rel="noopener"
+    >
+      f Facebook
+    </a>
+
+    <a
+      href="https://www.instagram.com/moviewalaofficial.10/"
+      target="_blank"
+      rel="noopener"
+    >
+      ◎ Instagram
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- ABOUT -->
+<section class="about">
+
+  <h2>
+    🎬 About Movie Wala
+  </h2>
+
+  <p>
+    Movie Wala is your dark cinematic entertainment hub.
+    Add your own movie data, official trailers and legal
+    viewing links to grow this production website.
+  </p>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+
+  © 2026 Movie Wala • Har Scene Mein Entertainment
 
 </footer>
 
 
-
-<!-- ================= JAVASCRIPT ================= -->
-
 <script>
 
-/* SEARCH */
+const movies = [
 
-const searchBox =
-document.getElementById("searchBox");
+  ["Action Night","2026","Action","8.7"],
 
-searchBox.addEventListener(
-    "input",
-    function(){
+  ["City Lights","2025","Drama","8.4"],
 
-        const search =
-        this.value.toLowerCase();
+  ["Love Story","2026","Romance","8.1"],
 
-        const cards =
-        document.querySelectorAll(".card");
+  ["Dark Mission","2025","Thriller","8.9"],
 
-        cards.forEach(
-            card => {
+  ["Comedy Club","2026","Comedy","7.9"],
 
-                const text =
-                card.innerText.toLowerCase();
+  ["The Last Scene","2025","Mystery","8.6"]
 
-                if(text.includes(search)){
+];
 
-                    card.classList.remove("hide");
 
-                }else{
+const top = [
 
-                    card.classList.add("hide");
+  ["The Masterpiece","2024","Drama","9.1"],
 
-                }
+  ["Final Chase","2025","Action","8.9"],
 
-            }
-        );
+  ["Hidden Truth","2024","Mystery","8.8"],
 
-    }
-);
+  ["Dream City","2025","Romance","8.7"],
+
+  ["Wild Road","2023","Adventure","8.6"],
+
+  ["Night Watch","2025","Thriller","8.5"]
+
+];
+
+
+const series = [
+
+  ["The Agency","2026","Crime","9.0"],
+
+  ["House of Stories","2025","Drama","8.8"],
+
+  ["Shadow Line","2026","Thriller","8.7"],
+
+  ["Campus Days","2025","Comedy","8.3"],
+
+  ["Royal Game","2026","Action","8.9"],
+
+  ["Beyond Time","2024","Sci-Fi","8.6"]
+
+];
+
+
+function render(list,id){
+
+  const grid = document.getElementById(id);
+
+  grid.innerHTML = list.map((m,i)=>`
+
+    <article
+      class="card"
+      data-title="${m[0].toLowerCase()}"
+    >
+
+      ${i < 2
+        ? '<span class="badge">NEW</span>'
+        : ''
+      }
+
+      <div class="poster">
+        🎬
+      </div>
+
+      <div class="info">
+
+        <div class="title">
+          ${m[0]}
+        </div>
+
+        <div class="meta">
+
+          ${m[1]}
+          •
+          ${m[2]}
+          •
+          <span class="rating">
+            ★ ${m[3]}
+          </span>
+
+        </div>
+
+      </div>
+
+    </article>
+
+  `).join("");
+
+}
+
+
+render(movies,"movieGrid");
+
+render(top,"topGrid");
+
+render(series,"seriesGrid");
+
+
+document
+.getElementById("search")
+.addEventListener("input",e=>{
+
+  const q =
+    e.target.value
+    .toLowerCase()
+    .trim();
+
+  document
+  .querySelectorAll(".card")
+  .forEach(c=>{
+
+    c.style.display =
+      (!q ||
+       c.dataset.title.includes(q))
+      ? ""
+      : "none";
+
+  });
+
+});
 
 </script>
-
 
 </body>
 </html>
