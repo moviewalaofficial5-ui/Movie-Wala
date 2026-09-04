@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Movie Wala — Entertainment</title>
+<style>
+:root{--bg:#070707;--card:#141414;--red:#e50914;--gold:#ffbf00;--muted:#aaa}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:#fff}
+.nav{position:fixed;top:0;left:0;right:0;z-index:20;height:72px;display:flex;align-items:center;padding:0 5%;gap:28px;background:linear-gradient(#050505,rgba(5,5,5,.72),transparent)}
+.logo{width:120px;height:58px;object-fit:contain;border-radius:8px}
+.nav a{color:#ddd;text-decoration:none;font-size:14px}.nav a:hover{color:#fff}
+.search{margin-left:auto;background:#171717;border:1px solid #333;color:#fff;padding:11px 15px;border-radius:6px;width:190px;outline:none}
+.hero{min-height:650px;padding:120px 6% 70px;display:flex;align-items:flex-end;position:relative;background:
+linear-gradient(90deg,#050505 0%,rgba(5,5,5,.78) 34%,rgba(5,5,5,.22) 70%,#070707 100%),
+linear-gradient(0deg,#070707 0%,transparent 28%),
+url("assets/movie-wala-banner.jpeg") center/cover no-repeat}
+.hero-content{max-width:560px}.tag{display:inline-block;background:var(--red);padding:7px 12px;border-radius:4px;font-size:12px;font-weight:bold;margin-bottom:15px}
+h1{font-size:58px;line-height:.98;margin-bottom:16px;text-shadow:0 5px 25px #000}
+.hero p{color:#ddd;line-height:1.6;margin-bottom:22px}
+.btn{display:inline-block;border:0;border-radius:5px;padding:12px 20px;font-weight:bold;cursor:pointer;text-decoration:none;margin-right:8px}
+.primary{background:#fff;color:#000}.secondary{background:#333;color:#fff}.primary:hover{background:#ddd}.secondary:hover{background:#444}
+.section{padding:30px 5% 10px}.section h2{font-size:23px;margin-bottom:18px}
+.row{display:grid;grid-template-columns:repeat(6,1fr);gap:15px}
+.card{background:var(--card);border-radius:7px;overflow:hidden;transition:.25s;position:relative;min-height:235px;border:1px solid #202020}
+.card:hover{transform:scale(1.04);z-index:3;box-shadow:0 14px 35px #000}
+.poster{height:170px;background:linear-gradient(135deg,#202020,#3b0d0d 55%,#111);display:flex;align-items:center;justify-content:center;font-size:38px}
+.info{padding:11px}.title{font-weight:bold;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{font-size:12px;color:var(--muted);margin-top:6px}
+.rating{color:var(--gold);font-weight:bold}
+.badge{position:absolute;top:8px;left:8px;background:var(--red);padding:4px 7px;border-radius:4px;font-size:10px;font-weight:bold}
+.about{margin:50px 5% 70px;padding:28px;border:1px solid #262626;background:#101010;border-radius:10px}
+.about p{color:#aaa;line-height:1.7;margin-top:10px}
+.footer{text-align:center;padding:30px;color:#777;border-top:1px solid #222}
+@media(max-width:1000px){.row{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:700px){.nav{gap:12px;height:62px}.nav a{display:none}.search{width:150px}.hero{min-height:570px;padding:100px 5% 45px}h1{font-size:42px}.row{grid-template-columns:repeat(2,1fr)}.poster{height:190px}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <img class="logo" src="assets/movie-wala-logo.jpeg" alt="Movie Wala">
+  <a href="#home">Home</a><a href="#movies">Movies</a><a href="#series">Web Series</a><a href="#about">About</a>
+  <input id="search" class="search" placeholder="🔍 Search movies..." aria-label="Search movies">
+</header>
+
+<section id="home" class="hero">
+  <div class="hero-content">
+    <span class="tag">MOVIE WALA</span>
+    <h1>Har Scene Mein Entertainment</h1>
+    <p>Discover movies, web series, trailers, reviews and the latest entertainment updates — all in one cinematic place.</p>
+    <a class="btn primary" href="#movies">▶ Explore Movies</a>
+    <a class="btn secondary" href="#series">＋ Web Series</a>
+  </div>
+</section>
+
+<section id="movies" class="section">
+  <h2>🔥 Trending Now</h2>
+  <div class="row" id="movieGrid"></div>
+</section>
+
+<section class="section">
+  <h2>⭐ Top Rated</h2>
+  <div class="row" id="topGrid"></div>
+</section>
+
+<section id="series" class="section">
+  <h2>📺 Popular Web Series</h2>
+  <div class="row" id="seriesGrid"></div>
+</section>
+
+<section id="about" class="about">
+  <h2>🎬 About Movie Wala</h2>
+  <p>Movie Wala is your dark cinematic entertainment hub. Add your own movie data, official trailers and legal viewing links to turn this design into your production website.</p>
+</section>
+
+<footer class="footer">© 2026 Movie Wala • Har Scene Mein Entertainment</footer>
+
+<script>
+const movies=[
+ ["Action Night","2026","Action","8.7"],["City Lights","2025","Drama","8.4"],
+ ["Love Story","2026","Romance","8.1"],["Dark Mission","2025","Thriller","8.9"],
+ ["Comedy Club","2026","Comedy","7.9"],["The Last Scene","2025","Mystery","8.6"]
+];
+const top=[["The Masterpiece","2024","Drama","9.1"],["Final Chase","2025","Action","8.9"],
+["Hidden Truth","2024","Mystery","8.8"],["Dream City","2025","Romance","8.7"],
+["Wild Road","2023","Adventure","8.6"],["Night Watch","2025","Thriller","8.5"]];
+const series=[["The Agency","2026","Crime","9.0"],["House of Stories","2025","Drama","8.8"],
+["Shadow Line","2026","Thriller","8.7"],["Campus Days","2025","Comedy","8.3"],
+["Royal Game","2026","Action","8.9"],["Beyond Time","2024","Sci-Fi","8.6"]];
+
+function render(list,id){
+ const grid=document.getElementById(id);
+ grid.innerHTML=list.map((m,i)=>`
+ <article class="card" data-title="${m[0].toLowerCase()}">
+   ${i<2?'<span class="badge">NEW</span>':''}
+   <div class="poster">🎬</div>
+   <div class="info"><div class="title">${m[0]}</div><div class="meta">${m[1]} • ${m[2]} • <span class="rating">★ ${m[3]}</span></div></div>
+ </article>`).join("");
+}
+render(movies,"movieGrid");render(top,"topGrid");render(series,"seriesGrid");
+
+document.getElementById("search").addEventListener("input",e=>{
+ const q=e.target.value.toLowerCase().trim();
+ document.querySelectorAll(".card").forEach(c=>c.style.display=(!q||c.dataset.title.includes(q))?"":"none");
+});
+</script>
+</body>
+</html>
