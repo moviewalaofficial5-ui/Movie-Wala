@@ -79,7 +79,6 @@ a{
   font-size:14px;
   font-weight:700;
   color:#ddd;
-  transition:.2s;
 }
 
 .nav a:hover{
@@ -96,7 +95,6 @@ a{
   background:#16465d;
   color:#bceaff;
   font-size:30px;
-  line-height:1;
   cursor:pointer;
   position:relative;
   z-index:20;
@@ -110,11 +108,13 @@ a{
   overflow:hidden;
   display:flex;
   align-items:center;
+  background:#050505;
 }
 
 .hero-slide{
   position:absolute;
   inset:0;
+  background-repeat:no-repeat;
   background-size:cover;
   background-position:center;
   opacity:0;
@@ -128,12 +128,13 @@ a{
 .hero-overlay{
   position:absolute;
   inset:0;
-  background:linear-gradient(
-    90deg,
-    rgba(0,0,0,.9) 0%,
-    rgba(0,0,0,.62) 48%,
-    rgba(0,0,0,.2) 100%
-  );
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.90) 0%,
+      rgba(0,0,0,.62) 48%,
+      rgba(0,0,0,.25) 100%
+    );
 }
 
 .hero-content{
@@ -428,13 +429,13 @@ footer strong{
   color:#fff;
 }
 
-/* ================= MOBILE MENU ================= */
+/* ================= MENU SLIDER ================= */
 
 .menu-bg-slider{
   display:none;
 }
 
-/* ================= MOBILE ================= */
+/* ================= TABLET ================= */
 
 @media(max-width:900px){
 
@@ -464,33 +465,37 @@ footer strong{
     top:82px;
     bottom:0;
     margin:0;
-    padding:80px 30px 40px;
+    padding:70px 30px 40px;
     flex-direction:column;
     align-items:center;
     justify-content:center;
     gap:25px;
     overflow:hidden;
-    background:#090909;
+    background:#080808;
   }
 
   .nav.open{
     display:flex;
   }
 
-  /* Lightweight menu background slider */
   .menu-bg-slider{
     display:block;
     position:absolute;
     inset:0;
     z-index:-2;
     overflow:hidden;
+    background:#070707;
   }
 
   .menu-bg-slide{
     position:absolute;
     inset:0;
-    background-size:cover;
-    background-position:center;
+    background-repeat:no-repeat;
+
+    /* IMPORTANT: no zoom */
+    background-size:100% auto;
+    background-position:center top;
+
     opacity:0;
     transition:opacity 1s ease;
   }
@@ -515,12 +520,8 @@ footer strong{
     padding:5px 15px;
   }
 
-  .nav a:hover{
-    color:#ff1722;
-  }
-
   .hero{
-    min-height:650px;
+    min-height:680px;
   }
 
   .hero-content{
@@ -559,6 +560,8 @@ footer strong{
   }
 }
 
+/* ================= MOBILE ================= */
+
 @media(max-width:500px){
 
   .navbar{
@@ -584,34 +587,70 @@ footer strong{
     font-size:28px;
   }
 
+  /* ===== HERO MOBILE FIX ===== */
+
   .hero{
-    min-height:690px;
+    min-height:650px;
+    display:block;
+    padding-top:1px;
+    background:#050505;
+  }
+
+  .hero-slide{
+    inset:0;
+    height:100%;
+
+    /*
+      Full banner width.
+      No zoom / no aggressive crop.
+    */
+    background-size:100% auto;
+    background-position:center top;
+    background-repeat:no-repeat;
+  }
+
+  .hero-overlay{
+    background:
+      linear-gradient(
+        180deg,
+        rgba(0,0,0,.18) 0%,
+        rgba(0,0,0,.42) 30%,
+        rgba(0,0,0,.90) 72%,
+        #050505 100%
+      );
   }
 
   .hero-content{
-    padding-top:80px;
+    width:auto;
+    margin:0;
+    padding:300px 20px 50px;
   }
 
   .live-badge{
-    font-size:16px;
-    padding:12px 18px;
+    font-size:15px;
+    padding:11px 17px;
+    margin-bottom:20px;
   }
 
   .hero h1{
-    font-size:43px;
+    font-size:40px;
+    line-height:1.05;
+    max-width:100%;
   }
 
   .hero p{
     font-size:16px;
+    line-height:1.55;
+    margin:22px 0;
   }
 
   .buttons{
-    gap:12px;
+    gap:10px;
   }
 
   .btn{
-    padding:15px 20px;
-    font-size:14px;
+    padding:14px 17px;
+    font-size:13px;
   }
 
   section{
@@ -642,6 +681,18 @@ footer strong{
   .live-content h2{
     font-size:34px;
   }
+
+  /* Menu banner also full-width, no zoom */
+
+  .menu-bg-slide{
+    background-size:100% auto;
+    background-position:center top;
+    background-repeat:no-repeat;
+  }
+
+  .nav{
+    padding-top:120px;
+  }
 }
 </style>
 </head>
@@ -653,30 +704,51 @@ footer strong{
 <header class="navbar">
 
   <a href="#home" class="brand">
-    <img src="movie-wala-logo.jpeg" class="logo" alt="Movie Wala Logo">
-    <div class="brand-name">MOVIE <span>WALA</span></div>
+    <img
+      src="movie-wala-logo.jpeg"
+      class="logo"
+      alt="Movie Wala Logo">
+      
+    <div class="brand-name">
+      MOVIE <span>WALA</span>
+    </div>
   </a>
 
-  <button class="menu-btn" id="menuBtn" aria-label="Open Menu">☰</button>
+  <button
+    class="menu-btn"
+    id="menuBtn"
+    aria-label="Open Menu">
+    ☰
+  </button>
 
   <nav class="nav" id="navMenu">
 
-    <div class="menu-bg-slider" id="menuSlider">
+    <div class="menu-bg-slider">
 
-      <div class="menu-bg-slide active"
-           style="background-image:url('movie-wala-banner.jpeg')"></div>
+      <div
+        class="menu-bg-slide active"
+        style="background-image:url('movie-wala-banner.jpeg')">
+      </div>
 
-      <div class="menu-bg-slide"
-           style="background-image:url('movie-wala-banner-2[1].jpg')"></div>
+      <div
+        class="menu-bg-slide"
+        style="background-image:url('movie-wala-banner-2[1].jpg')">
+      </div>
 
-      <div class="menu-bg-slide"
-           style="background-image:url('movie-wala-banner-3[1].jpg')"></div>
+      <div
+        class="menu-bg-slide"
+        style="background-image:url('movie-wala-banner-3[1].jpg')">
+      </div>
 
-      <div class="menu-bg-slide"
-           style="background-image:url('movie-wala-banner-4[1].jpg')"></div>
+      <div
+        class="menu-bg-slide"
+        style="background-image:url('movie-wala-banner-4[1].jpg')">
+      </div>
 
-      <div class="menu-bg-slide"
-           style="background-image:url('movie-wala-banner-5[1].jpg')"></div>
+      <div
+        class="menu-bg-slide"
+        style="background-image:url('movie-wala-banner-5[1].jpg')">
+      </div>
 
     </div>
 
@@ -697,26 +769,38 @@ footer strong{
 
 <section class="hero" id="home">
 
-  <div class="hero-slide active"
-       style="background-image:url('movie-wala-banner.jpeg')"></div>
+  <div
+    class="hero-slide active"
+    style="background-image:url('movie-wala-banner.jpeg')">
+  </div>
 
-  <div class="hero-slide"
-       style="background-image:url('movie-wala-banner-2[1].jpg')"></div>
+  <div
+    class="hero-slide"
+    style="background-image:url('movie-wala-banner-2[1].jpg')">
+  </div>
 
-  <div class="hero-slide"
-       style="background-image:url('movie-wala-banner-3[1].jpg')"></div>
+  <div
+    class="hero-slide"
+    style="background-image:url('movie-wala-banner-3[1].jpg')">
+  </div>
 
-  <div class="hero-slide"
-       style="background-image:url('movie-wala-banner-4[1].jpg')"></div>
+  <div
+    class="hero-slide"
+    style="background-image:url('movie-wala-banner-4[1].jpg')">
+  </div>
 
-  <div class="hero-slide"
-       style="background-image:url('movie-wala-banner-5[1].jpg')"></div>
+  <div
+    class="hero-slide"
+    style="background-image:url('movie-wala-banner-5[1].jpg')">
+  </div>
 
   <div class="hero-overlay"></div>
 
   <div class="hero-content">
 
-    <div class="live-badge">LIVE CHANNEL</div>
+    <div class="live-badge">
+      LIVE CHANNEL
+    </div>
 
     <h1>
       HAR SCENE MEIN
@@ -724,13 +808,25 @@ footer strong{
     </h1>
 
     <p>
-      Welcome to Movie Wala — your entertainment destination for
-      movies, web series, trending content and cinematic updates.
+      Welcome to Movie Wala — your entertainment destination
+      for movies, web series, trending content and cinematic
+      updates.
     </p>
 
     <div class="buttons">
-      <a href="#movies" class="btn btn-red">▶ EXPLORE MOVIES</a>
-      <a href="#live" class="btn btn-dark">WATCH LIVE</a>
+
+      <a
+        href="#movies"
+        class="btn btn-red">
+        ▶ EXPLORE MOVIES
+      </a>
+
+      <a
+        href="#live"
+        class="btn btn-dark">
+        WATCH LIVE
+      </a>
+
     </div>
 
   </div>
@@ -753,39 +849,62 @@ footer strong{
   <div class="movie-grid">
 
     <article class="movie-card">
-      <div class="movie-poster"
-           style="background-image:url('movie-wala-banner.jpeg')"></div>
+
+      <div
+        class="movie-poster"
+        style="background-image:url('movie-wala-banner.jpeg')">
+      </div>
+
       <div class="movie-info">
         <h3>Movie Wala Special</h3>
         <p>Cinematic Entertainment</p>
       </div>
+
     </article>
 
+
     <article class="movie-card">
-      <div class="movie-poster"
-           style="background-image:url('movie-wala-banner-2[1].jpg')"></div>
+
+      <div
+        class="movie-poster"
+        style="background-image:url('movie-wala-banner-2[1].jpg')">
+      </div>
+
       <div class="movie-info">
         <h3>Trending Cinema</h3>
         <p>Latest Updates</p>
       </div>
+
     </article>
 
+
     <article class="movie-card">
-      <div class="movie-poster"
-           style="background-image:url('movie-wala-banner-3[1].jpg')"></div>
+
+      <div
+        class="movie-poster"
+        style="background-image:url('movie-wala-banner-3[1].jpg')">
+      </div>
+
       <div class="movie-info">
         <h3>Action Zone</h3>
         <p>Action & Entertainment</p>
       </div>
+
     </article>
 
+
     <article class="movie-card">
-      <div class="movie-poster"
-           style="background-image:url('movie-wala-banner-4[1].jpg')"></div>
+
+      <div
+        class="movie-poster"
+        style="background-image:url('movie-wala-banner-4[1].jpg')">
+      </div>
+
       <div class="movie-info">
         <h3>Entertainment Hub</h3>
         <p>Movie Wala Picks</p>
       </div>
+
     </article>
 
   </div>
@@ -799,7 +918,9 @@ footer strong{
 
   <div class="live-content">
 
-    <div class="live-label">● LIVE ZONE</div>
+    <div class="live-label">
+      ● LIVE ZONE
+    </div>
 
     <h2>
       LIVE <span>ENTERTAINMENT</span>
@@ -917,17 +1038,23 @@ footer strong{
 
     <div class="simple-card">
       <h3>New Releases</h3>
-      <p>Explore the latest web series and digital entertainment.</p>
+      <p>
+        Explore the latest web series and digital entertainment.
+      </p>
     </div>
 
     <div class="simple-card">
       <h3>Popular Series</h3>
-      <p>Discover trending shows and audience favourites.</p>
+      <p>
+        Discover trending shows and audience favourites.
+      </p>
     </div>
 
     <div class="simple-card">
       <h3>Must Watch</h3>
-      <p>Entertainment picks selected for movie and series lovers.</p>
+      <p>
+        Entertainment picks selected for movie and series lovers.
+      </p>
     </div>
 
   </div>
@@ -1010,8 +1137,13 @@ footer strong{
       href="https://www.youtube.com/@MovieWalaOfficial.10"
       target="_blank">
 
-      <svg class="social-icon" viewBox="0 0 24 24" fill="white">
+      <svg
+        class="social-icon"
+        viewBox="0 0 24 24"
+        fill="white">
+
         <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.9V8.1l6.5 3.9-6.5 3.9z"/>
+
       </svg>
 
       <div>
@@ -1027,8 +1159,13 @@ footer strong{
       href="https://www.facebook.com/share/1MR6Lxzy4f/"
       target="_blank">
 
-      <svg class="social-icon" viewBox="0 0 24 24" fill="white">
+      <svg
+        class="social-icon"
+        viewBox="0 0 24 24"
+        fill="white">
+
         <path d="M24 12a12 12 0 1 0-13.9 11.8v-8.3H7.1V12h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 1-2 2V12h3.4l-.5 3.5h-2.9v8.3A12 12 0 0 0 24 12z"/>
+
       </svg>
 
       <div>
@@ -1044,10 +1181,32 @@ footer strong{
       href="https://www.instagram.com/moviewalaofficial.10/"
       target="_blank">
 
-      <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8">
-        <rect x="3" y="3" width="18" height="18" rx="5"/>
-        <circle cx="12" cy="12" r="4"/>
-        <circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/>
+      <svg
+        class="social-icon"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="white"
+        stroke-width="1.8">
+
+        <rect
+          x="3"
+          y="3"
+          width="18"
+          height="18"
+          rx="5"/>
+
+        <circle
+          cx="12"
+          cy="12"
+          r="4"/>
+
+        <circle
+          cx="17.5"
+          cy="6.5"
+          r="1"
+          fill="white"
+          stroke="none"/>
+
       </svg>
 
       <div>
@@ -1119,8 +1278,8 @@ function startMenuSlider(){
 
   menuIndex = 0;
 
-  menuSlides.forEach((slide,i)=>{
-    slide.classList.toggle("active",i === 0);
+  menuSlides.forEach((slide,index)=>{
+    slide.classList.toggle("active",index === 0);
   });
 
   menuTimer = setInterval(()=>{
@@ -1140,28 +1299,34 @@ function startMenuSlider(){
 
 function stopMenuSlider(){
 
-  if(menuTimer){
+  if(menuTimer !== null){
+
     clearInterval(menuTimer);
     menuTimer = null;
+
   }
 }
 
 menuBtn.addEventListener("click",()=>{
 
-  const isOpen = navMenu.classList.toggle("open");
+  const opened = navMenu.classList.toggle("open");
 
-  menuBtn.textContent = isOpen ? "✕" : "☰";
+  if(opened){
 
-  if(isOpen){
+    menuBtn.textContent = "✕";
     startMenuSlider();
+
   }else{
+
+    menuBtn.textContent = "☰";
     stopMenuSlider();
+
   }
 
 });
 
 
-/* Close menu after clicking link */
+/* ================= CLOSE MENU ================= */
 
 document.querySelectorAll(".nav a").forEach(link=>{
 
@@ -1197,11 +1362,11 @@ setInterval(()=>{
 },5000);
 
 
-/* ================= ESC CLOSE ================= */
+/* ================= ESC ================= */
 
-document.addEventListener("keydown",(e)=>{
+document.addEventListener("keydown",(event)=>{
 
-  if(e.key === "Escape"){
+  if(event.key === "Escape"){
 
     navMenu.classList.remove("open");
     menuBtn.textContent = "☰";
