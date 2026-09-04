@@ -87,6 +87,10 @@ body{
     outline:none;
 }
 
+.search::placeholder{
+    color:#999;
+}
+
 /* ================= HERO ================= */
 
 .hero{
@@ -144,6 +148,11 @@ body{
     padding:14px 25px;
     border-radius:7px;
     font-weight:bold;
+    transition:.3s;
+}
+
+.hero-btn:hover{
+    transform:translateY(-3px);
 }
 
 .hero-btn.secondary{
@@ -248,6 +257,12 @@ section{
 
     font-weight:bold;
     font-size:14px;
+
+    transition:.3s;
+}
+
+.channel-btn:hover{
+    background:#d90000;
 }
 
 .video-container{
@@ -270,22 +285,11 @@ section{
     border:0;
 }
 
-/* ================= FEATURED VIDEO ================= */
-
-.featured-title{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
 /* ================= MOVIE CARDS ================= */
 
 .cards{
     display:grid;
-
-    grid-template-columns:
-    repeat(4,1fr);
-
+    grid-template-columns:repeat(4,1fr);
     gap:20px;
 }
 
@@ -344,10 +348,7 @@ section{
 
 .trending{
     display:grid;
-
-    grid-template-columns:
-    repeat(3,1fr);
-
+    grid-template-columns:repeat(3,1fr);
     gap:20px;
 }
 
@@ -359,6 +360,12 @@ section{
     border-radius:12px;
 
     border-left:4px solid #e50914;
+
+    transition:.3s;
+}
+
+.trend:hover{
+    transform:translateY(-5px);
 }
 
 .trend-number{
@@ -383,12 +390,8 @@ section{
 
 .stats{
     display:grid;
-
-    grid-template-columns:
-    repeat(4,1fr);
-
+    grid-template-columns:repeat(4,1fr);
     gap:20px;
-
     text-align:center;
 }
 
@@ -416,7 +419,7 @@ section{
     background:
     linear-gradient(
         135deg,
-        #120000,
+        #180000,
         #0c0c0c
     );
 
@@ -424,7 +427,7 @@ section{
 
     border-radius:20px;
 
-    padding:40px 30px;
+    padding:45px 30px;
 
     text-align:center;
 }
@@ -442,32 +445,31 @@ section{
 .social-section > p{
     color:#aaa;
 
-    margin-bottom:30px;
+    margin-bottom:32px;
 }
 
 .social-grid{
     display:grid;
 
-    grid-template-columns:
-    repeat(3,1fr);
+    grid-template-columns:repeat(3,1fr);
 
     gap:20px;
 
-    max-width:900px;
+    max-width:930px;
 
     margin:auto;
 }
 
 .social-card{
-    padding:28px 20px;
+    padding:30px 20px;
 
-    border-radius:14px;
+    border-radius:16px;
 
     text-decoration:none;
 
     color:#fff;
 
-    transition:.3s;
+    transition:.35s;
 
     border:1px solid #333;
 
@@ -475,45 +477,35 @@ section{
 }
 
 .social-card:hover{
-    transform:translateY(-7px);
+    transform:translateY(-8px);
 
-    border-color:#ff1515;
+    box-shadow:0 15px 35px rgba(0,0,0,.4);
 }
+
+/* SOCIAL ICON */
 
 .social-icon{
-    font-size:42px;
+    width:82px;
+    height:82px;
 
-    margin-bottom:12px;
+    margin:0 auto 17px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:20px;
+
+    transition:.35s;
 }
 
-.social-card h3{
-    font-size:21px;
-
-    margin-bottom:7px;
+.social-icon svg{
+    width:54px;
+    height:54px;
 }
 
-.social-card p{
-    color:#999;
-
-    font-size:14px;
-
-    margin-bottom:18px;
-}
-
-.social-button{
-    display:inline-block;
-
-    padding:9px 17px;
-
-    border-radius:6px;
-
-    font-size:13px;
-
-    font-weight:bold;
-
-    background:#222;
-
-    border:1px solid #555;
+.social-card:hover .social-icon{
+    transform:scale(1.1) rotate(2deg);
 }
 
 /* YOUTUBE */
@@ -522,10 +514,12 @@ section{
     border-color:#ff0000;
 }
 
-.youtube-card .social-button{
+.youtube-card .social-icon{
     background:#ff0000;
+}
 
-    border-color:#ff0000;
+.youtube-card .social-icon svg{
+    fill:#fff;
 }
 
 /* FACEBOOK */
@@ -534,10 +528,12 @@ section{
     border-color:#1877f2;
 }
 
-.facebook-card .social-button{
+.facebook-card .social-icon{
     background:#1877f2;
+}
 
-    border-color:#1877f2;
+.facebook-card .social-icon svg{
+    fill:#fff;
 }
 
 /* INSTAGRAM */
@@ -546,10 +542,59 @@ section{
     border-color:#e1306c;
 }
 
+.instagram-card .social-icon{
+    background:
+    linear-gradient(
+        135deg,
+        #833ab4,
+        #fd1d1d,
+        #fcb045
+    );
+}
+
+.instagram-card .social-icon svg{
+    fill:#fff;
+}
+
+.social-card h3{
+    font-size:21px;
+    margin-bottom:8px;
+}
+
+.social-card p{
+    color:#999;
+
+    font-size:14px;
+
+    margin-bottom:20px;
+}
+
+.social-button{
+    display:inline-block;
+
+    padding:10px 20px;
+
+    border-radius:7px;
+
+    font-size:13px;
+
+    font-weight:bold;
+
+    color:#fff;
+}
+
+/* BUTTON COLORS */
+
+.youtube-card .social-button{
+    background:#ff0000;
+}
+
+.facebook-card .social-button{
+    background:#1877f2;
+}
+
 .instagram-card .social-button{
     background:#e1306c;
-
-    border-color:#e1306c;
 }
 
 /* ================= FOOTER ================= */
@@ -600,6 +645,12 @@ footer span{
     color:#ff1515;
 }
 
+/* ================= SEARCH ================= */
+
+.card.hide{
+    display:none;
+}
+
 /* ================= RESPONSIVE ================= */
 
 @media(max-width:1000px){
@@ -617,13 +668,11 @@ footer span{
     }
 
     .cards{
-        grid-template-columns:
-        repeat(2,1fr);
+        grid-template-columns:repeat(2,1fr);
     }
 
     .social-grid{
-        grid-template-columns:
-        repeat(3,1fr);
+        grid-template-columns:repeat(3,1fr);
     }
 
 }
@@ -676,8 +725,7 @@ footer span{
     }
 
     .stats{
-        grid-template-columns:
-        repeat(2,1fr);
+        grid-template-columns:repeat(2,1fr);
     }
 
     .social-grid{
@@ -707,7 +755,6 @@ footer span{
 
     section{
         width:94%;
-
         margin:45px auto;
     }
 
@@ -716,15 +763,12 @@ footer span{
     }
 
     .cards{
-        grid-template-columns:
-        repeat(2,1fr);
-
+        grid-template-columns:repeat(2,1fr);
         gap:12px;
     }
 
     .poster{
         height:190px;
-
         font-size:42px;
     }
 
@@ -748,12 +792,24 @@ footer span{
         flex-direction:column;
     }
 
+    .social-section{
+        padding:35px 15px;
+    }
+
 }
 
-/* ================= SEARCH ================= */
+/* ================= EXTRA MOBILE ================= */
 
-.card.hide{
-    display:none;
+@media(max-width:380px){
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
 }
 
 </style>
@@ -902,12 +958,11 @@ footer span{
 
 <!-- ================= FEATURED VIDEO ================= -->
 
-<section>
+<section id="featured">
 
-    <h2 class="section-title featured-title">
+    <h2 class="section-title">
 
-        🎬
-        <span>Featured Video</span>
+        🎬 <span>Featured Video</span>
 
     </h2>
 
@@ -918,7 +973,7 @@ footer span{
             <iframe
                 src="https://www.youtube.com/embed/HzJ0dZ7meZs"
                 title="Movie Wala Official Featured Video"
-                allow="encrypted-media; picture-in-picture"
+                allow="autoplay; encrypted-media; picture-in-picture"
                 allowfullscreen>
             </iframe>
 
@@ -936,8 +991,7 @@ footer span{
 
     <h2 class="section-title">
 
-        🎬
-        <span>Popular Movies</span>
+        🎬 <span>Popular Movies</span>
 
     </h2>
 
@@ -1041,8 +1095,7 @@ footer span{
 
     <h2 class="section-title">
 
-        🔥
-        <span>Trending Now</span>
+        🔥 <span>Trending Now</span>
 
     </h2>
 
@@ -1113,8 +1166,7 @@ footer span{
 
     <h2 class="section-title">
 
-        📺
-        <span>Web Series</span>
+        📺 <span>Web Series</span>
 
     </h2>
 
@@ -1297,7 +1349,7 @@ footer span{
         <div class="social-grid">
 
 
-            <!-- YOUTUBE -->
+            <!-- ================= YOUTUBE ================= -->
 
             <a
                 href="https://www.youtube.com/@MovieWalaOfficial.10"
@@ -1305,7 +1357,32 @@ footer span{
                 class="social-card youtube-card">
 
                 <div class="social-icon">
-                    ▶️
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-label="YouTube">
+
+                        <path d="
+                        M23.5 6.2
+                        a3 3 0 0 0-2.1-2.1
+                        C19.5 3.5 12 3.5 12 3.5
+                        s-7.5 0-9.4.6
+                        A3 3 0 0 0 .5 6.2
+                        A31 31 0 0 0 0 12
+                        a31 31 0 0 0 .5 5.8
+                        3 3 0 0 0 2.1 2.1
+                        c1.9.6 9.4.6 9.4.6
+                        s7.5 0 9.4-.6
+                        a3 3 0 0 0 2.1-2.1
+                        A31 31 0 0 0 24 12
+                        a31 31 0 0 0-.5-5.8z"/>
+
+                        <path
+                            fill="#ff0000"
+                            d="M9.5 15.5v-7l6 3.5z"/>
+
+                    </svg>
+
                 </div>
 
                 <h3>
@@ -1323,7 +1400,8 @@ footer span{
             </a>
 
 
-            <!-- FACEBOOK -->
+
+            <!-- ================= FACEBOOK ================= -->
 
             <a
                 href="https://www.facebook.com/share/1MR6Lxzy4f/"
@@ -1331,7 +1409,29 @@ footer span{
                 class="social-card facebook-card">
 
                 <div class="social-icon">
-                    🔵
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-label="Facebook">
+
+                        <path d="
+                        M24 12.07
+                        C24 5.4 18.63 0 12 0
+                        S0 5.4 0 12.07
+                        C0 18.09 4.39 23.08
+                        10.13 24v-8.44
+                        H7.08v-3.49h3.05V9.41
+                        c0-3.04 1.79-4.72
+                        4.53-4.72
+                        1.31 0 2.68.24
+                        2.68.24v2.97
+                        h-1.51c-1.49 0-1.96.93
+                        -1.96 1.88v2.3h3.33
+                        l-.53 3.49h-2.8V24
+                        C19.61 23.08 24 18.09 24 12.07z"/>
+
+                    </svg>
+
                 </div>
 
                 <h3>
@@ -1349,7 +1449,8 @@ footer span{
             </a>
 
 
-            <!-- INSTAGRAM -->
+
+            <!-- ================= INSTAGRAM ================= -->
 
             <a
                 href="https://www.instagram.com/moviewalaofficial.10/"
@@ -1357,7 +1458,30 @@ footer span{
                 class="social-card instagram-card">
 
                 <div class="social-icon">
-                    📸
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-label="Instagram">
+
+                        <path d="
+                        M7 2
+                        C4.24 2 2 4.24 2 7
+                        v10c0 2.76 2.24 5 5 5
+                        h10c2.76 0 5-2.24 5-5V7
+                        c0-2.76-2.24-5-5-5H7zm0 2
+                        h10c1.66 0 3 1.34 3 3v10
+                        c0 1.66-1.34 3-3 3H7
+                        c-1.66 0-3-1.34-3-3V7
+                        c0-1.66 1.34-3 3-3zm5
+                        3.5A4.5 4.5 0 1 0 12 16.5
+                        4.5 4.5 0 0 0 12 7.5zm0 2
+                        A2.5 2.5 0 1 1 12 14.5
+                        A2.5 2.5 0 0 1 12 9.5zm5.5-3
+                        a1.1 1.1 0 1 0 0 2.2
+                        1.1 1.1 0 0 0 0-2.2z"/>
+
+                    </svg>
+
                 </div>
 
                 <h3>
@@ -1408,6 +1532,10 @@ footer span{
 
         <a href="#live">
             LIVE
+        </a>
+
+        <a href="#featured">
+            Featured Video
         </a>
 
         <a href="#movies">
