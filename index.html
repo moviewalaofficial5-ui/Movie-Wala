@@ -857,6 +857,120 @@ footer{
     .genre-row{
         grid-template-columns:repeat(2,1fr);
     }
+}/* ================= LIVE VIDEO BACKGROUND ================= */
+
+.live-box{
+    position:relative;
+    min-height:290px;
+    overflow:hidden;
+    border:1px solid #e50914;
+    border-radius:14px;
+    background:#000;
+}
+
+/* 1080P MOVING VIDEO */
+.live-video-bg{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:1;
+}
+
+/* CINEMATIC DARK OVERLAY */
+.live-video-overlay{
+    position:absolute;
+    inset:0;
+    z-index:2;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.88) 0%,
+            rgba(0,0,0,.55) 50%,
+            rgba(0,0,0,.20) 100%
+        ),
+        linear-gradient(
+            0deg,
+            rgba(0,0,0,.65),
+            transparent 65%
+        );
+}
+
+/* LIVE CONTENT */
+.live-content{
+    position:relative;
+    z-index:5;
+    padding:28px;
+    max-width:70%;
+}
+
+/* PLAY BUTTON */
+.play{
+    position:absolute;
+    z-index:6;
+    right:12%;
+    top:50%;
+    transform:translateY(-50%);
+
+    width:90px;
+    height:90px;
+
+    border-radius:50%;
+    border:2px solid #ff2020;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(229,9,20,.92);
+    font-size:34px;
+
+    box-shadow:
+        0 0 20px #ff1018,
+        0 0 55px rgba(255,0,0,.75);
+
+    animation:livePlayPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes livePlayPulse{
+
+    0%,100%{
+        transform:translateY(-50%) scale(1);
+        box-shadow:
+            0 0 20px #ff1018,
+            0 0 45px rgba(255,0,0,.6);
+    }
+
+    50%{
+        transform:translateY(-50%) scale(1.1);
+        box-shadow:
+            0 0 30px #ff1018,
+            0 0 75px rgba(255,0,0,.9);
+    }
+
+}
+
+/* MOBILE */
+@media(max-width:700px){
+
+    .live-box{
+        min-height:330px;
+    }
+
+    .live-content{
+        max-width:100%;
+        padding:22px;
+    }
+
+    .play{
+        width:65px;
+        height:65px;
+        right:7%;
+        font-size:25px;
+    }
+
 }
 </style>
 </head>
@@ -1276,6 +1390,65 @@ LIVE ZONE
 
 
 <div class="live-box">
+
+    <!-- CINEMATIC MOVING VIDEO BACKGROUND -->
+    <video
+        class="live-video-bg"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto">
+
+        <source
+            src="movie-wala-live-1080-cinematic-4-banners.mp4"
+            type="video/mp4">
+
+    </video>
+
+    <!-- DARK CINEMATIC OVERLAY -->
+    <div class="live-video-overlay"></div>
+
+    <!-- LIVE CONTENT -->
+    <div class="live-content">
+
+        <div class="live-heading">
+            📡 <span>LIVE</span> ZONE
+        </div>
+
+        <div class="live-sub">
+            JOIN THE LIVE ENTERTAINMENT
+        </div>
+
+        <p>
+            Movie Wala Live Zone mein pao movie updates,
+            exclusive news, live discussions aur special entertainment.
+        </p>
+
+        <br>
+
+        <a
+            href="https://www.youtube.com/@MovieWalaOfficial.10/live"
+            target="_blank"
+            class="btn btn-red">
+            ▶ WATCH LIVE NOW
+        </a>
+
+        <a
+            href="https://www.youtube.com/@MovieWalaOfficial.10/live"
+            target="_blank"
+            class="btn btn-dark">
+            YouTube Live ↗
+        </a>
+
+    </div>
+
+    <!-- PLAY GLOW -->
+    <div class="play">
+        ▶
+    </div>
+
+</div>
 
 
 <div class="live-content">
