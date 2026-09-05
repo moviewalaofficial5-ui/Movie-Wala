@@ -25,6 +25,28 @@ body{
     overflow-x:hidden;
 }
 
+/* ================= HEADER ================= */
+
+.header{
+    width:100%;
+    background:#050505;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:12px 15px;
+    border-bottom:1px solid #222;
+}
+
+.logo{
+    width:170px;
+    height:auto;
+    max-height:70px;
+    object-fit:contain;
+    display:block;
+}
+
+/* ================= BANNER SLIDER ================= */
+
 .hero{
     width:100%;
     background:#000;
@@ -33,17 +55,14 @@ body{
 .slider{
     position:relative;
     width:100%;
-    height:auto;
     aspect-ratio:16 / 9;
     overflow:hidden;
     background:#000;
 }
 
-/* ALL 5 BANNERS */
 .slide{
     position:absolute;
-    top:0;
-    left:0;
+    inset:0;
     width:100%;
     height:100%;
     object-fit:cover;
@@ -64,7 +83,8 @@ body{
     background:#000;
 }
 
-/* ARROWS */
+/* ================= ARROWS ================= */
+
 .arrow{
     position:absolute;
     top:50%;
@@ -99,7 +119,8 @@ body{
     right:15px;
 }
 
-/* DOTS */
+/* ================= DOTS ================= */
+
 .dots{
     position:absolute;
     left:50%;
@@ -134,8 +155,18 @@ body{
     opacity:1;
 }
 
-/* MOBILE */
+/* ================= MOBILE ================= */
+
 @media(max-width:600px){
+
+    .header{
+        padding:9px 10px;
+    }
+
+    .logo{
+        width:145px;
+        max-height:60px;
+    }
 
     .slider{
         aspect-ratio:16 / 9;
@@ -183,6 +214,20 @@ body{
 
 <body>
 
+<!-- ================= LOGO ================= -->
+
+<header class="header">
+
+    <img
+        src="movie-wala-logo.jpeg"
+        class="logo"
+        alt="Movie Wala Logo">
+
+</header>
+
+
+<!-- ================= 5 BANNER SLIDER ================= -->
+
 <section class="hero">
 
 <div class="slider" id="slider">
@@ -217,7 +262,8 @@ body{
         class="slide banner5"
         alt="Movie Wala Banner 5">
 
-    <!-- PREVIOUS -->
+
+    <!-- PREVIOUS BUTTON -->
     <button
         class="arrow prev"
         id="prev"
@@ -226,7 +272,8 @@ body{
         ‹
     </button>
 
-    <!-- NEXT -->
+
+    <!-- NEXT BUTTON -->
     <button
         class="arrow next"
         id="next"
@@ -235,42 +282,38 @@ body{
         ›
     </button>
 
+
     <!-- 5 DOTS -->
     <div class="dots">
 
         <button
             class="dot active"
             data-slide="0"
-            type="button"
-            aria-label="Banner 1">
+            type="button">
         </button>
 
         <button
             class="dot"
             data-slide="1"
-            type="button"
-            aria-label="Banner 2">
+            type="button">
         </button>
 
         <button
             class="dot"
             data-slide="2"
-            type="button"
-            aria-label="Banner 3">
+            type="button">
         </button>
 
         <button
             class="dot"
             data-slide="3"
-            type="button"
-            aria-label="Banner 4">
+            type="button">
         </button>
 
         <button
             class="dot"
             data-slide="4"
-            type="button"
-            aria-label="Banner 5">
+            type="button">
         </button>
 
     </div>
@@ -278,6 +321,9 @@ body{
 </div>
 
 </section>
+
+
+<!-- ================= JAVASCRIPT ================= -->
 
 <script>
 
@@ -292,7 +338,8 @@ let currentSlide = 0;
 let autoSlideTimer;
 
 
-/* SHOW SELECTED SLIDE */
+/* SHOW SLIDE */
+
 function showSlide(index){
 
     if(index < 0){
@@ -319,29 +366,35 @@ function showSlide(index){
 
 
 /* NEXT */
+
 function nextSlide(){
     showSlide(currentSlide + 1);
 }
 
 
 /* PREVIOUS */
+
 function previousSlide(){
     showSlide(currentSlide - 1);
 }
 
 
-/* AUTO SLIDER */
+/* AUTO SLIDE */
+
 function startAutoSlide(){
 
     clearInterval(autoSlideTimer);
 
     autoSlideTimer = setInterval(function(){
+
         nextSlide();
+
     },5000);
 }
 
 
 /* NEXT BUTTON */
+
 nextButton.addEventListener("click",function(){
 
     nextSlide();
@@ -351,6 +404,7 @@ nextButton.addEventListener("click",function(){
 
 
 /* PREVIOUS BUTTON */
+
 prevButton.addEventListener("click",function(){
 
     previousSlide();
@@ -359,7 +413,8 @@ prevButton.addEventListener("click",function(){
 });
 
 
-/* DOT BUTTONS */
+/* DOTS */
+
 dots.forEach(function(dot){
 
     dot.addEventListener("click",function(){
@@ -376,6 +431,7 @@ dots.forEach(function(dot){
 
 
 /* MOBILE SWIPE */
+
 let touchStartX = 0;
 let touchEndX = 0;
 
@@ -398,14 +454,15 @@ slider.addEventListener(
         touchEndX =
             event.changedTouches[0].screenX;
 
-        const swipeDistance =
+        const distance =
             touchStartX - touchEndX;
 
-        if(Math.abs(swipeDistance) > 50){
+        if(Math.abs(distance) > 50){
 
-            if(swipeDistance > 0){
+            if(distance > 0){
                 nextSlide();
-            }else{
+            }
+            else{
                 previousSlide();
             }
 
@@ -417,7 +474,8 @@ slider.addEventListener(
 );
 
 
-/* START SLIDER */
+/* START */
+
 showSlide(0);
 startAutoSlide();
 
