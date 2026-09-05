@@ -163,7 +163,6 @@ header{
 
 
 /*
-   IMPORTANT:
    Slider ka size banner ke actual 16:9 ratio ke
    according fixed hai.
 */
@@ -776,135 +775,51 @@ footer strong{
     }
 
     .logo{
-        width:50px;
-        height:50px;
-
-        min-width:50px;
-    }
-
-    .brand{
-        gap:8px;
+        width:46px;
+        height:46px;
+        min-width:46px;
     }
 
     .brand-title{
-        font-size:22px;
+        font-size:21px;
     }
-
-    .menu-btn{
-        width:47px;
-        height:43px;
-
-        font-size:25px;
-    }
-
-
-    /*
-       Mobile menu:
-       ONLY links.
-       NO BANNER.
-    */
 
     .nav{
         top:72px;
-
-        padding:14px 18px 30px;
     }
-
-
-    /*
-       Hero banner exact 16:9.
-    */
 
     .hero-slider{
-        width:100%;
-
         aspect-ratio:16 / 9;
-
-        height:auto;
     }
-
-    .hero-slide{
-        object-fit:cover;
-
-        object-position:center;
-    }
-
-    .slider-dots{
-        bottom:10px;
-
-        gap:6px;
-    }
-
-    .slider-dot{
-        width:7px;
-        height:7px;
-    }
-
-    .slider-dot.active{
-        width:20px;
-    }
-
 
     .hero-content{
-        padding:25px 20px 50px;
-    }
-
-    .live-badge{
-        font-size:12px;
-
-        padding:9px 13px;
-
-        margin-bottom:15px;
+        padding:30px 18px 50px;
     }
 
     .hero h1{
-        font-size:35px;
-
-        line-height:1.05;
+        font-size:36px;
     }
 
     .hero p{
         font-size:16px;
-
-        line-height:1.55;
-
-        margin:17px 0;
     }
-
-    .buttons{
-        gap:9px;
-    }
-
-    .btn{
-        min-height:45px;
-
-        padding:12px 15px;
-
-        font-size:12px;
-    }
-
 
     section{
-        padding:50px 20px;
+        padding:45px 18px;
     }
 
     .section-title{
-        font-size:30px;
+        font-size:29px;
     }
 
     .section-sub{
         font-size:15px;
     }
 
-
     .movie-grid{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:1fr 1fr;
 
         gap:12px;
-    }
-
-    .movie-poster{
-        aspect-ratio:3 / 4;
     }
 
     .movie-info{
@@ -919,56 +834,43 @@ footer strong{
         font-size:11px;
     }
 
-
     .live-content h2{
         font-size:34px;
     }
 
     .live-content p{
-        font-size:16px;
+        font-size:15px;
     }
 
+    .stats{
+        grid-template-columns:1fr 1fr;
 
-    .simple-card{
-        padding:20px;
+        gap:15px;
     }
 
-
-    .social-card{
-        padding:18px;
+    .stat h2{
+        font-size:30px;
     }
 
-    .social-icon{
-        width:48px;
-
-        height:48px;
-
-        min-width:48px;
-    }
-
-
-    footer{
-        font-size:13px;
+    .stat p{
+        font-size:12px;
     }
 
 }
 
 
 /* =====================================================
-   VERY SMALL MOBILE
+   SMALL MOBILE
 ===================================================== */
 
-@media(max-width:360px){
-
-    .logo{
-        width:47px;
-        height:47px;
-
-        min-width:47px;
-    }
+@media(max-width:380px){
 
     .brand-title{
-        font-size:20px;
+        font-size:18px;
+    }
+
+    .movie-grid{
+        grid-template-columns:1fr;
     }
 
     .hero h1{
@@ -979,7 +881,7 @@ footer strong{
 
 
 /* =====================================================
-   PREVENT PAGE SHIFT WHEN MENU OPEN
+   BODY MENU LOCK
 ===================================================== */
 
 body.menu-open{
@@ -987,6 +889,7 @@ body.menu-open{
 }
 
 </style>
+
 </head>
 
 
@@ -999,7 +902,7 @@ body.menu-open{
 
 <header>
 
-    <a href="#home" class="brand">
+    <div class="brand">
 
         <img
             src="movie-wala-logo.jpeg"
@@ -1007,10 +910,45 @@ body.menu-open{
             alt="Movie Wala Logo">
 
         <div class="brand-title">
-            MOVIE <span>WALA</span>
+            Movie <span>Wala</span>
         </div>
 
-    </a>
+    </div>
+
+
+    <nav
+        class="nav"
+        id="navMenu">
+
+        <a href="#home">
+            Home
+        </a>
+
+        <a href="#latest">
+            Latest Movies
+        </a>
+
+        <a href="#live">
+            Live Zone
+        </a>
+
+        <a href="#trending">
+            Trending
+        </a>
+
+        <a href="#webseries">
+            Web Series
+        </a>
+
+        <a href="#genres">
+            Genres
+        </a>
+
+        <a href="#about">
+            About
+        </a>
+
+    </nav>
 
 
     <button
@@ -1022,42 +960,31 @@ body.menu-open{
 
     </button>
 
-
-    <nav
-        class="nav"
-        id="navMenu">
-
-        <a href="#home">HOME</a>
-
-        <a href="#live">LIVE</a>
-
-        <a href="#movies">MOVIES</a>
-
-        <a href="#trending">TRENDING</a>
-
-        <a href="#webseries">WEB SERIES</a>
-
-        <a href="#genres">GENRES</a>
-
-        <a href="#about">ABOUT</a>
-
-    </nav>
-
 </header>
 
 
 
 <!-- =====================================================
-     HERO
+     MAIN
 ===================================================== -->
 
 <main id="home">
 
-    <div class="hero">
 
 
-        <div class="hero-slider" id="heroSlider">
+    <!-- =================================================
+         HERO SLIDER
+    ================================================= -->
 
+    <section
+        class="hero"
+        style="padding:0;">
+
+
+        <div class="hero-slider">
+
+
+            <!-- BANNER 1 -->
 
             <img
                 class="hero-slide active"
@@ -1065,11 +992,15 @@ body.menu-open{
                 alt="Movie Wala Banner">
 
 
+            <!-- BANNER 2 -->
+
             <img
                 class="hero-slide"
                 src="banner-2.png"
                 alt="Movie Wala Banner 2">
 
+
+            <!-- BANNER 3 -->
 
             <img
                 class="hero-slide"
@@ -1077,21 +1008,18 @@ body.menu-open{
                 alt="Movie Wala Banner 3">
 
 
+            <!-- BANNER 4 -->
+
             <img
                 class="hero-slide"
                 src="banner-4.jpeg"
                 alt="Movie Wala Banner 4">
 
 
-            <img
-                class="hero-slide"
-                src="Banner-5.jpeg"
-                alt="Movie Wala Banner 5">
-
-
-            <!-- DOTS -->
+            <!-- 4 DOTS -->
 
             <div class="slider-dots">
+
 
                 <button
                     class="slider-dot active"
@@ -1099,11 +1027,13 @@ body.menu-open{
                     aria-label="Slide 1">
                 </button>
 
+
                 <button
                     class="slider-dot"
                     data-slide="1"
                     aria-label="Slide 2">
                 </button>
+
 
                 <button
                     class="slider-dot"
@@ -1111,17 +1041,13 @@ body.menu-open{
                     aria-label="Slide 3">
                 </button>
 
+
                 <button
                     class="slider-dot"
                     data-slide="3"
                     aria-label="Slide 4">
                 </button>
 
-                <button
-                    class="slider-dot"
-                    data-slide="4"
-                    aria-label="Slide 5">
-                </button>
 
             </div>
 
@@ -1129,11 +1055,14 @@ body.menu-open{
         </div>
 
 
+
+        <!-- HERO CONTENT -->
+
         <div class="hero-content">
 
 
             <div class="live-badge">
-                LIVE CHANNEL
+                MOVIE WALA
             </div>
 
 
@@ -1144,30 +1073,31 @@ body.menu-open{
 
 
             <p>
-                Welcome to Movie Wala — your entertainment
-                destination for movies, web series, trending
-                content and cinematic updates.
+                Movies, web series, trending entertainment
+                aur cinematic updates — sab kuch ek hi jagah.
             </p>
 
 
             <div class="buttons">
 
+
                 <a
-                    href="#movies"
+                    href="#latest"
                     class="btn btn-red">
 
-                    ▶ EXPLORE MOVIES
+                    Explore Movies
 
                 </a>
 
 
                 <a
-                    href="#live"
+                    href="#about"
                     class="btn btn-dark">
 
-                    WATCH LIVE
+                    About Us
 
                 </a>
+
 
             </div>
 
@@ -1175,33 +1105,116 @@ body.menu-open{
         </div>
 
 
-    </div>
+    </section>
+
 
 
     <!-- =================================================
-         MOVIES
+         LATEST MOVIES
     ================================================= -->
 
-    <section id="movies">
+    <section id="latest">
+
 
         <h2 class="section-title">
             LATEST <span>MOVIES</span>
         </h2>
 
+
         <p class="section-sub">
-            Latest entertainment picks
+            Latest entertainment updates from Movie Wala
         </p>
 
 
         <div class="movie-grid">
 
 
-            <article class="movie-card">
+            <div class="movie-card">
+
 
                 <div
                     class="movie-poster"
-                    style="background-image:url('banner-1.png')">
+                    style="background-image:url('banner-1.png');">
                 </div>
+
+
+                <div class="movie-info">
+
+                    <h3>
+                        Latest Release
+                    </h3>
+
+                    <p>
+                        New Movie Update
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="movie-card">
+
+
+                <div
+                    class="movie-poster"
+                    style="background-image:url('banner-2.png');">
+                </div>
+
+
+                <div class="movie-info">
+
+                    <h3>
+                        Trending Movie
+                    </h3>
+
+                    <p>
+                        Popular Entertainment
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="movie-card">
+
+
+                <div
+                    class="movie-poster"
+                    style="background-image:url('banner-3.png');">
+                </div>
+
+
+                <div class="movie-info">
+
+                    <h3>
+                        New Movies
+                    </h3>
+
+                    <p>
+                        Latest Cinema Updates
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="movie-card">
+
+
+                <div
+                    class="movie-poster"
+                    style="background-image:url('banner-4.jpeg');">
+                </div>
+
 
                 <div class="movie-info">
 
@@ -1210,81 +1223,17 @@ body.menu-open{
                     </h3>
 
                     <p>
-                        Cinematic Entertainment
+                        Entertainment News
                     </p>
 
                 </div>
 
-            </article>
 
-
-            <article class="movie-card">
-
-                <div
-                    class="movie-poster"
-                    style="background-image:url('banner-2.png')">
-                </div>
-
-                <div class="movie-info">
-
-                    <h3>
-                        Trending Cinema
-                    </h3>
-
-                    <p>
-                        Latest Entertainment
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <article class="movie-card">
-
-                <div
-                    class="movie-poster"
-                    style="background-image:url('banner-3.png')">
-                </div>
-
-                <div class="movie-info">
-
-                    <h3>
-                        Action Zone
-                    </h3>
-
-                    <p>
-                        Action & Entertainment
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <article class="movie-card">
-
-                <div
-                    class="movie-poster"
-                    style="background-image:url('banner-4.jpeg')">
-                </div>
-
-                <div class="movie-info">
-
-                    <h3>
-                        Entertainment Hub
-                    </h3>
-
-                    <p>
-                        Movie Wala Picks
-                    </p>
-
-                </div>
-
-            </article>
+            </div>
 
 
         </div>
+
 
     </section>
 
@@ -1295,55 +1244,39 @@ body.menu-open{
     ================================================= -->
 
     <section
-        class="live-zone"
-        id="live">
+        id="live"
+        class="live-zone">
 
 
         <div class="live-content">
 
+
             <div class="live-label">
-                ● LIVE ZONE
+                LIVE ZONE
             </div>
 
 
             <h2>
-                LIVE <span>ENTERTAINMENT</span>
+                EXPERIENCE THE
+                <span>ENTERTAINMENT</span>
             </h2>
 
 
             <p>
-                Watch Movie Wala Official for entertainment
-                updates, cinematic content, trending videos
-                and live broadcasts.
+                Movie Wala ke saath latest movies,
+                entertainment aur trending content
+                ka maza lijiye.
             </p>
 
 
-            <div class="buttons">
+            <a
+                href="#latest"
+                class="btn btn-red">
 
+                Watch Now
 
-                <a
-                    class="btn btn-red"
-                    href="https://www.youtube.com/@MovieWalaOfficial.10/live"
-                    target="_blank"
-                    rel="noopener noreferrer">
+            </a>
 
-                    ▶ VIEW LIVE CHANNEL
-
-                </a>
-
-
-                <a
-                    class="btn btn-dark"
-                    href="https://www.youtube.com/@MovieWalaOfficial.10"
-                    target="_blank"
-                    rel="noopener noreferrer">
-
-                    YOUTUBE CHANNEL
-
-                </a>
-
-
-            </div>
 
         </div>
 
@@ -1365,19 +1298,19 @@ body.menu-open{
 
 
         <p class="section-sub">
-            Movie Wala Official
+            Watch the latest Movie Wala video
         </p>
 
 
         <div class="video-box">
 
+
             <iframe
                 src="https://www.youtube.com/embed/HzJ0dZ7meZs"
-                title="Movie Wala Official Video"
-                loading="lazy"
-                allow="encrypted-media; picture-in-picture"
+                title="Movie Wala Featured Video"
                 allowfullscreen>
             </iframe>
+
 
         </div>
 
@@ -1409,12 +1342,12 @@ body.menu-open{
             <div class="simple-card">
 
                 <h3>
-                    🔥 Trending Movies
+                    Trending Movies
                 </h3>
 
                 <p>
-                    Discover popular movies and cinematic
-                    entertainment everyone is talking about.
+                    Discover the movies everyone
+                    is talking about.
                 </p>
 
             </div>
@@ -1423,12 +1356,12 @@ body.menu-open{
             <div class="simple-card">
 
                 <h3>
-                    ⭐ Top Picks
+                    Popular Stories
                 </h3>
 
                 <p>
-                    Hand-picked entertainment recommendations
-                    for movie lovers.
+                    Latest entertainment stories,
+                    updates and news.
                 </p>
 
             </div>
@@ -1437,12 +1370,12 @@ body.menu-open{
             <div class="simple-card">
 
                 <h3>
-                    🎬 Cinema Updates
+                    Fan Favourite
                 </h3>
 
                 <p>
-                    Stay connected with the latest
-                    entertainment updates.
+                    Popular content loved by
+                    movie fans.
                 </p>
 
             </div>
@@ -1468,7 +1401,7 @@ body.menu-open{
 
 
         <p class="section-sub">
-            Binge-worthy entertainment
+            Explore the latest web series
         </p>
 
 
@@ -1478,12 +1411,12 @@ body.menu-open{
             <div class="simple-card">
 
                 <h3>
-                    New Releases
+                    New Web Series
                 </h3>
 
                 <p>
-                    Explore the latest web series and
-                    digital entertainment.
+                    Find new and exciting web
+                    series releases.
                 </p>
 
             </div>
@@ -1496,8 +1429,8 @@ body.menu-open{
                 </h3>
 
                 <p>
-                    Discover trending shows and
-                    audience favourites.
+                    Check out the web series
+                    trending right now.
                 </p>
 
             </div>
@@ -1510,8 +1443,8 @@ body.menu-open{
                 </h3>
 
                 <p>
-                    Entertainment picks selected for
-                    movie and series lovers.
+                    Handpicked entertainment
+                    recommendations.
                 </p>
 
             </div>
@@ -1534,6 +1467,32 @@ body.menu-open{
         <div class="stat">
 
             <h2>
+                5+
+            </h2>
+
+            <p>
+                Movie Categories
+            </p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <h2>
+                100+
+            </h2>
+
+            <p>
+                Entertainment Updates
+            </p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <h2>
                 24/7
             </h2>
 
@@ -1547,37 +1506,11 @@ body.menu-open{
         <div class="stat">
 
             <h2>
-                5+
-            </h2>
-
-            <p>
-                Categories
-            </p>
-
-        </div>
-
-
-        <div class="stat">
-
-            <h2>
-                100%
+                ∞
             </h2>
 
             <p>
                 Entertainment
-            </p>
-
-        </div>
-
-
-        <div class="stat">
-
-            <h2>
-                MW
-            </h2>
-
-            <p>
-                Movie Wala
             </p>
 
         </div>
@@ -1606,23 +1539,51 @@ body.menu-open{
 
         <div class="genres">
 
-            <div class="genre">Action</div>
 
-            <div class="genre">Comedy</div>
+            <div class="genre">
+                Action
+            </div>
 
-            <div class="genre">Drama</div>
 
-            <div class="genre">Thriller</div>
+            <div class="genre">
+                Comedy
+            </div>
 
-            <div class="genre">Romance</div>
 
-            <div class="genre">Horror</div>
+            <div class="genre">
+                Drama
+            </div>
 
-            <div class="genre">Sci-Fi</div>
 
-            <div class="genre">Web Series</div>
+            <div class="genre">
+                Thriller
+            </div>
 
-            <div class="genre">Trending</div>
+
+            <div class="genre">
+                Romance
+            </div>
+
+
+            <div class="genre">
+                Horror
+            </div>
+
+
+            <div class="genre">
+                Sci-Fi
+            </div>
+
+
+            <div class="genre">
+                Web Series
+            </div>
+
+
+            <div class="genre">
+                Trending
+            </div>
+
 
         </div>
 
