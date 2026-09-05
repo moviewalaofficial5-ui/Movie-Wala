@@ -437,7 +437,7 @@ section{
             rgba(0,0,0,.82),
             rgba(0,0,0,.86)
         ),
-        url("hollywood-slider-1920x1080.png");
+        url("movie-wala-banner-2[1].jpg");
 
     background-position:center;
 
@@ -987,34 +987,10 @@ body.menu-open{
 }
 
 
-/* FINAL MOVIE WALA SLIDER */
-.hero-slider{
-  position:relative;
-  width:100%;
-  aspect-ratio:16/9;
-  overflow:hidden;
-  background:#050505;
-}
-.hero-slide{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center center;
-}
-.slider-dots{
-  position:absolute;
-  z-index:20;
-  left:50%;
-  bottom:14px;
-  transform:translateX(-50%);
-}
-@media(max-width:600px){
-  .hero-slider{aspect-ratio:16/9;}
-  .hero-slide{width:100%;height:100%;object-fit:cover;}
-  .slider-dots{bottom:8px;}
-}
+/* FINAL 16:9 SLIDER FIT */
+.hero-slider{width:100%;aspect-ratio:16/9;height:auto;min-height:0;overflow:hidden;position:relative;background:#050505;}
+.hero-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;display:block;}
+@media(max-width:600px){.hero-slider{width:100%;aspect-ratio:16/9;height:auto;}.hero-slide{width:100%;height:100%;object-fit:cover;object-position:center center;}.slider-dots{bottom:10px;z-index:10;}}
 
 </style>
 </head>
@@ -1088,32 +1064,16 @@ body.menu-open{
 
         <div class="hero-slider" id="heroSlider">
 
-            <img class="hero-slide active"
-                 src="bollywood-slider-1920x1080.png"
-                 alt="Bollywood Cinema">
-
-            <img class="hero-slide"
-                 src="hollywood-slider-1920x1080.png"
-                 alt="Hollywood Cinema">
-
-            <img class="hero-slide"
-                 src="tollywood-slider-1920x1080.png"
-                 alt="Tollywood Cinema">
-
-            <img class="hero-slide"
-                 src="movie-wala-originals-1920x1080.png"
-                 alt="Movie Wala Originals">
-
-            <img class="hero-slide"
-                 src="bhojpuri-slider-1920x1080.png"
-                 alt="Bhojpuri Cinema">
+            <img class="hero-slide active" src="bollywood-slider-1920x1080.png" alt="Bollywood Entertainment Banner">
+            <img class="hero-slide" src="hollywood-slider-1920x1080.png" alt="Hollywood Entertainment Banner">
+            <img class="hero-slide" src="tollywood-slider-1920x1080.png" alt="Tollywood Entertainment Banner">
+            <img class="hero-slide" src="bhojpuri-slider-1920x1080.png" alt="Bhojpuri Entertainment Banner">
 
             <div class="slider-dots">
                 <button class="slider-dot active" data-slide="0" aria-label="Bollywood"></button>
                 <button class="slider-dot" data-slide="1" aria-label="Hollywood"></button>
                 <button class="slider-dot" data-slide="2" aria-label="Tollywood"></button>
-                <button class="slider-dot" data-slide="3" aria-label="Movie Wala Originals"></button>
-                <button class="slider-dot" data-slide="4" aria-label="Bhojpuri"></button>
+                <button class="slider-dot" data-slide="3" aria-label="Bhojpuri"></button>
             </div>
 
         </div>
