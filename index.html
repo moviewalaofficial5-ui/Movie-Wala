@@ -6,7 +6,12 @@
 
 <title>Movie Wala - Bollywood, Hollywood & Tollywood</title>
 
+<!-- Font Awesome -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -21,16 +26,13 @@ body{
     font-family:Arial,Helvetica,sans-serif;
     background:#080808;
     color:#fff;
-    overflow-x:hidden;
 }
 
-/* =========================
-   HEADER
-========================= */
+/* ================= HEADER ================= */
 
 header{
     width:100%;
-    background:#101010;
+    background:#111;
     border-bottom:2px solid #d4af37;
     position:sticky;
     top:0;
@@ -40,106 +42,84 @@ header{
 .navbar{
     width:100%;
     max-width:1400px;
-    min-height:78px;
+    min-height:82px;
     margin:auto;
-    padding:8px 28px;
+    padding:8px 24px;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
 }
 
 /* LOGO */
+
 .logo-area{
     display:flex;
     align-items:center;
     gap:12px;
-    text-decoration:none;
 }
 
-.logo-box{
+.logo-image{
     width:62px;
     height:62px;
-    border:2px solid #d4af37;
-    border-radius:50%;
-    overflow:hidden;
-    background:#000;
-    position:relative;
-}
-
-/*
- Existing main banner se logo ka center portion
- header mein crop kiya gaya hai.
-*/
-.logo-box img{
-    position:absolute;
-    width:500%;
-    max-width:none;
-    height:auto;
-    left:50%;
-    top:5%;
-    transform:translateX(-50%);
+    object-fit:contain;
+    object-position:center;
+    display:block;
+    flex-shrink:0;
 }
 
 .logo-text{
     color:#d4af37;
-    font-size:27px;
+    font-size:30px;
     font-weight:800;
     letter-spacing:.3px;
 }
 
-.logo-text span{
-    display:block;
+.logo-official{
     color:#fff;
     font-size:9px;
-    letter-spacing:4px;
+    font-weight:bold;
+    letter-spacing:5px;
     text-align:center;
-    margin-top:2px;
+    margin-top:-3px;
 }
+
+/* NAVIGATION */
 
 .nav-links{
     display:flex;
     align-items:center;
-    gap:35px;
+    gap:34px;
 }
 
 .nav-links a{
     color:#fff;
     text-decoration:none;
     font-size:17px;
-    font-weight:700;
-    transition:.25s;
+    font-weight:bold;
 }
 
 .nav-links a:hover{
     color:#d4af37;
 }
 
-/* MOBILE MENU */
-.menu-btn{
-    display:none;
-    color:#fff;
-    font-size:30px;
-    cursor:pointer;
-}
-
-/* =========================
-   HERO
-========================= */
+/* ================= HERO ================= */
 
 .hero{
     width:100%;
     background:#000;
-    padding:0;
+    padding:14px 0 0;
 }
 
 .slider{
     width:100%;
-    max-width:1920px;
-    margin:auto;
+    max-width:1600px;
+    margin:0 auto;
+    aspect-ratio:16 / 9;
+
     position:relative;
     overflow:hidden;
     background:#000;
-    aspect-ratio:16/9;
 }
 
 .slide{
@@ -147,9 +127,11 @@ header{
     inset:0;
     width:100%;
     height:100%;
+
     opacity:0;
     visibility:hidden;
-    transition:opacity .7s ease;
+
+    transition:opacity .6s ease;
 }
 
 .slide.active{
@@ -161,32 +143,34 @@ header{
     width:100%;
     height:100%;
     display:block;
+
     object-fit:cover;
-    object-position:center center;
+    object-position:center;
 }
 
 /* ARROWS */
 
-.slider-arrow{
+.arrow{
     position:absolute;
     top:50%;
     transform:translateY(-50%);
-    width:48px;
-    height:48px;
+
+    width:46px;
+    height:46px;
+
     border-radius:50%;
     border:none;
-    background:rgba(0,0,0,.72);
+
+    background:rgba(0,0,0,.65);
     color:#fff;
-    font-size:30px;
+
+    font-size:26px;
     cursor:pointer;
+
     z-index:20;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    transition:.25s;
 }
 
-.slider-arrow:hover{
+.arrow:hover{
     background:#d4af37;
     color:#000;
 }
@@ -201,22 +185,25 @@ header{
 
 /* DOTS */
 
-.slider-dots{
+.dots{
     position:absolute;
-    bottom:16px;
     left:50%;
+    bottom:18px;
     transform:translateX(-50%);
+
     display:flex;
-    gap:8px;
+    gap:9px;
     z-index:30;
 }
 
 .dot{
     width:11px;
     height:11px;
+
     border-radius:50%;
-    background:#777;
     border:2px solid #fff;
+
+    background:#555;
     cursor:pointer;
 }
 
@@ -224,863 +211,787 @@ header{
     background:#d4af37;
 }
 
-/* =========================
-   MAIN CONTENT
-========================= */
+/* ================= CONTENT ================= */
 
 .container{
     width:100%;
     max-width:1200px;
     margin:auto;
-    padding:25px 20px 45px;
+    padding:45px 20px;
 }
 
 .section-title{
+    text-align:center;
     color:#d4af37;
-    font-size:28px;
-    font-weight:800;
-    margin-bottom:18px;
-    display:flex;
-    align-items:center;
-    gap:12px;
+    font-size:32px;
+    margin-bottom:15px;
 }
 
-.section-title::after{
-    content:"";
-    height:2px;
-    width:70px;
-    background:#d4af37;
+.section-subtitle{
+    text-align:center;
+    color:#bbb;
+    font-size:16px;
+    margin-bottom:35px;
 }
 
-/* =========================
-   CATEGORY CARDS
-========================= */
+/* ================= CATEGORY ================= */
 
 .categories{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:16px;
-    margin-bottom:25px;
+    gap:20px;
 }
 
-.category-card{
-    border:1px solid #8c6b16;
-    border-radius:9px;
-    padding:20px;
-    background:linear-gradient(145deg,#151515,#090909);
-    display:flex;
-    align-items:center;
-    gap:18px;
+.category{
+    background:#151515;
+    border:1px solid #333;
+    border-radius:12px;
+
+    padding:28px 20px;
+    text-align:center;
+
     transition:.3s;
 }
 
-.category-card:hover{
-    transform:translateY(-4px);
+.category:hover{
+    transform:translateY(-5px);
     border-color:#d4af37;
-    box-shadow:0 5px 20px rgba(212,175,55,.15);
 }
 
-.category-icon{
-    width:55px;
-    height:55px;
-    flex-shrink:0;
+.category i{
+    font-size:42px;
     color:#d4af37;
+    margin-bottom:15px;
 }
 
-.category-icon svg{
-    width:100%;
-    height:100%;
-}
-
-.category-card h3{
-    color:#d4af37;
-    font-size:21px;
-    margin-bottom:7px;
-}
-
-.category-card p{
-    color:#ddd;
-    font-size:14px;
-    line-height:1.5;
-}
-
-/* =========================
-   LIVE
-========================= */
-
-.live-box{
-    border:1px solid #8c6b16;
-    border-radius:10px;
-    background:linear-gradient(145deg,#180b05,#090909);
-    min-height:145px;
-    padding:25px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    margin-bottom:30px;
-}
-
-.live-content{
-    max-width:700px;
-}
-
-.live-title{
-    font-size:25px;
-    font-weight:800;
+.category h3{
+    font-size:22px;
     margin-bottom:8px;
 }
 
-.live-badge{
-    display:inline-block;
-    background:#e50914;
-    color:#fff;
-    padding:5px 11px;
-    border-radius:5px;
-    font-size:14px;
-    font-weight:800;
-    margin-right:8px;
-}
-
-.live-content p{
-    color:#ddd;
-    margin:10px 0 17px;
-    line-height:1.5;
-}
-
-.youtube-btn{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    background:#d4af37;
-    color:#000;
-    padding:11px 20px;
-    border-radius:6px;
-    text-decoration:none;
-    font-weight:800;
-    transition:.25s;
-}
-
-.youtube-btn:hover{
-    background:#fff;
-    transform:translateY(-2px);
-}
-
-.youtube-btn svg{
-    width:21px;
-    height:21px;
-}
-
-/* =========================
-   FEATURED + SOCIAL
-========================= */
-
-.two-column{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:22px;
-    align-items:start;
-}
-
-.video-box{
-    width:100%;
-    border:1px solid #555;
-    border-radius:7px;
-    overflow:hidden;
-    background:#000;
-}
-
-.video-box iframe{
-    width:100%;
-    aspect-ratio:16/9;
-    border:0;
-    display:block;
-}
-
-.social-box{
-    border:1px solid #8c6b16;
-    border-radius:9px;
-    padding:20px;
-    background:#0d0d0d;
-}
-
-.social-title{
-    color:#d4af37;
-    font-size:22px;
-    font-weight:800;
-    margin-bottom:20px;
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.social-title::after{
-    content:"";
-    height:2px;
-    flex:1;
-    background:#8c6b16;
-}
-
-.social-links{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
-}
-
-.social-item{
-    color:#fff;
-    text-decoration:none;
-    text-align:center;
-    transition:.25s;
-}
-
-.social-item:hover{
-    transform:translateY(-4px);
-}
-
-.social-icon{
-    width:58px;
-    height:58px;
-    margin:0 auto 8px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:15px;
-}
-
-.social-icon svg{
-    width:34px;
-    height:34px;
-}
-
-.youtube-icon{
-    background:#ff0000;
-}
-
-.facebook-icon{
-    background:#1877f2;
-}
-
-.instagram-icon{
-    background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
-}
-
-.telegram-icon{
-    background:#229ed9;
-}
-
-.social-item span{
-    font-size:13px;
-    font-weight:700;
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-    border-top:1px solid #333;
-    background:#050505;
-    padding:22px 15px;
-    text-align:center;
+.category p{
     color:#aaa;
     font-size:14px;
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* ================= LIVE ================= */
 
-@media(max-width:800px){
+.live-section{
+    background:#101010;
+    border-top:1px solid #222;
+    border-bottom:1px solid #222;
+}
+
+.live-box{
+    max-width:850px;
+    margin:0 auto;
+    background:#181818;
+
+    border:1px solid #333;
+    border-radius:15px;
+
+    padding:35px 25px;
+    text-align:center;
+}
+
+.live-icon{
+    color:#ff0000;
+    font-size:50px;
+    margin-bottom:15px;
+}
+
+.live-box h2{
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.live-box p{
+    color:#aaa;
+    margin-bottom:25px;
+}
+
+.live-button{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    background:#ff0000;
+    color:#fff;
+
+    padding:13px 25px;
+    border-radius:30px;
+
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.live-button:hover{
+    background:#cc0000;
+}
+
+/* ================= FEATURED VIDEO ================= */
+
+.video-box{
+    max-width:900px;
+    margin:auto;
+    aspect-ratio:16/9;
+    background:#000;
+    border-radius:12px;
+    overflow:hidden;
+    border:1px solid #333;
+}
+
+.video-box iframe{
+    width:100%;
+    height:100%;
+    border:0;
+}
+
+/* ================= SOCIAL ================= */
+
+.social-section{
+    background:#111;
+    border-top:1px solid #222;
+}
+
+.social-links{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:18px;
+}
+
+.social-link{
+    min-width:175px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+
+    padding:13px 20px;
+
+    color:#fff;
+    text-decoration:none;
+
+    background:#181818;
+    border:1px solid #333;
+    border-radius:30px;
+
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.social-link i{
+    font-size:22px;
+}
+
+.social-link:hover{
+    border-color:#d4af37;
+    color:#d4af37;
+    transform:translateY(-3px);
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#050505;
+    border-top:1px solid #222;
+
+    text-align:center;
+    padding:25px 15px;
+
+    color:#888;
+    font-size:14px;
+}
+
+footer strong{
+    color:#d4af37;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
 
     .navbar{
-        min-height:68px;
-        padding:7px 14px;
+        min-height:72px;
+        padding:7px 15px;
     }
 
-    .logo-box{
-        width:50px;
-        height:50px;
+    .logo-image{
+        width:54px;
+        height:54px;
     }
 
     .logo-text{
-        font-size:21px;
+        font-size:23px;
     }
 
-    .logo-text span{
+    .logo-official{
         font-size:7px;
         letter-spacing:3px;
     }
 
-    .menu-btn{
-        display:block;
-    }
-
     .nav-links{
-        display:none;
-        position:absolute;
-        top:68px;
-        left:0;
-        right:0;
-        background:#111;
-        border-bottom:2px solid #d4af37;
-        flex-direction:column;
-        gap:0;
-        padding:5px 0;
-    }
-
-    .nav-links.show{
-        display:flex;
+        gap:18px;
     }
 
     .nav-links a{
-        width:100%;
-        padding:15px;
-        text-align:center;
-        border-bottom:1px solid #222;
+        font-size:14px;
+    }
+
+    .slider{
+        max-width:none;
+        aspect-ratio:16/9;
+    }
+
+    .arrow{
+        width:40px;
+        height:40px;
+        font-size:22px;
+    }
+
+    .prev{
+        left:10px;
+    }
+
+    .next{
+        right:10px;
+    }
+
+    .categories{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .navbar{
+        min-height:64px;
+        padding:6px 10px;
+    }
+
+    .logo-image{
+        width:46px;
+        height:46px;
+    }
+
+    .logo-text{
+        font-size:19px;
+    }
+
+    .logo-official{
+        font-size:6px;
+        letter-spacing:2px;
+    }
+
+    .logo-area{
+        gap:7px;
+    }
+
+    .nav-links{
+        gap:12px;
+    }
+
+    .nav-links a{
+        font-size:13px;
+    }
+
+    .hero{
+        padding:0;
     }
 
     .slider{
         width:100%;
         aspect-ratio:16/9;
+        border:none;
     }
 
-    .slider-arrow{
-        width:38px;
-        height:38px;
-        font-size:23px;
+    .arrow{
+        width:34px;
+        height:34px;
+        font-size:19px;
     }
 
     .prev{
-        left:8px;
+        left:6px;
     }
 
     .next{
-        right:8px;
+        right:6px;
     }
 
-    .slider-dots{
-        bottom:9px;
+    .dots{
+        bottom:10px;
     }
 
     .dot{
-        width:9px;
-        height:9px;
+        width:8px;
+        height:8px;
+    }
+
+    .section-title{
+        font-size:26px;
     }
 
     .container{
-        padding:20px 12px 35px;
+        padding:35px 15px;
     }
 
-    .section-title{
-        font-size:22px;
+    .social-link{
+        width:100%;
+        max-width:300px;
     }
 
-    .categories{
-        grid-template-columns:1fr;
-        gap:12px;
-    }
-
-    .category-card{
-        padding:15px;
-    }
-
-    .category-card h3{
-        font-size:19px;
-    }
-
-    .live-box{
-        padding:22px 14px;
-    }
-
-    .live-title{
-        font-size:21px;
-    }
-
-    .two-column{
-        grid-template-columns:1fr;
-        gap:20px;
-    }
-
-    .social-links{
-        grid-template-columns:repeat(4,1fr);
-        gap:8px;
-    }
-
-    .social-icon{
-        width:48px;
-        height:48px;
-        border-radius:12px;
-    }
-
-    .social-icon svg{
-        width:28px;
-        height:28px;
-    }
-
-    .social-item span{
-        font-size:11px;
-    }
 }
 
-/* VERY SMALL MOBILE */
+/* ================= EXTRA SMALL ================= */
 
-@media(max-width:430px){
+@media(max-width:420px){
 
     .logo-text{
-        font-size:19px;
+        font-size:17px;
     }
 
-    .logo-box{
-        width:46px;
-        height:46px;
+    .logo-image{
+        width:42px;
+        height:42px;
     }
 
-    .navbar{
-        padding-left:10px;
-        padding-right:10px;
+    .nav-links{
+        gap:9px;
     }
 
-    .section-title{
-        font-size:20px;
+    .nav-links a{
+        font-size:12px;
     }
 
-    .category-icon{
-        width:48px;
-        height:48px;
-    }
-
-    .social-links{
-        gap:5px;
-    }
-
-    .social-icon{
-        width:43px;
-        height:43px;
-    }
-
-    .social-icon svg{
-        width:24px;
-        height:24px;
-    }
-
-    .social-item span{
-        font-size:10px;
-    }
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     HEADER
-========================= -->
+<!-- ================= HEADER ================= -->
 
 <header>
 
-<div class="navbar">
+    <div class="navbar">
 
-<a href="#home" class="logo-area">
+        <div class="logo-area">
 
-<div class="logo-box">
-<img src="movie-wala-main-banner.png" alt="Movie Wala Logo">
-</div>
+            <!-- Movie Wala Logo -->
+            <img
+            class="logo-image"
+            src="data:image/png;base64,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"
+            alt="Movie Wala Logo">
 
-<div class="logo-text">
-Movie Wala
-<span>OFFICIAL</span>
-</div>
+            <div>
+                <div class="logo-text">Movie Wala</div>
+                <div class="logo-official">OFFICIAL</div>
+            </div>
 
-</a>
+        </div>
 
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
+        <nav class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#movies">Movies</a>
+            <a href="#live">Live</a>
+        </nav>
 
-<nav class="nav-links" id="navLinks">
-<a href="#home">Home</a>
-<a href="#movies">Movies</a>
-<a href="#live">Live</a>
-</nav>
-
-</div>
+    </div>
 
 </header>
 
 
-<!-- =========================
-     HERO SLIDER
-========================= -->
+<!-- ================= HERO SLIDER ================= -->
 
 <section class="hero" id="home">
 
-<div class="slider" id="slider">
+    <div class="slider">
 
-<div class="slide active">
-<img src="movie-wala-main-banner.png" alt="Movie Wala Main Banner">
-</div>
+        <!-- SLIDE 1 -->
+        <div class="slide active">
+            <img
+            src="movie-wala-main-banner.png"
+            alt="Movie Wala Main Banner">
+        </div>
 
-<div class="slide">
-<img src="bollywood-slider-1920x1080.png" alt="Bollywood">
-</div>
+        <!-- SLIDE 2 -->
+        <div class="slide">
+            <img
+            src="bollywood-slider-1920x1080.png"
+            alt="Bollywood">
+        </div>
 
-<div class="slide">
-<img src="hollywood-slider-1920x1080.png" alt="Hollywood">
-</div>
+        <!-- SLIDE 3 -->
+        <div class="slide">
+            <img
+            src="hollywood-slider-1920x1080.png"
+            alt="Hollywood">
+        </div>
 
-<div class="slide">
-<img src="tollywood-slider-1920x1080.png" alt="Tollywood">
-</div>
-
-
-<button class="slider-arrow prev" onclick="changeSlide(-1)">‹</button>
-
-<button class="slider-arrow next" onclick="changeSlide(1)">›</button>
-
-
-<div class="slider-dots">
-
-<span class="dot active" onclick="goToSlide(0)"></span>
-<span class="dot" onclick="goToSlide(1)"></span>
-<span class="dot" onclick="goToSlide(2)"></span>
-<span class="dot" onclick="goToSlide(3)"></span>
-
-</div>
-
-</div>
-
-</section>
+        <!-- SLIDE 4 -->
+        <div class="slide">
+            <img
+            src="tollywood-slider-1920x1080.png"
+            alt="Tollywood">
+        </div>
 
 
-<!-- =========================
-     CONTENT
-========================= -->
+        <!-- PREVIOUS -->
+        <button class="arrow prev" onclick="changeSlide(-1)">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
 
-<main class="container" id="movies">
-
-
-<!-- CATEGORIES -->
-
-<h2 class="section-title">Movie Categories</h2>
-
-<div class="categories">
+        <!-- NEXT -->
+        <button class="arrow next" onclick="changeSlide(1)">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
 
 
-<div class="category-card">
+        <!-- DOTS -->
+        <div class="dots">
 
-<div class="category-icon">
+            <span class="dot active"
+            onclick="goToSlide(0)"></span>
 
-<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4">
-<path d="M8 20h48v36H8z"/>
-<path d="M8 20l8-12h40l-8 12"/>
-<path d="M20 20l8-12"/>
-<path d="M34 20l8-12"/>
-<path d="M48 20l8-12"/>
-</svg>
+            <span class="dot"
+            onclick="goToSlide(1)"></span>
 
-</div>
+            <span class="dot"
+            onclick="goToSlide(2)"></span>
 
-<div>
-<h3>Bollywood</h3>
-<p>Latest Bollywood movies, trailers, songs, reviews and updates.</p>
-</div>
+            <span class="dot"
+            onclick="goToSlide(3)"></span>
 
-</div>
+        </div>
 
-
-<div class="category-card">
-
-<div class="category-icon">
-
-<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4">
-<circle cx="32" cy="32" r="22"/>
-<circle cx="32" cy="32" r="8"/>
-<path d="M32 10v14M32 40v14M10 32h14M40 32h14"/>
-</svg>
-
-</div>
-
-<div>
-<h3>Hollywood</h3>
-<p>Hollywood movies, action, thriller, drama and entertainment.</p>
-</div>
-
-</div>
-
-
-<div class="category-card">
-
-<div class="category-icon">
-
-<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4">
-<rect x="7" y="17" width="38" height="30" rx="4"/>
-<path d="M45 27l12-7v24l-12-7"/>
-<circle cx="26" cy="32" r="8"/>
-</svg>
-
-</div>
-
-<div>
-<h3>Tollywood</h3>
-<p>Telugu movies, trailers, songs and latest entertainment updates.</p>
-</div>
-
-</div>
-
-</div>
-
-
-<!-- =========================
-     LIVE
-========================= -->
-
-<section id="live">
-
-<h2 class="section-title">Live</h2>
-
-<div class="live-box">
-
-<div class="live-content">
-
-<div class="live-title">
-<span class="live-badge">● LIVE</span>
-Movie Wala Official Live
-</div>
-
-<p>
-Join our YouTube live stream for movies, entertainment,
-updates and much more!
-</p>
-
-<a
-href="https://www.youtube.com/@MovieWalaOfficial.10/live"
-target="_blank"
-class="youtube-btn"
->
-
-<svg viewBox="0 0 24 24" fill="currentColor">
-<path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.5v-7l6.2 3.5-6.2 3.5z"/>
-</svg>
-
-Watch Live on YouTube
-
-</a>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
-<!-- =========================
-     FEATURED VIDEO + SOCIAL
-========================= -->
+<!-- ================= MOVIES ================= -->
 
-<div class="two-column">
+<section id="movies">
 
+    <div class="container">
 
-<div>
+        <h2 class="section-title">
+            Movies & Entertainment
+        </h2>
 
-<h2 class="section-title">Featured Video</h2>
-
-<div class="video-box">
-
-<iframe
-src="https://www.youtube.com/embed/HzJ0dZ7meZs"
-title="Movie Wala Featured Video"
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-allowfullscreen>
-</iframe>
-
-</div>
-
-</div>
+        <p class="section-subtitle">
+            Bollywood, Hollywood & Tollywood movies,
+            trailers, reviews and entertainment.
+        </p>
 
 
-<div class="social-box">
+        <div class="categories">
 
-<h2 class="social-title">Follow Us</h2>
+            <div class="category">
 
-<div class="social-links">
+                <i class="fa-solid fa-film"></i>
 
+                <h3>Bollywood</h3>
 
-<!-- YOUTUBE -->
+                <p>
+                    Latest Bollywood movies,
+                    trailers and entertainment.
+                </p>
 
-<a
-href="https://www.youtube.com/@MovieWalaOfficial.10"
-target="_blank"
-class="social-item"
->
-
-<div class="social-icon youtube-icon">
-
-<svg viewBox="0 0 24 24" fill="white">
-<path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.5v-7l6.2 3.5-6.2 3.5z"/>
-</svg>
-
-</div>
-
-<span>YouTube</span>
-
-</a>
+            </div>
 
 
-<!-- FACEBOOK -->
+            <div class="category">
 
-<a
-href="https://www.facebook.com/share/1MR6Lxzy4f/"
-target="_blank"
-class="social-item"
->
+                <i class="fa-solid fa-clapperboard"></i>
 
-<div class="social-icon facebook-icon">
+                <h3>Hollywood</h3>
 
-<svg viewBox="0 0 24 24" fill="white">
-<path d="M14 8h3V4h-3c-3.3 0-5 1.7-5 5v3H6v4h3v8h4v-8h3.3l.7-4H13V9c0-.7.3-1 1-1z"/>
-</svg>
+                <p>
+                    Hollywood movies,
+                    scenes, trailers and updates.
+                </p>
 
-</div>
-
-<span>Facebook</span>
-
-</a>
+            </div>
 
 
-<!-- INSTAGRAM -->
+            <div class="category">
 
-<a
-href="https://www.instagram.com/moviewalaofficial.10/"
-target="_blank"
-class="social-item"
->
+                <i class="fa-solid fa-star"></i>
 
-<div class="social-icon instagram-icon">
+                <h3>Tollywood</h3>
 
-<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-<rect x="3" y="3" width="18" height="18" rx="5"/>
-<circle cx="12" cy="12" r="4"/>
-<circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/>
-</svg>
+                <p>
+                    Telugu cinema movies,
+                    trailers and latest updates.
+                </p>
 
-</div>
+            </div>
 
-<span>Instagram</span>
+        </div>
 
-</a>
+    </div>
+
+</section>
 
 
-<!-- TELEGRAM -->
+<!-- ================= LIVE ================= -->
 
-<a
-href="https://t.me/MovieWalaOfficial"
-target="_blank"
-class="social-item"
->
+<section class="live-section" id="live">
 
-<div class="social-icon telegram-icon">
+    <div class="container">
 
-<svg viewBox="0 0 24 24" fill="white">
-<path d="M21.8 3.2L2.6 10.6c-1.3.5-1.3 1.2-.2 1.5l4.9 1.5 1.9 5.9c.2.6.1.9.7.9.5 0 .7-.2 1-.9-1.6l-2.1-3.9 10.7-6.8c.5-.3 1-.1.6.2l-8.7 7.8-.3 4.7c.4 0 .6-.2.8-.4l2.2-2.1 4.6 3.4c.8.4 1.4.2 1.6-.7l3-14.1c.3-1.1-.4-1.6-1.4-1.2z"/>
-</svg>
+        <div class="live-box">
 
-</div>
+            <div class="live-icon">
+                <i class="fa-brands fa-youtube"></i>
+            </div>
 
-<span>Telegram</span>
+            <h2>Movie Wala Live</h2>
 
-</a>
+            <p>
+                Watch Movie Wala Official live videos
+                and latest entertainment updates.
+            </p>
+
+            <a
+            class="live-button"
+            href="https://www.youtube.com/@MovieWalaOfficial.10/live"
+            target="_blank">
+
+                <i class="fa-solid fa-circle-play"></i>
+
+                Watch Live
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
 
 
-</div>
+<!-- ================= FEATURED VIDEO ================= -->
 
-</div>
+<section>
 
-</div>
+    <div class="container">
 
-</main>
+        <h2 class="section-title">
+            Featured Video
+        </h2>
+
+        <p class="section-subtitle">
+            Watch the latest Movie Wala video.
+        </p>
+
+        <div class="video-box">
+
+            <iframe
+            src="https://www.youtube.com/embed/HzJ0dZ7meZs"
+            title="Movie Wala Featured Video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+            </iframe>
+
+        </div>
+
+    </div>
+
+</section>
 
 
-<!-- =========================
-     FOOTER
-========================= -->
+<!-- ================= SOCIAL MEDIA ================= -->
+
+<section class="social-section">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Follow Movie Wala
+        </h2>
+
+        <p class="section-subtitle">
+            Follow us on social media for latest movie updates.
+        </p>
+
+
+        <div class="social-links">
+
+
+            <!-- YOUTUBE -->
+
+            <a
+            class="social-link"
+            href="https://www.youtube.com/@MovieWalaOfficial.10"
+            target="_blank">
+
+                <i class="fa-brands fa-youtube"></i>
+
+                <span>YouTube</span>
+
+            </a>
+
+
+            <!-- FACEBOOK -->
+
+            <a
+            class="social-link"
+            href="https://www.facebook.com/share/1MR6Lxzy4f/"
+            target="_blank">
+
+                <i class="fa-brands fa-facebook"></i>
+
+                <span>Facebook</span>
+
+            </a>
+
+
+            <!-- INSTAGRAM -->
+
+            <a
+            class="social-link"
+            href="https://www.instagram.com/moviewalaofficial.10/"
+            target="_blank">
+
+                <i class="fa-brands fa-instagram"></i>
+
+                <span>Instagram</span>
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
 
 <footer>
-© 2026 Movie Wala Official. All Rights Reserved.
+
+    <p>
+        © 2026
+        <strong>Movie Wala Official</strong>.
+        All Rights Reserved.
+    </p>
+
 </footer>
 
 
-<script>
+<!-- ================= SLIDER SCRIPT ================= -->
 
-/* =========================
-   SLIDER
-========================= */
+<script>
 
 let currentSlide = 0;
 
 const slides = document.querySelectorAll(".slide");
 const dots = document.querySelectorAll(".dot");
 
+
 function showSlide(index){
 
     if(index >= slides.length){
-        index = 0;
+        currentSlide = 0;
     }
 
-    if(index < 0){
-        index = slides.length - 1;
+    else if(index < 0){
+        currentSlide = slides.length - 1;
     }
 
-    currentSlide = index;
+    else{
+        currentSlide = index;
+    }
 
-    slides.forEach((slide,i)=>{
-        slide.classList.toggle("active",i === currentSlide);
+
+    slides.forEach(function(slide){
+        slide.classList.remove("active");
     });
 
-    dots.forEach((dot,i)=>{
-        dot.classList.toggle("active",i === currentSlide);
+
+    dots.forEach(function(dot){
+        dot.classList.remove("active");
     });
+
+
+    slides[currentSlide].classList.add("active");
+    dots[currentSlide].classList.add("active");
+
 }
+
 
 function changeSlide(direction){
+
     showSlide(currentSlide + direction);
+
 }
 
+
 function goToSlide(index){
+
     showSlide(index);
+
 }
+
 
 /* AUTO SLIDER */
 
-setInterval(()=>{
+setInterval(function(){
+
     showSlide(currentSlide + 1);
+
 },5000);
 
 
-/* =========================
-   MOBILE MENU
-========================= */
+/* SWIPE SUPPORT FOR MOBILE */
 
-function toggleMenu(){
+let startX = 0;
 
-    const menu = document.getElementById("navLinks");
-
-    menu.classList.toggle("show");
-
-}
+const slider = document.querySelector(".slider");
 
 
-/* CLOSE MOBILE MENU AFTER CLICK */
+slider.addEventListener("touchstart",function(e){
 
-document.querySelectorAll(".nav-links a").forEach(link=>{
+    startX = e.touches[0].clientX;
 
-    link.addEventListener("click",()=>{
+});
 
-        document.getElementById("navLinks").classList.remove("show");
 
-    });
+slider.addEventListener("touchend",function(e){
+
+    let endX = e.changedTouches[0].clientX;
+
+    let difference = startX - endX;
+
+
+    if(Math.abs(difference) > 50){
+
+        if(difference > 0){
+
+            changeSlide(1);
+
+        }else{
+
+            changeSlide(-1);
+
+        }
+
+    }
 
 });
 
 </script>
+
 
 </body>
 </html>
