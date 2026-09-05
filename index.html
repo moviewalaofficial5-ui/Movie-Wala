@@ -161,13 +161,6 @@ header{
     background:#050505;
 }
 
-
-/*
-   IMPORTANT:
-   Slider ka size banner ke actual 16:9 ratio ke
-   according fixed hai.
-*/
-
 .hero-slider{
     position:relative;
 
@@ -179,12 +172,6 @@ header{
 
     background:#050505;
 }
-
-
-/*
-   Banner images.
-   Koi stretch nahi.
-*/
 
 .hero-slide{
     position:absolute;
@@ -211,6 +198,59 @@ header{
 
 
 /* =====================================================
+   SLIDER ARROWS
+===================================================== */
+
+.slider-arrow{
+    position:absolute;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:58px;
+    height:58px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(255,255,255,.45);
+
+    background:rgba(0,0,0,.55);
+
+    color:#fff;
+
+    font-size:42px;
+
+    line-height:1;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+
+    z-index:10;
+
+    transition:.2s ease;
+}
+
+.slider-arrow:hover{
+    background:#e50914;
+
+    border-color:#e50914;
+}
+
+.slider-prev{
+    left:20px;
+}
+
+.slider-next{
+    right:20px;
+}
+
+
+/* =====================================================
    SLIDER DOTS
 ===================================================== */
 
@@ -226,7 +266,7 @@ header{
 
     gap:7px;
 
-    z-index:5;
+    z-index:20;
 }
 
 .slider-dot{
@@ -797,13 +837,6 @@ footer strong{
         font-size:25px;
     }
 
-
-    /*
-       Mobile menu:
-       ONLY links.
-       NO BANNER.
-    */
-
     .nav{
         top:72px;
 
@@ -811,9 +844,7 @@ footer strong{
     }
 
 
-    /*
-       Hero banner exact 16:9.
-    */
+    /* MOBILE HERO */
 
     .hero-slider{
         width:100%;
@@ -828,6 +859,25 @@ footer strong{
 
         object-position:center;
     }
+
+
+    /* MOBILE ARROWS */
+
+    .slider-arrow{
+        width:38px;
+        height:38px;
+
+        font-size:28px;
+    }
+
+    .slider-prev{
+        left:8px;
+    }
+
+    .slider-next{
+        right:8px;
+    }
+
 
     .slider-dots{
         bottom:10px;
@@ -844,20 +894,6 @@ footer strong{
         width:20px;
     }
 
-
-    .slider-arrow{
-        width:36px;
-        height:36px;
-        font-size:27px;
-    }
-
-    .slider-prev{
-        left:7px;
-    }
-
-    .slider-next{
-        right:7px;
-    }
 
     .hero-content{
         padding:25px 20px 50px;
@@ -993,7 +1029,7 @@ footer strong{
 
 
 /* =====================================================
-   PREVENT PAGE SHIFT WHEN MENU OPEN
+   MENU OPEN
 ===================================================== */
 
 body.menu-open{
@@ -1018,8 +1054,7 @@ body.menu-open{
         <img
             src="movie-wala-logo.jpeg"
             class="logo"
-            alt="Movie Wala Logo"
-            onerror="this.onerror=null;this.src='banner-1.png';">
+            alt="Movie Wala Logo">
 
         <div class="brand-title">
             MOVIE <span>WALA</span>
@@ -1072,7 +1107,9 @@ body.menu-open{
     <div class="hero">
 
 
-        <div class="hero-slider" id="heroSlider">
+        <div
+            class="hero-slider"
+            id="heroSlider">
 
 
             <!-- BANNER 1 -->
@@ -1111,7 +1148,7 @@ body.menu-open{
 
             <img
                 class="hero-slide"
-                src="banner-5.jpeg"
+                src="Banner-5.jpeg"
                 alt="Movie Wala Banner 5">
 
 
@@ -1233,6 +1270,7 @@ body.menu-open{
 
 
     </div>
+
 
 
     <!-- =================================================
@@ -1992,10 +2030,6 @@ let sliderTimer;
 
 function showSlide(index){
 
-    if(!slides.length){
-        return;
-    }
-
     if(index < 0){
         index = slides.length - 1;
     }
@@ -2222,10 +2256,6 @@ const menuBtn =
 const navMenu =
     document.getElementById("navMenu");
 
-
-/* =====================================================
-   OPEN / CLOSE MENU
-===================================================== */
 
 if(menuBtn){
 
