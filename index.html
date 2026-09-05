@@ -84,14 +84,18 @@ nav a:hover{
 .hero{
     width:100%;
     background:#000;
+    padding:14px 0;
 }
 
 .slider{
     width:100%;
+    max-width:1200px;
+    margin:0 auto;
     aspect-ratio:16/9;
     position:relative;
     overflow:hidden;
     background:#000;
+    border:1px solid #333;
 }
 
 .slide{
@@ -127,10 +131,11 @@ nav a:hover{
 }
 
 .dot{
-    width:10px;
-    height:10px;
+    width:11px;
+    height:11px;
     border-radius:50%;
     background:#777;
+    border:2px solid #fff;
     cursor:pointer;
 }
 
@@ -172,7 +177,7 @@ nav a:hover{
 /* LIVE */
 .live-box{
     background:#151515;
-    border:1px solid #333;
+    border:1px solid #d4af37;
     border-radius:12px;
     padding:25px;
     text-align:center;
@@ -195,7 +200,7 @@ nav a:hover{
     color:#fff;
     text-decoration:none;
     padding:12px 24px;
-    border-radius:6px;
+    border-radius:25px;
     font-weight:bold;
 }
 
@@ -301,8 +306,16 @@ footer{
         font-size:12px;
     }
 
+    .hero{
+        padding:8px 0;
+    }
+
     .slider{
+        width:100%;
+        max-width:none;
         aspect-ratio:16/9;
+        border-left:0;
+        border-right:0;
     }
 
     .container{
@@ -339,8 +352,8 @@ footer{
     }
 
     .dot{
-        width:8px;
-        height:8px;
+        width:9px;
+        height:9px;
     }
 }
 </style>
@@ -374,7 +387,7 @@ footer{
 
         <!-- MAIN BANNER -->
         <div class="slide active">
-            <img src="movie-wala-main-banner.png" alt="Movie Wala">
+            <img src="movie-wala-main-banner.png" alt="Movie Wala Main Banner">
         </div>
 
         <!-- BOLLYWOOD -->
@@ -392,6 +405,7 @@ footer{
             <img src="tollywood-slider-1920x1080.png" alt="Tollywood">
         </div>
 
+        <!-- SLIDER DOTS -->
         <div class="dots">
             <span class="dot active" onclick="showSlide(0)"></span>
             <span class="dot" onclick="showSlide(1)"></span>
@@ -409,21 +423,32 @@ footer{
 
     <!-- WELCOME -->
     <section class="welcome">
+
         <h1>Welcome to Movie Wala</h1>
+
         <p>
-            Bollywood, Hollywood, Tollywood movies, entertainment,
-            latest updates and more — all in one place.
+            Har scene mein entertainment! Movie Wala par
+            Bollywood, Hollywood aur Tollywood ke best movie
+            moments, scenes, dialogues aur entertainment
+            videos dekhiye.
         </p>
+
     </section>
 
 
     <!-- LIVE -->
     <section id="live" class="live-box">
 
-        <h2>🔴 LIVE NOW</h2>
+        <h2>🔴 LIVE CHANNEL</h2>
+
+        <h2 style="color:#fff;">
+            HAR SCENE MEIN ENTERTAINMENT
+        </h2>
 
         <p>
-            Watch Movie Wala Official live on YouTube.
+            Movie Wala Official ke latest videos aur
+            live entertainment ke liye hamare YouTube
+            channel ko visit karein.
         </p>
 
         <a
@@ -445,17 +470,23 @@ footer{
 
             <div class="category">
                 <h3>🎬 Bollywood</h3>
-                <p>Latest Hindi movies and entertainment.</p>
+                <p>
+                    Latest Hindi movies and entertainment.
+                </p>
             </div>
 
             <div class="category">
                 <h3>🎥 Hollywood</h3>
-                <p>Hollywood movies and latest updates.</p>
+                <p>
+                    Hollywood movies and latest updates.
+                </p>
             </div>
 
             <div class="category">
                 <h3>⭐ Tollywood</h3>
-                <p>South Indian movie updates and entertainment.</p>
+                <p>
+                    South Indian movie updates and entertainment.
+                </p>
             </div>
 
         </div>
