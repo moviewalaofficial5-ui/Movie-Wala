@@ -77,7 +77,6 @@ header{
 .logo{
     width:54px;
     height:54px;
-
     min-width:54px;
 
     display:block;
@@ -101,7 +100,7 @@ header{
 
 
 /* =====================================================
-   DESKTOP MENU
+   NAVIGATION
 ===================================================== */
 
 .nav{
@@ -128,7 +127,7 @@ header{
 
 
 /* =====================================================
-   MOBILE MENU BUTTON
+   MOBILE MENU
 ===================================================== */
 
 .menu-btn{
@@ -161,13 +160,6 @@ header{
     background:#050505;
 }
 
-
-/*
-   IMPORTANT:
-   Slider ka size banner ke actual 16:9 ratio ke
-   according fixed hai.
-*/
-
 .hero-slider{
     position:relative;
 
@@ -179,12 +171,6 @@ header{
 
     background:#050505;
 }
-
-
-/*
-   Banner images.
-   Koi stretch nahi.
-*/
 
 .hero-slide{
     position:absolute;
@@ -218,38 +204,38 @@ header{
     position:absolute;
 
     left:50%;
-    bottom:16px;
+    bottom:18px;
 
     transform:translateX(-50%);
 
     display:flex;
 
-    gap:7px;
+    gap:9px;
 
-    z-index:5;
+    z-index:20;
 }
 
 .slider-dot{
-    width:8px;
-    height:8px;
-
-    border-radius:50%;
-
-    background:rgba(255,255,255,.55);
-
-    border:0;
+    width:11px;
+    height:11px;
 
     padding:0;
 
+    border:none;
+
+    border-radius:50%;
+
+    background:#aaa;
+
     cursor:pointer;
 
-    transition:.2s ease;
+    transition:.3s ease;
 }
 
 .slider-dot.active{
-    width:24px;
+    width:30px;
 
-    border-radius:10px;
+    border-radius:20px;
 
     background:#e50914;
 }
@@ -260,86 +246,129 @@ header{
 ===================================================== */
 
 .hero-content{
-    padding:42px 5% 70px;
+    padding:60px 6% 70px;
+
+    text-align:center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #1a1a1a,
+            #050505 70%
+        );
 }
 
 .live-badge{
     display:inline-block;
 
-    padding:10px 17px;
+    padding:8px 18px;
+
+    margin-bottom:20px;
 
     background:#e50914;
 
-    border-radius:7px;
+    border-radius:30px;
 
-    font-size:14px;
+    font-size:13px;
 
     font-weight:900;
 
-    margin-bottom:18px;
+    letter-spacing:1px;
+
+    box-shadow:
+        0 0 20px rgba(229,9,20,.35);
 }
 
 .hero h1{
-    max-width:900px;
-
     font-size:58px;
 
-    line-height:1.02;
+    line-height:1.05;
 
     font-weight:900;
+
+    margin-bottom:20px;
 }
 
 .hero h1 span{
+    display:block;
+
     color:#e50914;
 }
 
 .hero p{
     max-width:760px;
 
-    margin:22px 0;
+    margin:0 auto 30px;
 
-    color:#d0d0d0;
+    color:#bbb;
 
-    font-size:19px;
+    font-size:18px;
 
-    line-height:1.6;
+    line-height:1.7;
 }
+
+
+/* =====================================================
+   BUTTONS
+===================================================== */
 
 .buttons{
     display:flex;
 
-    flex-wrap:wrap;
+    justify-content:center;
 
-    gap:12px;
+    gap:15px;
+
+    flex-wrap:wrap;
 }
 
 .btn{
     display:inline-flex;
 
     align-items:center;
+
     justify-content:center;
 
-    min-height:48px;
+    min-width:160px;
 
-    padding:13px 22px;
+    padding:14px 22px;
 
-    border-radius:7px;
+    border-radius:6px;
 
-    border:1px solid #555;
+    font-weight:900;
 
     font-size:14px;
 
-    font-weight:900;
+    transition:.25s ease;
 }
 
 .btn-red{
     background:#e50914;
 
-    border-color:#e50914;
+    color:#fff;
+
+    box-shadow:
+        0 8px 25px rgba(229,9,20,.2);
+}
+
+.btn-red:hover{
+    background:#ff1723;
+
+    transform:translateY(-2px);
 }
 
 .btn-dark{
-    background:#080808;
+    background:#161616;
+
+    border:1px solid #333;
+
+    color:#fff;
+}
+
+.btn-dark:hover{
+    background:#222;
+
+    transform:translateY(-2px);
 }
 
 
@@ -348,15 +377,17 @@ header{
 ===================================================== */
 
 section{
-    padding:65px 5%;
+    padding:70px 6%;
 }
 
 .section-title{
-    font-size:36px;
+    text-align:center;
+
+    font-size:38px;
 
     font-weight:900;
 
-    margin-bottom:8px;
+    margin-bottom:10px;
 }
 
 .section-title span{
@@ -364,22 +395,29 @@ section{
 }
 
 .section-sub{
+    text-align:center;
+
     color:#999;
 
-    font-size:17px;
+    margin-bottom:40px;
 
-    margin-bottom:30px;
+    font-size:16px;
 }
 
 
 /* =====================================================
-   MOVIES
+   MOVIE GRID
 ===================================================== */
 
 .movie-grid{
+    max-width:1200px;
+
+    margin:auto;
+
     display:grid;
 
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:
+        repeat(4,1fr);
 
     gap:20px;
 }
@@ -392,6 +430,17 @@ section{
     border-radius:10px;
 
     overflow:hidden;
+
+    transition:.3s ease;
+}
+
+.movie-card:hover{
+    transform:translateY(-7px);
+
+    border-color:#e50914;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.45);
 }
 
 .movie-poster{
@@ -399,15 +448,15 @@ section{
 
     aspect-ratio:16 / 10;
 
-    background-position:center;
-
     background-size:cover;
+
+    background-position:center;
 
     background-repeat:no-repeat;
 }
 
 .movie-info{
-    padding:15px;
+    padding:17px;
 }
 
 .movie-info h3{
@@ -417,7 +466,7 @@ section{
 }
 
 .movie-info p{
-    color:#999;
+    color:#888;
 
     font-size:13px;
 }
@@ -428,40 +477,52 @@ section{
 ===================================================== */
 
 .live-zone{
-    position:relative;
+    min-height:390px;
 
-    overflow:hidden;
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
 
     background:
         linear-gradient(
-            rgba(0,0,0,.82),
-            rgba(0,0,0,.86)
+            rgba(0,0,0,.72),
+            rgba(0,0,0,.88)
         ),
-        url("movie-wala-banner-2[1].jpg");
-
-    background-position:center;
+        url("hollywood-slider-1920x1080.png");
 
     background-size:cover;
+
+    background-position:center;
 }
 
 .live-content{
-    max-width:850px;
+    max-width:800px;
 }
 
 .live-label{
-    color:#e50914;
+    display:inline-block;
+
+    color:#ff3942;
+
+    font-size:13px;
 
     font-weight:900;
 
     letter-spacing:2px;
 
-    margin-bottom:14px;
+    margin-bottom:15px;
 }
 
 .live-content h2{
     font-size:46px;
 
-    margin-bottom:16px;
+    font-weight:900;
+
+    margin-bottom:18px;
 }
 
 .live-content h2 span{
@@ -469,9 +530,9 @@ section{
 }
 
 .live-content p{
-    color:#ccc;
+    color:#bbb;
 
-    font-size:18px;
+    font-size:17px;
 
     line-height:1.7;
 
@@ -484,67 +545,79 @@ section{
 ===================================================== */
 
 .video-box{
-    width:100%;
-
-    max-width:900px;
+    max-width:950px;
 
     margin:auto;
 
     aspect-ratio:16 / 9;
 
-    background:#111;
-
-    border:1px solid #292929;
+    overflow:hidden;
 
     border-radius:12px;
 
-    overflow:hidden;
+    border:1px solid #292929;
+
+    background:#000;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.5);
 }
 
 .video-box iframe{
     width:100%;
     height:100%;
 
-    display:block;
-
     border:0;
 }
 
 
 /* =====================================================
-   TRENDING / WEB SERIES
+   SIMPLE GRID
 ===================================================== */
 
 .simple-grid{
+    max-width:1100px;
+
+    margin:auto;
+
     display:grid;
 
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:
+        repeat(3,1fr);
 
     gap:20px;
 }
 
 .simple-card{
-    min-height:160px;
+    padding:28px;
 
-    padding:25px;
+    background:#101010;
 
-    background:#111;
-
-    border:1px solid #252525;
+    border:1px solid #242424;
 
     border-radius:10px;
+
+    text-align:center;
+
+    transition:.3s ease;
+}
+
+.simple-card:hover{
+    border-color:#e50914;
+
+    transform:translateY(-5px);
 }
 
 .simple-card h3{
-    margin-bottom:12px;
+    font-size:20px;
 
-    font-size:19px;
+    margin-bottom:12px;
 }
 
 .simple-card p{
     color:#999;
 
-    line-height:1.6;
+    line-height:1.7;
 }
 
 
@@ -553,27 +626,42 @@ section{
 ===================================================== */
 
 .stats{
+    max-width:1100px;
+
+    margin:auto;
+
     display:grid;
 
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:
+        repeat(4,1fr);
 
     gap:20px;
+}
 
+.stat{
     text-align:center;
 
+    padding:25px;
+
     background:#101010;
+
+    border:1px solid #242424;
+
+    border-radius:10px;
 }
 
 .stat h2{
     color:#e50914;
 
-    font-size:38px;
+    font-size:40px;
+
+    margin-bottom:8px;
 }
 
 .stat p{
     color:#999;
 
-    margin-top:7px;
+    font-size:14px;
 }
 
 
@@ -581,8 +669,14 @@ section{
    GENRES
 ===================================================== */
 
-.genres{
+.genre-grid{
+    max-width:1100px;
+
+    margin:auto;
+
     display:flex;
+
+    justify-content:center;
 
     flex-wrap:wrap;
 
@@ -590,13 +684,25 @@ section{
 }
 
 .genre{
-    padding:10px 17px;
+    padding:12px 20px;
 
     border:1px solid #333;
 
     border-radius:30px;
 
-    color:#ccc;
+    color:#ddd;
+
+    font-size:14px;
+
+    transition:.2s ease;
+}
+
+.genre:hover{
+    background:#e50914;
+
+    border-color:#e50914;
+
+    color:#fff;
 }
 
 
@@ -605,9 +711,14 @@ section{
 ===================================================== */
 
 .social-grid{
+    max-width:950px;
+
+    margin:auto;
+
     display:grid;
 
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:
+        repeat(3,1fr);
 
     gap:20px;
 }
@@ -617,23 +728,23 @@ section{
 
     align-items:center;
 
-    gap:16px;
+    gap:15px;
 
     padding:22px;
 
     background:#111;
 
-    border:1px solid #292929;
+    border:1px solid #242424;
 
-    border-radius:12px;
+    border-radius:10px;
 
-    transition:.2s ease;
+    transition:.3s ease;
 }
 
 .social-card:hover{
-    transform:translateY(-3px);
+    transform:translateY(-5px);
 
-    border-color:#555;
+    border-color:#e50914;
 }
 
 .social-icon{
@@ -645,13 +756,13 @@ section{
 }
 
 .social-card h3{
-    margin-bottom:6px;
+    margin-bottom:5px;
 
     font-size:18px;
 }
 
 .social-card p{
-    color:#999;
+    color:#888;
 
     font-size:13px;
 }
@@ -666,11 +777,13 @@ footer{
 
     text-align:center;
 
-    background:#030303;
+    background:#020202;
 
     border-top:1px solid #222;
 
     color:#777;
+
+    font-size:14px;
 }
 
 footer strong{
@@ -684,64 +797,17 @@ footer strong{
 
 @media(max-width:900px){
 
-    header{
-        padding:0 18px;
-    }
-
-    .menu-btn{
-        display:block;
-    }
-
     .nav{
-        display:none;
-
-        position:fixed;
-
-        left:0;
-        right:0;
-
-        top:76px;
-        bottom:0;
-
-        margin:0;
-
-        padding:20px;
-
-        background:#050505;
-
-        overflow-y:auto;
-
-        z-index:9999;
-    }
-
-    .nav.open{
-        display:flex;
-
-        flex-direction:column;
-
-        align-items:stretch;
-
-        gap:0;
+        gap:14px;
     }
 
     .nav a{
-        width:100%;
-
-        padding:17px 15px;
-
-        text-align:center;
-
-        border-bottom:1px solid #222;
-
-        font-size:18px;
-    }
-
-    .nav a:hover{
-        background:#111;
+        font-size:12px;
     }
 
     .movie-grid{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
     .simple-grid{
@@ -753,7 +819,8 @@ footer strong{
     }
 
     .stats{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
     .hero h1{
@@ -782,129 +849,88 @@ footer strong{
         min-width:50px;
     }
 
-    .brand{
-        gap:8px;
-    }
-
     .brand-title{
-        font-size:22px;
+        font-size:21px;
     }
 
     .menu-btn{
-        width:47px;
-        height:43px;
-
-        font-size:25px;
+        display:block;
     }
-
-
-    /*
-       Mobile menu:
-       ONLY links.
-       NO BANNER.
-    */
 
     .nav{
+        display:none;
+
+        position:absolute;
+
         top:72px;
 
-        padding:14px 18px 30px;
-    }
+        left:0;
 
-
-    /*
-       Hero banner exact 16:9.
-    */
-
-    .hero-slider{
         width:100%;
 
+        background:#080808;
+
+        border-bottom:1px solid #222;
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+        gap:0;
+    }
+
+    .nav.open{
+        display:flex;
+    }
+
+    .nav a{
+        width:100%;
+
+        padding:17px 15px;
+
+        text-align:center;
+
+        border-bottom:1px solid #222;
+
+        font-size:16px;
+    }
+
+    .nav a:hover{
+        background:#111;
+    }
+
+    .hero-slider{
         aspect-ratio:16 / 9;
-
-        height:auto;
     }
-
-    .hero-slide{
-        object-fit:cover;
-
-        object-position:center;
-    }
-
-    .slider-dots{
-        bottom:10px;
-
-        gap:6px;
-    }
-
-    .slider-dot{
-        width:7px;
-        height:7px;
-    }
-
-    .slider-dot.active{
-        width:20px;
-    }
-
 
     .hero-content{
-        padding:25px 20px 50px;
-    }
-
-    .live-badge{
-        font-size:12px;
-
-        padding:9px 13px;
-
-        margin-bottom:15px;
+        padding:35px 18px 50px;
     }
 
     .hero h1{
-        font-size:35px;
-
-        line-height:1.05;
+        font-size:36px;
     }
 
     .hero p{
-        font-size:16px;
-
-        line-height:1.55;
-
-        margin:17px 0;
+        font-size:15px;
     }
-
-    .buttons{
-        gap:9px;
-    }
-
-    .btn{
-        min-height:45px;
-
-        padding:12px 15px;
-
-        font-size:12px;
-    }
-
 
     section{
-        padding:50px 20px;
+        padding:45px 18px;
     }
 
     .section-title{
-        font-size:30px;
+        font-size:29px;
     }
 
     .section-sub{
         font-size:15px;
     }
 
-
     .movie-grid{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:1fr 1fr;
 
         gap:12px;
-    }
-
-    .movie-poster{
-        aspect-ratio:3 / 4;
     }
 
     .movie-info{
@@ -919,56 +945,47 @@ footer strong{
         font-size:11px;
     }
 
-
     .live-content h2{
         font-size:34px;
     }
 
     .live-content p{
-        font-size:16px;
+        font-size:15px;
     }
 
+    .stats{
+        grid-template-columns:1fr 1fr;
 
-    .simple-card{
-        padding:20px;
+        gap:15px;
     }
 
+    .stat h2{
+        font-size:30px;
+    }
+
+    .stat p{
+        font-size:12px;
+    }
 
     .social-card{
         padding:18px;
-    }
-
-    .social-icon{
-        width:48px;
-
-        height:48px;
-
-        min-width:48px;
-    }
-
-
-    footer{
-        font-size:13px;
     }
 
 }
 
 
 /* =====================================================
-   VERY SMALL MOBILE
+   SMALL MOBILE
 ===================================================== */
 
-@media(max-width:360px){
-
-    .logo{
-        width:47px;
-        height:47px;
-
-        min-width:47px;
-    }
+@media(max-width:380px){
 
     .brand-title{
-        font-size:20px;
+        font-size:18px;
+    }
+
+    .movie-grid{
+        grid-template-columns:1fr;
     }
 
     .hero h1{
@@ -979,22 +996,16 @@ footer strong{
 
 
 /* =====================================================
-   PREVENT PAGE SHIFT WHEN MENU OPEN
+   MENU LOCK
 ===================================================== */
 
 body.menu-open{
     overflow:hidden;
 }
 
-
-/* FINAL 16:9 SLIDER FIT */
-.hero-slider{width:100%;aspect-ratio:16/9;height:auto;min-height:0;overflow:hidden;position:relative;background:#050505;}
-.hero-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;display:block;}
-@media(max-width:600px){.hero-slider{width:100%;aspect-ratio:16/9;height:auto;}.hero-slide{width:100%;height:100%;object-fit:cover;object-position:center center;}.slider-dots{bottom:10px;z-index:10;}}
-
 </style>
-</head>
 
+</head>
 
 <body>
 
@@ -1052,9 +1063,8 @@ body.menu-open{
 </header>
 
 
-
 <!-- =====================================================
-     HERO
+     HERO SLIDER
 ===================================================== -->
 
 <main id="home">
@@ -1062,42 +1072,94 @@ body.menu-open{
     <div class="hero">
 
 
-        <div class="hero-slider" id="heroSlider">
+        <div
+            class="hero-slider"
+            id="heroSlider">
 
-            <img class="hero-slide active" src="bollywood-slider-1920x1080.png" alt="Bollywood Entertainment Banner">
-            <img class="hero-slide" src="hollywood-slider-1920x1080.png" alt="Hollywood Entertainment Banner">
-            <img class="hero-slide" src="tollywood-slider-1920x1080.png" alt="Tollywood Entertainment Banner">
-            <img class="hero-slide" src="bhojpuri-slider-1920x1080.png" alt="Bhojpuri Entertainment Banner">
+
+            <!-- BANNER 1 -->
+
+            <img
+                class="hero-slide active"
+                src="bollywood-slider-1920x1080.png"
+                alt="Bollywood Cinema">
+
+
+            <!-- BANNER 2 -->
+
+            <img
+                class="hero-slide"
+                src="hollywood-slider-1920x1080.png"
+                alt="Hollywood Cinema">
+
+
+            <!-- BANNER 3 -->
+
+            <img
+                class="hero-slide"
+                src="tollywood-slider-1920x1080.png"
+                alt="Tollywood Cinema">
+
+
+            <!-- BANNER 4 -->
+
+            <img
+                class="hero-slide"
+                src="movie-wala-originals-1920x1080.png"
+                alt="Movie Wala Originals">
+
+
+            <!-- 4 DOTS -->
 
             <div class="slider-dots">
-                <button class="slider-dot active" data-slide="0" aria-label="Bollywood"></button>
-                <button class="slider-dot" data-slide="1" aria-label="Hollywood"></button>
-                <button class="slider-dot" data-slide="2" aria-label="Tollywood"></button>
-                <button class="slider-dot" data-slide="3" aria-label="Bhojpuri"></button>
+
+                <button
+                    class="slider-dot active"
+                    data-slide="0"
+                    aria-label="Bollywood">
+                </button>
+
+                <button
+                    class="slider-dot"
+                    data-slide="1"
+                    aria-label="Hollywood">
+                </button>
+
+                <button
+                    class="slider-dot"
+                    data-slide="2"
+                    aria-label="Tollywood">
+                </button>
+
+                <button
+                    class="slider-dot"
+                    data-slide="3"
+                    aria-label="Movie Wala Originals">
+                </button>
+
             </div>
 
         </div>
 
-        <div class="hero-content">
 
+        <!-- HERO CONTENT -->
+
+        <div class="hero-content">
 
             <div class="live-badge">
                 LIVE CHANNEL
             </div>
-
 
             <h1>
                 HAR SCENE MEIN
                 <span>ENTERTAINMENT</span>
             </h1>
 
-
             <p>
                 Welcome to Movie Wala — your entertainment
                 destination for movies, web series, trending
                 content and cinematic updates.
             </p>
-
 
             <div class="buttons">
 
@@ -1109,7 +1171,6 @@ body.menu-open{
 
                 </a>
 
-
                 <a
                     href="#live"
                     class="btn btn-dark">
@@ -1120,364 +1181,357 @@ body.menu-open{
 
             </div>
 
+        </div>
+
+    </div>
+
+
+<!-- =====================================================
+     MOVIES
+===================================================== -->
+
+<section id="movies">
+
+    <h2 class="section-title">
+        LATEST <span>MOVIES</span>
+    </h2>
+
+    <p class="section-sub">
+        Latest entertainment picks
+    </p>
+
+
+    <div class="movie-grid">
+
+
+        <article class="movie-card">
+
+            <div
+                class="movie-poster"
+                style="background-image:url('bollywood-slider-1920x1080.png')">
+            </div>
+
+            <div class="movie-info">
+
+                <h3>
+                    Bollywood Cinema
+                </h3>
+
+                <p>
+                    Latest Bollywood Entertainment
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="movie-card">
+
+            <div
+                class="movie-poster"
+                style="background-image:url('hollywood-slider-1920x1080.png')">
+            </div>
+
+            <div class="movie-info">
+
+                <h3>
+                    Hollywood Cinema
+                </h3>
+
+                <p>
+                    Epic Hollywood Entertainment
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="movie-card">
+
+            <div
+                class="movie-poster"
+                style="background-image:url('tollywood-slider-1920x1080.png')">
+            </div>
+
+            <div class="movie-info">
+
+                <h3>
+                    Tollywood Cinema
+                </h3>
+
+                <p>
+                    South Indian Entertainment
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="movie-card">
+
+            <div
+                class="movie-poster"
+                style="background-image:url('movie-wala-originals-1920x1080.png')">
+            </div>
+
+            <div class="movie-info">
+
+                <h3>
+                    Movie Wala Special
+                </h3>
+
+                <p>
+                    Movie Wala Picks
+                </p>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     LIVE ZONE
+===================================================== -->
+
+<section
+    id="live"
+    class="live-zone">
+
+
+    <div class="live-content">
+
+        <div class="live-label">
+            ● LIVE ZONE
+        </div>
+
+        <h2>
+            EXPERIENCE THE
+            <span>ENTERTAINMENT</span>
+        </h2>
+
+        <p>
+            Movie Wala ke saath latest movies,
+            entertainment aur trending content
+            ka maza lijiye.
+        </p>
+
+        <div class="buttons">
+
+            <a
+                href="https://www.youtube.com/@MovieWalaOfficial.10/live"
+                class="btn btn-red"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                ▶ VIEW LIVE CHANNEL
+
+            </a>
+
+            <a
+                href="https://www.youtube.com/@MovieWalaOfficial.10"
+                class="btn btn-dark"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                YOUTUBE CHANNEL
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FEATURED VIDEO
+===================================================== -->
+
+<section>
+
+    <h2 class="section-title">
+        FEATURED <span>VIDEO</span>
+    </h2>
+
+    <p class="section-sub">
+        Watch the latest Movie Wala video
+    </p>
+
+
+    <div class="video-box">
+
+        <iframe
+            src="https://www.youtube.com/embed/HzJ0dZ7meZs"
+            title="Movie Wala Featured Video"
+            loading="lazy"
+            allow="encrypted-media; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     TRENDING
+===================================================== -->
+
+<section id="trending">
+
+    <h2 class="section-title">
+        TRENDING <span>NOW</span>
+    </h2>
+
+    <p class="section-sub">
+        What's hot in entertainment
+    </p>
+
+
+    <div class="simple-grid">
+
+
+        <div class="simple-card">
+
+            <h3>
+                🔥 Trending Movies
+            </h3>
+
+            <p>
+                Discover the movies everyone
+                is talking about.
+            </p>
+
+        </div>
+
+
+        <div class="simple-card">
+
+            <h3>
+                ⭐ Popular Stories
+            </h3>
+
+            <p>
+                Latest entertainment stories,
+                updates and news.
+            </p>
+
+        </div>
+
+
+        <div class="simple-card">
+
+            <h3>
+                ❤️ Fan Favourite
+            </h3>
+
+            <p>
+                Popular content loved by
+                movie fans.
+            </p>
 
         </div>
 
 
     </div>
 
-
-    <!-- =================================================
-         MOVIES
-    ================================================= -->
-
-    <section id="movies">
-
-        <h2 class="section-title">
-            LATEST <span>MOVIES</span>
-        </h2>
-
-        <p class="section-sub">
-            Latest entertainment picks
-        </p>
+</section>
 
 
-        <div class="movie-grid">
+<!-- =====================================================
+     WEB SERIES
+===================================================== -->
+
+<section id="webseries">
+
+    <h2 class="section-title">
+        WEB <span>SERIES</span>
+    </h2>
+
+    <p class="section-sub">
+        Discover web series and streaming entertainment
+    </p>
 
 
-            <article class="movie-card">
-
-                <div
-                    class="movie-poster"
-                    style="background-image:url('movie-wala-banner.jpeg')">
-                </div>
-
-                <div class="movie-info">
-
-                    <h3>
-                        Movie Wala Special
-                    </h3>
-
-                    <p>
-                        Cinematic Entertainment
-                    </p>
-
-                </div>
-
-            </article>
+    <div class="simple-grid">
 
 
-            <article class="movie-card">
+        <div class="simple-card">
 
-                <div
-                    class="movie-poster"
-                    style="background-image:url('movie-wala-banner-2[1].jpg')">
-                </div>
-
-                <div class="movie-info">
-
-                    <h3>
-                        Trending Cinema
-                    </h3>
-
-                    <p>
-                        Latest Entertainment
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <article class="movie-card">
-
-                <div
-                    class="movie-poster"
-                    style="background-image:url('movie-wala-banner-3[1].jpg')">
-                </div>
-
-                <div class="movie-info">
-
-                    <h3>
-                        Action Zone
-                    </h3>
-
-                    <p>
-                        Action & Entertainment
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <article class="movie-card">
-
-                <div
-                    class="movie-poster"
-                    style="background-image:url('movie-wala-banner-4[1].jpg')">
-                </div>
-
-                <div class="movie-info">
-
-                    <h3>
-                        Entertainment Hub
-                    </h3>
-
-                    <p>
-                        Movie Wala Picks
-                    </p>
-
-                </div>
-
-            </article>
-
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =================================================
-         LIVE ZONE
-    ================================================= -->
-
-    <section
-        class="live-zone"
-        id="live">
-
-
-        <div class="live-content">
-
-            <div class="live-label">
-                ● LIVE ZONE
-            </div>
-
-
-            <h2>
-                LIVE <span>ENTERTAINMENT</span>
-            </h2>
-
+            <h3>
+                🎬 New Web Series
+            </h3>
 
             <p>
-                Watch Movie Wala Official for entertainment
-                updates, cinematic content, trending videos
-                and live broadcasts.
+                Latest web series updates
+                and entertainment picks.
             </p>
 
-
-            <div class="buttons">
-
-
-                <a
-                    class="btn btn-red"
-                    href="https://www.youtube.com/@MovieWalaOfficial.10/live"
-                    target="_blank"
-                    rel="noopener noreferrer">
-
-                    ▶ VIEW LIVE CHANNEL
-
-                </a>
+        </div>
 
 
-                <a
-                    class="btn btn-dark"
-                    href="https://www.youtube.com/@MovieWalaOfficial.10"
-                    target="_blank"
-                    rel="noopener noreferrer">
+        <div class="simple-card">
 
-                    YOUTUBE CHANNEL
+            <h3>
+                🔥 Trending Series
+            </h3>
 
-                </a>
-
-
-            </div>
+            <p>
+                Series everyone is watching
+                and talking about.
+            </p>
 
         </div>
 
 
-    </section>
+        <div class="simple-card">
 
+            <h3>
+                ⭐ Top Picks
+            </h3>
 
-
-    <!-- =================================================
-         FEATURED VIDEO
-    ================================================= -->
-
-    <section>
-
-
-        <h2 class="section-title">
-            FEATURED <span>VIDEO</span>
-        </h2>
-
-
-        <p class="section-sub">
-            Movie Wala Official
-        </p>
-
-
-        <div class="video-box">
-
-            <iframe
-                src="https://www.youtube.com/embed/HzJ0dZ7meZs"
-                title="Movie Wala Official Video"
-                loading="lazy"
-                allow="encrypted-media; picture-in-picture"
-                allowfullscreen>
-            </iframe>
+            <p>
+                Hand-picked content for
+                movie and series lovers.
+            </p>
 
         </div>
 
 
-    </section>
+    </div>
+
+</section>
 
 
+<!-- =====================================================
+     STATS
+===================================================== -->
 
-    <!-- =================================================
-         TRENDING
-    ================================================= -->
+<section>
 
-    <section id="trending">
-
-
-        <h2 class="section-title">
-            TRENDING <span>NOW</span>
-        </h2>
+    <div class="stats">
 
 
-        <p class="section-sub">
-            What's hot in entertainment
-        </p>
+        <div class="stat">
 
+            <h2>
+                4+
+            </h2>
 
-        <div class="simple-grid">
-
-
-            <div class="simple-card">
-
-                <h3>
-                    🔥 Trending Movies
-                </h3>
-
-                <p>
-                    Discover popular movies and cinematic
-                    entertainment everyone is talking about.
-                </p>
-
-            </div>
-
-
-            <div class="simple-card">
-
-                <h3>
-                    ⭐ Top Picks
-                </h3>
-
-                <p>
-                    Hand-picked entertainment recommendations
-                    for movie lovers.
-                </p>
-
-            </div>
-
-
-            <div class="simple-card">
-
-                <h3>
-                    🎬 Cinema Updates
-                </h3>
-
-                <p>
-                    Stay connected with the latest
-                    entertainment updates.
-                </p>
-
-            </div>
-
+            <p>
+                Cinema Categories
+            </p>
 
         </div>
-
-
-    </section>
-
-
-
-    <!-- =================================================
-         WEB SERIES
-    ================================================= -->
-
-    <section id="webseries">
-
-
-        <h2 class="section-title">
-            WEB <span>SERIES</span>
-        </h2>
-
-
-        <p class="section-sub">
-            Binge-worthy entertainment
-        </p>
-
-
-        <div class="simple-grid">
-
-
-            <div class="simple-card">
-
-                <h3>
-                    New Releases
-                </h3>
-
-                <p>
-                    Explore the latest web series and
-                    digital entertainment.
-                </p>
-
-            </div>
-
-
-            <div class="simple-card">
-
-                <h3>
-                    Popular Series
-                </h3>
-
-                <p>
-                    Discover trending shows and
-                    audience favourites.
-                </p>
-
-            </div>
-
-
-            <div class="simple-card">
-
-                <h3>
-                    Must Watch
-                </h3>
-
-                <p>
-                    Entertainment picks selected for
-                    movie and series lovers.
-                </p>
-
-            </div>
-
-
-        </div>
-
-
-    </section>
-
-
-
-    <!-- =================================================
-         STATS
-    ================================================= -->
-
-    <section class="stats">
 
 
         <div class="stat">
@@ -1496,11 +1550,11 @@ body.menu-open{
         <div class="stat">
 
             <h2>
-                5+
+                100%
             </h2>
 
             <p>
-                Categories
+                Movie Love
             </p>
 
         </div>
@@ -1509,7 +1563,7 @@ body.menu-open{
         <div class="stat">
 
             <h2>
-                100%
+                ∞
             </h2>
 
             <p>
@@ -1519,318 +1573,304 @@ body.menu-open{
         </div>
 
 
-        <div class="stat">
+    </div>
 
-            <h2>
-                MW
-            </h2>
+</section>
 
-            <p>
-                Movie Wala
-            </p>
 
+<!-- =====================================================
+     GENRES
+===================================================== -->
+
+<section id="genres">
+
+    <h2 class="section-title">
+        MOVIE <span>GENRES</span>
+    </h2>
+
+    <p class="section-sub">
+        Explore your favourite entertainment genres
+    </p>
+
+
+    <div class="genre-grid">
+
+        <div class="genre">
+            Action
         </div>
 
+        <div class="genre">
+            Romance
+        </div>
 
-    </section>
+        <div class="genre">
+            Comedy
+        </div>
+
+        <div class="genre">
+            Thriller
+        </div>
+
+        <div class="genre">
+            Drama
+        </div>
+
+        <div class="genre">
+            Horror
+        </div>
+
+        <div class="genre">
+            Adventure
+        </div>
+
+        <div class="genre">
+            Sci-Fi
+        </div>
+
+    </div>
+
+</section>
 
 
+<!-- =====================================================
+     SOCIAL
+===================================================== -->
 
-    <!-- =================================================
-         GENRES
-    ================================================= -->
+<section>
 
-    <section id="genres">
+    <h2 class="section-title">
+        FOLLOW <span>MOVIE WALA</span>
+    </h2>
+
+    <p class="section-sub">
+        Stay connected with Movie Wala
+    </p>
 
 
-        <h2 class="section-title">
-            EXPLORE <span>GENRES</span>
-        </h2>
+    <div class="social-grid">
 
 
-        <p class="section-sub">
-            Find your favourite entertainment
+        <!-- YOUTUBE -->
+
+        <a
+            class="social-card"
+            href="https://www.youtube.com/@MovieWalaOfficial.10"
+            target="_blank"
+            rel="noopener noreferrer">
+
+
+            <svg
+                class="social-icon"
+                viewBox="0 0 24 24"
+                aria-label="YouTube">
+
+                <rect
+                    x="2"
+                    y="5"
+                    width="20"
+                    height="14"
+                    rx="4"
+                    fill="#ff0000"/>
+
+                <polygon
+                    points="10,8.5 10,15.5 16,12"
+                    fill="#fff"/>
+
+            </svg>
+
+
+            <div>
+
+                <h3>
+                    YouTube
+                </h3>
+
+                <p>
+                    Movie Wala Official
+                </p>
+
+            </div>
+
+
+        </a>
+
+
+        <!-- FACEBOOK -->
+
+        <a
+            class="social-card"
+            href="https://www.facebook.com/share/1MR6Lxzy4f/"
+            target="_blank"
+            rel="noopener noreferrer">
+
+
+            <svg
+                class="social-icon"
+                viewBox="0 0 24 24"
+                aria-label="Facebook">
+
+                <circle
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    fill="#1877f2"/>
+
+                <path
+                    d="M13.2 19v-6h2l.3-2.3h-2.3V9.2c0-.7.2-1.2 1.2-1.2h1.2V5.9c-.2 0-.9-.1-1.8-.1-1.8 0-3 1.1-3 3.1v1.8H9v2.3h1.8v6z"
+                    fill="#fff"/>
+
+            </svg>
+
+
+            <div>
+
+                <h3>
+                    Facebook
+                </h3>
+
+                <p>
+                    Follow Movie Wala
+                </p>
+
+            </div>
+
+
+        </a>
+
+
+        <!-- INSTAGRAM -->
+
+        <a
+            class="social-card"
+            href="https://www.instagram.com/moviewalaofficial.10/"
+            target="_blank"
+            rel="noopener noreferrer">
+
+
+            <svg
+                class="social-icon"
+                viewBox="0 0 24 24"
+                aria-label="Instagram">
+
+                <defs>
+
+                    <linearGradient
+                        id="instagramGradient"
+                        x1="0%"
+                        y1="100%"
+                        x2="100%"
+                        y2="0%">
+
+                        <stop
+                            offset="0%"
+                            stop-color="#F58529"/>
+
+                        <stop
+                            offset="45%"
+                            stop-color="#DD2A7B"/>
+
+                        <stop
+                            offset="75%"
+                            stop-color="#8134AF"/>
+
+                        <stop
+                            offset="100%"
+                            stop-color="#515BD4"/>
+
+                    </linearGradient>
+
+                </defs>
+
+
+                <rect
+                    x="2"
+                    y="2"
+                    width="20"
+                    height="20"
+                    rx="6"
+                    fill="url(#instagramGradient)"/>
+
+
+                <rect
+                    x="6.5"
+                    y="6.5"
+                    width="11"
+                    height="11"
+                    rx="3.5"
+                    fill="none"
+                    stroke="#fff"
+                    stroke-width="1.8"/>
+
+
+                <circle
+                    cx="12"
+                    cy="12"
+                    r="2.7"
+                    fill="none"
+                    stroke="#fff"
+                    stroke-width="1.8"/>
+
+
+                <circle
+                    cx="17.2"
+                    cy="6.8"
+                    r="1.1"
+                    fill="#fff"/>
+
+            </svg>
+
+
+            <div>
+
+                <h3>
+                    Instagram
+                </h3>
+
+                <p>
+                    @moviewalaofficial.10
+                </p>
+
+            </div>
+
+
+        </a>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section id="about">
+
+    <h2 class="section-title">
+        ABOUT <span>MOVIE WALA</span>
+    </h2>
+
+    <p class="section-sub">
+        Har Scene Mein Entertainment
+    </p>
+
+
+    <div class="simple-card">
+
+        <p>
+            Movie Wala is an entertainment destination
+            created for movie lovers. Explore movies,
+            web series, trending entertainment and
+            cinematic updates — all in one place.
         </p>
 
+    </div>
 
-        <div class="genres">
-
-            <div class="genre">Action</div>
-
-            <div class="genre">Comedy</div>
-
-            <div class="genre">Drama</div>
-
-            <div class="genre">Thriller</div>
-
-            <div class="genre">Romance</div>
-
-            <div class="genre">Horror</div>
-
-            <div class="genre">Sci-Fi</div>
-
-            <div class="genre">Web Series</div>
-
-            <div class="genre">Trending</div>
-
-        </div>
-
-
-    </section>
-
-
-
-    <!-- =================================================
-         SOCIAL MEDIA
-    ================================================= -->
-
-    <section>
-
-
-        <h2 class="section-title">
-            FOLLOW <span>MOVIE WALA</span>
-        </h2>
-
-
-        <p class="section-sub">
-            Connect with us on social media
-        </p>
-
-
-        <div class="social-grid">
-
-
-            <!-- YOUTUBE -->
-
-            <a
-                class="social-card"
-                href="https://www.youtube.com/@MovieWalaOfficial.10"
-                target="_blank"
-                rel="noopener noreferrer">
-
-
-                <svg
-                    class="social-icon"
-                    viewBox="0 0 24 24"
-                    aria-label="YouTube">
-
-                    <rect
-                        x="1"
-                        y="4"
-                        width="22"
-                        height="16"
-                        rx="5"
-                        fill="#FF0000"/>
-
-                    <path
-                        d="M10 8.5L16 12L10 15.5V8.5Z"
-                        fill="#fff"/>
-
-                </svg>
-
-
-                <div>
-
-                    <h3>
-                        YouTube
-                    </h3>
-
-                    <p>
-                        Movie Wala Official
-                    </p>
-
-                </div>
-
-
-            </a>
-
-
-
-            <!-- FACEBOOK -->
-
-            <a
-                class="social-card"
-                href="https://www.facebook.com/share/1MR6Lxzy4f/"
-                target="_blank"
-                rel="noopener noreferrer">
-
-
-                <svg
-                    class="social-icon"
-                    viewBox="0 0 24 24"
-                    aria-label="Facebook">
-
-                    <circle
-                        cx="12"
-                        cy="12"
-                        r="12"
-                        fill="#1877F2"/>
-
-                    <path
-                        d="M13.5 21V13.1H16.2L16.6 10H13.5V8.05C13.5 7.15 13.75 6.55 15.05 6.55H16.7V3.78C16.42 3.74 15.47 3.65 14.35 3.65C12.02 3.65 10.43 5.07 10.43 7.68V10H7.75V13.1H10.43V21H13.5Z"
-                        fill="#fff"/>
-
-                </svg>
-
-
-                <div>
-
-                    <h3>
-                        Facebook
-                    </h3>
-
-                    <p>
-                        Follow Movie Wala
-                    </p>
-
-                </div>
-
-
-            </a>
-
-
-
-            <!-- INSTAGRAM -->
-
-            <a
-                class="social-card"
-                href="https://www.instagram.com/moviewalaofficial.10/"
-                target="_blank"
-                rel="noopener noreferrer">
-
-
-                <svg
-                    class="social-icon"
-                    viewBox="0 0 24 24"
-                    aria-label="Instagram">
-
-
-                    <defs>
-
-                        <linearGradient
-                            id="instagramGradient"
-                            x1="0%"
-                            y1="100%"
-                            x2="100%"
-                            y2="0%">
-
-                            <stop
-                                offset="0%"
-                                stop-color="#F58529"/>
-
-                            <stop
-                                offset="45%"
-                                stop-color="#DD2A7B"/>
-
-                            <stop
-                                offset="75%"
-                                stop-color="#8134AF"/>
-
-                            <stop
-                                offset="100%"
-                                stop-color="#515BD4"/>
-
-                        </linearGradient>
-
-                    </defs>
-
-
-                    <rect
-                        x="2"
-                        y="2"
-                        width="20"
-                        height="20"
-                        rx="6"
-                        fill="url(#instagramGradient)"/>
-
-
-                    <rect
-                        x="6.5"
-                        y="6.5"
-                        width="11"
-                        height="11"
-                        rx="3.5"
-                        fill="none"
-                        stroke="#fff"
-                        stroke-width="1.8"/>
-
-
-                    <circle
-                        cx="12"
-                        cy="12"
-                        r="2.7"
-                        fill="none"
-                        stroke="#fff"
-                        stroke-width="1.8"/>
-
-
-                    <circle
-                        cx="17.2"
-                        cy="6.8"
-                        r="1.1"
-                        fill="#fff"/>
-
-
-                </svg>
-
-
-                <div>
-
-                    <h3>
-                        Instagram
-                    </h3>
-
-                    <p>
-                        @moviewalaofficial.10
-                    </p>
-
-                </div>
-
-
-            </a>
-
-
-        </div>
-
-
-    </section>
-
-
-
-    <!-- =================================================
-         ABOUT
-    ================================================= -->
-
-    <section id="about">
-
-
-        <h2 class="section-title">
-            ABOUT <span>MOVIE WALA</span>
-        </h2>
-
-
-        <p class="section-sub">
-            Har Scene Mein Entertainment
-        </p>
-
-
-        <div class="simple-card">
-
-            <p>
-                Movie Wala is an entertainment destination
-                created for movie lovers. Explore movies,
-                web series, trending entertainment and
-                cinematic updates — all in one place.
-            </p>
-
-        </div>
-
-
-    </section>
+</section>
 
 
 </main>
-
 
 
 <!-- =====================================================
@@ -1840,7 +1880,8 @@ body.menu-open{
 <footer>
 
     <p>
-        © 2026 <strong>MOVIE WALA</strong>.
+        © 2026
+        <strong>MOVIE WALA</strong>.
         All Rights Reserved.
     </p>
 
@@ -1851,6 +1892,9 @@ body.menu-open{
 </footer>
 
 
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
 
 <script>
 
@@ -1869,7 +1913,9 @@ let currentSlide = 0;
 let sliderTimer;
 
 
-/* CHANGE SLIDE */
+/* =====================================================
+   SHOW SLIDE
+===================================================== */
 
 function showSlide(index){
 
@@ -1896,7 +1942,9 @@ function showSlide(index){
 }
 
 
-/* NEXT SLIDE */
+/* =====================================================
+   NEXT SLIDE
+===================================================== */
 
 function nextSlide(){
 
@@ -1914,7 +1962,9 @@ function nextSlide(){
 }
 
 
-/* START SLIDER */
+/* =====================================================
+   START SLIDER
+===================================================== */
 
 function startSlider(){
 
@@ -1929,7 +1979,9 @@ function startSlider(){
 }
 
 
-/* DOT CLICK */
+/* =====================================================
+   DOT CLICK
+===================================================== */
 
 dots.forEach(function(dot){
 
@@ -1939,7 +1991,9 @@ dots.forEach(function(dot){
 
             const index =
                 Number(
-                    this.getAttribute("data-slide")
+                    this.getAttribute(
+                        "data-slide"
+                    )
                 );
 
             showSlide(index);
@@ -1952,10 +2006,11 @@ dots.forEach(function(dot){
 });
 
 
-/* START */
+/* =====================================================
+   START
+===================================================== */
 
 startSlider();
-
 
 
 /* =====================================================
@@ -1969,104 +2024,45 @@ const navMenu =
     document.getElementById("navMenu");
 
 
-/* OPEN / CLOSE */
-
 menuBtn.addEventListener(
     "click",
     function(){
 
-        const opened =
-            navMenu.classList.toggle("open");
+        navMenu.classList.toggle("open");
 
-
-        if(opened){
-
-            menuBtn.textContent = "✕";
-
-            menuBtn.setAttribute(
-                "aria-label",
-                "Close menu"
-            );
-
-            document.body.classList.add(
-                "menu-open"
-            );
-
-        }else{
-
-            menuBtn.textContent = "☰";
-
-            menuBtn.setAttribute(
-                "aria-label",
-                "Open menu"
-            );
-
-            document.body.classList.remove(
-                "menu-open"
-            );
-
-        }
+        document.body.classList.toggle(
+            "menu-open"
+        );
 
     }
 );
 
 
 /* =====================================================
-   CLOSE MENU WHEN LINK CLICKED
+   CLOSE MOBILE MENU
 ===================================================== */
 
-document
-    .querySelectorAll(".nav a")
-    .forEach(function(link){
+document.querySelectorAll(
+    ".nav a"
+).forEach(function(link){
 
-        link.addEventListener(
-            "click",
-            function(){
-
-                navMenu.classList.remove("open");
-
-                menuBtn.textContent = "☰";
-
-                menuBtn.setAttribute(
-                    "aria-label",
-                    "Open menu"
-                );
-
-                document.body.classList.remove(
-                    "menu-open"
-                );
-
-            }
-        );
-
-    });
-
-
-/* =====================================================
-   ESC KEY
-===================================================== */
-
-document.addEventListener(
-    "keydown",
-    function(event){
-
-        if(event.key === "Escape"){
+    link.addEventListener(
+        "click",
+        function(){
 
             navMenu.classList.remove("open");
 
-            menuBtn.textContent = "☰";
-
             document.body.classList.remove(
                 "menu-open"
             );
 
         }
+    );
 
-    }
-);
+});
+
 
 </script>
-
 
 </body>
 </html>
