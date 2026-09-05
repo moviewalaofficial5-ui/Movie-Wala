@@ -3,1040 +3,641 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Movie Wala - Movies & Entertainment</title>
+<title>Movie Wala - Best Movie Moments & Scenes</title>
 
 <style>
-
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
 html{
-    scroll-behavior:smooth;
+  scroll-behavior:smooth;
 }
 
 body{
-    background:#080808;
-    color:#fff;
-    font-family:Arial,Helvetica,sans-serif;
-    overflow-x:hidden;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#050505;
+  color:#fff;
+  overflow-x:hidden;
 }
 
-a{
-    text-decoration:none;
-    color:inherit;
-}
-
-/* ================= HEADER ================= */
-
+/* HEADER */
 .header{
-    width:100%;
-    background:#050505;
-    border-bottom:1px solid #292929;
-    position:sticky;
-    top:0;
-    z-index:1000;
+  width:100%;
+  background:#080808;
+  border-bottom:1px solid #222;
+  position:sticky;
+  top:0;
+  z-index:1000;
 }
 
-.header-inner{
-    max-width:1200px;
-    min-height:70px;
-    margin:auto;
-    padding:8px 18px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+.navbar{
+  max-width:1200px;
+  margin:auto;
+  min-height:75px;
+  padding:10px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
 }
 
 .logo{
-    display:flex;
-    align-items:center;
+  display:flex;
+  align-items:center;
 }
 
 .logo img{
-    width:54px;
-    height:54px;
-    border-radius:50%;
-    object-fit:cover;
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  object-fit:cover;
+  display:block;
 }
 
 .brand{
-    margin-left:10px;
-    font-size:21px;
-    font-weight:900;
+  margin-left:10px;
+  font-size:24px;
+  font-weight:800;
+  letter-spacing:1px;
 }
 
 .brand span{
-    color:#f5b400;
+  color:#ffc400;
 }
 
-.nav{
-    display:flex;
-    align-items:center;
-    gap:18px;
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:22px;
 }
 
-.nav a{
-    font-size:14px;
-    font-weight:700;
-    color:#ddd;
+.nav-links a{
+  color:#fff;
+  text-decoration:none;
+  font-size:15px;
+  font-weight:600;
+  transition:.3s;
 }
 
-.nav a:hover{
-    color:#f5b400;
+.nav-links a:hover{
+  color:#ffc400;
 }
 
-.live-btn{
-    background:#e50914;
-    color:#fff !important;
-    padding:9px 14px;
-    border-radius:6px;
+/* HERO SLIDER */
+.hero{
+  width:100%;
+  background:#000;
 }
-
-/* ================= HERO SLIDER ================= */
 
 .hero-slider{
-    width:100%;
-    aspect-ratio:16 / 9;
-    position:relative;
-    overflow:hidden;
-    background:#000;
+  position:relative;
+  width:100%;
+  aspect-ratio:16 / 9;
+  overflow:hidden;
+  background:#000;
 }
 
 .hero-slide{
-    position:absolute;
-    inset:0;
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+  opacity:0;
+  transition:opacity .7s ease;
+  display:block;
+}
+
+.hero-slide.active{
+  opacity:1;
+}
+
+.slider-dots{
+  position:absolute;
+  left:50%;
+  bottom:15px;
+  transform:translateX(-50%);
+  display:flex;
+  gap:8px;
+  z-index:20;
+}
+
+.slider-dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  border:1px solid #fff;
+  background:rgba(255,255,255,.45);
+  cursor:pointer;
+  transition:.3s;
+}
+
+.slider-dot.active{
+  background:#ffc400;
+  border-color:#ffc400;
+  transform:scale(1.2);
+}
+
+/* SECTION */
+.section{
+  max-width:1200px;
+  margin:auto;
+  padding:45px 20px;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.section-title h1{
+  font-size:32px;
+  margin-bottom:10px;
+}
+
+.section-title h1 span{
+  color:#ffc400;
+}
+
+.section-title p{
+  color:#aaa;
+  font-size:15px;
+}
+
+/* CATEGORY BUTTONS */
+.categories{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-bottom:35px;
+}
+
+.category{
+  background:#111;
+  color:#fff;
+  border:1px solid #333;
+  padding:11px 20px;
+  border-radius:25px;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:700;
+  transition:.3s;
+}
+
+.category:hover{
+  background:#ffc400;
+  color:#000;
+  border-color:#ffc400;
+}
+
+/* FEATURE BOX */
+.feature-box{
+  max-width:850px;
+  margin:0 auto 40px;
+  background:#101010;
+  border:1px solid #292929;
+  border-radius:15px;
+  padding:25px;
+  text-align:center;
+}
+
+.live-badge{
+  display:inline-block;
+  background:#e00000;
+  color:#fff;
+  padding:8px 15px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:800;
+  margin-bottom:15px;
+}
+
+.feature-box h2{
+  font-size:27px;
+  margin-bottom:12px;
+}
+
+.feature-box h2 span{
+  color:#ffc400;
+}
+
+.feature-box p{
+  color:#aaa;
+  line-height:1.6;
+  margin-bottom:20px;
+}
+
+.buttons{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.btn{
+  display:inline-block;
+  padding:12px 22px;
+  border-radius:25px;
+  text-decoration:none;
+  font-weight:700;
+  font-size:14px;
+  transition:.3s;
+}
+
+.btn-youtube{
+  background:#e00000;
+  color:#fff;
+}
+
+.btn-live{
+  background:#ffc400;
+  color:#000;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+  opacity:.9;
+}
+
+/* VIDEO */
+.video-box{
+  max-width:850px;
+  margin:0 auto;
+  background:#101010;
+  border:1px solid #292929;
+  border-radius:15px;
+  padding:15px;
+}
+
+.video-box iframe{
+  width:100%;
+  aspect-ratio:16/9;
+  border:0;
+  border-radius:10px;
+  display:block;
+}
+
+/* SOCIAL */
+.social{
+  text-align:center;
+  padding:35px 20px;
+  border-top:1px solid #222;
+  background:#080808;
+}
+
+.social h2{
+  margin-bottom:20px;
+}
+
+.social-links{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.social-links a{
+  color:#fff;
+  text-decoration:none;
+  background:#151515;
+  border:1px solid #333;
+  padding:11px 18px;
+  border-radius:25px;
+  font-size:14px;
+  transition:.3s;
+}
+
+.social-links a:hover{
+  background:#ffc400;
+  color:#000;
+}
+
+/* FOOTER */
+.footer{
+  text-align:center;
+  background:#000;
+  border-top:1px solid #222;
+  padding:22px 15px;
+  color:#777;
+  font-size:13px;
+}
+
+.footer span{
+  color:#ffc400;
+}
+
+/* MOBILE */
+@media(max-width:700px){
+
+  .navbar{
+    min-height:65px;
+    padding:8px 12px;
+  }
+
+  .logo img{
+    width:48px;
+    height:48px;
+  }
+
+  .brand{
+    font-size:19px;
+    margin-left:8px;
+  }
+
+  .nav-links{
+    gap:10px;
+  }
+
+  .nav-links a{
+    font-size:12px;
+  }
+
+  .hero-slider{
+    width:100%;
+    aspect-ratio:16 / 9;
+    height:auto;
+  }
+
+  .hero-slide{
     width:100%;
     height:100%;
     object-fit:cover;
     object-position:center center;
-    opacity:0;
-    transition:opacity .7s ease;
+  }
+
+  .slider-dots{
+    bottom:8px;
+    gap:6px;
+  }
+
+  .slider-dot{
+    width:8px;
+    height:8px;
+  }
+
+  .section{
+    padding:30px 12px;
+  }
+
+  .section-title h1{
+    font-size:25px;
+  }
+
+  .feature-box{
+    padding:20px 15px;
+  }
+
+  .feature-box h2{
+    font-size:22px;
+  }
+
+  .social{
+    padding:30px 12px;
+  }
 }
 
-.hero-slide.active{
-    opacity:1;
-}
+@media(max-width:420px){
 
-.slider-dots{
-    position:absolute;
-    left:50%;
-    bottom:12px;
-    transform:translateX(-50%);
-    display:flex;
-    gap:8px;
-    z-index:20;
-}
+  .nav-links a:nth-child(2){
+    display:none;
+  }
 
-.slider-dot{
-    width:9px;
-    height:9px;
-    border:0;
-    border-radius:50%;
-    background:#aaa;
-    cursor:pointer;
-}
+  .brand{
+    font-size:17px;
+  }
 
-.slider-dot.active{
-    background:#f5b400;
-    transform:scale(1.2);
-}
+  .section-title h1{
+    font-size:22px;
+  }
 
-/* ================= MAIN ================= */
-
-.container{
-    max-width:1200px;
-    margin:auto;
-    padding:30px 18px;
-}
-
-.section-title{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:18px;
-}
-
-.section-title h2{
-    font-size:24px;
-    font-weight:900;
-}
-
-.section-title span{
-    color:#f5b400;
-}
-
-/* ================= CATEGORIES ================= */
-
-.categories{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:14px;
-    margin-bottom:35px;
-}
-
-.category{
-    padding:25px 10px;
-    text-align:center;
-    background:#111;
-    border:1px solid #292929;
-    border-radius:10px;
-    transition:.25s;
-}
-
-.category:hover{
-    border-color:#f5b400;
-    transform:translateY(-3px);
-}
-
-.category-icon{
-    font-size:30px;
-    margin-bottom:8px;
-}
-
-.category h3{
-    font-size:16px;
-}
-
-.category p{
-    color:#888;
-    font-size:12px;
-    margin-top:5px;
-}
-
-/* ================= MOVIES ================= */
-
-.movie-grid{
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:15px;
-}
-
-.movie-card{
-    background:#111;
-    border:1px solid #242424;
-    border-radius:8px;
-    overflow:hidden;
-}
-
-.movie-poster{
-    width:100%;
-    aspect-ratio:2/3;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:linear-gradient(135deg,#252525,#101010);
-    color:#777;
-    font-size:12px;
-}
-
-.movie-info{
-    padding:10px;
-}
-
-.movie-title{
-    font-size:14px;
-    font-weight:800;
-}
-
-.movie-meta{
-    color:#888;
-    font-size:11px;
-    margin-top:5px;
-}
-
-.watch-btn{
-    display:block;
-    margin-top:9px;
-    padding:8px;
-    text-align:center;
-    background:#f5b400;
-    color:#000;
-    border-radius:5px;
-    font-size:11px;
-    font-weight:900;
-}
-
-/* ================= VIDEO ================= */
-
-.featured{
-    margin-top:40px;
-}
-
-.video-box{
-    width:100%;
-    max-width:800px;
-    aspect-ratio:16/9;
-    margin:auto;
-    border-radius:10px;
-    overflow:hidden;
-    border:1px solid #292929;
-}
-
-.video-box iframe{
-    width:100%;
-    height:100%;
-    border:0;
-}
-
-/* ================= LIVE ================= */
-
-.live-section{
-    margin-top:40px;
-    padding:30px 18px;
-    text-align:center;
-    background:#120909;
-    border:1px solid #382020;
-    border-radius:12px;
-}
-
-.live-badge{
-    display:inline-block;
-    background:#e50914;
-    padding:6px 12px;
-    border-radius:20px;
-    font-size:11px;
-    font-weight:900;
-    margin-bottom:12px;
-}
-
-.live-section h2{
-    font-size:24px;
-    margin-bottom:8px;
-}
-
-.live-section p{
-    color:#999;
+  .category{
+    padding:9px 15px;
     font-size:13px;
-    margin-bottom:18px;
+  }
 }
-
-.live-watch{
-    display:inline-block;
-    background:#e50914;
-    padding:11px 20px;
-    border-radius:6px;
-    font-weight:900;
-    font-size:13px;
-}
-
-/* ================= SOCIAL ================= */
-
-.social-section{
-    margin-top:40px;
-    text-align:center;
-}
-
-.social-buttons{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-top:15px;
-}
-
-.social{
-    padding:10px 16px;
-    border:1px solid #303030;
-    border-radius:6px;
-    color:#ddd;
-    font-size:13px;
-    font-weight:700;
-}
-
-.social:hover{
-    color:#f5b400;
-    border-color:#f5b400;
-}
-
-/* ================= FOOTER ================= */
-
-.footer{
-    margin-top:45px;
-    padding:25px 15px;
-    background:#050505;
-    border-top:1px solid #222;
-    text-align:center;
-}
-
-.footer img{
-    width:48px;
-    height:48px;
-    border-radius:50%;
-    object-fit:cover;
-    margin-bottom:8px;
-}
-
-.footer p{
-    color:#777;
-    font-size:12px;
-    line-height:1.7;
-}
-
-.footer strong{
-    color:#f5b400;
-}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:900px){
-
-    .movie-grid{
-        grid-template-columns:repeat(4,1fr);
-    }
-
-}
-
-@media(max-width:600px){
-
-    .header-inner{
-        min-height:62px;
-        padding:6px 12px;
-    }
-
-    .logo img{
-        width:48px;
-        height:48px;
-    }
-
-    .brand{
-        font-size:17px;
-    }
-
-    .nav{
-        gap:5px;
-    }
-
-    .nav a:not(.live-btn){
-        display:none;
-    }
-
-    .live-btn{
-        padding:8px 10px;
-        font-size:11px;
-    }
-
-    .hero-slider{
-        width:100%;
-        aspect-ratio:16/9;
-        height:auto;
-    }
-
-    .hero-slide{
-        width:100%;
-        height:100%;
-        object-fit:cover;
-        object-position:center center;
-    }
-
-    .slider-dots{
-        bottom:8px;
-    }
-
-    .container{
-        padding:24px 12px;
-    }
-
-    .section-title h2{
-        font-size:20px;
-    }
-
-    .categories{
-        gap:9px;
-    }
-
-    .category{
-        padding:18px 5px;
-    }
-
-    .category-icon{
-        font-size:25px;
-    }
-
-    .category h3{
-        font-size:13px;
-    }
-
-    .category p{
-        display:none;
-    }
-
-    .movie-grid{
-        grid-template-columns:repeat(2,1fr);
-        gap:10px;
-    }
-
-}
-
-/* ================= END ================= */
-
 </style>
 </head>
 
 <body>
 
-
-<!-- ================= HEADER ================= -->
-
+<!-- HEADER -->
 <header class="header">
+  <nav class="navbar">
 
-    <div class="header-inner">
-
-        <a href="#" class="logo">
-
-            <img
-                src="movie-wala-logo.jpeg"
-                alt="Movie Wala Logo">
-
-            <div class="brand">
-                MOVIE <span>WALA</span>
-            </div>
-
-        </a>
-
-        <nav class="nav">
-
-            <a href="#movies">
-                Movies
-            </a>
-
-            <a href="#categories">
-                Categories
-            </a>
-
-            <a
-                href="https://www.youtube.com/@MovieWalaOfficial.10/live"
-                target="_blank"
-                class="live-btn">
-
-                🔴 LIVE
-
-            </a>
-
-        </nav>
-
+    <div class="logo">
+      <img src="movie-wala-logo.jpeg" alt="Movie Wala Logo">
+      <div class="brand">MOVIE <span>WALA</span></div>
     </div>
 
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#movies">Movies</a>
+      <a href="#about">About</a>
+    </div>
+
+  </nav>
 </header>
 
 
-<!-- ================= 4 BANNER SLIDER ================= -->
+<!-- HERO -->
+<section class="hero" id="home">
 
-<section class="hero-slider" id="heroSlider">
-
-
-    <!-- MAIN MOVIE WALA BANNER -->
+  <div class="hero-slider">
 
     <img
-        class="hero-slide active"
-        src="a_dramatic_high_energy_movie_themed_banner_poster.png"
-        alt="Movie Wala Main Banner">
-
-
-    <!-- BOLLYWOOD -->
+      class="hero-slide active"
+      src="movie-wala-main-banner.png"
+      alt="Movie Wala Main Banner">
 
     <img
-        class="hero-slide"
-        src="bollywood-slider-1920x1080.png"
-        alt="Bollywood Movie Wala Banner">
-
-
-    <!-- HOLLYWOOD -->
+      class="hero-slide"
+      src="bollywood-slider-1920x1080.png"
+      alt="Bollywood Movie Wala Banner">
 
     <img
-        class="hero-slide"
-        src="hollywood-slider-1920x1080.png"
-        alt="Hollywood Movie Wala Banner">
-
-
-    <!-- TOLLYWOOD -->
+      class="hero-slide"
+      src="hollywood-slider-1920x1080.png"
+      alt="Hollywood Movie Wala Banner">
 
     <img
-        class="hero-slide"
-        src="tollywood-slider-1920x1080.png"
-        alt="Tollywood Movie Wala Banner">
+      class="hero-slide"
+      src="tollywood-slider-1920x1080.png"
+      alt="Tollywood Movie Wala Banner">
 
-
-    <!-- DOTS -->
 
     <div class="slider-dots">
 
-        <button
-            class="slider-dot active"
-            data-slide="0"
-            aria-label="Main Banner">
-        </button>
+      <button class="slider-dot active" onclick="showSlide(0)" aria-label="Slide 1"></button>
 
-        <button
-            class="slider-dot"
-            data-slide="1"
-            aria-label="Bollywood">
-        </button>
+      <button class="slider-dot" onclick="showSlide(1)" aria-label="Slide 2"></button>
 
-        <button
-            class="slider-dot"
-            data-slide="2"
-            aria-label="Hollywood">
-        </button>
+      <button class="slider-dot" onclick="showSlide(2)" aria-label="Slide 3"></button>
 
-        <button
-            class="slider-dot"
-            data-slide="3"
-            aria-label="Tollywood">
-        </button>
+      <button class="slider-dot" onclick="showSlide(3)" aria-label="Slide 4"></button>
 
     </div>
+
+  </div>
 
 </section>
 
 
-<!-- ================= MAIN CONTENT ================= -->
+<!-- MOVIES -->
+<section class="section" id="movies">
 
-<main class="container">
+  <div class="section-title">
+    <h1>WELCOME TO <span>MOVIE WALA</span></h1>
+    <p>Best movie moments, scenes, dialogues and entertainment.</p>
+  </div>
 
 
-    <!-- CATEGORIES -->
+  <div class="categories">
 
-    <section id="categories">
+    <a class="category" href="#bollywood">Bollywood</a>
 
-        <div class="section-title">
+    <a class="category" href="#hollywood">Hollywood</a>
 
-            <h2>
-                Movie <span>Categories</span>
-            </h2>
+    <a class="category" href="#tollywood">Tollywood</a>
 
-        </div>
+    <a class="category" href="#videos">Latest Videos</a>
 
+  </div>
 
-        <div class="categories">
 
+  <div class="feature-box" id="about">
 
-            <a href="#movies" class="category">
+    <div class="live-badge">● LIVE CHANNEL</div>
 
-                <div class="category-icon">
-                    🇮🇳
-                </div>
-
-                <h3>
-                    Bollywood
-                </h3>
-
-                <p>
-                    Hindi Movies
-                </p>
-
-            </a>
-
-
-            <a href="#movies" class="category">
-
-                <div class="category-icon">
-                    🇺🇸
-                </div>
-
-                <h3>
-                    Hollywood
-                </h3>
-
-                <p>
-                    English Movies
-                </p>
-
-            </a>
-
-
-            <a href="#movies" class="category">
-
-                <div class="category-icon">
-                    🎬
-                </div>
-
-                <h3>
-                    Tollywood
-                </h3>
-
-                <p>
-                    South Movies
-                </p>
-
-            </a>
-
-
-        </div>
-
-    </section>
-
-
-    <!-- MOVIES -->
-
-    <section id="movies">
-
-        <div class="section-title">
-
-            <h2>
-                Latest <span>Movies</span>
-            </h2>
-
-        </div>
-
-
-        <div class="movie-grid">
-
-
-            <article class="movie-card">
-
-                <div class="movie-poster">
-                    Movie Poster
-                </div>
-
-                <div class="movie-info">
-
-                    <div class="movie-title">
-                        Latest Bollywood Movie
-                    </div>
-
-                    <div class="movie-meta">
-                        Hindi • HD
-                    </div>
-
-                    <a href="#" class="watch-btn">
-                        WATCH NOW
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <article class="movie-card">
-
-                <div class="movie-poster">
-                    Movie Poster
-                </div>
-
-                <div class="movie-info">
-
-                    <div class="movie-title">
-                        Latest Hollywood Movie
-                    </div>
-
-                    <div class="movie-meta">
-                        English • HD
-                    </div>
-
-                    <a href="#" class="watch-btn">
-                        WATCH NOW
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <article class="movie-card">
-
-                <div class="movie-poster">
-                    Movie Poster
-                </div>
-
-                <div class="movie-info">
-
-                    <div class="movie-title">
-                        Latest South Movie
-                    </div>
-
-                    <div class="movie-meta">
-                        Telugu • HD
-                    </div>
-
-                    <a href="#" class="watch-btn">
-                        WATCH NOW
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <article class="movie-card">
-
-                <div class="movie-poster">
-                    Movie Poster
-                </div>
-
-                <div class="movie-info">
-
-                    <div class="movie-title">
-                        New Release
-                    </div>
-
-                    <div class="movie-meta">
-                        Hindi • HD
-                    </div>
-
-                    <a href="#" class="watch-btn">
-                        WATCH NOW
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <article class="movie-card">
-
-                <div class="movie-poster">
-                    Movie Poster
-                </div>
-
-                <div class="movie-info">
-
-                    <div class="movie-title">
-                        Popular Movie
-                    </div>
-
-                    <div class="movie-meta">
-                        English • HD
-                    </div>
-
-                    <a href="#" class="watch-btn">
-                        WATCH NOW
-                    </a>
-
-                </div>
-
-            </article>
-
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= FEATURED VIDEO ================= -->
-
-    <section class="featured">
-
-        <div class="section-title">
-
-            <h2>
-                Featured <span>Video</span>
-            </h2>
-
-        </div>
-
-
-        <div class="video-box">
-
-            <iframe
-                src="https://www.youtube.com/embed/HzJ0dZ7meZs"
-                title="Movie Wala Featured Video"
-                allowfullscreen>
-            </iframe>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= LIVE ================= -->
-
-    <section class="live-section">
-
-        <div class="live-badge">
-            🔴 LIVE CHANNEL
-        </div>
-
-        <h2>
-            Movie Wala Live
-        </h2>
-
-        <p>
-            Latest movie moments, scenes and entertainment
-            updates ke liye hamare official channel ko follow karein.
-        </p>
-
-        <a
-            href="https://www.youtube.com/@MovieWalaOfficial.10/live"
-            target="_blank"
-            class="live-watch">
-
-            ▶ WATCH LIVE
-
-        </a>
-
-    </section>
-
-
-    <!-- ================= SOCIAL ================= -->
-
-    <section class="social-section">
-
-        <h2>
-            Follow
-            <span style="color:#f5b400;">
-                Movie Wala
-            </span>
-        </h2>
-
-
-        <div class="social-buttons">
-
-
-            <a
-                class="social"
-                href="https://www.youtube.com/@MovieWalaOfficial.10"
-                target="_blank">
-
-                ▶ YouTube
-
-            </a>
-
-
-            <a
-                class="social"
-                href="https://www.facebook.com/share/1MR6Lxzy4f/"
-                target="_blank">
-
-                f Facebook
-
-            </a>
-
-
-            <a
-                class="social"
-                href="https://www.instagram.com/moviewalaofficial.10/"
-                target="_blank">
-
-                ◎ Instagram
-
-            </a>
-
-
-        </div>
-
-    </section>
-
-
-</main>
-
-
-<!-- ================= FOOTER ================= -->
-
-<footer class="footer">
-
-    <img
-        src="movie-wala-logo.jpeg"
-        alt="Movie Wala Logo">
+    <h2>HAR SCENE MEIN <span>ENTERTAINMENT</span></h2>
 
     <p>
-
-        © 2026
-        <strong>Movie Wala</strong>
-
-        <br>
-
-        All Rights Reserved.
-
+      Movie Wala par dekhiye best movie moments, amazing scenes,
+      dialogues, short clips aur daily entertainment videos.
     </p>
+
+    <div class="buttons">
+
+      <a
+        class="btn btn-youtube"
+        href="https://www.youtube.com/@MovieWalaOfficial.10"
+        target="_blank">
+        ▶ Explore Movies
+      </a>
+
+      <a
+        class="btn btn-live"
+        href="https://www.youtube.com/@MovieWalaOfficial.10/live"
+        target="_blank">
+        🔴 Watch Live
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <!-- FEATURED VIDEO -->
+  <div class="section-title" id="videos">
+    <h1>FEATURED <span>VIDEO</span></h1>
+    <p>Watch our latest Movie Wala video.</p>
+  </div>
+
+  <div class="video-box">
+
+    <iframe
+      src="https://www.youtube.com/embed/HzJ0dZ7meZs"
+      title="Movie Wala Featured Video"
+      allowfullscreen>
+    </iframe>
+
+  </div>
+
+</section>
+
+
+<!-- SOCIAL -->
+<section class="social">
+
+  <h2>FOLLOW <span style="color:#ffc400;">MOVIE WALA</span></h2>
+
+  <div class="social-links">
+
+    <a
+      href="https://www.youtube.com/@MovieWalaOfficial.10"
+      target="_blank">
+      ▶ YouTube
+    </a>
+
+    <a
+      href="https://www.facebook.com/share/1MR6Lxzy4f/"
+      target="_blank">
+      f Facebook
+    </a>
+
+    <a
+      href="https://www.instagram.com/moviewalaofficial.10/"
+      target="_blank">
+      ◎ Instagram
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+
+  © 2026 <span>Movie Wala</span> — Best Movie Moments & Scenes
 
 </footer>
 
 
-<!-- ================= SLIDER SCRIPT ================= -->
-
+<!-- SLIDER SCRIPT -->
 <script>
-
-const slides =
-document.querySelectorAll(".hero-slide");
-
-const dots =
-document.querySelectorAll(".slider-dot");
 
 let currentSlide = 0;
 
-let sliderTimer;
-
+const slides = document.querySelectorAll(".hero-slide");
+const dots = document.querySelectorAll(".slider-dot");
 
 function showSlide(index){
 
-    currentSlide = index;
+  slides.forEach(function(slide){
+    slide.classList.remove("active");
+  });
 
-    slides.forEach((slide,i)=>{
+  dots.forEach(function(dot){
+    dot.classList.remove("active");
+  });
 
-        slide.classList.toggle(
-            "active",
-            i === index
-        );
+  currentSlide = index;
 
-    });
-
-
-    dots.forEach((dot,i)=>{
-
-        dot.classList.toggle(
-            "active",
-            i === index
-        );
-
-    });
-
+  slides[currentSlide].classList.add("active");
+  dots[currentSlide].classList.add("active");
 }
 
 
 function nextSlide(){
 
-    currentSlide++;
+  currentSlide++;
 
-    if(currentSlide >= slides.length){
+  if(currentSlide >= slides.length){
+    currentSlide = 0;
+  }
 
-        currentSlide = 0;
-
-    }
-
-    showSlide(currentSlide);
-
+  showSlide(currentSlide);
 }
 
 
-function startSlider(){
-
-    clearInterval(sliderTimer);
-
-    sliderTimer =
-    setInterval(
-        nextSlide,
-        5000
-    );
-
-}
-
-
-dots.forEach((dot,index)=>{
-
-    dot.addEventListener(
-        "click",
-        function(){
-
-            showSlide(index);
-
-            startSlider();
-
-        }
-    );
-
-});
-
-
-showSlide(0);
-
-startSlider();
+setInterval(nextSlide,5000);
 
 </script>
-
 
 </body>
 </html>
