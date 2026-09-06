@@ -2,15 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>Movie Wala Official</title>
-
-<meta name="description" content="Movie Wala Official - Movies, Web Series, Entertainment and Live Updates">
-<meta name="theme-color" content="#080808">
+<title>Movie Wala | Har Scene Mein Entertainment</title>
 
 <style>
-
 *{
     margin:0;
     padding:0;
@@ -22,10 +18,9 @@ html{
 }
 
 body{
-    background:#080808;
-    color:#fff;
     font-family:Arial,Helvetica,sans-serif;
-    overflow-x:hidden;
+    background:#050708;
+    color:#fff;
 }
 
 a{
@@ -33,332 +28,375 @@ a{
     color:inherit;
 }
 
-button,
-input{
+button,input{
     font-family:inherit;
 }
 
+/* ================= HEADER ================= */
 
-/* ==============================
-   HEADER
-============================== */
-
-header{
-    position:fixed;
+.navbar{
+    min-height:78px;
+    position:sticky;
     top:0;
-    left:0;
-    width:100%;
-    height:72px;
-    background:rgba(0,0,0,.95);
-    backdrop-filter:blur(12px);
+    z-index:9999;
     display:flex;
     align-items:center;
-    justify-content:space-between;
-    padding:0 5%;
-    z-index:9999;
-    border-bottom:1px solid rgba(255,255,255,.08);
+    gap:22px;
+    padding:10px 22px;
+    background:rgba(5,7,8,.97);
+    border-bottom:1px solid #292d30;
+    backdrop-filter:blur(12px);
 }
 
-.logo-area{
+.brand{
     display:flex;
     align-items:center;
     gap:10px;
+    min-width:270px;
 }
 
 .logo{
-    width:48px;
-    height:48px;
-    object-fit:contain;
-    border-radius:8px;
-    display:block;
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid #e6aa00;
 }
 
-.logo-text{
-    font-size:20px;
-    font-weight:800;
-    white-space:nowrap;
+.brand-name{
+    font-size:23px;
+    font-weight:900;
 }
 
-.logo-text span{
-    display:block;
-    font-size:11px;
-    color:#aaa;
-    letter-spacing:2px;
-    margin-top:2px;
+.brand-name span{
+    color:#e7ad00;
 }
 
-nav{
+.tagline{
+    color:#ccc;
+    font-size:12px;
+    margin-top:4px;
+}
+
+.nav{
     display:flex;
     align-items:center;
-    gap:30px;
+    justify-content:center;
+    gap:20px;
+    flex:1;
+    overflow:auto;
 }
 
-nav a{
-    color:#ddd;
-    font-size:15px;
-    font-weight:600;
-    transition:.3s;
+.nav a{
+    white-space:nowrap;
+    font-size:12px;
+    font-weight:800;
+    padding:28px 0 25px;
+    border-bottom:2px solid transparent;
 }
 
-nav a:hover{
-    color:#fff;
+.nav a:hover,
+.nav a.active{
+    border-color:#e50914;
 }
 
-.menu-btn{
-    display:none;
-    background:none;
-    border:0;
-    color:white;
-    font-size:28px;
-    cursor:pointer;
+.actions{
+    display:flex;
+    align-items:center;
+    gap:14px;
 }
 
+.search{
+    width:245px;
+    height:40px;
+    border:1px solid #444;
+    border-radius:25px;
+    display:flex;
+    align-items:center;
+    padding:0 13px;
+    background:#111416;
+}
 
-/* ==============================
-   MOBILE MENU
-============================== */
-
-.mobile-menu{
-    display:none;
-    position:absolute;
-    top:72px;
-    left:0;
+.search input{
     width:100%;
-    background:#090909;
-    border-top:1px solid #222;
-    border-bottom:1px solid #222;
-    padding:10px 5%;
+    border:0;
+    outline:0;
+    background:transparent;
+    color:#fff;
+    font-size:13px;
 }
 
-.mobile-menu a{
-    display:block;
-    padding:15px 5px;
-    border-bottom:1px solid #1c1c1c;
-    color:#ddd;
+.search span{
+    font-size:20px;
+    color:#aaa;
 }
 
-.mobile-menu a:last-child{
-    border-bottom:0;
+.social-mini{
+    display:flex;
+    gap:10px;
 }
 
+.social-mini a{
+    width:28px;
+    height:28px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
 
-/* ==============================
-   HERO SLIDER
-============================== */
+.social-mini svg{
+    width:24px;
+    height:24px;
+}
+
+.yt{
+    fill:#ff0000;
+}
+
+.fb{
+    fill:#2775dc;
+}
+
+.ig{
+    fill:none;
+    stroke:#ff3d8d;
+    stroke-width:2;
+}
+
+/* ================= HERO ================= */
 
 .hero{
-    margin-top:72px;
-    width:100%;
-    overflow:hidden;
-    background:#000;
-}
-
-.slider{
-    width:100%;
+    height:430px;
     position:relative;
+    overflow:hidden;
+    background:#080909;
 }
 
 .slide{
-    display:none;
-    width:100%;
-    position:relative;
+    position:absolute;
+    inset:0;
+    background:center/cover no-repeat;
+    opacity:0;
+    transform:scale(1.06);
+    transition:opacity 1s ease,transform 6s ease;
 }
 
 .slide.active{
-    display:block;
+    opacity:1;
+    transform:scale(1);
 }
 
-.slide img{
-    width:100%;
-    height:auto;
-    min-height:300px;
-    max-height:650px;
-    object-fit:cover;
-    display:block;
-}
-
-.slide::after{
+.slide:after{
     content:"";
     position:absolute;
-    left:0;
-    right:0;
-    bottom:0;
-    height:45%;
-    background:linear-gradient(
-        transparent,
-        rgba(8,8,8,.95)
+    inset:0;
+    background:
+    linear-gradient(
+        90deg,
+        rgba(0,0,0,.82),
+        rgba(0,0,0,.18) 65%,
+        rgba(0,0,0,.45)
+    ),
+    linear-gradient(
+        0deg,
+        rgba(0,0,0,.78),
+        transparent 55%
     );
-    pointer-events:none;
 }
 
-.slide-content{
+.hero-content{
     position:absolute;
-    z-index:3;
-    left:6%;
-    bottom:12%;
-    max-width:550px;
+    z-index:5;
+    left:6.3%;
+    top:42px;
+    max-width:500px;
 }
 
-.slide-content h1{
-    font-size:clamp(25px,4vw,52px);
-    margin-bottom:12px;
+.welcome{
+    display:inline-block;
+    background:#690b0d;
+    padding:7px 12px;
+    border-radius:6px;
+    font-size:12px;
+    font-weight:900;
+    margin-bottom:14px;
 }
 
-.slide-content p{
-    color:#ddd;
-    line-height:1.5;
+.hero h1{
+    font-size:52px;
+    line-height:.98;
+    font-weight:950;
+    text-transform:uppercase;
+}
+
+.hero h1 span{
+    color:#f0b500;
+}
+
+.hero p{
+    font-size:14px;
+    line-height:1.6;
+    margin:18px 0;
+    color:#eee;
+}
+
+.btn{
+    display:inline-block;
+    padding:12px 18px;
+    border-radius:6px;
+    font-size:13px;
+    font-weight:900;
+    margin-right:8px;
+}
+
+.btn-red{
+    background:#df080d;
+    border:1px solid #ff3131;
+}
+
+.btn-dark{
+    background:rgba(0,0,0,.55);
+    border:1px solid #777;
+}
+
+.live-now{
+    position:absolute;
+    right:7%;
+    top:38px;
+    z-index:5;
+}
+
+.live-label{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:#c9080c;
+    padding:9px 14px;
+    border-radius:7px;
     font-size:15px;
+    font-weight:900;
 }
 
-.prev,
-.next{
+.live-dot{
+    width:10px;
+    height:10px;
+    background:red;
+    border-radius:50%;
+    box-shadow:0 0 12px red;
+    animation:pulse 1.2s infinite;
+}
+
+@keyframes pulse{
+    50%{
+        opacity:.3;
+        transform:scale(.8);
+    }
+}
+
+.live-now small{
+    display:block;
+    text-align:center;
+    margin-top:7px;
+    font-weight:800;
+}
+
+.arrow{
     position:absolute;
+    z-index:8;
     top:50%;
     transform:translateY(-50%);
-    z-index:10;
     width:44px;
-    height:60px;
-    border:0;
-    background:rgba(0,0,0,.55);
+    height:44px;
+    border:1px solid #aaa;
+    border-radius:50%;
+    background:rgba(0,0,0,.4);
     color:white;
     font-size:30px;
     cursor:pointer;
 }
 
-.prev{
-    left:15px;
+.arrow.left{
+    left:25px;
 }
 
-.next{
-    right:15px;
-}
-
-.prev:hover,
-.next:hover{
-    background:rgba(0,0,0,.85);
+.arrow.right{
+    right:25px;
 }
 
 .dots{
     position:absolute;
-    bottom:18px;
+    z-index:9;
+    bottom:15px;
     left:50%;
     transform:translateX(-50%);
-    z-index:20;
     display:flex;
-    gap:7px;
+    gap:10px;
 }
 
 .dot{
-    width:8px;
-    height:8px;
+    width:9px;
+    height:9px;
+    border:0;
     border-radius:50%;
-    background:#777;
+    background:white;
     cursor:pointer;
 }
 
 .dot.active{
-    background:#fff;
-    width:24px;
+    width:23px;
+    border-radius:8px;
+    background:#e50914;
+}
+
+/* ================= MAIN ================= */
+
+.main{
+    padding:12px 24px 30px;
+}
+
+.layout{
+    display:grid;
+    grid-template-columns:2fr 1.05fr;
+    gap:10px;
+}
+
+.panel{
+    background:linear-gradient(145deg,#0a0e10,#050708);
+    border:1px solid #252b2e;
     border-radius:10px;
+    overflow:hidden;
+    margin-bottom:10px;
 }
 
-
-/* ==============================
-   GENERAL
-============================== */
-
-.container{
-    width:90%;
-    max-width:1400px;
-    margin:auto;
-}
-
-.section{
-    padding:45px 0 10px;
-}
-
-.section-title{
+.title{
+    min-height:42px;
     display:flex;
     align-items:center;
-    justify-content:space-between;
-    margin-bottom:20px;
+    gap:8px;
+    padding:0 12px;
+    font-size:17px;
+    font-weight:900;
 }
 
-.section-title h2{
-    font-size:24px;
+.bar{
+    width:5px;
+    height:17px;
+    border-radius:2px;
+    background:#ed1016;
 }
 
-.section-title h2::before{
-    content:"";
-    display:inline-block;
-    width:4px;
-    height:24px;
-    background:#e50914;
-    margin-right:10px;
-    vertical-align:-3px;
-    border-radius:4px;
+.section-row{
+    position:relative;
 }
 
-.see-more{
-    color:#aaa;
-    font-size:14px;
-}
-
-
-/* ==============================
-   SEARCH
-============================== */
-
-.search-box{
-    display:flex;
-    gap:10px;
-    max-width:700px;
-    margin:10px auto 35px;
-}
-
-.search-box input{
-    flex:1;
-    height:48px;
-    padding:0 18px;
-    border:1px solid #333;
-    outline:none;
-    background:#151515;
-    color:white;
-    border-radius:8px;
-    font-size:15px;
-}
-
-.search-box input:focus{
-    border-color:#777;
-}
-
-.search-box button{
-    padding:0 22px;
-    border:0;
-    border-radius:8px;
-    background:#e50914;
-    color:white;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.search-box button:hover{
-    background:#b80710;
-}
-
-
-/* ==============================
-   MOVIE ROW
-============================== */
+/* ================= TMDB MOVIE ROW ================= */
 
 .movie-row{
     display:flex;
-    gap:14px;
+    gap:10px;
     overflow-x:auto;
-    overflow-y:hidden;
-    padding:5px 2px 18px;
+    padding:0 8px 12px;
     scroll-behavior:smooth;
-    scrollbar-width:thin;
 }
 
 .movie-row::-webkit-scrollbar{
@@ -366,1466 +404,1377 @@ nav a:hover{
 }
 
 .movie-row::-webkit-scrollbar-track{
-    background:#151515;
+    background:#111;
 }
 
 .movie-row::-webkit-scrollbar-thumb{
-    background:#555;
+    background:#e50914;
     border-radius:10px;
 }
 
 .movie-card{
-    flex:0 0 170px;
-    width:170px;
-    background:#121212;
-    border-radius:9px;
-    overflow:hidden;
-    position:relative;
-    transition:.3s;
-    border:1px solid rgba(255,255,255,.05);
+    flex:0 0 145px;
+    cursor:pointer;
+    transition:.25s;
 }
 
 .movie-card:hover{
     transform:translateY(-5px);
-    border-color:#333;
 }
 
-.poster-wrap{
-    width:100%;
-    height:255px;
+.poster{
+    height:210px;
     position:relative;
-    background:#1c1c1c;
+    border:1px solid #34393c;
+    border-radius:8px;
+    overflow:hidden;
+    background:#101315;
 }
 
-.poster-wrap img{
+.poster img{
     width:100%;
     height:100%;
     object-fit:cover;
     display:block;
 }
 
+.poster-overlay{
+    position:absolute;
+    inset:0;
+    background:
+    linear-gradient(
+        transparent 40%,
+        rgba(0,0,0,.92)
+    );
+}
+
+.hd{
+    position:absolute;
+    z-index:3;
+    top:7px;
+    left:7px;
+    background:#c90d12;
+    padding:4px 6px;
+    border-radius:4px;
+    font-size:9px;
+    font-weight:bold;
+}
+
 .rating{
     position:absolute;
-    top:8px;
-    right:8px;
-    background:rgba(0,0,0,.85);
-    padding:4px 7px;
-    border-radius:5px;
+    z-index:3;
+    right:7px;
+    bottom:7px;
+    color:#ffc400;
     font-size:11px;
-    color:#ffd54a;
     font-weight:bold;
 }
 
 .movie-info{
-    padding:10px;
+    padding-top:6px;
 }
 
-.movie-title{
-    font-size:14px;
-    font-weight:bold;
-    line-height:1.35;
+.movie-name{
+    font-size:12px;
+    font-weight:800;
     white-space:nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
 }
 
-.movie-meta{
-    color:#888;
-    font-size:11px;
-    margin-top:6px;
+.movie-year{
+    color:#999;
+    font-size:10px;
+    margin-top:3px;
 }
-
-
-/* ==============================
-   LOADING / ERROR
-============================== */
 
 .loading{
     width:100%;
-    text-align:center;
     padding:30px;
-    color:#888;
-    font-size:14px;
-}
-
-.error-message{
-    padding:20px;
-    background:#171717;
+    text-align:center;
     color:#aaa;
-    border-radius:8px;
-    line-height:1.6;
-}
-
-
-/* ==============================
-   CATEGORY
-============================== */
-
-.category-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-}
-
-.category-card{
-    height:190px;
-    border-radius:12px;
-    overflow:hidden;
-    position:relative;
-    background:#151515;
-}
-
-.category-card img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
-    transition:.5s;
-}
-
-.category-card:hover img{
-    transform:scale(1.06);
-}
-
-.category-card::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(
-        transparent 25%,
-        rgba(0,0,0,.9)
-    );
-}
-
-.category-name{
-    position:absolute;
-    z-index:2;
-    left:20px;
-    bottom:17px;
-    font-size:23px;
-    font-weight:bold;
-}
-
-
-/* ==============================
-   LIVE
-============================== */
-
-.live-section{
-    padding:55px 0;
-}
-
-.live-box{
-    background:linear-gradient(
-        135deg,
-        #171717,
-        #0e0e0e
-    );
-    border:1px solid #292929;
-    border-radius:15px;
-    padding:35px;
-    text-align:center;
-}
-
-.live-icon{
-    font-size:45px;
-    margin-bottom:10px;
-}
-
-.live-box h2{
-    margin-bottom:10px;
-}
-
-.live-box p{
-    color:#999;
-    margin-bottom:22px;
-}
-
-.live-btn{
-    display:inline-block;
-    padding:12px 24px;
-    border-radius:7px;
-    background:#e50914;
-    color:#fff;
-    font-weight:bold;
-}
-
-.live-btn:hover{
-    background:#b80710;
-}
-
-
-/* ==============================
-   FEATURED VIDEO
-============================== */
-
-.video-section{
-    padding:50px 0;
-}
-
-.video-container{
-    width:100%;
-    max-width:1000px;
-    margin:auto;
-    aspect-ratio:16/9;
-    background:#111;
-    border-radius:12px;
-    overflow:hidden;
-}
-
-.video-container iframe{
-    width:100%;
-    height:100%;
-    border:0;
-}
-
-
-/* ==============================
-   SOCIAL
-============================== */
-
-.social-section{
-    padding:55px 0;
-    text-align:center;
-}
-
-.social-section h2{
-    font-size:26px;
-    margin-bottom:10px;
-}
-
-.social-section p{
-    color:#888;
-    margin-bottom:25px;
-}
-
-.social-links{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:12px;
-}
-
-.social-link{
-    min-width:150px;
-    padding:13px 20px;
-    border:1px solid #2c2c2c;
-    background:#111;
-    border-radius:8px;
-    transition:.3s;
-    font-weight:bold;
-}
-
-.social-link:hover{
-    background:#222;
-    transform:translateY(-3px);
-}
-
-
-/* ==============================
-   TMDB CREDIT
-============================== */
-
-.tmdb-credit{
-    margin:35px auto;
-    max-width:850px;
-    text-align:center;
-    color:#777;
-    font-size:12px;
-    line-height:1.6;
-}
-
-
-/* ==============================
-   FOOTER
-============================== */
-
-footer{
-    border-top:1px solid #222;
-    padding:35px 5%;
-    text-align:center;
-    color:#777;
     font-size:13px;
 }
 
-footer strong{
-    color:#ddd;
+.error{
+    width:100%;
+    padding:25px;
+    text-align:center;
+    color:#ff6868;
+    font-size:13px;
 }
 
-.footer-links{
+/* ================= TWO COLUMNS ================= */
+
+.two{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+}
+
+/* ================= LIVE ================= */
+
+.live-box{
+    position:relative;
+    min-height:290px;
+    overflow:hidden;
+    border:1px solid #e50914;
+    border-radius:14px;
+    background:#000;
+    margin:0 10px 10px;
+}
+
+.live-video-bg{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:1;
+}
+
+.live-video-overlay{
+    position:absolute;
+    inset:0;
+    z-index:2;
+    background:
+    linear-gradient(
+        90deg,
+        rgba(0,0,0,.88),
+        rgba(0,0,0,.55) 50%,
+        rgba(0,0,0,.2)
+    ),
+    linear-gradient(
+        0deg,
+        rgba(0,0,0,.65),
+        transparent 65%
+    );
+}
+
+.live-content{
+    position:relative;
+    z-index:5;
+    padding:28px;
+    max-width:72%;
+}
+
+.live-heading{
+    font-size:28px;
+    font-weight:950;
+}
+
+.live-heading span{
+    color:#e50914;
+}
+
+.live-sub{
+    color:#ffc400;
+    font-size:13px;
+    font-weight:900;
+    margin:10px 0;
+}
+
+.live-content p{
+    font-size:12px;
+    line-height:1.55;
+    color:#eee;
+}
+
+.play{
+    position:absolute;
+    z-index:6;
+    right:12%;
+    top:50%;
+    transform:translateY(-50%);
+    width:85px;
+    height:85px;
+    border-radius:50%;
+    border:2px solid #ff2020;
     display:flex;
+    align-items:center;
     justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
-    margin-bottom:15px;
+    background:rgba(229,9,20,.92);
+    font-size:32px;
+    box-shadow:0 0 25px #ff1018,0 0 60px rgba(255,0,0,.65);
+    animation:livePulse 1.5s ease-in-out infinite;
 }
 
+@keyframes livePulse{
+    50%{
+        transform:translateY(-50%) scale(1.08);
+    }
+}
 
-/* ==============================
-   MOBILE
-============================== */
+/* ================= FOLLOW ================= */
+
+.follow-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+    padding:0 8px 8px;
+}
+
+.follow{
+    min-height:65px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:7px;
+    background:#111416;
+    border:1px solid #444;
+    border-radius:7px;
+}
+
+.follow-icon{
+    width:43px;
+    height:43px;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.follow-icon svg{
+    width:25px;
+    height:25px;
+    fill:white;
+}
+
+.follow-yt{
+    background:#e50914;
+}
+
+.follow-fb{
+    background:#2775dc;
+}
+
+.follow-ig{
+    background:linear-gradient(135deg,#7b2cbf,#e50914,#f5a000);
+}
+
+.follow b{
+    font-size:12px;
+}
+
+.follow small{
+    display:block;
+    color:#aaa;
+    font-size:9px;
+    margin-top:3px;
+}
+
+/* ================= STATS ================= */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    margin-top:7px;
+    border:1px solid #252b2e;
+    border-radius:8px;
+}
+
+.stat{
+    text-align:center;
+    padding:12px;
+    border-right:1px solid #303437;
+}
+
+.stat:last-child{
+    border-right:0;
+}
+
+.stat-icon{
+    color:#ffc000;
+    font-size:23px;
+}
+
+.stat strong{
+    display:block;
+    color:#ffc000;
+    font-size:20px;
+    margin-top:2px;
+}
+
+.stat small{
+    color:#eee;
+}
+
+/* ================= GENRES ================= */
+
+.genres{
+    margin-top:7px;
+    padding-bottom:9px;
+    border:1px solid #252b2e;
+    border-radius:8px;
+}
+
+.genre-row{
+    display:grid;
+    grid-template-columns:repeat(9,1fr);
+    gap:8px;
+    padding:0 9px;
+}
+
+.genre{
+    border:1px solid #3c4144;
+    border-radius:6px;
+    padding:11px 5px;
+    text-align:center;
+    font-size:12px;
+    font-weight:900;
+    background:#0b0e10;
+    cursor:pointer;
+}
+
+.genre:hover{
+    border-color:#e50914;
+    background:#15191b;
+}
+
+/* ================= SEARCH RESULTS ================= */
+
+#searchPanel{
+    display:none;
+}
+
+#searchPanel.show{
+    display:block;
+}
+
+/* ================= TMDB CREDIT ================= */
+
+.tmdb-credit{
+    padding:14px 20px;
+    margin-top:10px;
+    border:1px solid #252b2e;
+    border-radius:8px;
+    background:#090c0e;
+    text-align:center;
+    color:#999;
+    font-size:10px;
+    line-height:1.6;
+}
+
+.tmdb-logo{
+    width:75px;
+    margin:6px auto;
+    display:block;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    text-align:center;
+    padding:20px;
+    border-top:1px solid #24282a;
+    color:#777;
+    font-size:11px;
+}
+
+.footer-brand{
+    font-size:21px;
+    color:#eee;
+    font-weight:900;
+    margin-bottom:5px;
+}
+
+.footer-brand span{
+    color:#e7ad00;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1200px){
+
+    .nav{
+        gap:14px;
+    }
+
+    .nav a{
+        font-size:11px;
+    }
+
+    .search{
+        width:190px;
+    }
+
+    .layout{
+        grid-template-columns:1fr;
+    }
+
+    .genre-row{
+        grid-template-columns:repeat(5,1fr);
+    }
+}
 
 @media(max-width:800px){
 
-    header{
-        height:64px;
-        padding:0 4%;
+    .navbar{
+        min-height:auto;
+        padding:10px 14px;
+        flex-wrap:wrap;
     }
 
-    .logo{
-        width:42px;
-        height:42px;
+    .brand{
+        min-width:auto;
     }
 
-    .logo-text{
-        font-size:17px;
+    .nav{
+        order:3;
+        width:100%;
+        justify-content:flex-start;
     }
 
-    .logo-text span{
-        font-size:9px;
+    .nav a{
+        padding:10px 0;
     }
 
-    nav{
+    .search,
+    .social-mini{
         display:none;
-    }
-
-    .menu-btn{
-        display:block;
     }
 
     .hero{
-        margin-top:64px;
+        height:470px;
     }
 
-    .slide img{
-        min-height:210px;
-        height:55vw;
-        object-fit:cover;
+    .hero-content{
+        left:6%;
+        max-width:78%;
     }
 
-    .slide-content{
-        display:none;
+    .hero h1{
+        font-size:40px;
     }
 
-    .prev,
-    .next{
-        width:34px;
-        height:45px;
-        font-size:22px;
-    }
-
-    .prev{
-        left:5px;
-    }
-
-    .next{
-        right:5px;
-    }
-
-    .dots{
-        bottom:9px;
-    }
-
-    .section{
-        padding:32px 0 5px;
-    }
-
-    .section-title h2{
-        font-size:20px;
-    }
-
-    .category-grid{
+    .two{
         grid-template-columns:1fr;
-        gap:12px;
     }
 
-    .category-card{
-        height:150px;
+    .genre-row{
+        grid-template-columns:repeat(3,1fr);
     }
 
     .movie-card{
-        flex:0 0 135px;
-        width:135px;
+        flex-basis:135px;
     }
 
-    .poster-wrap{
-        height:202px;
-    }
-
-    .movie-title{
-        font-size:12px;
-    }
-
-    .movie-meta{
-        font-size:10px;
-    }
-
-    .search-box{
-        margin-bottom:25px;
-    }
-
-    .search-box input{
-        height:44px;
-        font-size:13px;
-        min-width:0;
-    }
-
-    .search-box button{
-        padding:0 15px;
-        font-size:12px;
-    }
-
-    .live-box{
-        padding:25px 15px;
-    }
-
-    .social-link{
-        width:100%;
+    .poster{
+        height:195px;
     }
 }
 
-@media(max-width:400px){
+@media(max-width:520px){
 
-    .logo-text{
-        font-size:15px;
+    .main{
+        padding:8px 10px 25px;
     }
 
-    .logo{
-        width:38px;
-        height:38px;
+    .hero-content{
+        max-width:88%;
+    }
+
+    .hero h1{
+        font-size:32px;
+    }
+
+    .hero p{
+        font-size:12px;
     }
 
     .movie-card{
         flex-basis:125px;
-        width:125px;
     }
 
-    .poster-wrap{
-        height:188px;
+    .poster{
+        height:180px;
     }
-}
-.social-links{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:14px;
-    flex-wrap:wrap;
-    margin-top:25px;
-}
 
-.social-link{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    min-width:145px;
-    padding:14px 22px;
-    border:1px solid #333;
-    border-radius:10px;
-    background:#111;
-    color:#fff;
-    text-decoration:none;
-    font-weight:700;
-    font-size:16px;
-}
+    .live-content{
+        max-width:100%;
+        padding:22px;
+    }
 
-.social-link i{
-    font-size:21px;
-}
+    .play{
+        width:60px;
+        height:60px;
+        right:6%;
+        font-size:24px;
+    }
 
-.social-link:hover{
-    transform:translateY(-3px);
-}
+    .follow-grid{
+        grid-template-columns:1fr;
+    }
 
-.social-link:nth-child(1):hover{
-    background:#ff0000;
-    border-color:#ff0000;
-}
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
 
-.social-link:nth-child(2):hover{
-    background:#1877f2;
-    border-color:#1877f2;
-}
+    .stat:nth-child(2){
+        border-right:0;
+    }
 
-.social-link:nth-child(3):hover{
-    background:linear-gradient(45deg,#f58529,#dd2a7b,#8134af);
-    border-color:#dd2a7b;
+    .genre-row{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .title{
+        font-size:15px;
+    }
 }
 </style>
-    
-    <link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    
 </head>
-
 
 <body>
 
+<!-- ================= HEADER ================= -->
 
-<!-- ==============================
-     HEADER
-============================== -->
+<header class="navbar">
 
-<header>
+<a href="#home" class="brand">
 
-    <a href="#home" class="logo-area">
+<img
+src="movie-wala-logo.jpeg"
+class="logo"
+alt="Movie Wala Logo">
 
-        <img
-            src="./movie-wala-logo.jpeg"
-            alt="Movie Wala Official Logo"
-            class="logo"
+<div>
 
-      </a>
+<div class="brand-name">
+MOVIE <span>WALA</span>
+</div>
 
-        
+<div class="tagline">
+Har Scene Mein Entertainment
+</div>
 
+</div>
 
-    <nav>
+</a>
 
-        <a href="#home">Home</a>
+<nav class="nav">
 
-        <a href="#movies">Movies</a>
+<a href="#home" class="active">HOME</a>
+<a href="#movies">MOVIES</a>
+<a href="#indian">INDIAN</a>
+<a href="#hollywood">HOLLYWOOD</a>
+<a href="#series">WEB SERIES</a>
+<a href="#trending">TRENDING</a>
+<a href="#genres">GENRES</a>
+<a href="#about">ABOUT</a>
 
-        <a href="#webseries">Web Series</a>
+</nav>
 
-        <a href="#live">Live</a>
+<div class="actions">
 
-        <a href="#search">Search</a>
+<div class="search">
 
-    </nav>
+<input
+id="searchInput"
+type="text"
+placeholder="Search movies, series...">
 
+<span>⌕</span>
 
-    <button
-        class="menu-btn"
-        id="menuBtn"
-        aria-label="Open Menu"
-    >
-        ☰
-    </button>
+</div>
 
+<div class="social-mini">
 
-    <div
-        class="mobile-menu"
-        id="mobileMenu"
-    >
+<a
+href="https://www.youtube.com/@MovieWalaOfficial.10"
+target="_blank">
 
-        <a href="#home">Home</a>
+<svg class="yt" viewBox="0 0 24 24">
+<path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.8V8.2l6.5 3.8-6.5 3.8z"/>
+</svg>
 
-        <a href="#movies">Movies</a>
+</a>
 
-        <a href="#webseries">Web Series</a>
+<a
+href="https://www.facebook.com/share/1MR6Lxzy4f/"
+target="_blank">
 
-        <a href="#live">Live</a>
+<svg class="fb" viewBox="0 0 24 24">
+<path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5h1.7V4a21 21 0 0 0-2.4-.1c-2.4 0-4 1.5-4 4.1V10H7.7v3h2.7v8h3.1z"/>
+</svg>
 
-        <a href="#search">Search</a>
+</a>
 
-    </div>
+<a
+href="https://www.instagram.com/moviewalaofficial.10/"
+target="_blank">
+
+<svg class="ig" viewBox="0 0 24 24">
+
+<rect x="3" y="3" width="18" height="18" rx="5"/>
+<circle cx="12" cy="12" r="4"/>
+<circle cx="17.3" cy="6.8" r="1"/>
+
+</svg>
+
+</a>
+
+</div>
+
+</div>
 
 </header>
 
 
+<!-- ================= HERO ================= -->
 
-<!-- ==============================
-     HERO
-============================== -->
+<section class="hero" id="home">
 
-<section
-    class="hero"
-    id="home"
->
+<div
+class="slide active"
+style="background-image:url('movie-wala-banner.jpeg')">
+</div>
 
-    <div class="slider">
+<div
+class="slide"
+style="background-image:url('movie-wala-banner-2[1].jpg')">
+</div>
 
+<div
+class="slide"
+style="background-image:url('movie-wala-banner-3[1].jpg')">
+</div>
 
-        <!-- BANNER 1 -->
+<div
+class="slide"
+style="background-image:url('movie-wala-banner-4[1].jpg')">
+</div>
 
-        <div class="slide active">
+<div
+class="slide"
+style="background-image:url('movie-wala-banner-5[1].jpg')">
+</div>
 
-            <img
-                src="movie-wala-main-banner.png"
-                alt="Movie Wala"
-            >
+<div class="hero-content">
 
-            <div class="slide-content">
+<div class="welcome">
+WELCOME TO MOVIE WALA
+</div>
 
-                <h1>
-                    Movie Wala Official
-                </h1>
+<h1>
+HAR SCENE MEIN
+<span>ENTERTAINMENT</span>
+</h1>
 
-                <p>
-                    Your destination for movies,
-                    web series, entertainment and
-                    live updates.
-                </p>
+<p>
+Latest movies, web series, updates, reviews and live entertainment —
+sab kuch sirf Movie Wala par.
+</p>
 
-            </div>
+<a
+href="#movies"
+class="btn btn-red">
+▶ &nbsp; EXPLORE MOVIES
+</a>
 
-        </div>
+<a
+href="#live"
+class="btn btn-dark">
+▶ &nbsp; WATCH LIVE
+</a>
 
+</div>
 
-        <!-- BANNER 2 -->
+<div class="live-now">
 
-        <div class="slide">
+<div class="live-label">
+<span class="live-dot"></span>
+LIVE NOW
+</div>
 
-            <img
-                src="bollywood-slider-1920x1080.png"
-                alt="Bollywood Movies"
-            >
+<small>
+Entertainment 24/7
+</small>
 
-            <div class="slide-content">
+</div>
 
-                <h1>
-                    Bollywood
-                </h1>
+<button
+class="arrow left"
+id="prev">
+‹
+</button>
 
-                <p>
-                    Discover popular Hindi
-                    movies and entertainment.
-                </p>
+<button
+class="arrow right"
+id="next">
+›
+</button>
 
-            </div>
+<div class="dots">
 
-        </div>
+<button class="dot active"></button>
+<button class="dot"></button>
+<button class="dot"></button>
+<button class="dot"></button>
+<button class="dot"></button>
 
-
-        <!-- BANNER 3 -->
-
-        <div class="slide">
-
-            <img
-                src="hollywood-slider-1920x1080.png"
-                alt="Hollywood Movies"
-            >
-
-            <div class="slide-content">
-
-                <h1>
-                    Hollywood
-                </h1>
-
-                <p>
-                    Explore popular Hollywood
-                    movies and entertainment.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <!-- BANNER 4 -->
-
-        <div class="slide">
-
-            <img
-                src="tollywood-slider-1920x1080.png"
-                alt="Tollywood Movies"
-            >
-
-            <div class="slide-content">
-
-                <h1>
-                    Tollywood
-                </h1>
-
-                <p>
-                    Discover Telugu cinema
-                    and entertainment.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <button
-            class="prev"
-            onclick="changeSlide(-1)"
-        >
-            ❮
-        </button>
-
-
-        <button
-            class="next"
-            onclick="changeSlide(1)"
-        >
-            ❯
-        </button>
-
-
-        <div class="dots">
-
-            <span
-                class="dot active"
-                onclick="currentSlide(1)"
-            ></span>
-
-            <span
-                class="dot"
-                onclick="currentSlide(2)"
-            ></span>
-
-            <span
-                class="dot"
-                onclick="currentSlide(3)"
-            ></span>
-
-            <span
-                class="dot"
-                onclick="currentSlide(4)"
-            ></span>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
 
+<!-- ================= MAIN ================= -->
 
-<!-- ==============================
-     SEARCH
-============================== -->
+<main class="main">
 
-<section
-    class="section"
-    id="search"
->
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <h2>
-                Search Movies
-            </h2>
-
-        </div>
+<div class="layout">
 
 
-        <div class="search-box">
+<!-- ================= LEFT ================= -->
 
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="Search movie name..."
-                autocomplete="off"
-            >
+<section>
 
 
-            <button
-                onclick="searchMovies()"
-            >
-                Search
-            </button>
+<!-- TRENDING -->
 
-        </div>
+<div
+class="panel"
+id="movies">
+
+<div class="title">
+<i class="bar"></i>
+TRENDING MOVIES
+</div>
+
+<div
+class="movie-row"
+id="trendingMovies">
+
+<div class="loading">
+Loading movies from TMDB...
+</div>
+
+</div>
+
+</div>
 
 
-        <div
-            id="searchResults"
-            class="movie-row"
-            style="display:none;"
-        ></div>
+<!-- POPULAR -->
 
-    </div>
+<div
+class="panel"
+id="trending">
+
+<div class="title">
+<i class="bar"></i>
+POPULAR MOVIES
+</div>
+
+<div
+class="movie-row"
+id="popularMovies">
+
+<div class="loading">
+Loading...
+</div>
+
+</div>
+
+</div>
+
+
+<!-- TOP RATED -->
+
+<div class="panel">
+
+<div class="title">
+<i class="bar"></i>
+TOP RATED
+</div>
+
+<div
+class="movie-row"
+id="topRatedMovies">
+
+<div class="loading">
+Loading...
+</div>
+
+</div>
+
+</div>
+
+
+<!-- LATEST -->
+
+<div class="panel">
+
+<div class="title">
+<i class="bar"></i>
+LATEST MOVIES
+</div>
+
+<div
+class="movie-row"
+id="latestMovies">
+
+<div class="loading">
+Loading...
+</div>
+
+</div>
+
+</div>
+
+
+<!-- INDIAN -->
+
+<div
+class="panel"
+id="indian">
+
+<div class="title">
+<i class="bar"></i>
+INDIAN / BOLLYWOOD
+</div>
+
+<div
+class="movie-row"
+id="indianMovies">
+
+<div class="loading">
+Loading...
+</div>
+
+</div>
+
+</div>
+
+
+<!-- HOLLYWOOD -->
+
+<div
+class="panel"
+id="hollywood">
+
+<div class="title">
+<i class="bar"></i>
+HOLLYWOOD
+</div>
+
+<div
+class="movie-row"
+id="hollywoodMovies">
+
+<div class="loading">
+Loading...
+</div>
+
+</div>
+
+</div>
+
+
+<!-- WEB SERIES -->
+
+<div
+class="panel"
+id="series">
+
+<div class="title">
+<i class="bar"></i>
+WEB SERIES
+</div>
+
+<div
+class="movie-row"
+id="seriesMovies">
+
+<div class="loading">
+Loading series...
+</div>
+
+</div>
+
+</div>
+
+
+<!-- SEARCH -->
+
+<div
+class="panel"
+id="searchPanel">
+
+<div class="title">
+
+<i class="bar"></i>
+
+SEARCH RESULTS
+
+</div>
+
+<div
+class="movie-row"
+id="searchResults">
+</div>
+
+</div>
+
 
 </section>
 
 
+<!-- ================= RIGHT ================= -->
 
-<!-- ==============================
-     MOVIES
-============================== -->
+<aside>
 
-<main id="movies">
 
+<!-- LIVE ZONE -->
 
-    <!-- TRENDING -->
+<section
+class="panel"
+id="live">
 
-    <section class="section">
+<div class="title">
+<i class="bar"></i>
+LIVE ZONE
+</div>
 
-        <div class="container">
+<div class="live-box">
 
-            <div class="section-title">
+<video
+class="live-video-bg"
+autoplay
+muted
+loop
+playsinline
+preload="auto">
 
-                <h2>
-                    Trending Movies
-                </h2>
+<source
+src="movie-wala-live-1080-cinematic-4-banners.mp4"
+type="video/mp4">
 
-                <span class="see-more">
-                    TMDB
-                </span>
+</video>
 
-            </div>
+<div class="live-video-overlay"></div>
 
+<div class="live-content">
 
-            <div
-                id="trendingMovies"
-                class="movie-row"
-            >
+<div class="live-heading">
+📡 <span>LIVE</span> ZONE
+</div>
 
-                <div class="loading">
-                    Loading movies...
-                </div>
+<div class="live-sub">
+JOIN THE LIVE ENTERTAINMENT
+</div>
 
-            </div>
+<p>
+Movie Wala Live Zone mein pao movie updates,
+exclusive news, live discussions aur special entertainment.
+</p>
 
-        </div>
+<br>
 
-    </section>
+<a
+href="https://www.youtube.com/@MovieWalaOfficial.10/live"
+target="_blank"
+class="btn btn-red">
 
+▶ WATCH LIVE NOW
 
+</a>
 
-    <!-- POPULAR -->
+<a
+href="https://www.youtube.com/@MovieWalaOfficial.10/live"
+target="_blank"
+class="btn btn-dark">
 
-    <section class="section">
+YouTube Live ↗
 
-        <div class="container">
+</a>
 
-            <div class="section-title">
+</div>
 
-                <h2>
-                    Popular Movies
-                </h2>
+<div class="play">
+▶
+</div>
 
-                <span class="see-more">
-                    See more
-                </span>
+</div>
 
-            </div>
+</section>
 
 
-            <div
-                id="popularMovies"
-                class="movie-row"
-            >
+<!-- FOLLOW -->
 
-                <div class="loading">
-                    Loading movies...
-                </div>
+<section
+class="panel"
+id="about">
 
-            </div>
+<div class="title">
+<i class="bar"></i>
+FOLLOW MOVIE WALA
+</div>
 
-        </div>
+<div class="follow-grid">
 
-    </section>
 
+<a
+class="follow"
+href="https://www.youtube.com/@MovieWalaOfficial.10"
+target="_blank">
 
+<div class="follow-icon follow-yt">
 
-    <!-- NOW PLAYING -->
+<svg viewBox="0 0 24 24">
 
-    <section class="section">
+<path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.8V8.2l6.5 3.8-6.5 3.8z"/>
 
-        <div class="container">
+</svg>
 
-            <div class="section-title">
+</div>
 
-                <h2>
-                    Now Playing
-                </h2>
+<div>
+<b>YouTube</b>
+<small>Videos & Live</small>
+</div>
 
-                <span class="see-more">
-                    Latest
-                </span>
+</a>
 
-            </div>
 
+<a
+class="follow"
+href="https://www.facebook.com/share/1MR6Lxzy4f/"
+target="_blank">
 
-            <div
-                id="nowPlaying"
-                class="movie-row"
-            >
+<div class="follow-icon follow-fb">
 
-                <div class="loading">
-                    Loading movies...
-                </div>
+<svg viewBox="0 0 24 24">
 
-            </div>
+<path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5h1.7V4a21 21 0 0 0-2.4-.1c-2.4 0-4 1.5-4 4.1V10H7.7v3h2.7v8h3.1z"/>
 
-        </div>
+</svg>
 
-    </section>
+</div>
 
+<div>
+<b>Facebook</b>
+<small>Updates & Community</small>
+</div>
 
+</a>
 
-    <!-- BOLLYWOOD -->
 
-    <section class="section">
+<a
+class="follow"
+href="https://www.instagram.com/moviewalaofficial.10/"
+target="_blank">
 
-        <div class="container">
+<div class="follow-icon follow-ig">
 
-            <div class="section-title">
+<svg viewBox="0 0 24 24">
 
-                <h2>
-                    Popular Bollywood Movies
-                </h2>
+<rect
+x="3"
+y="3"
+width="18"
+height="18"
+rx="5"
+fill="none"
+stroke="#fff"
+stroke-width="2"/>
 
-                <span class="see-more">
-                    Hindi
-                </span>
+<circle
+cx="12"
+cy="12"
+r="4"
+fill="none"
+stroke="#fff"
+stroke-width="2"/>
 
-            </div>
+<circle
+cx="17.3"
+cy="6.8"
+r="1"
+fill="#fff"/>
 
+</svg>
 
-            <div
-                id="bollywoodMovies"
-                class="movie-row"
-            >
+</div>
 
-                <div class="loading">
-                    Loading movies...
-                </div>
+<div>
+<b>Instagram</b>
+<small>Reels & Updates</small>
+</div>
 
-            </div>
+</a>
 
-        </div>
+</div>
 
-    </section>
+</section>
 
 
+<!-- STATS -->
 
-    <!-- HOLLYWOOD -->
+<div class="stats">
 
-    <section class="section">
+<div class="stat">
+<div class="stat-icon">👥</div>
+<strong>10K+</strong>
+<small>Movie Lovers</small>
+</div>
 
-        <div class="container">
+<div class="stat">
+<div class="stat-icon">🎬</div>
+<strong>100+</strong>
+<small>Updates</small>
+</div>
 
-            <div class="section-title">
+<div class="stat">
+<div class="stat-icon">◷</div>
+<strong>24/7</strong>
+<small>Entertainment</small>
+</div>
 
-                <h2>
-                    Popular Hollywood Movies
-                </h2>
+<div class="stat">
+<div class="stat-icon">☆</div>
+<strong>∞</strong>
+<small>Passion</small>
+</div>
 
-                <span class="see-more">
-                    English
-                </span>
+</div>
 
-            </div>
+</aside>
 
+</div>
 
-            <div
-                id="hollywoodMovies"
-                class="movie-row"
-            >
 
-                <div class="loading">
-                    Loading movies...
-                </div>
+<!-- ================= GENRES ================= -->
 
-            </div>
+<section
+class="genres"
+id="genres">
 
-        </div>
+<div class="title">
+<i class="bar"></i>
+BROWSE BY GENRES
+</div>
 
-    </section>
+<div class="genre-row">
 
+<div class="genre" data-genre="28">
+⚔ ACTION
+</div>
 
+<div class="genre" data-genre="53">
+◉ THRILLER
+</div>
 
-    <!-- TELUGU -->
+<div class="genre" data-genre="18">
+☯ DRAMA
+</div>
 
-    <section class="section">
+<div class="genre" data-genre="35">
+☺ COMEDY
+</div>
 
-        <div class="container">
+<div class="genre" data-genre="12">
+➤ ADVENTURE
+</div>
 
-            <div class="section-title">
+<div class="genre" data-genre="80">
+♞ CRIME
+</div>
 
-                <h2>
-                    Popular Telugu Movies
-                </h2>
+<div class="genre" data-genre="27">
+☠ HORROR
+</div>
 
-                <span class="see-more">
-                    Telugu
-                </span>
+<div class="genre" data-genre="878">
+◎ SCI-FI
+</div>
 
-            </div>
+<div class="genre" data-genre="10749">
+♥ ROMANCE
+</div>
 
+</div>
 
-            <div
-                id="tollywoodMovies"
-                class="movie-row"
-            >
+</section>
 
-                <div class="loading">
-                    Loading movies...
-                </div>
 
-            </div>
+<!-- ================= TMDB CREDIT ================= -->
 
-        </div>
+<div class="tmdb-credit">
 
-    </section>
+This product uses the TMDB API but is not endorsed or certified by TMDB.
 
+<img
+class="tmdb-logo"
+src="https://www.themoviedb.org/assets/2/v4/logos/stacked-blue-b5e0b1e9d8e9f9c4b8d1a7d0c5e4a8e3f2a1b0c9d8e7f6e5d4c3b2a1.svg"
+alt="TMDB">
 
+Movie Wala uses TMDB for movie information, ratings and images.
 
-    <!-- CATEGORIES -->
-
-    <section class="section">
-
-        <div class="container">
-
-            <div class="section-title">
-
-                <h2>
-                    Movies & Entertainment
-                </h2>
-
-            </div>
-
-
-            <div class="category-grid">
-
-
-                <a
-                    href="#bollywoodMovies"
-                    class="category-card"
-                >
-
-                    <img
-                        src="bollywood-slider-1920x1080.png"
-                        alt="Bollywood"
-                    >
-
-                    <div class="category-name">
-                        Bollywood
-                    </div>
-
-                </a>
-
-
-                <a
-                    href="#hollywoodMovies"
-                    class="category-card"
-                >
-
-                    <img
-                        src="hollywood-slider-1920x1080.png"
-                        alt="Hollywood"
-                    >
-
-                    <div class="category-name">
-                        Hollywood
-                    </div>
-
-                </a>
-
-
-                <a
-                    href="#tollywoodMovies"
-                    class="category-card"
-                >
-
-                    <img
-                        src="tollywood-slider-1920x1080.png"
-                        alt="Tollywood"
-                    >
-
-                    <div class="category-name">
-                        Tollywood
-                    </div>
-
-                </a>
-
-
-            </div>
-
-        </div>
-
-    </section>
-
+</div>
 
 </main>
 
 
-
-<!-- ==============================
-     WEB SERIES
-============================== -->
-
-<section
-    class="section"
-    id="webseries"
->
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <h2>
-                Popular Web Series
-            </h2>
-
-            <span class="see-more">
-                TV Shows
-            </span>
-
-        </div>
-
-
-        <div
-            id="webSeries"
-            class="movie-row"
-        >
-
-            <div class="loading">
-                Loading TV shows...
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- ==============================
-     LIVE
-============================== -->
-
-<section
-    class="live-section"
-    id="live"
->
-
-    <div class="container">
-
-        <div class="live-box">
-
-            <div class="live-icon">
-                🔴
-            </div>
-
-            <h2>
-                Movie Wala Live
-            </h2>
-
-            <p>
-                Watch our latest live updates
-                and entertainment on YouTube.
-            </p>
-
-
-            <a
-                class="live-btn"
-                href="https://www.youtube.com/@MovieWalaOfficial.10/live"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Watch Live
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- ==============================
-     FEATURED VIDEO
-============================== -->
-
-<section class="video-section">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <h2>
-                Featured Video
-            </h2>
-
-        </div>
-
-
-        <div class="video-container">
-
-            <iframe
-                src="https://www.youtube.com/embed/HzJ0dZ7meZs"
-                title="Movie Wala Official Featured Video"
-                loading="lazy"
-                allowfullscreen
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            ></iframe>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- ==============================
-     SOCIAL
-============================== -->
-
-<section class="social-section">
-
-    <div class="container">
-
-        <h2>
-            Follow Movie Wala
-        </h2>
-
-        <p>
-            Follow us for the latest movie
-            and entertainment updates.
-        </p>
-
-
-        <div class="social-links">
-
-    <a class="social-link"
-       href="https://www.youtube.com/@MovieWalaOfficial.10"
-       target="_blank"
-       rel="noopener noreferrer">
-
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.9V8.1l6.5 3.9-6.5 3.9z"/>
-        </svg>
-
-        <span>YouTube</span>
-    </a>
-
-
-    <a class="social-link"
-       href="https://www.facebook.com/share/1MR6Lxzy4f/"
-       target="_blank"
-       rel="noopener noreferrer">
-
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M24 12a12 12 0 1 0-13.9 11.9v-8.4H7.1V12h3V9.3c0-3 1.8-4.7 4.6-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9V12h3.4l-.5 3.5h-2.9v8.4A12 12 0 0 0 24 12z"/>
-        </svg>
-
-        <span>Facebook</span>
-    </a>
-
-
-    <a class="social-link"
-       href="https://www.instagram.com/moviewalaofficial.10/"
-       target="_blank"
-       rel="noopener noreferrer">
-
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 12 16.5 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 12 14.5 2.5 2.5 0 0 0 12 9.5zM17.5 6.5a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/>
-        </svg>
-
-        <span>Instagram</span>
-    </a>
-
-</div>
-<!-- ==============================
-     TMDB CREDIT
-============================== -->
-
-<div class="container">
-
-    <div class="tmdb-credit">
-
-        <strong>
-            Movie information provided by TMDB
-        </strong>
-
-        <br>
-
-        This product uses the TMDB API but is not
-        endorsed or certified by TMDB.
-
-    </div>
-
-</div>
-
-
-
-<!-- ==============================
-     FOOTER
-============================== -->
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
-    <div class="footer-links">
+<div class="footer-brand">
+Ⓜ MOVIE <span>WALA</span>
+</div>
 
-        <a href="#home">
-            Home
-        </a>
-
-        <a href="#movies">
-            Movies
-        </a>
-
-        <a href="#webseries">
-            Web Series
-        </a>
-
-        <a href="#live">
-            Live
-        </a>
-
-        <a href="#search">
-            Search
-        </a>
-
-    </div>
-
-
-    <p>
-
-        © <span id="year"></span>
-
-        <strong>
-            Movie Wala Official
-        </strong>
-
-        . All Rights Reserved.
-
-    </p>
+<div>
+© 2026 Movie Wala. All Rights Reserved.
+&nbsp; • &nbsp;
+Har Scene Mein Entertainment ❤️
+</div>
 
 </footer>
 
 
-
-<!-- ==============================
-     JAVASCRIPT
-============================== -->
+<!-- ================= JAVASCRIPT ================= -->
 
 <script>
 
-
-/* =================================
-   TMDB API KEY
-================================= */
-
-/*
-   IMPORTANT:
-
-   ONLY THIS ONE LINE NEEDS YOUR API KEY.
-
-   Replace:
-
-   PASTE_YOUR_NEW_TMDB_API_KEY_HERE
-
-   with your NEW TMDB API key.
-
-   DO NOT CHANGE ANY OTHER TMDB_API_KEY LINE.
-*/
+/* =====================================================
+   TMDB CONFIGURATION
+   ===================================================== */
 
 const TMDB_API_KEY =
-"const TMDB_API_KEY = "PASTE_YOUR_TMDB_API_KEY_HERE";";
+"a17b1a04d337268a4d485fd6c7d6f81a";
 
-
-const TMDB_BASE_URL =
+const TMDB_BASE =
 "https://api.themoviedb.org/3";
 
-
-const TMDB_IMAGE_URL =
+const IMAGE_BASE =
 "https://image.tmdb.org/t/p/w500";
 
 
-/* =================================
-   API CHECK
-================================= */
-
-function apiReady(){
-
-    return (
-        TMDB_API_KEY &&
-        TMDB_API_KEY !==
-        "PASTE_YOUR_NEW_TMDB_API_KEY_HERE"
-    );
-
-}
-
-
-/* =================================
+/* =====================================================
    TMDB FETCH
-================================= */
+   ===================================================== */
 
-async function tmdbFetch(
-    endpoint,
-    params = {}
-){
+async function tmdbFetch(endpoint){
 
-    if(!apiReady()){
-
-        throw new Error(
-            "TMDB API key is not configured."
-        );
-
-    }
-
+    const separator =
+        endpoint.includes("?") ? "&" : "?";
 
     const url =
-        new URL(
-            TMDB_BASE_URL + endpoint
-        );
-
-
-    url.searchParams.set(
-        "api_key",
-        TMDB_API_KEY
-    );
-
-
-    url.searchParams.set(
-        "language",
-        "en-US"
-    );
-
-
-    Object.keys(params).forEach(
-        function(key){
-
-            if(
-                params[key] !== undefined &&
-                params[key] !== null &&
-                params[key] !== ""
-            ){
-
-                url.searchParams.set(
-                    key,
-                    params[key]
-                );
-
-            }
-
-        }
-    );
-
+        TMDB_BASE +
+        endpoint +
+        separator +
+        "api_key=" +
+        encodeURIComponent(TMDB_API_KEY);
 
     const response =
-        await fetch(
-            url.toString()
-        );
-
+        await fetch(url);
 
     if(!response.ok){
 
         throw new Error(
-            "TMDB request failed: " +
+            "TMDB API Error: " +
             response.status
         );
 
     }
 
-
     return await response.json();
-
 }
 
 
-/* =================================
+/* =====================================================
+   MOVIE CARD
+   ===================================================== */
+
+function createMovieCard(movie){
+
+    const title =
+        movie.title ||
+        movie.name ||
+        "Unknown";
+
+    const date =
+        movie.release_date ||
+        movie.first_air_date ||
+        "";
+
+    const year =
+        date ? date.substring(0,4) : "N/A";
+
+    const rating =
+        movie.vote_average
+        ? Number(movie.vote_average).toFixed(1)
+        : "N/A";
+
+    const poster =
+        movie.poster_path
+        ? IMAGE_BASE + movie.poster_path
+        : "https://via.placeholder.com/500x750/111416/ffffff?text=No+Poster";
+
+    const overview =
+        movie.overview ||
+        "No overview available.";
+
+    const card =
+        document.createElement("div");
+
+    card.className =
+        "movie-card";
+
+    card.title =
+        overview;
+
+    card.innerHTML = `
+
+        <div class="poster">
+
+            <img
+                src="${poster}"
+                alt="${escapeHTML(title)}"
+                loading="lazy"
+                onerror="this.src='https://via.placeholder.com/500x750/111416/ffffff?text=No+Poster'">
+
+            <div class="poster-overlay"></div>
+
+            <b class="hd">
+                TMDB
+            </b>
+
+            <span class="rating">
+                ★ ${rating}
+            </span>
+
+        </div>
+
+        <div class="movie-info">
+
+            <div class="movie-name">
+                ${escapeHTML(title)}
+            </div>
+
+            <div class="movie-year">
+                ${year}
+            </div>
+
+        </div>
+    `;
+
+    card.addEventListener(
+        "click",
+        ()=>{
+            showMovieInfo(movie);
+        }
+    );
+
+    return card;
+}
+
+
+/* =====================================================
    ESCAPE HTML
-================================= */
+   ===================================================== */
 
 function escapeHTML(text){
-
-    if(!text){
-        return "";
-    }
 
     return String(text)
         .replace(/&/g,"&amp;")
@@ -1833,1102 +1782,510 @@ function escapeHTML(text){
         .replace(/>/g,"&gt;")
         .replace(/"/g,"&quot;")
         .replace(/'/g,"&#039;");
-
 }
 
 
-/* =================================
-   MOVIE CARD
-================================= */
+/* =====================================================
+   LOAD MOVIES
+   ===================================================== */
 
-function createMovieCard(movie){
+async function loadMovies(
+    elementId,
+    endpoint
+){
 
-    const poster =
-        movie.poster_path
-        ? TMDB_IMAGE_URL +
-          movie.poster_path
-        : "https://via.placeholder.com/500x750/151515/ffffff?text=No+Poster";
+    const container =
+        document.getElementById(elementId);
 
+    if(!container) return;
+
+    container.innerHTML =
+        `<div class="loading">
+            Loading movies...
+        </div>`;
+
+    try{
+
+        const data =
+            await tmdbFetch(endpoint);
+
+        const movies =
+            (data.results || [])
+            .filter(item =>
+                item.poster_path
+            );
+
+        container.innerHTML = "";
+
+        if(!movies.length){
+
+            container.innerHTML =
+                `<div class="loading">
+                    No movies found.
+                </div>`;
+
+            return;
+        }
+
+        movies
+            .slice(0,12)
+            .forEach(movie => {
+
+                container.appendChild(
+                    createMovieCard(movie)
+                );
+
+            });
+
+    }catch(error){
+
+        console.error(error);
+
+        container.innerHTML =
+            `<div class="error">
+                TMDB movies load nahi ho pa rahe.<br>
+                Please check your TMDB API key.
+            </div>`;
+
+    }
+}
+
+
+/* =====================================================
+   LOAD ALL HOME SECTIONS
+   ===================================================== */
+
+async function loadAllMovies(){
+
+    if(
+        !TMDB_API_KEY ||
+        TMDB_API_KEY ===
+        "PASTE_YOUR_TMDB_API_KEY_HERE"
+    ){
+
+        document
+        .querySelectorAll(".movie-row")
+        .forEach(row => {
+
+            row.innerHTML =
+                `<div class="error">
+                    TMDB API key add karo.<br>
+                    JavaScript mein
+                    <b>TMDB_API_KEY</b>
+                    ke andar apni key paste karo.
+                </div>`;
+
+        });
+
+        return;
+    }
+
+
+    loadMovies(
+        "trendingMovies",
+        "/trending/movie/week?language=en-US"
+    );
+
+
+    loadMovies(
+        "popularMovies",
+        "/movie/popular?language=en-US&page=1"
+    );
+
+
+    loadMovies(
+        "topRatedMovies",
+        "/movie/top_rated?language=en-US&page=1"
+    );
+
+
+    loadMovies(
+        "latestMovies",
+        "/movie/now_playing?language=en-US&region=US&page=1"
+    );
+
+
+    loadMovies(
+        "indianMovies",
+        "/discover/movie?language=en-US&region=IN&with_origin_country=IN&sort_by=popularity.desc&page=1"
+    );
+
+
+    loadMovies(
+        "hollywoodMovies",
+        "/discover/movie?language=en-US&region=US&with_original_language=en&sort_by=popularity.desc&page=1"
+    );
+
+
+    loadMovies(
+        "seriesMovies",
+        "/trending/tv/week?language=en-US"
+    );
+}
+
+
+/* =====================================================
+   SEARCH
+   ===================================================== */
+
+let searchTimer = null;
+
+const searchInput =
+    document.getElementById(
+        "searchInput"
+    );
+
+const searchPanel =
+    document.getElementById(
+        "searchPanel"
+    );
+
+const searchResults =
+    document.getElementById(
+        "searchResults"
+    );
+
+
+searchInput.addEventListener(
+    "input",
+    function(){
+
+        const query =
+            this.value.trim();
+
+        clearTimeout(searchTimer);
+
+        if(query.length < 2){
+
+            searchPanel.classList.remove(
+                "show"
+            );
+
+            searchResults.innerHTML =
+                "";
+
+            return;
+        }
+
+        searchTimer =
+            setTimeout(
+                ()=>searchTMDB(query),
+                500
+            );
+
+    }
+);
+
+
+async function searchTMDB(query){
+
+    if(
+        !TMDB_API_KEY ||
+        TMDB_API_KEY ===
+        "PASTE_YOUR_TMDB_API_KEY_HERE"
+    ){
+        return;
+    }
+
+    searchPanel.classList.add(
+        "show"
+    );
+
+    searchResults.innerHTML =
+        `<div class="loading">
+            Searching TMDB...
+        </div>`;
+
+    searchPanel.scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+    });
+
+    try{
+
+        const data =
+            await tmdbFetch(
+                "/search/multi?query=" +
+                encodeURIComponent(query) +
+                "&language=en-US&page=1&include_adult=false"
+            );
+
+        const results =
+            (data.results || [])
+            .filter(
+                item =>
+                (
+                    item.media_type === "movie" ||
+                    item.media_type === "tv"
+                ) &&
+                item.poster_path
+            );
+
+        searchResults.innerHTML = "";
+
+        if(!results.length){
+
+            searchResults.innerHTML =
+                `<div class="loading">
+                    No movie or series found.
+                </div>`;
+
+            return;
+        }
+
+        results
+        .slice(0,20)
+        .forEach(item => {
+
+            searchResults.appendChild(
+                createMovieCard(item)
+            );
+
+        });
+
+    }catch(error){
+
+        console.error(error);
+
+        searchResults.innerHTML =
+            `<div class="error">
+                Search failed.
+            </div>`;
+
+    }
+}
+
+
+/* =====================================================
+   MOVIE INFORMATION
+   ===================================================== */
+
+function showMovieInfo(movie){
 
     const title =
         movie.title ||
         movie.name ||
-        "Unknown";
+        "Movie";
 
+    const overview =
+        movie.overview ||
+        "No overview available.";
 
-    const releaseDate =
+    const rating =
+        movie.vote_average
+        ? Number(movie.vote_average).toFixed(1)
+        : "N/A";
+
+    const date =
         movie.release_date ||
         movie.first_air_date ||
         "";
 
-
     const year =
-        releaseDate
-        ? releaseDate.substring(0,4)
+        date
+        ? date.substring(0,4)
         : "N/A";
 
-
-    let rating =
-        Number(
-            movie.vote_average || 0
-        ).toFixed(1);
-
-
-    if(rating === "0.0"){
-        rating = "N/A";
-    }
-
-
-    return `
-
-        <article class="movie-card">
-
-            <div class="poster-wrap">
-
-                <img
-                    src="${poster}"
-                    alt="${escapeHTML(title)}"
-                    loading="lazy"
-                    onerror="
-                        this.src='https://via.placeholder.com/500x750/151515/ffffff?text=No+Poster'
-                    "
-                >
-
-                <div class="rating">
-                    ★ ${rating}
-                </div>
-
-            </div>
-
-
-            <div class="movie-info">
-
-                <div
-                    class="movie-title"
-                    title="${escapeHTML(title)}"
-                >
-                    ${escapeHTML(title)}
-                </div>
-
-                <div class="movie-meta">
-                    ${year}
-                </div>
-
-            </div>
-
-        </article>
-
-    `;
-
+    alert(
+        title +
+        "\n\n" +
+        "⭐ Rating: " +
+        rating +
+        "\n" +
+        "📅 Year: " +
+        year +
+        "\n\n" +
+        overview
+    );
 }
 
 
-/* =================================
-   TV CARD
-================================= */
-
-function createTVCard(show){
-
-    const poster =
-        show.poster_path
-        ? TMDB_IMAGE_URL +
-          show.poster_path
-        : "https://via.placeholder.com/500x750/151515/ffffff?text=No+Poster";
-
-
-    const title =
-        show.name ||
-        "Unknown";
-
-
-    const releaseDate =
-        show.first_air_date ||
-        "";
-
-
-    const year =
-        releaseDate
-        ? releaseDate.substring(0,4)
-        : "N/A";
-
-
-    let rating =
-        Number(
-            show.vote_average || 0
-        ).toFixed(1);
-
-
-    if(rating === "0.0"){
-        rating = "N/A";
-    }
-
-
-    return `
-
-        <article class="movie-card">
-
-            <div class="poster-wrap">
-
-                <img
-                    src="${poster}"
-                    alt="${escapeHTML(title)}"
-                    loading="lazy"
-                    onerror="
-                        this.src='https://via.placeholder.com/500x750/151515/ffffff?text=No+Poster'
-                    "
-                >
-
-                <div class="rating">
-                    ★ ${rating}
-                </div>
-
-            </div>
-
-
-            <div class="movie-info">
-
-                <div
-                    class="movie-title"
-                    title="${escapeHTML(title)}"
-                >
-                    ${escapeHTML(title)}
-                </div>
-
-                <div class="movie-meta">
-                    ${year}
-                </div>
-
-            </div>
-
-        </article>
-
-    `;
-
-}
-
-
-/* =================================
-   SHOW MOVIES
-================================= */
-
-function showMovies(
-    elementId,
-    movies
-){
-
-    const container =
-        document.getElementById(
-            elementId
-        );
-
-
-    if(!container){
-        return;
-    }
-
-
-    if(
-        !movies ||
-        !movies.length
-    ){
-
-        container.innerHTML = `
-            <div class="error-message">
-                No movies found.
-            </div>
-        `;
-
-        return;
-    }
-
-
-    container.innerHTML =
-        movies
-        .map(createMovieCard)
-        .join("");
-
-}
-
-
-/* =================================
-   SHOW TV
-================================= */
-
-function showTVShows(
-    elementId,
-    shows
-){
-
-    const container =
-        document.getElementById(
-            elementId
-        );
-
-
-    if(!container){
-        return;
-    }
-
-
-    if(
-        !shows ||
-        !shows.length
-    ){
-
-        container.innerHTML = `
-            <div class="error-message">
-                No TV shows found.
-            </div>
-        `;
-
-        return;
-    }
-
-
-    container.innerHTML =
-        shows
-        .map(createTVCard)
-        .join("");
-
-}
-
-
-/* =================================
-   API ERROR
-================================= */
-
-function showAPIError(container){
-
-    if(!container){
-        return;
-    }
-
-
-    if(!apiReady()){
-
-        container.innerHTML = `
-
-            <div class="error-message">
-
-                <strong>
-                    TMDB API key not added.
-                </strong>
-
-                <br><br>
-
-                Please add your TMDB API key
-                in the JavaScript section.
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    container.innerHTML = `
-
-        <div class="error-message">
-
-            Unable to load movie information.
-            Please refresh the page.
-
-        </div>
-
-    `;
-
-}
-
-
-/* =================================
-   TRENDING
-================================= */
-
-async function loadTrending(){
-
-    const container =
-        document.getElementById(
-            "trendingMovies"
-        );
-
-
-    try{
-
-        const data =
-            await tmdbFetch(
-                "/trending/movie/week"
-            );
-
-
-        showMovies(
-            "trendingMovies",
-            data.results
-        );
-
-
-    }catch(error){
-
-        showAPIError(container);
-
-        console.error(
-            error
-        );
-
-    }
-
-}
-
-
-/* =================================
-   POPULAR
-================================= */
-
-async function loadPopular(){
-
-    const container =
-        document.getElementById(
-            "popularMovies"
-        );
-
-
-    try{
-
-        const data =
-            await tmdbFetch(
-                "/movie/popular",
-                {
-                    region:"IN",
-                    page:1
-                }
-            );
-
-
-        showMovies(
-            "popularMovies",
-            data.results
-        );
-
-
-    }catch(error){
-
-        showAPIError(container);
-
-        console.error(
-            error
-        );
-
-    }
-
-}
-
-
-/* =================================
-   NOW PLAYING
-================================= */
-
-async function loadNowPlaying(){
-
-    const container =
-        document.getElementById(
-            "nowPlaying"
-        );
-
-
-    try{
-
-        const data =
-            await tmdbFetch(
-                "/movie/now_playing",
-                {
-                    region:"IN",
-                    page:1
-                }
-            );
-
-
-        showMovies(
-            "nowPlaying",
-            data.results
-        );
-
-
-    }catch(error){
-
-        showAPIError(container);
-
-        console.error(
-            error
-        );
-
-    }
-
-}
-
-
-/* =================================
-   BOLLYWOOD
-================================= */
-
-async function loadBollywood(){
-
-    const container =
-        document.getElementById(
-            "bollywoodMovies"
-        );
-
-
-    try{
-
-        const data =
-            await tmdbFetch(
-                "/discover/movie",
-                {
-                    with_original_language:"hi",
-                    region:"IN",
-                    sort_by:"popularity.desc",
-                    page:1
-                }
-            );
-
-
-        showMovies(
-            "bollywoodMovies",
-            data.results
-        );
-
-
-    }catch(error){
-
-        showAPIError(container);
-
-        console.error(
-            error
-        );
-
-    }
-
-}
-
-
-/* =================================
-   HOLLYWOOD
-================================= */
-
-async function loadHollywood(){
-
-    const container =
-        document.getElementById(
-            "hollywoodMovies"
-        );
-
-
-    try{
-
-        const data =
-            await tmdbFetch(
-                "/discover/movie",
-                {
-                    with_original_language:"en",
-                    sort_by:"popularity.desc",
-                    page:1
-                }
-            );
-
-
-        showMovies(
-            "hollywoodMovies",
-            data.results
-        );
-
-
-    }catch(error){
-
-        showAPIError(container);
-
-        console.error(
-            error
-        );
-
-    }
-
-}
-
-
-/* =================================
-   TELUGU
-================================= */
-
-async function loadTollywood(){
-
-    const container =
-        document.getElementById(
-            "tollywoodMovies"
-        );
-
-
-    try{
-
-        const data =
-            await tmdbFetch(
-                "/discover/movie",
-                {
-                    with_original_language:"te",
-                    region:"IN",
-                    sort_by:"popularity.desc",
-                    page:1
-                }
-            );
-
-
-        showMovies(
-            "tollywoodMovies",
-            data.results
-        );
-
-
-    }catch(error){
-
-        showAPIError(container);
-
-        console.error(
-            error
-        );
-
-    }
-
-}
-
-
-/* =================================
-   WEB SERIES
-================================= */
-
-async function loadWebSeries(){
-
-    const container =
-        document.getElementById(
-            "webSeries"
-        );
-
-
-    try{
-
-        const data =
-            await tmdbFetch(
-                "/tv/popular",
-                {
-                    region:"IN",
-                    page:1
-                }
-            );
-
-
-        showTVShows(
-            "webSeries",
-            data.results
-        );
-
-
-    }catch(error){
-
-        showAPIError(container);
-
-        console.error(
-            error
-        );
-
-    }
-
-}
-
-
-/* =================================
-   SEARCH
-================================= */
-
-async function searchMovies(){
-
-    const input =
-        document.getElementById(
-            "searchInput"
-        );
-
-
-    const results =
-        document.getElementById(
-            "searchResults"
-        );
-
-
-    const query =
-        input.value.trim();
-
-
-    if(!query){
-
-        results.style.display =
-            "none";
-
-        results.innerHTML =
-            "";
-
-        return;
-
-    }
-
-
-    results.style.display =
-        "flex";
-
-
-    results.innerHTML = `
-
-        <div class="loading">
-            Searching...
-        </div>
-
-    `;
-
-
-    try{
-
-        const data =
-            await tmdbFetch(
-                "/search/movie",
-                {
-                    query:query,
-                    include_adult:false,
-                    page:1
-                }
-            );
-
-
-        if(
-            !data.results ||
-            !data.results.length
-        ){
-
-            results.innerHTML = `
-
-                <div class="error-message">
-
-                    No movies found for
-                    <strong>
-                        ${escapeHTML(query)}
-                    </strong>.
-
-                </div>
-
-            `;
-
-            return;
-
-        }
-
-
-        results.innerHTML =
-            data.results
-            .map(createMovieCard)
-            .join("");
-
-
-    }catch(error){
-
-        results.innerHTML = `
-
-            <div class="error-message">
-
-                Search failed.
-                Please try again.
-
-            </div>
-
-        `;
-
-        console.error(
-            error
-        );
-
-    }
-
-}
-
-
-/* =================================
-   ENTER KEY SEARCH
-================================= */
+/* =====================================================
+   GENRE SEARCH
+   ===================================================== */
 
 document
-.getElementById("searchInput")
-.addEventListener(
-    "keydown",
-    function(event){
-
-        if(event.key === "Enter"){
-
-            searchMovies();
-
-        }
-
-    }
-);
-
-
-/* =================================
-   SLIDER
-================================= */
-
-let slideIndex = 1;
-
-let slideTimer;
-
-
-function showSlide(index){
-
-    const slides =
-        document.getElementsByClassName(
-            "slide"
-        );
-
-
-    const dots =
-        document.getElementsByClassName(
-            "dot"
-        );
-
-
-    if(index > slides.length){
-
-        slideIndex = 1;
-
-    }
-
-
-    if(index < 1){
-
-        slideIndex =
-            slides.length;
-
-    }
-
-
-    for(
-        let i = 0;
-        i < slides.length;
-        i++
-    ){
-
-        slides[i]
-        .classList
-        .remove("active");
-
-    }
-
-
-    for(
-        let i = 0;
-        i < dots.length;
-        i++
-    ){
-
-        dots[i]
-        .classList
-        .remove("active");
-
-    }
-
-
-    if(slides[slideIndex - 1]){
-
-        slides[
-            slideIndex - 1
-        ]
-        .classList
-        .add("active");
-
-    }
-
-
-    if(dots[slideIndex - 1]){
-
-        dots[
-            slideIndex - 1
-        ]
-        .classList
-        .add("active");
-
-    }
-
-}
-
-
-function changeSlide(direction){
-
-    showSlide(
-        slideIndex += direction
-    );
-
-    resetSliderTimer();
-
-}
-
-
-function currentSlide(index){
-
-    showSlide(
-        slideIndex = index
-    );
-
-    resetSliderTimer();
-
-}
-
-
-function autoSlide(){
-
-    showSlide(
-        slideIndex += 1
-    );
-
-}
-
-
-function resetSliderTimer(){
-
-    clearInterval(
-        slideTimer
-    );
-
-
-    slideTimer =
-        setInterval(
-            autoSlide,
-            5000
-        );
-
-}
-
-
-showSlide(
-    slideIndex
-);
-
-
-resetSliderTimer();
-
-
-/* =================================
-   TOUCH SWIPE
-================================= */
-
-let touchStartX = 0;
-
-let touchEndX = 0;
-
-
-const slider =
-    document.querySelector(
-        ".slider"
-    );
-
-
-slider.addEventListener(
-    "touchstart",
-    function(event){
-
-        touchStartX =
-            event
-            .changedTouches[0]
-            .screenX;
-
-    },
-    {
-        passive:true
-    }
-);
-
-
-slider.addEventListener(
-    "touchend",
-    function(event){
-
-        touchEndX =
-            event
-            .changedTouches[0]
-            .screenX;
-
-        handleSwipe();
-
-    },
-    {
-        passive:true
-    }
-);
-
-
-function handleSwipe(){
-
-    const distance =
-        touchEndX -
-        touchStartX;
-
-
-    if(
-        Math.abs(distance) < 50
-    ){
-
-        return;
-
-    }
-
-
-    if(distance < 0){
-
-        changeSlide(1);
-
-    }else{
-
-        changeSlide(-1);
-
-    }
-
-}
-
-
-/* =================================
-   MOBILE MENU
-================================= */
-
-const menuBtn =
-    document.getElementById(
-        "menuBtn"
-    );
-
-
-const mobileMenu =
-    document.getElementById(
-        "mobileMenu"
-    );
-
-
-menuBtn.addEventListener(
-    "click",
-    function(){
-
-        if(
-            mobileMenu.style.display ===
-            "block"
-        ){
-
-            mobileMenu.style.display =
-                "none";
-
-        }else{
-
-            mobileMenu.style.display =
-                "block";
-
-        }
-
-    }
-);
-
-
-document
-.querySelectorAll(
-    ".mobile-menu a"
-)
+.querySelectorAll(".genre")
 .forEach(
-    function(link){
+    genre => {
 
-        link.addEventListener(
+        genre.addEventListener(
             "click",
-            function(){
+            async ()=>{
 
-                mobileMenu.style.display =
-                    "none";
+                const id =
+                    genre.dataset.genre;
 
-            }
-        );
-
-    }
-);
-
-
-/* =================================
-   LOAD ALL TMDB
-================================= */
-
-function loadAllTMDB(){
-
-    if(!apiReady()){
-
-        const sections = [
-
-            "trendingMovies",
-            "popularMovies",
-            "nowPlaying",
-            "bollywoodMovies",
-            "hollywoodMovies",
-            "tollywoodMovies",
-            "webSeries"
-
-        ];
-
-
-        sections.forEach(
-            function(id){
-
-                showAPIError(
-                    document.getElementById(
-                        id
-                    )
+                searchPanel.classList.add(
+                    "show"
                 );
 
+                searchPanel.scrollIntoView({
+                    behavior:"smooth"
+                });
+
+                searchResults.innerHTML =
+                    `<div class="loading">
+                        Loading genre movies...
+                    </div>`;
+
+                try{
+
+                    const data =
+                        await tmdbFetch(
+                            "/discover/movie" +
+                            "?language=en-US" +
+                            "&sort_by=popularity.desc" +
+                            "&with_genres=" +
+                            encodeURIComponent(id) +
+                            "&page=1"
+                        );
+
+                    searchResults.innerHTML =
+                        "";
+
+                    (data.results || [])
+                    .filter(
+                        movie =>
+                        movie.poster_path
+                    )
+                    .slice(0,20)
+                    .forEach(
+                        movie =>
+                        searchResults.appendChild(
+                            createMovieCard(movie)
+                        )
+                    );
+
+                }catch(error){
+
+                    searchResults.innerHTML =
+                        `<div class="error">
+                            Genre load failed.
+                        </div>`;
+
+                }
+
             }
         );
 
-
-        return;
-
     }
+);
 
 
-    loadTrending();
+/* =====================================================
+   HERO SLIDER
+   ===================================================== */
 
-    loadPopular();
+const slides =
+    document.querySelectorAll(
+        ".slide"
+    );
 
-    loadNowPlaying();
+const dots =
+    document.querySelectorAll(
+        ".dot"
+    );
 
-    loadBollywood();
+let current = 0;
 
-    loadHollywood();
+let timer;
 
-    loadTollywood();
 
-    loadWebSeries();
+function showSlide(number){
 
+    current =
+        (number + slides.length)
+        % slides.length;
+
+    slides.forEach(
+        (slide,index)=>{
+
+            slide.classList.toggle(
+                "active",
+                index === current
+            );
+
+        }
+    );
+
+    dots.forEach(
+        (dot,index)=>{
+
+            dot.classList.toggle(
+                "active",
+                index === current
+            );
+
+        }
+    );
 }
 
 
-/* =================================
-   YEAR
-================================= */
+function restartSlider(){
 
-document.getElementById(
-    "year"
-).textContent =
-    new Date().getFullYear();
+    clearInterval(timer);
+
+    timer =
+        setInterval(
+            ()=>{
+                showSlide(
+                    current + 1
+                );
+            },
+            6000
+        );
+}
 
 
-/* =================================
+document
+.getElementById("next")
+.addEventListener(
+    "click",
+    ()=>{
+        showSlide(
+            current + 1
+        );
+        restartSlider();
+    }
+);
+
+
+document
+.getElementById("prev")
+.addEventListener(
+    "click",
+    ()=>{
+        showSlide(
+            current - 1
+        );
+        restartSlider();
+    }
+);
+
+
+dots.forEach(
+    (dot,index)=>{
+
+        dot.addEventListener(
+            "click",
+            ()=>{
+                showSlide(index);
+                restartSlider();
+            }
+        );
+
+    }
+);
+
+
+/* =====================================================
    START
-================================= */
+   ===================================================== */
 
-loadAllTMDB();
+restartSlider();
 
+loadAllMovies();
 
 </script>
 
