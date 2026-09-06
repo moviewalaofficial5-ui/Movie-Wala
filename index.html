@@ -10,6 +10,7 @@
 <meta name="theme-color" content="#080808">
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -23,7 +24,7 @@ html{
 body{
     background:#080808;
     color:#fff;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:Arial,Helvetica,sans-serif;
     overflow-x:hidden;
 }
 
@@ -37,9 +38,10 @@ input{
     font-family:inherit;
 }
 
-/* =========================
+
+/* ==============================
    HEADER
-========================= */
+============================== */
 
 header{
     position:fixed;
@@ -47,21 +49,20 @@ header{
     left:0;
     width:100%;
     height:72px;
-    background:rgba(0,0,0,0.94);
+    background:rgba(0,0,0,.95);
     backdrop-filter:blur(12px);
     display:flex;
     align-items:center;
     justify-content:space-between;
     padding:0 5%;
     z-index:9999;
-    border-bottom:1px solid rgba(255,255,255,0.08);
+    border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .logo-area{
     display:flex;
     align-items:center;
     gap:10px;
-    min-width:0;
 }
 
 .logo{
@@ -75,13 +76,12 @@ header{
 .logo-text{
     font-size:20px;
     font-weight:800;
-    letter-spacing:.3px;
     white-space:nowrap;
 }
 
 .logo-text span{
-    font-size:11px;
     display:block;
+    font-size:11px;
     color:#aaa;
     letter-spacing:2px;
     margin-top:2px;
@@ -113,14 +113,42 @@ nav a:hover{
     cursor:pointer;
 }
 
-/* =========================
+
+/* ==============================
+   MOBILE MENU
+============================== */
+
+.mobile-menu{
+    display:none;
+    position:absolute;
+    top:72px;
+    left:0;
+    width:100%;
+    background:#090909;
+    border-top:1px solid #222;
+    border-bottom:1px solid #222;
+    padding:10px 5%;
+}
+
+.mobile-menu a{
+    display:block;
+    padding:15px 5px;
+    border-bottom:1px solid #1c1c1c;
+    color:#ddd;
+}
+
+.mobile-menu a:last-child{
+    border-bottom:0;
+}
+
+
+/* ==============================
    HERO SLIDER
-========================= */
+============================== */
 
 .hero{
     margin-top:72px;
     width:100%;
-    position:relative;
     overflow:hidden;
     background:#000;
 }
@@ -195,12 +223,6 @@ nav a:hover{
     color:white;
     font-size:30px;
     cursor:pointer;
-    transition:.3s;
-}
-
-.prev:hover,
-.next:hover{
-    background:rgba(0,0,0,.85);
 }
 
 .prev{
@@ -209,6 +231,11 @@ nav a:hover{
 
 .next{
     right:15px;
+}
+
+.prev:hover,
+.next:hover{
+    background:rgba(0,0,0,.85);
 }
 
 .dots{
@@ -235,9 +262,10 @@ nav a:hover{
     border-radius:10px;
 }
 
-/* =========================
+
+/* ==============================
    GENERAL
-========================= */
+============================== */
 
 .container{
     width:90%;
@@ -276,62 +304,10 @@ nav a:hover{
     font-size:14px;
 }
 
-.see-more:hover{
-    color:white;
-}
 
-/* =========================
-   CATEGORY CARDS
-========================= */
-
-.category-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-}
-
-.category-card{
-    height:190px;
-    border-radius:12px;
-    overflow:hidden;
-    position:relative;
-    background:#151515;
-}
-
-.category-card img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
-    transition:.5s;
-}
-
-.category-card:hover img{
-    transform:scale(1.06);
-}
-
-.category-card::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(
-        transparent 25%,
-        rgba(0,0,0,.9)
-    );
-}
-
-.category-name{
-    position:absolute;
-    z-index:2;
-    left:20px;
-    bottom:17px;
-    font-size:23px;
-    font-weight:bold;
-}
-
-/* =========================
-   TMDB SEARCH
-========================= */
+/* ==============================
+   SEARCH
+============================== */
 
 .search-box{
     display:flex;
@@ -370,9 +346,10 @@ nav a:hover{
     background:#b80710;
 }
 
-/* =========================
+
+/* ==============================
    MOVIE ROW
-========================= */
+============================== */
 
 .movie-row{
     display:flex;
@@ -431,7 +408,7 @@ nav a:hover{
     position:absolute;
     top:8px;
     right:8px;
-    background:rgba(0,0,0,.8);
+    background:rgba(0,0,0,.85);
     padding:4px 7px;
     border-radius:5px;
     font-size:11px;
@@ -458,13 +435,10 @@ nav a:hover{
     margin-top:6px;
 }
 
-.movie-overview{
-    display:none;
-}
 
-/* =========================
-   LOADING
-========================= */
+/* ==============================
+   LOADING / ERROR
+============================== */
 
 .loading{
     width:100%;
@@ -479,13 +453,63 @@ nav a:hover{
     background:#171717;
     color:#aaa;
     border-radius:8px;
-    margin-bottom:20px;
     line-height:1.6;
 }
 
-/* =========================
+
+/* ==============================
+   CATEGORY
+============================== */
+
+.category-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.category-card{
+    height:190px;
+    border-radius:12px;
+    overflow:hidden;
+    position:relative;
+    background:#151515;
+}
+
+.category-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:.5s;
+}
+
+.category-card:hover img{
+    transform:scale(1.06);
+}
+
+.category-card::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        transparent 25%,
+        rgba(0,0,0,.9)
+    );
+}
+
+.category-name{
+    position:absolute;
+    z-index:2;
+    left:20px;
+    bottom:17px;
+    font-size:23px;
+    font-weight:bold;
+}
+
+
+/* ==============================
    LIVE
-========================= */
+============================== */
 
 .live-section{
     padding:55px 0;
@@ -524,17 +548,16 @@ nav a:hover{
     background:#e50914;
     color:#fff;
     font-weight:bold;
-    transition:.3s;
 }
 
 .live-btn:hover{
     background:#b80710;
-    transform:translateY(-2px);
 }
 
-/* =========================
+
+/* ==============================
    FEATURED VIDEO
-========================= */
+============================== */
 
 .video-section{
     padding:50px 0;
@@ -556,9 +579,10 @@ nav a:hover{
     border:0;
 }
 
-/* =========================
+
+/* ==============================
    SOCIAL
-========================= */
+============================== */
 
 .social-section{
     padding:55px 0;
@@ -598,9 +622,10 @@ nav a:hover{
     transform:translateY(-3px);
 }
 
-/* =========================
+
+/* ==============================
    TMDB CREDIT
-========================= */
+============================== */
 
 .tmdb-credit{
     margin:35px auto;
@@ -611,14 +636,10 @@ nav a:hover{
     line-height:1.6;
 }
 
-.tmdb-logo{
-    width:90px;
-    margin-bottom:8px;
-}
 
-/* =========================
+/* ==============================
    FOOTER
-========================= */
+============================== */
 
 footer{
     border-top:1px solid #222;
@@ -640,40 +661,10 @@ footer strong{
     margin-bottom:15px;
 }
 
-.footer-links a:hover{
-    color:white;
-}
 
-/* =========================
-   MOBILE MENU
-========================= */
-
-.mobile-menu{
-    display:none;
-    position:absolute;
-    top:72px;
-    left:0;
-    width:100%;
-    background:#090909;
-    border-top:1px solid #222;
-    border-bottom:1px solid #222;
-    padding:10px 5%;
-}
-
-.mobile-menu a{
-    display:block;
-    padding:15px 5px;
-    border-bottom:1px solid #1c1c1c;
-    color:#ddd;
-}
-
-.mobile-menu a:last-child{
-    border-bottom:0;
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
+/* ==============================
+   MOBILE
+============================== */
 
 @media(max-width:800px){
 
@@ -789,10 +780,6 @@ footer strong{
         padding:25px 15px;
     }
 
-    .video-section{
-        padding:35px 0;
-    }
-
     .social-link{
         width:100%;
     }
@@ -818,20 +805,22 @@ footer strong{
         height:188px;
     }
 }
+
 </style>
 </head>
 
+
 <body>
 
-<!-- =========================
+
+<!-- ==============================
      HEADER
-========================= -->
+============================== -->
 
 <header>
 
     <a href="#home" class="logo-area">
 
-        <!-- Your Movie Wala Logo -->
         <img
             src="movie-wala-logo.jpeg"
             alt="Movie Wala Official Logo"
@@ -846,118 +835,180 @@ footer strong{
 
     </a>
 
+
     <nav>
+
         <a href="#home">Home</a>
+
         <a href="#movies">Movies</a>
+
         <a href="#webseries">Web Series</a>
+
         <a href="#live">Live</a>
+
         <a href="#search">Search</a>
+
     </nav>
+
 
     <button
         class="menu-btn"
         id="menuBtn"
         aria-label="Open Menu"
-    >☰</button>
+    >
+        ☰
+    </button>
 
-    <div class="mobile-menu" id="mobileMenu">
+
+    <div
+        class="mobile-menu"
+        id="mobileMenu"
+    >
+
         <a href="#home">Home</a>
+
         <a href="#movies">Movies</a>
+
         <a href="#webseries">Web Series</a>
+
         <a href="#live">Live</a>
+
         <a href="#search">Search</a>
+
     </div>
 
 </header>
 
 
-<!-- =========================
-     HERO
-========================= -->
 
-<section class="hero" id="home">
+<!-- ==============================
+     HERO
+============================== -->
+
+<section
+    class="hero"
+    id="home"
+>
 
     <div class="slider">
 
+
         <!-- BANNER 1 -->
+
         <div class="slide active">
 
             <img
                 src="movie-wala-main-banner.png"
                 alt="Movie Wala"
-                onerror="this.style.display='none';"
             >
 
             <div class="slide-content">
-                <h1>Movie Wala Official</h1>
+
+                <h1>
+                    Movie Wala Official
+                </h1>
+
                 <p>
-                    Your destination for movies, web series,
-                    entertainment and live updates.
+                    Your destination for movies,
+                    web series, entertainment and
+                    live updates.
                 </p>
+
             </div>
 
         </div>
 
 
         <!-- BANNER 2 -->
+
         <div class="slide">
 
             <img
                 src="bollywood-slider-1920x1080.png"
                 alt="Bollywood Movies"
-                onerror="this.style.display='none';"
             >
 
             <div class="slide-content">
-                <h1>Bollywood</h1>
+
+                <h1>
+                    Bollywood
+                </h1>
+
                 <p>
-                    Discover popular Hindi movies and entertainment.
+                    Discover popular Hindi
+                    movies and entertainment.
                 </p>
+
             </div>
 
         </div>
 
 
         <!-- BANNER 3 -->
+
         <div class="slide">
 
             <img
                 src="hollywood-slider-1920x1080.png"
                 alt="Hollywood Movies"
-                onerror="this.style.display='none';"
             >
 
             <div class="slide-content">
-                <h1>Hollywood</h1>
+
+                <h1>
+                    Hollywood
+                </h1>
+
                 <p>
-                    Explore popular Hollywood movies.
+                    Explore popular Hollywood
+                    movies and entertainment.
                 </p>
+
             </div>
 
         </div>
 
 
         <!-- BANNER 4 -->
+
         <div class="slide">
 
             <img
                 src="tollywood-slider-1920x1080.png"
                 alt="Tollywood Movies"
-                onerror="this.style.display='none';"
             >
 
             <div class="slide-content">
-                <h1>Tollywood</h1>
+
+                <h1>
+                    Tollywood
+                </h1>
+
                 <p>
-                    Discover Telugu cinema and entertainment.
+                    Discover Telugu cinema
+                    and entertainment.
                 </p>
+
             </div>
 
         </div>
 
 
-        <button class="prev" onclick="changeSlide(-1)">❮</button>
-        <button class="next" onclick="changeSlide(1)">❯</button>
+        <button
+            class="prev"
+            onclick="changeSlide(-1)"
+        >
+            ❮
+        </button>
+
+
+        <button
+            class="next"
+            onclick="changeSlide(1)"
+        >
+            ❯
+        </button>
+
 
         <div class="dots">
 
@@ -988,17 +1039,26 @@ footer strong{
 </section>
 
 
-<!-- =========================
-     SEARCH
-========================= -->
 
-<section class="section" id="search">
+<!-- ==============================
+     SEARCH
+============================== -->
+
+<section
+    class="section"
+    id="search"
+>
 
     <div class="container">
 
         <div class="section-title">
-            <h2>Search Movies</h2>
+
+            <h2>
+                Search Movies
+            </h2>
+
         </div>
+
 
         <div class="search-box">
 
@@ -1009,11 +1069,15 @@ footer strong{
                 autocomplete="off"
             >
 
-            <button onclick="searchMovies()">
+
+            <button
+                onclick="searchMovies()"
+            >
                 Search
             </button>
 
         </div>
+
 
         <div
             id="searchResults"
@@ -1026,29 +1090,42 @@ footer strong{
 </section>
 
 
-<!-- =========================
+
+<!-- ==============================
      MOVIES
-========================= -->
+============================== -->
 
 <main id="movies">
 
+
     <!-- TRENDING -->
+
     <section class="section">
 
         <div class="container">
 
             <div class="section-title">
-                <h2>Trending Movies</h2>
-                <span class="see-more">TMDB</span>
+
+                <h2>
+                    Trending Movies
+                </h2>
+
+                <span class="see-more">
+                    TMDB
+                </span>
+
             </div>
+
 
             <div
                 id="trendingMovies"
                 class="movie-row"
             >
+
                 <div class="loading">
                     Loading movies...
                 </div>
+
             </div>
 
         </div>
@@ -1056,23 +1133,35 @@ footer strong{
     </section>
 
 
+
     <!-- POPULAR -->
+
     <section class="section">
 
         <div class="container">
 
             <div class="section-title">
-                <h2>Popular Movies</h2>
-                <span class="see-more">See more</span>
+
+                <h2>
+                    Popular Movies
+                </h2>
+
+                <span class="see-more">
+                    See more
+                </span>
+
             </div>
+
 
             <div
                 id="popularMovies"
                 class="movie-row"
             >
+
                 <div class="loading">
                     Loading movies...
                 </div>
+
             </div>
 
         </div>
@@ -1080,23 +1169,35 @@ footer strong{
     </section>
 
 
+
     <!-- NOW PLAYING -->
+
     <section class="section">
 
         <div class="container">
 
             <div class="section-title">
-                <h2>Now Playing</h2>
-                <span class="see-more">Latest</span>
+
+                <h2>
+                    Now Playing
+                </h2>
+
+                <span class="see-more">
+                    Latest
+                </span>
+
             </div>
+
 
             <div
                 id="nowPlaying"
                 class="movie-row"
             >
+
                 <div class="loading">
                     Loading movies...
                 </div>
+
             </div>
 
         </div>
@@ -1104,23 +1205,35 @@ footer strong{
     </section>
 
 
+
     <!-- BOLLYWOOD -->
+
     <section class="section">
 
         <div class="container">
 
             <div class="section-title">
-                <h2>Popular Bollywood Movies</h2>
-                <span class="see-more">Hindi</span>
+
+                <h2>
+                    Popular Bollywood Movies
+                </h2>
+
+                <span class="see-more">
+                    Hindi
+                </span>
+
             </div>
+
 
             <div
                 id="bollywoodMovies"
                 class="movie-row"
             >
+
                 <div class="loading">
                     Loading movies...
                 </div>
+
             </div>
 
         </div>
@@ -1128,23 +1241,35 @@ footer strong{
     </section>
 
 
+
     <!-- HOLLYWOOD -->
+
     <section class="section">
 
         <div class="container">
 
             <div class="section-title">
-                <h2>Popular Hollywood Movies</h2>
-                <span class="see-more">English</span>
+
+                <h2>
+                    Popular Hollywood Movies
+                </h2>
+
+                <span class="see-more">
+                    English
+                </span>
+
             </div>
+
 
             <div
                 id="hollywoodMovies"
                 class="movie-row"
             >
+
                 <div class="loading">
                     Loading movies...
                 </div>
+
             </div>
 
         </div>
@@ -1152,23 +1277,35 @@ footer strong{
     </section>
 
 
-    <!-- TOLLYWOOD -->
+
+    <!-- TELUGU -->
+
     <section class="section">
 
         <div class="container">
 
             <div class="section-title">
-                <h2>Popular Telugu Movies</h2>
-                <span class="see-more">Telugu</span>
+
+                <h2>
+                    Popular Telugu Movies
+                </h2>
+
+                <span class="see-more">
+                    Telugu
+                </span>
+
             </div>
+
 
             <div
                 id="tollywoodMovies"
                 class="movie-row"
             >
+
                 <div class="loading">
                     Loading movies...
                 </div>
+
             </div>
 
         </div>
@@ -1176,16 +1313,24 @@ footer strong{
     </section>
 
 
-    <!-- MOVIE CATEGORIES -->
+
+    <!-- CATEGORIES -->
+
     <section class="section">
 
         <div class="container">
 
             <div class="section-title">
-                <h2>Movies & Entertainment</h2>
+
+                <h2>
+                    Movies & Entertainment
+                </h2>
+
             </div>
 
+
             <div class="category-grid">
+
 
                 <a
                     href="#bollywoodMovies"
@@ -1237,35 +1382,51 @@ footer strong{
 
                 </a>
 
+
             </div>
 
         </div>
 
     </section>
 
+
 </main>
 
 
-<!-- =========================
-     WEB SERIES
-========================= -->
 
-<section class="section" id="webseries">
+<!-- ==============================
+     WEB SERIES
+============================== -->
+
+<section
+    class="section"
+    id="webseries"
+>
 
     <div class="container">
 
         <div class="section-title">
-            <h2>Popular Web Series</h2>
-            <span class="see-more">TV Shows</span>
+
+            <h2>
+                Popular Web Series
+            </h2>
+
+            <span class="see-more">
+                TV Shows
+            </span>
+
         </div>
+
 
         <div
             id="webSeries"
             class="movie-row"
         >
+
             <div class="loading">
                 Loading TV shows...
             </div>
+
         </div>
 
     </div>
@@ -1273,11 +1434,15 @@ footer strong{
 </section>
 
 
-<!-- =========================
-     LIVE
-========================= -->
 
-<section class="live-section" id="live">
+<!-- ==============================
+     LIVE
+============================== -->
+
+<section
+    class="live-section"
+    id="live"
+>
 
     <div class="container">
 
@@ -1287,12 +1452,15 @@ footer strong{
                 🔴
             </div>
 
-            <h2>Movie Wala Live</h2>
+            <h2>
+                Movie Wala Live
+            </h2>
 
             <p>
-                Watch our latest live updates and entertainment
-                on YouTube.
+                Watch our latest live updates
+                and entertainment on YouTube.
             </p>
+
 
             <a
                 class="live-btn"
@@ -1310,17 +1478,23 @@ footer strong{
 </section>
 
 
-<!-- =========================
+
+<!-- ==============================
      FEATURED VIDEO
-========================= -->
+============================== -->
 
 <section class="video-section">
 
     <div class="container">
 
         <div class="section-title">
-            <h2>Featured Video</h2>
+
+            <h2>
+                Featured Video
+            </h2>
+
         </div>
+
 
         <div class="video-container">
 
@@ -1339,21 +1513,27 @@ footer strong{
 </section>
 
 
-<!-- =========================
+
+<!-- ==============================
      SOCIAL
-========================= -->
+============================== -->
 
 <section class="social-section">
 
     <div class="container">
 
-        <h2>Follow Movie Wala</h2>
+        <h2>
+            Follow Movie Wala
+        </h2>
 
         <p>
-            Follow us for the latest movie and entertainment updates.
+            Follow us for the latest movie
+            and entertainment updates.
         </p>
 
+
         <div class="social-links">
+
 
             <a
                 class="social-link"
@@ -1384,6 +1564,7 @@ footer strong{
                 ◎ Instagram
             </a>
 
+
         </div>
 
     </div>
@@ -1391,150 +1572,190 @@ footer strong{
 </section>
 
 
-<!-- =========================
-     TMDB ATTRIBUTION
-========================= -->
+
+<!-- ==============================
+     TMDB CREDIT
+============================== -->
 
 <div class="container">
 
     <div class="tmdb-credit">
 
-        <div>
-            <strong>Movie information provided by TMDB</strong>
-        </div>
+        <strong>
+            Movie information provided by TMDB
+        </strong>
 
-        <p>
-            This product uses the TMDB API but is not endorsed
-            or certified by TMDB.
-        </p>
+        <br>
+
+        This product uses the TMDB API but is not
+        endorsed or certified by TMDB.
 
     </div>
 
 </div>
 
 
-<!-- =========================
+
+<!-- ==============================
      FOOTER
-========================= -->
+============================== -->
 
 <footer>
 
     <div class="footer-links">
 
-        <a href="#home">Home</a>
-        <a href="#movies">Movies</a>
-        <a href="#webseries">Web Series</a>
-        <a href="#live">Live</a>
-        <a href="#search">Search</a>
+        <a href="#home">
+            Home
+        </a>
+
+        <a href="#movies">
+            Movies
+        </a>
+
+        <a href="#webseries">
+            Web Series
+        </a>
+
+        <a href="#live">
+            Live
+        </a>
+
+        <a href="#search">
+            Search
+        </a>
 
     </div>
 
+
     <p>
+
         © <span id="year"></span>
-        <strong>Movie Wala Official</strong>.
-        All Rights Reserved.
+
+        <strong>
+            Movie Wala Official
+        </strong>
+
+        . All Rights Reserved.
+
     </p>
 
 </footer>
 
 
-<!-- =========================
+
+<!-- ==============================
      JAVASCRIPT
-========================= -->
+============================== -->
 
 <script>
 
-/* ==========================================
-   TMDB API CONFIGURATION
-========================================== */
+
+/* =================================
+   TMDB API KEY
+================================= */
 
 /*
    IMPORTANT:
 
-   Replace the text below with your TMDB API KEY.
+   ONLY THIS ONE LINE NEEDS YOUR API KEY.
 
-   Example:
+   Replace:
 
-   const TMDB_API_KEY = "123456789abcdef";
+   PASTE_YOUR_NEW_TMDB_API_KEY_HERE
 
-   DO NOT paste your API key into ChatGPT.
+   with your NEW TMDB API key.
+
+   DO NOT CHANGE ANY OTHER TMDB_API_KEY LINE.
 */
 
-const TMDB_API_KEY = "e917ce85106e3d7f16181f6c9ed34674";
-
-const TMDB_BASE_URL = "https://api.themoviedb.org/3";
-
-const TMDB_IMAGE_URL = "https://image.tmdb.org/t/p/w500";
+const TMDB_API_KEY =
+"PASTE_YOUR_NEW_TMDB_API_KEY_HERE";
 
 
-/* ==========================================
-   BASIC CHECK
-========================================== */
+const TMDB_BASE_URL =
+"https://api.themoviedb.org/3";
+
+
+const TMDB_IMAGE_URL =
+"https://image.tmdb.org/t/p/w500";
+
+
+/* =================================
+   API CHECK
+================================= */
 
 function apiReady(){
 
-    if(
-        !TMDB_API_KEY ||
-        TMDB_API_KEY === "e917ce85106e3d7f16181f6c9ed34674"
-    ){
+    return (
+        TMDB_API_KEY &&
+        TMDB_API_KEY !==
+        "PASTE_YOUR_NEW_TMDB_API_KEY_HERE"
+    );
 
-        return false;
-    }
-
-    return true;
 }
 
 
-/* ==========================================
+/* =================================
    TMDB FETCH
-========================================== */
+================================= */
 
-async function tmdbFetch(endpoint, params = {}){
+async function tmdbFetch(
+    endpoint,
+    params = {}
+){
 
     if(!apiReady()){
+
         throw new Error(
             "TMDB API key is not configured."
         );
+
     }
 
-    const url = new URL(
-        TMDB_BASE_URL + endpoint
-    );
 
-    /*
-       TMDB v3 API authentication
-    */
+    const url =
+        new URL(
+            TMDB_BASE_URL + endpoint
+        );
+
 
     url.searchParams.set(
         "api_key",
         TMDB_API_KEY
     );
 
+
     url.searchParams.set(
         "language",
         "en-US"
     );
 
-    Object.keys(params).forEach(function(key){
 
-        if(
-            params[key] !== undefined &&
-            params[key] !== null &&
-            params[key] !== ""
-        ){
+    Object.keys(params).forEach(
+        function(key){
 
-            url.searchParams.set(
-                key,
-                params[key]
-            );
+            if(
+                params[key] !== undefined &&
+                params[key] !== null &&
+                params[key] !== ""
+            ){
+
+                url.searchParams.set(
+                    key,
+                    params[key]
+                );
+
+            }
 
         }
-
-    });
-
-    const response = await fetch(
-        url.toString()
     );
+
+
+    const response =
+        await fetch(
+            url.toString()
+        );
+
 
     if(!response.ok){
 
@@ -1545,161 +1766,15 @@ async function tmdbFetch(endpoint, params = {}){
 
     }
 
+
     return await response.json();
+
 }
 
 
-/* ==========================================
-   MOVIE CARD
-========================================== */
-
-function createMovieCard(movie){
-
-    const poster = movie.poster_path
-        ? TMDB_IMAGE_URL + movie.poster_path
-        : "https://via.placeholder.com/500x750/151515/ffffff?text=No+Poster";
-
-    const title =
-        movie.title ||
-        movie.name ||
-        "Unknown";
-
-    const releaseDate =
-        movie.release_date ||
-        movie.first_air_date ||
-        "";
-
-    const year =
-        releaseDate
-        ? releaseDate.substring(0,4)
-        : "N/A";
-
-    let rating =
-        Number(movie.vote_average || 0)
-        .toFixed(1);
-
-    if(rating === "0.0"){
-        rating = "N/A";
-    }
-
-    return `
-
-        <article class="movie-card">
-
-            <div class="poster-wrap">
-
-                <img
-                    src="${poster}"
-                    alt="${escapeHTML(title)}"
-                    loading="lazy"
-                    onerror="
-                        this.src='https://via.placeholder.com/500x750/151515/ffffff?text=No+Poster'
-                    "
-                >
-
-                <div class="rating">
-                    ★ ${rating}
-                </div>
-
-            </div>
-
-            <div class="movie-info">
-
-                <div
-                    class="movie-title"
-                    title="${escapeHTML(title)}"
-                >
-                    ${escapeHTML(title)}
-                </div>
-
-                <div class="movie-meta">
-                    ${year}
-                </div>
-
-            </div>
-
-        </article>
-
-    `;
-}
-
-
-/* ==========================================
-   TV CARD
-========================================== */
-
-function createTVCard(show){
-
-    const poster = show.poster_path
-        ? TMDB_IMAGE_URL + show.poster_path
-        : "https://via.placeholder.com/500x750/151515/ffffff?text=No+Poster";
-
-    const title =
-        show.name ||
-        "Unknown";
-
-    const releaseDate =
-        show.first_air_date ||
-        "";
-
-    const year =
-        releaseDate
-        ? releaseDate.substring(0,4)
-        : "N/A";
-
-    let rating =
-        Number(show.vote_average || 0)
-        .toFixed(1);
-
-    if(rating === "0.0"){
-        rating = "N/A";
-    }
-
-    return `
-
-        <article class="movie-card">
-
-            <div class="poster-wrap">
-
-                <img
-                    src="${poster}"
-                    alt="${escapeHTML(title)}"
-                    loading="lazy"
-                    onerror="
-                        this.src='https://via.placeholder.com/500x750/151515/ffffff?text=No+Poster'
-                    "
-                >
-
-                <div class="rating">
-                    ★ ${rating}
-                </div>
-
-            </div>
-
-            <div class="movie-info">
-
-                <div
-                    class="movie-title"
-                    title="${escapeHTML(title)}"
-                >
-                    ${escapeHTML(title)}
-                </div>
-
-                <div class="movie-meta">
-                    ${year}
-                </div>
-
-            </div>
-
-        </article>
-
-    `;
-}
-
-
-/* ==========================================
+/* =================================
    ESCAPE HTML
-========================================== */
+================================= */
 
 function escapeHTML(text){
 
@@ -1713,12 +1788,183 @@ function escapeHTML(text){
         .replace(/>/g,"&gt;")
         .replace(/"/g,"&quot;")
         .replace(/'/g,"&#039;");
+
 }
 
 
-/* ==========================================
+/* =================================
+   MOVIE CARD
+================================= */
+
+function createMovieCard(movie){
+
+    const poster =
+        movie.poster_path
+        ? TMDB_IMAGE_URL +
+          movie.poster_path
+        : "https://via.placeholder.com/500x750/151515/ffffff?text=No+Poster";
+
+
+    const title =
+        movie.title ||
+        movie.name ||
+        "Unknown";
+
+
+    const releaseDate =
+        movie.release_date ||
+        movie.first_air_date ||
+        "";
+
+
+    const year =
+        releaseDate
+        ? releaseDate.substring(0,4)
+        : "N/A";
+
+
+    let rating =
+        Number(
+            movie.vote_average || 0
+        ).toFixed(1);
+
+
+    if(rating === "0.0"){
+        rating = "N/A";
+    }
+
+
+    return `
+
+        <article class="movie-card">
+
+            <div class="poster-wrap">
+
+                <img
+                    src="${poster}"
+                    alt="${escapeHTML(title)}"
+                    loading="lazy"
+                    onerror="
+                        this.src='https://via.placeholder.com/500x750/151515/ffffff?text=No+Poster'
+                    "
+                >
+
+                <div class="rating">
+                    ★ ${rating}
+                </div>
+
+            </div>
+
+
+            <div class="movie-info">
+
+                <div
+                    class="movie-title"
+                    title="${escapeHTML(title)}"
+                >
+                    ${escapeHTML(title)}
+                </div>
+
+                <div class="movie-meta">
+                    ${year}
+                </div>
+
+            </div>
+
+        </article>
+
+    `;
+
+}
+
+
+/* =================================
+   TV CARD
+================================= */
+
+function createTVCard(show){
+
+    const poster =
+        show.poster_path
+        ? TMDB_IMAGE_URL +
+          show.poster_path
+        : "https://via.placeholder.com/500x750/151515/ffffff?text=No+Poster";
+
+
+    const title =
+        show.name ||
+        "Unknown";
+
+
+    const releaseDate =
+        show.first_air_date ||
+        "";
+
+
+    const year =
+        releaseDate
+        ? releaseDate.substring(0,4)
+        : "N/A";
+
+
+    let rating =
+        Number(
+            show.vote_average || 0
+        ).toFixed(1);
+
+
+    if(rating === "0.0"){
+        rating = "N/A";
+    }
+
+
+    return `
+
+        <article class="movie-card">
+
+            <div class="poster-wrap">
+
+                <img
+                    src="${poster}"
+                    alt="${escapeHTML(title)}"
+                    loading="lazy"
+                    onerror="
+                        this.src='https://via.placeholder.com/500x750/151515/ffffff?text=No+Poster'
+                    "
+                >
+
+                <div class="rating">
+                    ★ ${rating}
+                </div>
+
+            </div>
+
+
+            <div class="movie-info">
+
+                <div
+                    class="movie-title"
+                    title="${escapeHTML(title)}"
+                >
+                    ${escapeHTML(title)}
+                </div>
+
+                <div class="movie-meta">
+                    ${year}
+                </div>
+
+            </div>
+
+        </article>
+
+    `;
+
+}
+
+
+/* =================================
    SHOW MOVIES
-========================================== */
+================================= */
 
 function showMovies(
     elementId,
@@ -1726,11 +1972,15 @@ function showMovies(
 ){
 
     const container =
-        document.getElementById(elementId);
+        document.getElementById(
+            elementId
+        );
+
 
     if(!container){
         return;
     }
+
 
     if(
         !movies ||
@@ -1746,16 +1996,18 @@ function showMovies(
         return;
     }
 
+
     container.innerHTML =
         movies
         .map(createMovieCard)
         .join("");
+
 }
 
 
-/* ==========================================
-   SHOW TV SHOWS
-========================================== */
+/* =================================
+   SHOW TV
+================================= */
 
 function showTVShows(
     elementId,
@@ -1763,11 +2015,15 @@ function showTVShows(
 ){
 
     const container =
-        document.getElementById(elementId);
+        document.getElementById(
+            elementId
+        );
+
 
     if(!container){
         return;
     }
+
 
     if(
         !shows ||
@@ -1783,16 +2039,67 @@ function showTVShows(
         return;
     }
 
+
     container.innerHTML =
         shows
         .map(createTVCard)
         .join("");
+
 }
 
 
-/* ==========================================
-   LOAD TRENDING
-========================================== */
+/* =================================
+   API ERROR
+================================= */
+
+function showAPIError(container){
+
+    if(!container){
+        return;
+    }
+
+
+    if(!apiReady()){
+
+        container.innerHTML = `
+
+            <div class="error-message">
+
+                <strong>
+                    TMDB API key not added.
+                </strong>
+
+                <br><br>
+
+                Please add your TMDB API key
+                in the JavaScript section.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML = `
+
+        <div class="error-message">
+
+            Unable to load movie information.
+            Please refresh the page.
+
+        </div>
+
+    `;
+
+}
+
+
+/* =================================
+   TRENDING
+================================= */
 
 async function loadTrending(){
 
@@ -1801,6 +2108,7 @@ async function loadTrending(){
             "trendingMovies"
         );
 
+
     try{
 
         const data =
@@ -1808,17 +2116,18 @@ async function loadTrending(){
                 "/trending/movie/week"
             );
 
+
         showMovies(
             "trendingMovies",
             data.results
         );
+
 
     }catch(error){
 
         showAPIError(container);
 
         console.error(
-            "Trending:",
             error
         );
 
@@ -1827,9 +2136,9 @@ async function loadTrending(){
 }
 
 
-/* ==========================================
-   LOAD POPULAR
-========================================== */
+/* =================================
+   POPULAR
+================================= */
 
 async function loadPopular(){
 
@@ -1837,6 +2146,7 @@ async function loadPopular(){
         document.getElementById(
             "popularMovies"
         );
+
 
     try{
 
@@ -1849,17 +2159,18 @@ async function loadPopular(){
                 }
             );
 
+
         showMovies(
             "popularMovies",
             data.results
         );
+
 
     }catch(error){
 
         showAPIError(container);
 
         console.error(
-            "Popular:",
             error
         );
 
@@ -1868,9 +2179,9 @@ async function loadPopular(){
 }
 
 
-/* ==========================================
-   LOAD NOW PLAYING
-========================================== */
+/* =================================
+   NOW PLAYING
+================================= */
 
 async function loadNowPlaying(){
 
@@ -1878,6 +2189,7 @@ async function loadNowPlaying(){
         document.getElementById(
             "nowPlaying"
         );
+
 
     try{
 
@@ -1890,17 +2202,18 @@ async function loadNowPlaying(){
                 }
             );
 
+
         showMovies(
             "nowPlaying",
             data.results
         );
+
 
     }catch(error){
 
         showAPIError(container);
 
         console.error(
-            "Now Playing:",
             error
         );
 
@@ -1909,9 +2222,9 @@ async function loadNowPlaying(){
 }
 
 
-/* ==========================================
+/* =================================
    BOLLYWOOD
-========================================== */
+================================= */
 
 async function loadBollywood(){
 
@@ -1919,6 +2232,7 @@ async function loadBollywood(){
         document.getElementById(
             "bollywoodMovies"
         );
+
 
     try{
 
@@ -1933,17 +2247,18 @@ async function loadBollywood(){
                 }
             );
 
+
         showMovies(
             "bollywoodMovies",
             data.results
         );
+
 
     }catch(error){
 
         showAPIError(container);
 
         console.error(
-            "Bollywood:",
             error
         );
 
@@ -1952,9 +2267,9 @@ async function loadBollywood(){
 }
 
 
-/* ==========================================
+/* =================================
    HOLLYWOOD
-========================================== */
+================================= */
 
 async function loadHollywood(){
 
@@ -1963,6 +2278,7 @@ async function loadHollywood(){
             "hollywoodMovies"
         );
 
+
     try{
 
         const data =
@@ -1970,23 +2286,23 @@ async function loadHollywood(){
                 "/discover/movie",
                 {
                     with_original_language:"en",
-                    region:"US",
                     sort_by:"popularity.desc",
                     page:1
                 }
             );
+
 
         showMovies(
             "hollywoodMovies",
             data.results
         );
 
+
     }catch(error){
 
         showAPIError(container);
 
         console.error(
-            "Hollywood:",
             error
         );
 
@@ -1995,9 +2311,9 @@ async function loadHollywood(){
 }
 
 
-/* ==========================================
-   TOLLYWOOD / TELUGU
-========================================== */
+/* =================================
+   TELUGU
+================================= */
 
 async function loadTollywood(){
 
@@ -2005,6 +2321,7 @@ async function loadTollywood(){
         document.getElementById(
             "tollywoodMovies"
         );
+
 
     try{
 
@@ -2019,17 +2336,18 @@ async function loadTollywood(){
                 }
             );
 
+
         showMovies(
             "tollywoodMovies",
             data.results
         );
+
 
     }catch(error){
 
         showAPIError(container);
 
         console.error(
-            "Tollywood:",
             error
         );
 
@@ -2038,9 +2356,9 @@ async function loadTollywood(){
 }
 
 
-/* ==========================================
+/* =================================
    WEB SERIES
-========================================== */
+================================= */
 
 async function loadWebSeries(){
 
@@ -2048,6 +2366,7 @@ async function loadWebSeries(){
         document.getElementById(
             "webSeries"
         );
+
 
     try{
 
@@ -2060,17 +2379,18 @@ async function loadWebSeries(){
                 }
             );
 
+
         showTVShows(
             "webSeries",
             data.results
         );
+
 
     }catch(error){
 
         showAPIError(container);
 
         console.error(
-            "Web Series:",
             error
         );
 
@@ -2079,60 +2399,9 @@ async function loadWebSeries(){
 }
 
 
-/* ==========================================
-   API ERROR
-========================================== */
-
-function showAPIError(container){
-
-    if(!container){
-        return;
-    }
-
-    if(!apiReady()){
-
-        container.innerHTML = `
-
-            <div class="error-message">
-
-                <strong>TMDB API key not added.</strong>
-                <br><br>
-
-                Open this HTML file and replace:
-                <br><br>
-
-                <b>
-                e917ce85106e3d7f16181f6c9ed34674
-                </b>
-
-                <br><br>
-
-                with your TMDB API key.
-
-            </div>
-
-        `;
-
-        return;
-    }
-
-    container.innerHTML = `
-
-        <div class="error-message">
-
-            Unable to load movie information right now.
-            Please refresh the page and try again.
-
-        </div>
-
-    `;
-
-}
-
-
-/* ==========================================
-   SEARCH MOVIES
-========================================== */
+/* =================================
+   SEARCH
+================================= */
 
 async function searchMovies(){
 
@@ -2141,29 +2410,42 @@ async function searchMovies(){
             "searchInput"
         );
 
+
     const results =
         document.getElementById(
             "searchResults"
         );
 
+
     const query =
         input.value.trim();
 
+
     if(!query){
 
-        results.style.display = "none";
-        results.innerHTML = "";
+        results.style.display =
+            "none";
+
+        results.innerHTML =
+            "";
 
         return;
+
     }
 
-    results.style.display = "flex";
+
+    results.style.display =
+        "flex";
+
 
     results.innerHTML = `
+
         <div class="loading">
-            Searching for "${escapeHTML(query)}"...
+            Searching...
         </div>
+
     `;
+
 
     try{
 
@@ -2177,37 +2459,50 @@ async function searchMovies(){
                 }
             );
 
+
         if(
             !data.results ||
             !data.results.length
         ){
 
             results.innerHTML = `
+
                 <div class="error-message">
+
                     No movies found for
-                    <strong>${escapeHTML(query)}</strong>.
+                    <strong>
+                        ${escapeHTML(query)}
+                    </strong>.
+
                 </div>
+
             `;
 
             return;
+
         }
+
 
         results.innerHTML =
             data.results
             .map(createMovieCard)
             .join("");
 
+
     }catch(error){
 
         results.innerHTML = `
+
             <div class="error-message">
+
                 Search failed.
                 Please try again.
+
             </div>
+
         `;
 
         console.error(
-            "Search:",
             error
         );
 
@@ -2216,29 +2511,29 @@ async function searchMovies(){
 }
 
 
-/* ==========================================
+/* =================================
    ENTER KEY SEARCH
-========================================== */
+================================= */
 
 document
-    .getElementById("searchInput")
-    .addEventListener(
-        "keydown",
-        function(event){
+.getElementById("searchInput")
+.addEventListener(
+    "keydown",
+    function(event){
 
-            if(event.key === "Enter"){
+        if(event.key === "Enter"){
 
-                searchMovies();
-
-            }
+            searchMovies();
 
         }
-    );
+
+    }
+);
 
 
-/* ==========================================
+/* =================================
    SLIDER
-========================================== */
+================================= */
 
 let slideIndex = 1;
 
@@ -2252,18 +2547,27 @@ function showSlide(index){
             "slide"
         );
 
+
     const dots =
         document.getElementsByClassName(
             "dot"
         );
 
+
     if(index > slides.length){
+
         slideIndex = 1;
+
     }
 
+
     if(index < 1){
-        slideIndex = slides.length;
+
+        slideIndex =
+            slides.length;
+
     }
+
 
     for(
         let i = 0;
@@ -2272,10 +2576,11 @@ function showSlide(index){
     ){
 
         slides[i]
-            .classList
-            .remove("active");
+        .classList
+        .remove("active");
 
     }
+
 
     for(
         let i = 0;
@@ -2284,10 +2589,11 @@ function showSlide(index){
     ){
 
         dots[i]
-            .classList
-            .remove("active");
+        .classList
+        .remove("active");
 
     }
+
 
     if(slides[slideIndex - 1]){
 
@@ -2298,6 +2604,7 @@ function showSlide(index){
         .add("active");
 
     }
+
 
     if(dots[slideIndex - 1]){
 
@@ -2345,7 +2652,10 @@ function autoSlide(){
 
 function resetSliderTimer(){
 
-    clearInterval(slideTimer);
+    clearInterval(
+        slideTimer
+    );
+
 
     slideTimer =
         setInterval(
@@ -2356,20 +2666,27 @@ function resetSliderTimer(){
 }
 
 
-showSlide(slideIndex);
+showSlide(
+    slideIndex
+);
+
 
 resetSliderTimer();
 
 
-/* ==========================================
+/* =================================
    TOUCH SWIPE
-========================================== */
+================================= */
 
 let touchStartX = 0;
+
 let touchEndX = 0;
 
+
 const slider =
-    document.querySelector(".slider");
+    document.querySelector(
+        ".slider"
+    );
 
 
 slider.addEventListener(
@@ -2377,10 +2694,14 @@ slider.addEventListener(
     function(event){
 
         touchStartX =
-            event.changedTouches[0].screenX;
+            event
+            .changedTouches[0]
+            .screenX;
 
     },
-    {passive:true}
+    {
+        passive:true
+    }
 );
 
 
@@ -2389,25 +2710,34 @@ slider.addEventListener(
     function(event){
 
         touchEndX =
-            event.changedTouches[0].screenX;
+            event
+            .changedTouches[0]
+            .screenX;
 
         handleSwipe();
 
     },
-    {passive:true}
+    {
+        passive:true
+    }
 );
 
 
 function handleSwipe(){
 
     const distance =
-        touchEndX - touchStartX;
+        touchEndX -
+        touchStartX;
+
 
     if(
         Math.abs(distance) < 50
     ){
+
         return;
+
     }
+
 
     if(distance < 0){
 
@@ -2422,14 +2752,15 @@ function handleSwipe(){
 }
 
 
-/* ==========================================
+/* =================================
    MOBILE MENU
-========================================== */
+================================= */
 
 const menuBtn =
     document.getElementById(
         "menuBtn"
     );
+
 
 const mobileMenu =
     document.getElementById(
@@ -2442,14 +2773,17 @@ menuBtn.addEventListener(
     function(){
 
         if(
-            mobileMenu.style.display === "block"
+            mobileMenu.style.display ===
+            "block"
         ){
 
-            mobileMenu.style.display = "none";
+            mobileMenu.style.display =
+                "none";
 
         }else{
 
-            mobileMenu.style.display = "block";
+            mobileMenu.style.display =
+                "block";
 
         }
 
@@ -2458,8 +2792,11 @@ menuBtn.addEventListener(
 
 
 document
-    .querySelectorAll(".mobile-menu a")
-    .forEach(function(link){
+.querySelectorAll(
+    ".mobile-menu a"
+)
+.forEach(
+    function(link){
 
         link.addEventListener(
             "click",
@@ -2471,18 +2808,20 @@ document
             }
         );
 
-    });
+    }
+);
 
 
-/* ==========================================
-   LOAD ALL TMDB SECTIONS
-========================================== */
+/* =================================
+   LOAD ALL TMDB
+================================= */
 
 function loadAllTMDB(){
 
     if(!apiReady()){
 
         const sections = [
+
             "trendingMovies",
             "popularMovies",
             "nowPlaying",
@@ -2490,33 +2829,48 @@ function loadAllTMDB(){
             "hollywoodMovies",
             "tollywoodMovies",
             "webSeries"
+
         ];
 
-        sections.forEach(function(id){
 
-            showAPIError(
-                document.getElementById(id)
-            );
+        sections.forEach(
+            function(id){
 
-        });
+                showAPIError(
+                    document.getElementById(
+                        id
+                    )
+                );
+
+            }
+        );
+
 
         return;
+
     }
 
+
     loadTrending();
+
     loadPopular();
+
     loadNowPlaying();
+
     loadBollywood();
+
     loadHollywood();
+
     loadTollywood();
+
     loadWebSeries();
 
 }
 
 
-/* ==========================================
+/* =================================
    YEAR
-========================================== */
+================================= */
 
 document.getElementById(
     "year"
@@ -2524,11 +2878,12 @@ document.getElementById(
     new Date().getFullYear();
 
 
-/* ==========================================
+/* =================================
    START
-========================================== */
+================================= */
 
 loadAllTMDB();
+
 
 </script>
 
