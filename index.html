@@ -1889,8 +1889,7 @@ movie.vote_average
 ? rating5.toFixed(1) + "/5"
 : "N/A";
 const poster =
-posterUrl(movie.poster_path) ||
-(movie.backdrop_path ? TMDB_BACKDROP + movie.backdrop_path : "");
+posterUrl(movie.poster_path);
 const card =
 document.createElement("article");
 card.className =
@@ -1967,19 +1966,19 @@ No movies found.
 `;
 return;
 }
-const validMovies = (movies || [])
-.filter(movie => movie && (movie.poster_path || movie.backdrop_path))
-.slice(0,15);
-if(!validMovies.length){
-container.innerHTML = `
-<div class="empty">
-No movie posters available right now.
-</div>`;
-return;
+movies
+.filter(
+movie =>
+movie.poster_path
+)
+.slice(0,15)
+.forEach(
+movie => {
+container.appendChild(
+createMovieCard(movie)
+);
 }
-validMovies.forEach(movie => {
-container.appendChild(createMovieCard(movie));
-});
+);
 }
 async function loadTrending(){
 try{
@@ -2170,7 +2169,8 @@ const searchInput =
 document.getElementById(
 "searchInput"
 );
-if(searchInput) searchInput.addEventListener(
+if(searchInput){
+searchInput.addEventListener(
 "input",
 function(){
 const query =
@@ -2189,6 +2189,7 @@ setTimeout(
 );
 }
 );
+}
 async function searchMovies(query){
 try{
 const data =
@@ -2445,16 +2446,8 @@ const host=document.getElementById("heroSlides");
 const dotsHost=document.getElementById("heroDots");
 const loading=document.getElementById("trailerLoading");
 if(!host) return;
-if(!getKey()){
-if(loading) loading.innerHTML = '<b>TMDB API key add karo.</b><br><button class="api-key-btn hero-key-btn" type="button">ADD TMDB KEY</button>';
-const btn = host.parentElement && host.parentElement.querySelector(".hero-key-btn");
-if(btn) btn.onclick = () => {
-const key = prompt("Apni TMDB API key yahan paste karo:");
-if(key && key.trim()){
-localStorage.setItem("movieWalaTmdbKey", key.trim());
-location.reload();
-}
-};
+if(!TMDB_API_KEY || TMDB_API_KEY === "PASTE_YOUR_TMDB_API_KEY_HERE") {
+if(loading) loading.textContent="TMDB API key add karo, phir trailers load honge.";
 return;
 }
 const source=(trendingMovies||[]).filter(m=>m.backdrop_path).slice(0,6);
@@ -2509,20 +2502,10 @@ iframe.contentWindow.postMessage(JSON.stringify({event:"command",func:"playVideo
 }
 });
 async function init(){
-try{
 const trending = await loadTrending();
-await loadHeroTrailers(trending);
-loadPopular();
-loadTopRated();
-loadLatest();
-loadIndian();
-loadHollywood();
-loadSeries();
+try{ await loadHeroTrailers(trending); }catch(error){ console.error("Hero trailers:",error); const loading=document.getElementById("trailerLoading"); if(loading) loading.textContent="Trailer load nahi ho paaya. TMDB key/network check karo."; }
+await Promise.allSettled([loadPopular(),loadTopRated(),loadLatest(),loadIndian(),loadHollywood(),loadSeries()]);
 setTimeout(startAllRowSliders,1200);
-}catch(error){
-console.error("Movie Wala init error:",error);
-["trendingMovies","popularMovies","topRated","latestMovies","indianMovies","hollywoodMovies","seriesMovies"].forEach(id=>showError(id,error));
-}
 }
 init();
 </script>
