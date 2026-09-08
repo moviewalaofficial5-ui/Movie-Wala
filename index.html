@@ -1574,6 +1574,25 @@ footer{background:#050505!important;border-top:1px solid #1e2123!important;}
 </style>
 
 <style id="movie-details-v3">
+/* Critical layout fix: the legacy .modal-content grid was constraining the full OTT page to 230px. */
+#movieModal .modal-content{
+  display:block !important;
+  width:100% !important;
+  max-width:none !important;
+  grid-template-columns:none !important;
+  gap:0 !important;
+  padding:0 !important;
+  margin:0 !important;
+}
+#movieModal .detail-page{
+  display:block !important;
+  width:100% !important;
+  max-width:none !important;
+}
+#movieModal .detail-hero-inner{
+  width:min(1220px,92%) !important;
+  max-width:none !important;
+}
 /* === FULL OTT MOVIE DETAILS === */
 #movieModal{
   padding:0!important;
@@ -1668,6 +1687,7 @@ footer{background:#050505!important;border-top:1px solid #1e2123!important;}
 .detail-trailer-wrap{position:relative;aspect-ratio:16/9;max-width:900px;background:#000;border-radius:9px;overflow:hidden;border:1px solid #292d30}
 .detail-trailer-wrap iframe{width:100%;height:100%;border:0;display:block}
 @media(max-width:800px){
+ #movieModal .detail-hero-inner{grid-template-columns:150px minmax(0,1fr) !important;}
  .detail-hero{min-height:680px}
  .detail-hero-inner{grid-template-columns:150px minmax(0,1fr);gap:18px;width:92%;padding:90px 0 35px}
  .detail-poster{width:150px;height:225px}
@@ -1677,6 +1697,7 @@ footer{background:#050505!important;border-top:1px solid #1e2123!important;}
  .detail-body{width:92%}
 }
 @media(max-width:560px){
+ #movieModal .detail-hero-inner{grid-template-columns:1fr !important;}
  #movieModal .modal-close{top:12px;right:12px;width:38px;height:38px;font-size:22px}
  .detail-hero{min-height:760px;align-items:flex-end}
  .detail-hero-inner{grid-template-columns:1fr;width:90%;padding:78px 0 28px;gap:18px}
