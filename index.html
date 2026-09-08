@@ -1467,6 +1467,110 @@ footer{background:#050505!important;border-top:1px solid #1e2123!important;}
 @media(max-width:1100px){.main{padding:14px 18px 30px}.hero{height:500px}.trailer-info{bottom:58px;width:62%;}.movie-card{flex-basis:160px!important;width:160px!important;min-width:160px!important}.movie-poster{height:230px!important}}
 @media(max-width:800px){.navbar{padding:0 14px;height:64px}.logo{width:43px;height:43px;flex-basis:43px}.brand-name{font-size:18px}.tagline{display:none}.hero{height:455px}.trailer-info{left:5%;bottom:52px;width:88%;max-width:none}.trailer-info h1{font-size:38px}.trailer-info p{font-size:12px;max-width:95%}.main{padding:12px 12px 25px}.title{font-size:17px}.movie-card{flex-basis:145px!important;width:145px!important;min-width:145px!important}.movie-poster{height:208px!important}.card-actions{margin-top:7px}.card-details{padding:6px 4px}}
 @media(max-width:520px){.hero{height:410px}.trailer-info{bottom:44px}.trailer-info h1{font-size:29px}.trailer-info p{font-size:11px;line-height:1.45;margin:8px 0 12px}.welcome{font-size:9px;padding:6px 8px}.movie-card{flex-basis:132px!important;width:132px!important;min-width:132px!important}.movie-poster{height:190px!important}.movie-title{font-size:11px}.movie-meta{font-size:9px}.main{padding-left:8px;padding-right:8px}}
+
+/* === Movie Wala OTT layout v2: cleaner hero + visible genres === */
+.hero{
+  height:620px !important;
+  min-height:620px !important;
+  isolation:isolate;
+}
+.trailer-slide{overflow:hidden !important;}
+.trailer-frame{
+  width:100% !important;
+  height:100% !important;
+  transform:scale(1.08) !important;
+  transform-origin:center !important;
+}
+.trailer-shade{
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.94) 0%,rgba(0,0,0,.72) 30%,rgba(0,0,0,.22) 65%,rgba(0,0,0,.38) 100%),
+    linear-gradient(0deg,rgba(0,0,0,.96) 0%,rgba(0,0,0,.12) 48%,rgba(0,0,0,.18) 100%) !important;
+}
+.trailer-info{
+  left:5.5% !important;
+  bottom:105px !important;
+  top:auto !important;
+  width:min(590px,46%) !important;
+  max-width:none !important;
+}
+.trailer-info h1{
+  font-size:clamp(42px,4.7vw,68px) !important;
+  line-height:.98 !important;
+  margin:12px 0 14px !important;
+  letter-spacing:-1px;
+}
+.trailer-info p{
+  max-width:540px !important;
+  margin:13px 0 20px !important;
+  font-size:14px !important;
+  line-height:1.65 !important;
+  display:-webkit-box !important;
+  -webkit-line-clamp:3 !important;
+  -webkit-box-orient:vertical !important;
+  overflow:hidden !important;
+}
+.trailer-rating{margin-bottom:0 !important;}
+.live-now{right:5.5% !important;top:32px !important;}
+.hero-arrow{top:53% !important;}
+.sound-btn{right:5.5% !important;bottom:42px !important;}
+.dots{bottom:30px !important;}
+.genres{
+  margin-top:14px !important;
+  padding-bottom:14px !important;
+  background:linear-gradient(180deg,#101214,#08090a) !important;
+}
+.genre-row{padding:0 14px !important;gap:10px !important;}
+.genre{
+  color:#fff !important;
+  -webkit-text-fill-color:#fff !important;
+  background:#111416 !important;
+  border-color:#353a3d !important;
+  min-height:46px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  transition:all .2s ease !important;
+}
+.genre:hover,.genre:focus-visible{
+  color:#fff !important;
+  background:#1a1d20 !important;
+  border-color:#e50914 !important;
+  box-shadow:0 0 0 1px rgba(229,9,20,.25),0 8px 20px rgba(0,0,0,.25) !important;
+  transform:translateY(-2px);
+}
+.genre-row .genre::first-letter{color:#f5b900;}
+.title{padding-left:15px !important;}
+@media(max-width:1100px){
+  .hero{height:560px !important;min-height:560px !important;}
+  .trailer-info{width:55% !important;bottom:82px !important;}
+  .trailer-info h1{font-size:48px !important;}
+}
+@media(max-width:800px){
+  .hero{height:500px !important;min-height:500px !important;}
+  .trailer-frame{transform:scale(1.14) !important;}
+  .trailer-info{left:7% !important;bottom:74px !important;width:76% !important;}
+  .trailer-info h1{font-size:39px !important;letter-spacing:-.5px;}
+  .trailer-info p{font-size:12px !important;line-height:1.5 !important;-webkit-line-clamp:2 !important;}
+  .live-now{display:none !important;}
+  .hero-arrow{width:40px !important;height:40px !important;}
+  .sound-btn{right:6% !important;bottom:38px !important;}
+  .dots{bottom:20px !important;}
+  .genre-row{grid-template-columns:repeat(2,minmax(0,1fr)) !important;}
+}
+@media(max-width:520px){
+  .hero{height:450px !important;min-height:450px !important;}
+  .trailer-info{left:6% !important;bottom:60px !important;width:88% !important;}
+  .trailer-info h1{font-size:31px !important;}
+  .trailer-info p{font-size:11px !important;max-width:92% !important;}
+  .trailer-info .btn{min-height:38px !important;padding:9px 12px !important;}
+  .hero-arrow{width:36px !important;height:36px !important;font-size:25px !important;}
+  .hero-arrow.left{left:8px !important;}
+  .hero-arrow.right{right:8px !important;}
+  .sound-btn{bottom:30px !important;font-size:9px !important;padding:7px 10px !important;}
+  .genre-row{grid-template-columns:repeat(2,minmax(0,1fr)) !important;padding:0 10px !important;gap:8px !important;}
+  .genre{font-size:10px !important;min-height:42px !important;}
+}
+
 </style>
 </head>
 <body>
@@ -2686,7 +2790,7 @@ let soundOn = false;
 function youtubeTrailerUrl(key){
 const mute = soundOn ? 0 : 1;
 return "https://www.youtube.com/embed/" + encodeURIComponent(key) +
-"?autoplay=1&mute=" + mute + "&controls=1&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&iv_load_policy=3";
+"?autoplay=1&mute=" + mute + "&controls=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&iv_load_policy=3&fs=0";
 }
 function ratingFive(movie){
 return movie.vote_average ? (Number(movie.vote_average)/2).toFixed(1) : "N/A";
