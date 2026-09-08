@@ -847,6 +847,50 @@ margin-top:2px;
 color:#eee;
 font-size:10px;
 }
+
+.about-content{
+  display:grid;
+  grid-template-columns:minmax(0,1.35fr) minmax(280px,1fr);
+  gap:18px;
+  padding:4px 0 2px;
+}
+.about-copy h2{
+  margin:0 0 10px;
+  font-size:25px;
+  font-weight:900;
+  color:#fff;
+}
+.about-copy h2 span{color:#e7ad00;}
+.about-copy p{
+  margin:0 0 10px;
+  color:#b8b8b8;
+  font-size:13px;
+  line-height:1.75;
+}
+.about-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px;}
+.about-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:40px;padding:0 15px;border-radius:6px;
+  background:#e50914;color:#fff;text-decoration:none;
+  font-size:11px;font-weight:900;
+  border:1px solid #e50914;
+}
+.about-btn:hover{background:#ff1a26;}
+.about-btn.secondary{background:#0b0e10;border-color:#3c4144;}
+.about-btn.secondary:hover{border-color:#e50914;background:#111;}
+.about-highlights{display:grid;grid-template-columns:1fr;gap:9px;}
+.about-highlight{
+  display:grid;grid-template-columns:38px 1fr;column-gap:10px;
+  align-items:center;padding:12px;border:1px solid #292d30;
+  border-radius:8px;background:#0b0e10;
+}
+.about-highlight strong{grid-row:span 2;font-size:21px;text-align:center;}
+.about-highlight b{font-size:12px;color:#fff;}
+.about-highlight small{font-size:10px;color:#888;line-height:1.4;}
+@media(max-width:800px){
+  .about-content{grid-template-columns:1fr;}
+}
+
 .genres{
 width:100%;
 max-width:100%;
@@ -901,6 +945,11 @@ border-top:1px solid #24282a;
 color:#777;
 font-size:11px;
 }
+
+.footer-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:14px 0 4px;}
+.footer-links a{color:#aaa;text-decoration:none;font-size:11px;}
+.footer-links a:hover{color:#e7ad00;}
+
 .footer-brand{
 font-size:21px;
 color:#eee;
@@ -1634,8 +1683,34 @@ data-genre="16">
 </div>
 </section>
 <section
-class="panel"
+class="panel about-section"
 id="about"
+style="margin-top:10px">
+<div class="title">
+<i class="bar"></i>
+ABOUT MOVIE WALA
+</div>
+<div class="about-content">
+<div class="about-copy">
+<h2>Welcome to <span>Movie Wala</span></h2>
+<p>Movie Wala is your entertainment destination for discovering movies, web series, trailers, ratings and the latest movie information — all in one place.</p>
+<p>Our goal is to make movie discovery simple, fast and enjoyable. Explore trending titles, Indian cinema, Hollywood movies, web series and popular genres.</p>
+<div class="about-actions">
+<a class="about-btn" href="about.html">READ MORE ABOUT US</a>
+<a class="about-btn secondary" href="contact.html">CONTACT US</a>
+</div>
+</div>
+<div class="about-highlights">
+<div class="about-highlight"><strong>🎬</strong><b>Movie Discovery</b><small>Find movies and series worth watching.</small></div>
+<div class="about-highlight"><strong>⭐</strong><b>Ratings & Details</b><small>Explore ratings, genres and movie information.</small></div>
+<div class="about-highlight"><strong>📺</strong><b>Trailers & Updates</b><small>Stay connected with trailers and entertainment updates.</small></div>
+</div>
+</div>
+</section>
+
+<section
+class="panel follow-section"
+id="follow"
 style="margin-top:10px">
 <div class="title">
 <i class="bar"></i>
@@ -1861,6 +1936,13 @@ MOVIE <span>WALA</span>
 All Rights Reserved.
 &nbsp; • &nbsp;
 Har Scene Mein Entertainment ❤️
+</div>
+<div class="footer-links">
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a href="privacy.html">Privacy</a>
+<a href="terms.html">Terms</a>
+<a href="disclaimer.html">Disclaimer</a>
 </div>
 <div class="tmdb-footer">
 <strong>TMDB</strong><br>
