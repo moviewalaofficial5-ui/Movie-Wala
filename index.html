@@ -1678,6 +1678,39 @@ footer{background:#050505!important;border-top:1px solid #1e2123!important;}
 .similar-card img{width:155px;height:225px;object-fit:cover;border-radius:7px;border:1px solid #292d30;display:block}
 .similar-card b{display:block;font-size:11px;margin-top:7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .similar-card small{display:block;color:#888;margin-top:3px}
+
+/* Netflix-style More Like This carousel */
+.similar-carousel{position:relative;margin-top:4px}
+.similar-viewport{position:relative;overflow:hidden}
+.similar-row{display:flex;gap:16px;overflow-x:auto;scroll-behavior:smooth;padding:6px 4px 18px;scrollbar-width:none;overscroll-behavior-x:contain;scroll-snap-type:x proximity}
+.similar-row::-webkit-scrollbar{display:none}
+.similar-card{position:relative;flex:0 0 190px;width:190px;cursor:pointer;scroll-snap-align:start;border-radius:8px;transition:transform .22s ease,filter .22s ease}
+.similar-card:hover{transform:translateY(-7px) scale(1.025);z-index:3}
+.similar-poster-wrap{position:relative;aspect-ratio:2/3;overflow:hidden;border-radius:8px;background:#111;border:1px solid #292d30;box-shadow:0 8px 20px rgba(0,0,0,.28)}
+.similar-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s ease,filter .3s ease}
+.similar-card:hover img{transform:scale(1.06);filter:brightness(.72)}
+.similar-overlay{position:absolute;inset:0;display:flex;align-items:flex-end;padding:12px;background:linear-gradient(to top,rgba(0,0,0,.92),rgba(0,0,0,.08) 58%,transparent);opacity:.85}
+.similar-play{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#e50914;border:1px solid rgba(255,255,255,.35);font-size:15px;box-shadow:0 4px 15px rgba(0,0,0,.4);transform:translateY(5px);transition:transform .2s ease}
+.similar-card:hover .similar-play{transform:translateY(0)}
+.similar-badge{position:absolute;top:9px;left:9px;background:rgba(0,0,0,.78);border:1px solid rgba(255,255,255,.18);border-radius:4px;padding:4px 6px;color:#ffc400;font-size:9px;font-weight:900}
+.similar-info{padding:8px 2px 0}
+.similar-card b{display:block;font-size:12px;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#fff}
+.similar-card small{display:flex;gap:8px;color:#999;font-size:10px;margin-top:5px}
+.similar-nav{position:absolute;top:43%;transform:translateY(-50%);width:42px;height:62px;border:1px solid rgba(255,255,255,.22);background:rgba(8,10,11,.88);backdrop-filter:blur(6px);color:#fff;border-radius:6px;z-index:8;cursor:pointer;font-size:25px;display:grid;place-items:center;opacity:0;transition:opacity .2s ease,background .2s ease,transform .2s ease}
+.similar-carousel:hover .similar-nav{opacity:1}
+.similar-nav:hover{background:#e50914;border-color:#e50914}
+.similar-nav.prev{left:8px}.similar-nav.next{right:8px}
+.similar-nav:disabled{opacity:0!important;pointer-events:none}
+.similar-hint{display:flex;align-items:center;justify-content:space-between;color:#777;font-size:10px;margin:-2px 3px 0}
+.similar-hint span:last-child{color:#aaa}
+@media(max-width:800px){
+ .similar-card{flex-basis:145px;width:145px}
+ .similar-row{gap:11px;padding-bottom:14px}
+ .similar-nav{width:34px;height:50px;opacity:.9;font-size:20px}
+ .similar-hint{display:none}
+}
+@media(max-width:480px){.similar-card{flex-basis:125px;width:125px}.similar-nav{display:none}}
+
 .provider-grid{display:flex;flex-wrap:wrap;gap:10px}
 .provider-card{display:flex;align-items:center;gap:9px;background:#101315;border:1px solid #292d30;border-radius:7px;padding:8px 11px}
 .provider-card img{width:36px;height:36px;border-radius:7px;object-fit:cover}
@@ -2869,7 +2902,14 @@ async function openMovieModal(movie){
         </section>
         <section class="detail-section">
           <div class="detail-section-title">MORE LIKE THIS</div>
-          <div class="similar-row" id="detailSimilar"><div class="detail-loading">Loading recommendations...</div></div>
+          <div class="similar-carousel" id="similarCarousel">
+            <button class="similar-nav prev" id="similarPrev" type="button" aria-label="Previous recommendations">‹</button>
+            <div class="similar-viewport">
+              <div class="similar-row" id="detailSimilar"><div class="detail-loading">Loading recommendations...</div></div>
+            </div>
+            <button class="similar-nav next" id="similarNext" type="button" aria-label="Next recommendations">›</button>
+            <div class="similar-hint"><span>Scroll to explore more titles</span><span>Click a title for details</span></div>
+          </div>
         </section>
       </div>
     </div>
@@ -2968,25 +3008,58 @@ async function openMovieModal(movie){
       trailerBtn.style.opacity=".55";
     }
 
-    const similar=(detail.similar?.results||[]).filter(m=>m.poster_path).slice(0,12);
+    const similar=(detail.similar?.results||[]).filter(m=>m.poster_path).slice(0,16);
     const similarBox=document.getElementById("detailSimilar");
-    similarBox.innerHTML=similar.length ? similar.map(m=>{
+    similarBox.innerHTML = similar.length ? similar.map(m=>{
       const mtype=type;
-      return `<article class="similar-card" data-id="${m.id}" data-type="${mtype}">
-        <img src="${posterUrl(m.poster_path)}" alt="${escapeHtml(m.title||m.name||"Movie")}" loading="lazy">
-        <b>${escapeHtml(m.title||m.name||"Untitled")}</b>
-        <small>★ ${m.vote_average ? (Number(m.vote_average)/2).toFixed(1) : "N/A"} / 5</small>
+      const name=m.title||m.name||"Untitled";
+      const release=(m.release_date||m.first_air_date||"").slice(0,4)||"N/A";
+      const rating=m.vote_average ? (Number(m.vote_average)/2).toFixed(1) : "N/A";
+      const kind=mtype==="tv" ? "SERIES" : "MOVIE";
+      return `<article class="similar-card" data-id="${m.id}" data-type="${mtype}" tabindex="0" role="button" aria-label="View details for ${escapeHtml(name)}">
+        <div class="similar-poster-wrap">
+          <img src="${posterUrl(m.poster_path)}" alt="${escapeHtml(name)} poster" loading="lazy">
+          ${m.vote_average ? `<span class="similar-badge">★ ${rating}</span>` : ""}
+          <div class="similar-overlay"><span class="similar-play">▶</span></div>
+        </div>
+        <div class="similar-info">
+          <b title="${escapeHtml(name)}">${escapeHtml(name)}</b>
+          <small><span>${release}</span><span>•</span><span>${kind}</span></small>
+        </div>
       </article>`;
     }).join("") : '<div class="detail-note">Similar titles unavailable.</div>';
+
+    const similarCarousel=document.getElementById("similarCarousel");
+    const similarPrev=document.getElementById("similarPrev");
+    const similarNext=document.getElementById("similarNext");
+    const updateSimilarNav=()=>{
+      if(!similarPrev || !similarNext) return;
+      const max=Math.max(0,similarBox.scrollWidth-similarBox.clientWidth-2);
+      similarPrev.disabled=similarBox.scrollLeft<=2;
+      similarNext.disabled=similarBox.scrollLeft>=max;
+    };
+    const scrollSimilar=(direction)=>{
+      const amount=Math.max(260,Math.floor(similarBox.clientWidth*.82));
+      similarBox.scrollBy({left:direction*amount,behavior:"smooth"});
+      setTimeout(updateSimilarNav,350);
+    };
+    similarPrev?.addEventListener("click",()=>scrollSimilar(-1));
+    similarNext?.addEventListener("click",()=>scrollSimilar(1));
+    similarBox.addEventListener("scroll",updateSimilarNav,{passive:true});
+    window.addEventListener("resize",updateSimilarNav);
+    updateSimilarNav();
+
     similarBox.querySelectorAll(".similar-card").forEach(card=>{
-      card.addEventListener("click",async()=>{
+      const openSimilar=async()=>{
         try{
           const similarId=Number(card.dataset.id);
           const similarDetail=await tmdbFetch(`/${card.dataset.type}/${similarId}`);
           similarDetail.media_type=card.dataset.type;
           await openMovieModal(similarDetail);
         }catch(e){console.error("Similar title:",e);}
-      });
+      };
+      card.addEventListener("click",openSimilar);
+      card.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openSimilar();}});
     });
   }catch(error){
     console.error("Movie details:",error);
