@@ -2,33 +2,60 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>About Us | Movie Wala</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#07090b;color:#eee;font-family:Arial,sans-serif;line-height:1.7}
-.wrap{max-width:900px;margin:0 auto;padding:30px 18px}.top{text-align:center;padding:20px 0 28px}
-.logo{width:110px;height:110px;object-fit:contain;border-radius:16px}.brand{font-size:28px;font-weight:800;margin-top:12px}.brand span{color:#f5b400}
-.card{background:#0d1115;border:1px solid #292f35;border-radius:14px;padding:28px;margin-top:18px}
-h1{margin-top:0;color:#fff}h2{color:#f5b400;margin-top:28px}a{color:#f5b400;text-decoration:none}
-.back{display:inline-block;margin-top:24px;padding:10px 16px;border:1px solid #444;border-radius:8px}
-footer{text-align:center;color:#777;border-top:1px solid #222;margin-top:30px;padding:25px 10px;font-size:12px}
-.links{margin-top:12px}.links a{margin:0 7px;color:#aaa}
+*{box-sizing:border-box}body{margin:0;background:#050708;color:#eee;font-family:Arial,Helvetica,sans-serif;line-height:1.7}
+a{color:inherit;text-decoration:none}.wrap{max-width:900px;margin:0 auto;padding:24px}
+header{display:flex;align-items:center;gap:14px;padding:12px 0 28px;border-bottom:1px solid #292d30}
+.logo{width:58px;height:58px;border-radius:50%;object-fit:cover;border:2px solid #e7ad00}.brand{font-size:24px;font-weight:900}.brand span{color:#e7ad00}
+.back{margin-left:auto;border:1px solid #444;border-radius:7px;padding:9px 14px;color:#ddd}
+.card{margin-top:28px;background:#0b0e10;border:1px solid #292d30;border-radius:14px;padding:30px}
+h1{font-size:36px;margin:0 0 10px}h2{color:#ffc400;font-size:21px;margin-top:30px}p,li{color:#d1d1d1}ul{padding-left:22px}
+.notice{background:#101416;border-left:3px solid #e7ad00;padding:14px 16px;margin:22px 0;color:#ddd}
+footer{text-align:center;border-top:1px solid #292d30;margin-top:28px;padding:24px 0;color:#888;font-size:12px}
+.links{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:12px}.links a{color:#aaa}.links a:hover{color:#e7ad00}
 </style>
 </head>
-<body><div class="wrap">
-<div class="top"><img class="logo" src="movie-wala-logo.jpeg" alt="Movie Wala Logo"><div class="brand">MOVIE <span>WALA</span></div></div>
-<div class="card">
+<body>
+<div class="wrap">
+<header>
+<a href="index.html"><img class="logo" src="movie-wala-logo.jpeg" alt="Movie Wala"></a>
+<a class="brand" href="index.html">MOVIE <span>WALA</span></a>
+<a class="back" href="index.html">← Back</a>
+</header>
+<main class="card">
 <h1>About Movie Wala</h1>
-<p>Movie Wala is a movie discovery and entertainment platform created to help visitors discover movies, explore useful movie information, and find where titles may be available through official services.</p>
+<p>Movie Wala is an entertainment and movie-discovery website created for movie lovers. We provide movie and web-series information, ratings, release details, entertainment updates and links to official viewing options.</p>
+
 <h2>What We Do</h2>
-<p>We provide movie-related information such as titles, posters, ratings, release information, descriptions and availability information using third-party data services where applicable.</p>
-<h2>Official Viewing</h2>
-<p>Movie Wala does not intend to provide unauthorized copies of copyrighted movies. Where viewing or purchase information is shown, visitors may be directed to third-party official platforms. Availability, pricing and access are controlled by those platforms.</p>
-<h2>Third-Party Data</h2>
-<p>Movie information may be provided through the TMDB API. Movie Wala is not endorsed or certified by TMDB.</p>
+<ul>
+<li>Help visitors discover movies and web series.</li>
+<li>Provide useful movie information and entertainment updates.</li>
+<li>Show availability information for official watch, rent or buy options when available.</li>
+<li>Publish original editorial and informational content intended to help movie fans.</li>
+</ul>
+
+<h2>Official &amp; Legal Viewing</h2>
+<p>Movie Wala does not intentionally host or distribute copyrighted movie files. When official provider information is available, visitors may be directed to third-party services for legitimate viewing, rental or purchase.</p>
+
+<h2>Movie Data</h2>
+<p>Movie information, ratings, posters and related data may be provided using the TMDB API. This product uses the TMDB API but is not endorsed or certified by TMDB.</p>
+<p>Watch-provider availability information is provided by JustWatch through TMDB.</p>
+
+<div class="notice"><strong>Important:</strong> Third-party services linked from Movie Wala have their own terms, privacy policies and availability. Please review those services before making a purchase or subscription.</div>
+
 <h2>Contact</h2>
-<p>For questions, corrections, copyright concerns or business enquiries, please use the email address published on our Contact page.</p>
-<a class="back" href="index.html">← Back to Movie Wala</a>
+<p>For corrections, copyright concerns, business enquiries or other website-related matters, please visit our <a href="contact.html" style="color:#ffc400;text-decoration:underline">Contact page</a>.</p>
+</main>
+<footer>
+© 2026 Movie Wala. All Rights Reserved. • Har Scene Mein Entertainment ❤️
+<div class="links">
+<a href="about.html">About</a><span>|</span><a href="contact.html">Contact</a><span>|</span>
+<a href="privacy.html">Privacy Policy</a><span>|</span><a href="terms.html">Terms &amp; Conditions</a><span>|</span>
+<a href="disclaimer.html">Disclaimer</a><span>|</span><a href="copyright.html">Copyright</a>
 </div>
-<footer>© 2026 Movie Wala. All Rights Reserved.<div class="links"><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="disclaimer.html">Disclaimer</a><a href="copyright.html">Copyright</a></div></footer>
-</div></body></html>
+</footer>
+</div>
+</body>
+</html>
