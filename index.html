@@ -1573,41 +1573,122 @@ footer{background:#050505!important;border-top:1px solid #1e2123!important;}
 
 </style>
 
-<style>
-/* Movie Wala - Full OTT Movie Details */
-.modal{padding:0!important;background:rgba(0,0,0,.94)!important;backdrop-filter:blur(10px)!important;align-items:stretch!important;justify-content:stretch!important}
-.modal-box{width:100%!important;max-width:none!important;height:100vh!important;max-height:none!important;overflow-y:auto!important;overflow-x:hidden!important;border:0!important;border-radius:0!important;padding:0!important;background:#08090a!important;box-shadow:none!important}
-.modal-close{position:fixed!important;z-index:30!important;top:22px!important;right:28px!important;width:44px!important;height:44px!important;background:rgba(20,20,20,.82)!important;border:1px solid rgba(255,255,255,.2)!important;font-size:27px!important}
-.modal-close:hover{background:#e50914!important;border-color:#e50914!important}
-.ott-detail{min-height:100vh;background:#08090a;color:#fff}
-.ott-detail-hero{position:relative;min-height:590px;display:flex;align-items:flex-end;padding:0 6vw 70px;overflow:hidden;background:#090a0b}
-.ott-detail-backdrop{position:absolute;inset:0;background-size:cover;background-position:center 20%;transform:scale(1.02)}
-.ott-detail-gradient{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.96) 0%,rgba(0,0,0,.78) 38%,rgba(0,0,0,.22) 72%,rgba(0,0,0,.72) 100%),linear-gradient(0deg,#08090a 0%,transparent 48%,rgba(0,0,0,.2) 100%)}
-.ott-detail-copy{position:relative;z-index:2;max-width:780px;padding-top:190px}
-.ott-detail-kicker{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-bottom:14px;font-size:12px;font-weight:800;color:#ddd}
-.ott-chip{padding:5px 9px;border:1px solid rgba(255,255,255,.25);border-radius:4px;background:rgba(0,0,0,.4)}
-.ott-chip.rating{position:static;background:transparent;border:0;color:#ffc400;padding:0;font-size:13px}
-.ott-detail-title{font-size:clamp(38px,6vw,76px);line-height:.98;font-weight:950;letter-spacing:-1.5px;margin:0 0 18px;max-width:850px;text-shadow:0 4px 25px rgba(0,0,0,.65)}
-.ott-detail-overview{font-size:15px;line-height:1.7;color:#e4e4e4;max-width:700px;margin:0 0 24px}
-.ott-detail-actions{display:flex;gap:10px;flex-wrap:wrap}
-.ott-btn{border:0;border-radius:5px;padding:12px 18px;font-size:12px;font-weight:900;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
-.ott-btn-red{background:#e50914;color:#fff}.ott-btn-red:hover{background:#f6121d}.ott-btn-dark{background:rgba(35,37,39,.9);color:#fff;border:1px solid #45484b}.ott-btn-dark:hover{background:#303336}
-.ott-detail-body{padding:34px 6vw 70px;max-width:1400px;margin:auto}
-.ott-detail-grid{display:grid;grid-template-columns:210px minmax(0,1fr);gap:30px;align-items:start}
-.ott-poster{width:210px;border-radius:8px;display:block;box-shadow:0 18px 50px rgba(0,0,0,.55)}
-.ott-info-grid{display:grid;grid-template-columns:repeat(4,minmax(120px,1fr));gap:10px;margin-bottom:25px}
-.ott-info-item{background:#111315;border:1px solid #272b2e;border-radius:6px;padding:13px}.ott-info-item small{display:block;color:#888;font-size:10px;margin-bottom:5px}.ott-info-item b{font-size:12px;color:#eee}
-.ott-section-title{font-size:21px;font-weight:950;margin:32px 0 14px;padding-left:12px;border-left:4px solid #e50914}
-.ott-genres{display:flex;gap:7px;flex-wrap:wrap}.ott-genre{font-size:11px;color:#ddd;padding:7px 10px;border:1px solid #35393c;border-radius:20px}
-.ott-cast{display:flex;gap:12px;overflow-x:auto;padding:2px 0 14px;scrollbar-width:none}.ott-cast::-webkit-scrollbar{display:none}
-.ott-cast-card{flex:0 0 105px}.ott-cast-card img{width:105px;height:145px;object-fit:cover;border-radius:6px;background:#151719}.ott-cast-card b{display:block;font-size:11px;margin-top:7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ott-cast-card small{display:block;color:#888;font-size:9px;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ott-similar{display:flex;gap:12px;overflow-x:auto;padding:2px 0 14px;scrollbar-width:none}.ott-similar::-webkit-scrollbar{display:none}.ott-sim-card{flex:0 0 150px;cursor:pointer}.ott-sim-card img{width:150px;height:220px;object-fit:cover;border-radius:6px;display:block;transition:.2s}.ott-sim-card:hover img{transform:translateY(-4px);filter:brightness(1.12)}.ott-sim-card b{display:block;font-size:11px;margin-top:7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ott-sim-card small{color:#999;font-size:9px}
-.ott-watch{display:flex;gap:10px;flex-wrap:wrap}.ott-watch a{background:#17191b;border:1px solid #33383b;color:#fff;text-decoration:none;padding:10px 13px;border-radius:5px;font-size:11px;font-weight:800}.ott-watch a:hover{border-color:#e50914}
-.ott-trailer{position:relative;width:min(900px,100%);aspect-ratio:16/9;background:#000;border-radius:8px;overflow:hidden;border:1px solid #25282a}.ott-trailer iframe{width:100%;height:100%;border:0}
-.ott-loading{min-height:300px;display:grid;place-items:center;color:#aaa;font-size:14px}
-.ott-error{padding:50px;text-align:center;color:#bbb}
-@media(max-width:800px){.ott-detail-hero{min-height:610px;padding:0 20px 42px}.ott-detail-copy{padding-top:180px}.ott-detail-title{font-size:42px}.ott-detail-overview{font-size:13px;line-height:1.6}.ott-detail-body{padding:25px 20px 55px}.ott-detail-grid{grid-template-columns:130px minmax(0,1fr);gap:18px}.ott-poster{width:130px}.ott-info-grid{grid-template-columns:repeat(2,1fr)}.modal-close{top:12px!important;right:12px!important;width:40px!important;height:40px!important}.ott-sim-card{flex-basis:125px}.ott-sim-card img{width:125px;height:185px}}
-@media(max-width:520px){.ott-detail-hero{min-height:590px}.ott-detail-copy{padding-top:170px}.ott-detail-title{font-size:34px}.ott-detail-grid{grid-template-columns:1fr}.ott-poster{width:145px}.ott-info-grid{grid-template-columns:repeat(2,1fr)}.ott-section-title{font-size:18px}.ott-cast-card{flex-basis:90px}.ott-cast-card img{width:90px;height:125px}.ott-trailer{border-radius:5px}}
+<style id="movie-details-v3">
+/* === FULL OTT MOVIE DETAILS === */
+#movieModal{
+  padding:0!important;
+  align-items:stretch!important;
+  justify-content:stretch!important;
+  background:#030404!important;
+  backdrop-filter:none!important;
+}
+#movieModal.show{display:block!important;}
+#movieModal .modal-box{
+  width:100%!important;
+  max-width:none!important;
+  height:100vh!important;
+  max-height:none!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:#050607!important;
+  box-shadow:none!important;
+}
+#movieModal .modal-close{
+  position:fixed!important;
+  top:20px!important;
+  right:24px!important;
+  z-index:100!important;
+  width:44px!important;
+  height:44px!important;
+  background:rgba(0,0,0,.72)!important;
+  border:1px solid rgba(255,255,255,.35)!important;
+  font-size:26px!important;
+}
+#movieModal .modal-close:hover{background:#e50914!important;border-color:#e50914!important}
+.detail-page{min-height:100vh;background:#050607;color:#fff}
+.detail-hero{
+  position:relative;min-height:590px;display:flex;align-items:flex-end;
+  overflow:hidden;background:#070809;
+}
+.detail-backdrop{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+.detail-backdrop-shade{
+  position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(0,0,0,.96) 0%,rgba(0,0,0,.78) 34%,rgba(0,0,0,.32) 68%,rgba(0,0,0,.58) 100%),
+             linear-gradient(0deg,#050607 1%,rgba(5,6,7,.88) 12%,rgba(5,6,7,.08) 58%,rgba(5,6,7,.3) 100%);
+}
+.detail-hero-inner{
+  position:relative;z-index:2;width:min(1220px,92%);margin:0 auto;
+  display:grid;grid-template-columns:250px minmax(0,1fr);gap:32px;
+  align-items:end;padding:100px 0 55px;
+}
+.detail-poster{width:250px;height:375px;object-fit:cover;border-radius:10px;border:1px solid rgba(255,255,255,.18);box-shadow:0 24px 60px rgba(0,0,0,.7)}
+.detail-info{max-width:760px;padding-bottom:10px}
+.detail-kicker{display:inline-flex;align-items:center;gap:8px;background:#e50914;padding:7px 11px;border-radius:4px;font-size:11px;font-weight:900;text-transform:uppercase}
+.detail-title{font-size:clamp(38px,5vw,70px);line-height:.98;font-weight:950;letter-spacing:-1.5px;margin:14px 0}
+.detail-meta{display:flex;flex-wrap:wrap;gap:9px;align-items:center;color:#ddd;font-size:13px;margin-bottom:16px}
+.detail-rating{color:#ffc400;font-weight:900}
+.detail-pill{border:1px solid #555;border-radius:20px;padding:5px 9px;background:rgba(0,0,0,.28)}
+.detail-overview{font-size:15px;line-height:1.7;color:#e8e8e8;max-width:720px}
+.detail-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:22px}
+.detail-action{
+  min-height:45px;padding:0 17px;border-radius:5px;border:1px solid #555;background:#16191b;color:#fff;
+  font-size:12px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;justify-content:center
+}
+.detail-action.primary{background:#e50914;border-color:#e50914}
+.detail-action:hover{border-color:#fff;background:#25292b}
+.detail-action.primary:hover{background:#ff1823;border-color:#ff1823}
+.detail-body{width:min(1220px,92%);margin:0 auto;padding:35px 0 70px}
+.detail-section{margin-top:28px}
+.detail-section-title{font-size:22px;font-weight:900;border-left:5px solid #e50914;padding-left:11px;margin-bottom:15px}
+.detail-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.detail-fact{background:#101315;border:1px solid #292d30;border-radius:7px;padding:14px}
+.detail-fact small{display:block;color:#888;font-size:10px;margin-bottom:6px}
+.detail-fact b{font-size:13px;color:#fff}
+.detail-genres{display:flex;gap:8px;flex-wrap:wrap}
+.detail-genre{padding:7px 11px;border:1px solid #3b4043;border-radius:20px;background:#0f1214;font-size:11px}
+.cast-row,.similar-row{display:flex;gap:13px;overflow-x:auto;padding:3px 2px 12px;scrollbar-width:none}
+.cast-row::-webkit-scrollbar,.similar-row::-webkit-scrollbar{display:none}
+.cast-card{flex:0 0 125px;width:125px}
+.cast-photo{width:125px;height:170px;object-fit:cover;border-radius:7px;background:#111;border:1px solid #292d30}
+.cast-name{font-size:11px;font-weight:900;margin-top:7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cast-role{font-size:9px;color:#888;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.similar-card{flex:0 0 155px;width:155px;cursor:pointer}
+.similar-card img{width:155px;height:225px;object-fit:cover;border-radius:7px;border:1px solid #292d30;display:block}
+.similar-card b{display:block;font-size:11px;margin-top:7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.similar-card small{display:block;color:#888;margin-top:3px}
+.provider-grid{display:flex;flex-wrap:wrap;gap:10px}
+.provider-card{display:flex;align-items:center;gap:9px;background:#101315;border:1px solid #292d30;border-radius:7px;padding:8px 11px}
+.provider-card img{width:36px;height:36px;border-radius:7px;object-fit:cover}
+.provider-card b{font-size:11px}.provider-card small{display:block;color:#888;font-size:9px;margin-top:3px}
+.detail-note{color:#777;font-size:11px;line-height:1.6}
+.detail-loading{padding:30px 0;color:#888;text-align:center}
+.detail-trailer-wrap{position:relative;aspect-ratio:16/9;max-width:900px;background:#000;border-radius:9px;overflow:hidden;border:1px solid #292d30}
+.detail-trailer-wrap iframe{width:100%;height:100%;border:0;display:block}
+@media(max-width:800px){
+ .detail-hero{min-height:680px}
+ .detail-hero-inner{grid-template-columns:150px minmax(0,1fr);gap:18px;width:92%;padding:90px 0 35px}
+ .detail-poster{width:150px;height:225px}
+ .detail-title{font-size:35px}
+ .detail-overview{font-size:12px;line-height:1.55}
+ .detail-facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .detail-body{width:92%}
+}
+@media(max-width:560px){
+ #movieModal .modal-close{top:12px;right:12px;width:38px;height:38px;font-size:22px}
+ .detail-hero{min-height:760px;align-items:flex-end}
+ .detail-hero-inner{grid-template-columns:1fr;width:90%;padding:78px 0 28px;gap:18px}
+ .detail-poster{width:150px;height:225px}
+ .detail-info{padding-bottom:0}
+ .detail-title{font-size:32px}
+ .detail-overview{font-size:12px;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+ .detail-meta{font-size:11px}
+ .detail-facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .detail-fact{padding:11px}
+ .detail-section-title{font-size:18px}
+}
 </style>
 
 </head>
@@ -2711,116 +2792,186 @@ document.getElementById(
 "modalClose"
 );
 async function openMovieModal(movie){
-const title = movie.title || movie.name || "Untitled";
-const mediaType = movie.media_type === "tv" || movie.first_air_date ? "tv" : "movie";
-const date = movie.release_date || movie.first_air_date || "";
-const year = date ? date.substring(0,4) : "N/A";
-const rating = movie.vote_average ? (Number(movie.vote_average) / 2).toFixed(1) : "N/A";
-modal.classList.add("show");
-document.body.style.overflow = "hidden";
-modalContent.innerHTML = `<div class="ott-loading">Loading movie details…</div>`;
-try{
-  const endpoint = mediaType === "tv"
-    ? `/tv/${encodeURIComponent(movie.id)}?append_to_response=credits,videos,similar,watch/providers`
-    : `/movie/${encodeURIComponent(movie.id)}?append_to_response=credits,videos,similar,watch/providers`;
-  const details = await tmdbFetch(endpoint);
-  const backdrop = details.backdrop_path || movie.backdrop_path || movie.poster_path;
-  const poster = posterUrl(details.poster_path || movie.poster_path);
-  const genres = Array.isArray(details.genres) ? details.genres : [];
-  const runtime = mediaType === "movie"
-    ? (details.runtime ? `${details.runtime} min` : "N/A")
-    : (details.episode_run_time && details.episode_run_time[0] ? `${details.episode_run_time[0]} min/ep` : "N/A");
-  const language = details.original_language ? String(details.original_language).toUpperCase() : "N/A";
-  const creator = mediaType === "tv"
-    ? ((details.created_by || []).map(x => x.name).join(", ") || "N/A")
-    : ((details.credits?.crew || []).filter(x => x.job === "Director").map(x => x.name).slice(0,2).join(", ") || "N/A");
-  const cast = (details.credits?.cast || []).filter(x => x.profile_path).slice(0,10);
-  const similar = (details.similar?.results || []).filter(x => x.poster_path).slice(0,10);
-  const trailer = (details.videos?.results || []).find(v => v.site === "YouTube" && v.type === "Trailer") || (details.videos?.results || []).find(v => v.site === "YouTube" && v.type === "Teaser");
-  const providers = details["watch/providers"]?.results?.IN;
-  const watch = [];
-  const seenWatch = new Set();
-  [...(providers?.flatrate || []), ...(providers?.free || []), ...(providers?.rent || []), ...(providers?.buy || [])].forEach(p => {
-    if(p && p.provider_name && !seenWatch.has(p.provider_name)){
-      seenWatch.add(p.provider_name);
-      watch.push(p);
-    }
-  });
-  const watchUrl = providers?.link || "";
-  const release = details.release_date || details.first_air_date || date;
-  const overview = details.overview || movie.overview || "No overview available.";
+  const title = movie.title || movie.name || "Untitled";
+  const type = movie.media_type === "tv" ? "tv" : "movie";
+  const id = movie.id;
+  const date = movie.release_date || movie.first_air_date || "";
+  const year = date ? date.substring(0,4) : "N/A";
+  const rating = movie.vote_average ? (Number(movie.vote_average)/2).toFixed(1) : "N/A";
+  const poster = posterUrl(movie.poster_path);
+  const backdrop = movie.backdrop_path ? TMDB_BACKDROP + movie.backdrop_path : poster;
+  const saved = getMyList().some(item => String(item.id || item.title) === String(id));
+
   modalContent.innerHTML = `
-  <article class="ott-detail">
-    <section class="ott-detail-hero">
-      <div class="ott-detail-backdrop" style="background-image:url('${TMDB_BACKDROP + encodeURIComponent(backdrop || "")}')"></div>
-      <div class="ott-detail-gradient"></div>
-      <div class="ott-detail-copy">
-        <div class="ott-detail-kicker">
-          <span class="ott-chip rating">★ ${rating}/5</span>
-          <span class="ott-chip">${escapeHtml(year)}</span>
-          <span class="ott-chip">${mediaType === "tv" ? "WEB SERIES" : "MOVIE"}</span>
-        </div>
-        <h1 class="ott-detail-title">${escapeHtml(title)}</h1>
-        <p class="ott-detail-overview">${escapeHtml(overview)}</p>
-        <div class="ott-detail-actions">
-          ${trailer ? `<button class="ott-btn ott-btn-red" type="button" id="ottTrailerBtn">▶ Watch Trailer</button>` : ""}
-          <button class="ott-btn ott-btn-dark" type="button" id="ottListBtn">＋ My List</button>
-        </div>
-      </div>
-    </section>
-    <section class="ott-detail-body">
-      <div class="ott-detail-grid">
-        <div><img class="ott-poster" src="${poster}" alt="${escapeHtml(title)}"></div>
-        <div>
-          <div class="ott-info-grid">
-            <div class="ott-info-item"><small>Release</small><b>${escapeHtml(release || "N/A")}</b></div>
-            <div class="ott-info-item"><small>Runtime</small><b>${escapeHtml(runtime)}</b></div>
-            <div class="ott-info-item"><small>Language</small><b>${escapeHtml(language)}</b></div>
-            <div class="ott-info-item"><small>${mediaType === "tv" ? "Creator" : "Director"}</small><b>${escapeHtml(creator)}</b></div>
+    <div class="detail-page">
+      <section class="detail-hero">
+        <img class="detail-backdrop" src="${backdrop}" alt="" onerror="this.style.display='none'">
+        <div class="detail-backdrop-shade"></div>
+        <div class="detail-hero-inner">
+          <img class="detail-poster" src="${poster}" alt="${escapeHtml(title)}" onerror="this.style.opacity='.35'">
+          <div class="detail-info">
+            <div class="detail-kicker">${type === "tv" ? "WEB SERIES" : "MOVIE"} • TMDB</div>
+            <h1 class="detail-title">${escapeHtml(title)}</h1>
+            <div class="detail-meta">
+              <span class="detail-rating">★ ${rating} / 5</span>
+              <span>•</span><span>${year}</span>
+              <span>•</span><span>${type === "tv" ? "Series" : "Movie"}</span>
+            </div>
+            <p class="detail-overview">${escapeHtml(movie.overview || "No overview available.")}</p>
+            <div class="detail-actions">
+              <button class="detail-action primary" id="detailTrailerBtn" type="button">▶ WATCH TRAILER</button>
+              <button class="detail-action" id="detailListBtn" type="button">${saved ? "✓ IN MY LIST" : "＋ MY LIST"}</button>
+            </div>
           </div>
-          <h2 class="ott-section-title">Genres</h2>
-          <div class="ott-genres">${genres.length ? genres.map(g => `<span class="ott-genre">${escapeHtml(g.name)}</span>`).join("") : `<span class="ott-genre">Not available</span>`}</div>
-          ${watch.length ? `<h2 class="ott-section-title">Where to Watch in India</h2><div class="ott-watch">${watch.map(w => `<a href="${escapeHtml(watchUrl || "#")}" target="_blank" rel="noopener">${escapeHtml(w.provider_name)}</a>`).join("")}</div>` : ""}
         </div>
+      </section>
+      <div class="detail-body">
+        <section class="detail-section">
+          <div class="detail-section-title">MOVIE INFORMATION</div>
+          <div class="detail-facts" id="detailFacts"><div class="detail-loading">Loading details...</div></div>
+        </section>
+        <section class="detail-section">
+          <div class="detail-section-title">GENRES</div>
+          <div class="detail-genres" id="detailGenres"><span class="detail-note">Loading genres...</span></div>
+        </section>
+        <section class="detail-section" id="detailTrailerSection" style="display:none">
+          <div class="detail-section-title">TRAILER</div>
+          <div class="detail-trailer-wrap"><iframe id="detailTrailerFrame" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
+        </section>
+        <section class="detail-section">
+          <div class="detail-section-title">CAST</div>
+          <div class="cast-row" id="detailCast"><div class="detail-loading">Loading cast...</div></div>
+        </section>
+        <section class="detail-section">
+          <div class="detail-section-title">WHERE TO WATCH</div>
+          <div id="detailProviders"><div class="detail-loading">Checking availability...</div></div>
+        </section>
+        <section class="detail-section">
+          <div class="detail-section-title">MORE LIKE THIS</div>
+          <div class="similar-row" id="detailSimilar"><div class="detail-loading">Loading recommendations...</div></div>
+        </section>
       </div>
-      ${trailer ? `<div id="ottTrailerSection" style="display:none"><h2 class="ott-section-title">Trailer</h2><div class="ott-trailer"><iframe id="ottTrailerFrame" title="${escapeHtml(title)} trailer" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div></div>` : ""}
-      ${cast.length ? `<h2 class="ott-section-title">Cast</h2><div class="ott-cast">${cast.map(c => `<div class="ott-cast-card"><img src="${posterUrl(c.profile_path)}" alt="${escapeHtml(c.name)}"><b>${escapeHtml(c.name)}</b><small>${escapeHtml(c.character || "Cast")}</small></div>`).join("")}</div>` : ""}
-      ${similar.length ? `<h2 class="ott-section-title">More Like This</h2><div class="ott-similar">${similar.map((m,i) => `<div class="ott-sim-card" data-sim-index="${i}"><img src="${posterUrl(m.poster_path)}" alt="${escapeHtml(m.title || m.name || "Movie")}"><b>${escapeHtml(m.title || m.name || "Untitled")}</b><small>★ ${m.vote_average ? (Number(m.vote_average)/2).toFixed(1) : "N/A"}/5</small></div>`).join("")}</div>` : ""}
-    </section>
-  </article>`;
-  const listBtn = document.getElementById("ottListBtn");
+    </div>
+  `;
+  modal.classList.add("show");
+  document.body.style.overflow = "hidden";
+
+  const listBtn = document.getElementById("detailListBtn");
   if(listBtn){
-    const key = String(details.id || movie.id || title);
-    const list = getMyList();
-    const saved = list.some(item => String(item.id || item.title) === key);
-    listBtn.textContent = saved ? "✓ In My List" : "＋ My List";
-    listBtn.addEventListener("click", function(){
-      const current = getMyList();
-      const idx = current.findIndex(item => String(item.id || item.title) === key);
-      if(idx >= 0){ current.splice(idx,1); listBtn.textContent = "＋ My List"; }
-      else { current.push({id:details.id,title,poster_path:details.poster_path,vote_average:details.vote_average,release_date:details.release_date,first_air_date:details.first_air_date,media_type:mediaType}); listBtn.textContent = "✓ In My List"; }
+    listBtn.addEventListener("click",()=>{
+      const current=getMyList();
+      const idx=current.findIndex(item=>String(item.id||item.title)===String(id));
+      if(idx>=0){
+        current.splice(idx,1);
+        listBtn.textContent="＋ MY LIST";
+      }else{
+        current.push({id,title,poster_path:movie.poster_path,backdrop_path:movie.backdrop_path,vote_average:movie.vote_average,release_date:date,first_air_date:movie.first_air_date,media_type:movie.media_type});
+        listBtn.textContent="✓ IN MY LIST";
+      }
       saveMyList(current);
     });
   }
-  const trailerBtn = document.getElementById("ottTrailerBtn");
-  if(trailerBtn && trailer){
-    trailerBtn.addEventListener("click", function(){
-      const section = document.getElementById("ottTrailerSection");
-      const frame = document.getElementById("ottTrailerFrame");
-      if(section && frame){
-        section.style.display = "block";
-        frame.src = `https://www.youtube.com/embed/${encodeURIComponent(trailer.key)}?autoplay=1&rel=0`;
-        section.scrollIntoView({behavior:"smooth",block:"start"});
-      }
+
+  try{
+    const endpoint = type === "tv"
+      ? `/tv/${id}?append_to_response=credits,videos,similar,watch/providers`
+      : `/movie/${id}?append_to_response=credits,videos,similar,watch/providers`;
+    const detail = await tmdbFetch(endpoint);
+
+    const genres = detail.genres || [];
+    document.getElementById("detailGenres").innerHTML = genres.length
+      ? genres.map(g=>`<span class="detail-genre">${escapeHtml(g.name)}</span>`).join("")
+      : '<span class="detail-note">Genre information unavailable.</span>';
+
+    const runtime = type === "tv"
+      ? ((detail.episode_run_time && detail.episode_run_time[0]) ? detail.episode_run_time[0] + " min/episode" : "N/A")
+      : (detail.runtime ? detail.runtime + " min" : "N/A");
+    const language = detail.original_language ? detail.original_language.toUpperCase() : "N/A";
+    let director = "N/A";
+    if(type === "movie"){
+      const crew=(detail.credits?.crew||[]).filter(c=>c.job==="Director");
+      director=crew.slice(0,2).map(c=>c.name).join(", ") || "N/A";
+    }else{
+      director=(detail.created_by||[]).slice(0,2).map(c=>c.name).join(", ") || "N/A";
+    }
+    document.getElementById("detailFacts").innerHTML = `
+      <div class="detail-fact"><small>RELEASE</small><b>${escapeHtml(detail.release_date || detail.first_air_date || "N/A")}</b></div>
+      <div class="detail-fact"><small>RUNTIME</small><b>${escapeHtml(runtime)}</b></div>
+      <div class="detail-fact"><small>LANGUAGE</small><b>${escapeHtml(language)}</b></div>
+      <div class="detail-fact"><small>${type==="tv" ? "CREATOR" : "DIRECTOR"}</small><b>${escapeHtml(director)}</b></div>
+    `;
+
+    const cast=(detail.credits?.cast||[]).filter(a=>a.profile_path).slice(0,12);
+    document.getElementById("detailCast").innerHTML = cast.length ? cast.map(a=>`
+      <div class="cast-card">
+        <img class="cast-photo" src="${TMDB_IMAGE}${a.profile_path}" alt="${escapeHtml(a.name)}" loading="lazy">
+        <div class="cast-name">${escapeHtml(a.name)}</div>
+        <div class="cast-role">${escapeHtml(a.character || "")}</div>
+      </div>
+    `).join("") : '<div class="detail-note">Cast information unavailable.</div>';
+
+    const providers = detail["watch/providers"]?.results?.IN;
+    const providerMap = new Map();
+    ["flatrate","free","ads","rent","buy"].forEach(group=>{
+      (providers?.[group]||[]).forEach(p=>providerMap.set(p.provider_id,{...p,group}));
     });
+    const providerList=[...providerMap.values()].slice(0,10);
+    const providerBox=document.getElementById("detailProviders");
+    if(providerList.length){
+      providerBox.innerHTML=`<div class="provider-grid">${providerList.map(p=>`
+        <div class="provider-card">
+          ${p.logo_path ? `<img src="${TMDB_IMAGE}${p.logo_path}" alt="">` : ""}
+          <div><b>${escapeHtml(p.provider_name)}</b><small>${p.group==="flatrate"?"Streaming":p.group==="free"?"Free":p.group==="ads"?"With ads":p.group==="rent"?"Rent":"Buy"}</small></div>
+        </div>`).join("")}</div>
+        ${providers.link ? `<p class="detail-note" style="margin-top:10px">Availability data provided by TMDB. Check the provider before watching.</p>` : ""}`;
+    }else{
+      providerBox.innerHTML='<p class="detail-note">India ke liye TMDB par streaming/rent/buy provider information available nahi hai.</p>';
+    }
+
+    const videos=detail.videos?.results||[];
+    const trailer=videos.find(v=>v.site==="YouTube" && v.type==="Trailer" && v.key) ||
+                   videos.find(v=>v.site==="YouTube" && v.type==="Teaser" && v.key) ||
+                   videos.find(v=>v.site==="YouTube" && v.key);
+    const trailerBtn=document.getElementById("detailTrailerBtn");
+    if(trailer){
+      trailerBtn.onclick=()=>{
+        const sec=document.getElementById("detailTrailerSection");
+        const frame=document.getElementById("detailTrailerFrame");
+        sec.style.display="block";
+        frame.src=`https://www.youtube.com/embed/${encodeURIComponent(trailer.key)}?autoplay=1&rel=0&modestbranding=1`;
+        sec.scrollIntoView({behavior:"smooth",block:"start"});
+      };
+    }else{
+      trailerBtn.disabled=true;
+      trailerBtn.textContent="TRAILER NOT AVAILABLE";
+      trailerBtn.style.opacity=".55";
+    }
+
+    const similar=(detail.similar?.results||[]).filter(m=>m.poster_path).slice(0,12);
+    const similarBox=document.getElementById("detailSimilar");
+    similarBox.innerHTML=similar.length ? similar.map(m=>{
+      const mtype=type;
+      return `<article class="similar-card" data-id="${m.id}" data-type="${mtype}">
+        <img src="${posterUrl(m.poster_path)}" alt="${escapeHtml(m.title||m.name||"Movie")}" loading="lazy">
+        <b>${escapeHtml(m.title||m.name||"Untitled")}</b>
+        <small>★ ${m.vote_average ? (Number(m.vote_average)/2).toFixed(1) : "N/A"} / 5</small>
+      </article>`;
+    }).join("") : '<div class="detail-note">Similar titles unavailable.</div>';
+    similarBox.querySelectorAll(".similar-card").forEach(card=>{
+      card.addEventListener("click",async()=>{
+        try{
+          const similarId=Number(card.dataset.id);
+          const similarDetail=await tmdbFetch(`/${card.dataset.type}/${similarId}`);
+          similarDetail.media_type=card.dataset.type;
+          await openMovieModal(similarDetail);
+        }catch(e){console.error("Similar title:",e);}
+      });
+    });
+  }catch(error){
+    console.error("Movie details:",error);
+    const facts=document.getElementById("detailFacts");
+    if(facts) facts.innerHTML='<div class="detail-note">Movie details load nahi ho paaye. TMDB API key/network check karo.</div>';
   }
-  modalContent.querySelectorAll(".ott-sim-card").forEach((el,index)=>{
-    el.addEventListener("click",()=>openMovieModal(similar[index]));
-  });
-}catch(error){
-  console.error("Movie details:", error);
-  modalContent.innerHTML = `<div class="ott-error"><h2>Unable to load details</h2><p>Please try again.</p><button class="ott-btn ott-btn-red" type="button" onclick="openMovieModal(${JSON.stringify({id:movie.id,title:movie.title||movie.name,poster_path:movie.poster_path,backdrop_path:movie.backdrop_path,vote_average:movie.vote_average,release_date:movie.release_date,first_air_date:movie.first_air_date,media_type:movie.media_type})})">Try Again</button></div>`;
-}
 }
 function closeModal(){
 modal.classList.remove(
