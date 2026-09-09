@@ -1,48 +1,298 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Privacy | Movie Wala</title><meta name="description" content="Privacy - Movie Wala">
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Privacy Policy | Movie Wala</title>
+<meta name="description" content="Privacy Policy for Movie Wala.">
 <style>
-:root{--red:#e50914;--bg:#090a0b;--panel:#111315;--line:#24282b;--text:#f5f5f5;--muted:#a6aaad}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.6}
-a{color:inherit;text-decoration:none}.page{min-height:100vh;display:flex;flex-direction:column}
-header{height:64px;background:#08090a;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 5%;position:sticky;top:0;z-index:10}
-.logo{font-weight:1000;font-size:24px;letter-spacing:-1px}.logo span{color:var(--red)}
-.back{margin-left:auto;border:1px solid #383c3f;background:#151719;border-radius:5px;padding:9px 13px;font-size:11px;font-weight:900}
-.back:hover{border-color:var(--red)}
-main{width:min(1000px,90%);margin:45px auto 60px;flex:1}.eyebrow{color:var(--red);font-size:11px;font-weight:900;letter-spacing:2px;margin-bottom:8px}
-h1{font-size:42px;line-height:1.05;margin:0 0 12px;font-weight:1000}h2{font-size:19px;margin:30px 0 8px}
-.lead{color:#c7c9ca;max-width:760px;font-size:15px}.card{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:24px;margin-top:22px}
-ul{padding-left:20px;color:#c7c9ca}li{margin:8px 0}.muted{color:var(--muted)}
-.contact-box{display:grid;gap:10px;margin-top:20px}.contact-item{background:#151719;border:1px solid var(--line);border-radius:7px;padding:14px}.contact-item strong{display:block;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#888;margin-bottom:3px}
-.contact-item a{color:#fff}.contact-item a:hover{color:var(--red)}
-footer{border-top:1px solid var(--line);background:#070809;padding:28px 5%;text-align:center;color:#8f9396;font-size:11px}
-.footer-brand{font-size:18px;font-weight:1000;color:#fff;margin-bottom:8px}.footer-brand span{color:var(--red)}
-.footer-links{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin:12px 0}.footer-links a:hover{color:#fff}
-.tmdb{margin:14px auto 0;max-width:620px;font-size:10px;line-height:1.5}
-@media(max-width:600px){header{padding:0 4%;height:58px}.logo{font-size:21px}main{width:90%;margin:32px auto 45px}h1{font-size:32px}.card{padding:18px}}
-</style></head>
-<body><div class="page">
-<header><a class="logo" href="index.html">MOVIE <span>WALA</span></a><a class="back" href="index.html">← BACK TO MOVIE WALA</a></header>
+:root{
+  --red:#e50914;
+  --bg:#08090a;
+  --panel:#111315;
+  --panel2:#151719;
+  --line:#292d30;
+  --text:#f4f4f4;
+  --muted:#b7bbbe;
+  --soft:#8f9498;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  line-height:1.7;
+}
+a{color:inherit;text-decoration:none}
+.page{min-height:100vh;display:flex;flex-direction:column}
+
+header{
+  height:68px;
+  background:#070809;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  padding:0 5%;
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+.logo{
+  font-size:24px;
+  font-weight:1000;
+  letter-spacing:-1px;
+}
+.logo span{color:var(--red)}
+.back{
+  margin-left:auto;
+  border:1px solid #3a3e41;
+  background:#151719;
+  border-radius:5px;
+  padding:10px 14px;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.2px;
+  transition:.2s ease;
+}
+.back:hover{border-color:var(--red);color:#fff}
+
+main{
+  width:min(1000px,90%);
+  margin:48px auto 70px;
+  flex:1;
+}
+
+.page-head{
+  border-bottom:1px solid var(--line);
+  padding-bottom:28px;
+  margin-bottom:28px;
+}
+.eyebrow{
+  color:var(--red);
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:2px;
+  margin-bottom:9px;
+}
+h1{
+  font-size:42px;
+  line-height:1.08;
+  margin:0 0 12px;
+  font-weight:1000;
+  letter-spacing:-.7px;
+}
+.lead{
+  color:#c8cbcd;
+  max-width:780px;
+  font-size:15px;
+  margin:0 0 16px;
+}
+.meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 18px;
+  color:var(--soft);
+  font-size:11px;
+}
+.meta strong{color:#cfd2d4}
+
+.policy-wrap{
+  display:grid;
+  grid-template-columns:205px minmax(0,1fr);
+  gap:24px;
+  align-items:start;
+}
+.toc{
+  position:sticky;
+  top:92px;
+  background:#0e1011;
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:18px;
+}
+.toc-title{
+  color:#fff;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:1.2px;
+  margin-bottom:10px;
+}
+.toc a{
+  display:block;
+  color:#aeb3b6;
+  font-size:12px;
+  padding:6px 0;
+  border-bottom:1px solid #202427;
+}
+.toc a:last-child{border-bottom:0}
+.toc a:hover{color:#fff}
+
+.card{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:9px;
+  padding:30px;
+}
+.section{
+  padding:0 0 25px;
+  margin:0 0 25px;
+  border-bottom:1px solid #25292c;
+}
+.section:last-child{padding-bottom:0;margin-bottom:0;border-bottom:0}
+h2{
+  font-size:19px;
+  line-height:1.3;
+  margin:0 0 10px;
+  color:#fff;
+}
+.num{
+  color:var(--red);
+  margin-right:7px;
+}
+p{margin:0 0 12px}
+p:last-child{margin-bottom:0}
+.muted{color:var(--muted);font-size:14px}
+ul{padding-left:21px;color:var(--muted);font-size:14px;margin:10px 0 0}
+li{margin:7px 0}
+.contact-box{
+  margin-top:15px;
+  background:var(--panel2);
+  border:1px solid var(--line);
+  border-left:3px solid var(--red);
+  border-radius:6px;
+  padding:15px 17px;
+}
+.contact-box strong{display:block;color:#fff;font-size:11px;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px}
+.contact-box a{color:#fff;font-weight:700}
+.contact-box a:hover{color:var(--red)}
+
+footer{
+  border-top:1px solid var(--line);
+  background:#070809;
+  padding:30px 5%;
+  text-align:center;
+  color:#8f9396;
+  font-size:11px;
+}
+.footer-brand{
+  font-size:18px;
+  font-weight:1000;
+  color:#fff;
+  margin-bottom:8px;
+}
+.footer-brand span{color:var(--red)}
+.footer-links{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  flex-wrap:wrap;
+  margin:13px 0;
+}
+.footer-links a:hover{color:#fff}
+.tmdb{
+  margin:15px auto 0;
+  max-width:650px;
+  font-size:10px;
+  line-height:1.55;
+}
+
+@media(max-width:760px){
+  header{height:60px;padding:0 4%}
+  .logo{font-size:21px}
+  .back{padding:9px 10px;font-size:10px}
+  main{width:92%;margin:34px auto 48px}
+  h1{font-size:34px}
+  .policy-wrap{grid-template-columns:1fr;gap:16px}
+  .toc{position:static}
+  .card{padding:21px}
+}
+@media(max-width:480px){
+  .back{font-size:9px;padding:8px 9px}
+  h1{font-size:30px}
+  .lead{font-size:14px}
+  .card{padding:18px}
+  h2{font-size:18px}
+  .muted,ul{font-size:13.5px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <a class="logo" href="index.html">MOVIE <span>WALA</span></a>
+  <a class="back" href="index.html">← BACK TO MOVIE WALA</a>
+</header>
+
 <main>
-<div class="eyebrow">PRIVACY</div>
-<h1>Privacy Policy</h1>
-<p class="lead">This page explains, in simple terms, how Movie Wala handles information while you use the website.</p>
-<div class="card">
-<h2>Information stored in your browser</h2>
-<p class="muted">Movie Wala may store your TMDB API key and My List data in your browser's local storage. This information is used to make the website's features work on your device.</p>
-<h2>Search and TMDB requests</h2>
-<p class="muted">When you search or browse titles, the website sends requests to TMDB to retrieve movie and series information. TMDB's own policies and privacy practices apply to information handled by TMDB.</p>
-<h2>Cookies</h2>
-<p class="muted">The Movie Wala interface does not require cookies for its core movie-list functionality. Your browser may still handle cookies or storage used by third-party services you interact with.</p>
-<h2>Third-party services</h2>
-<p class="muted">Movie Wala uses TMDB and may display YouTube trailers. Those services operate under their own terms and privacy policies.</p>
-<h2>Contact</h2>
-<p class="muted">For privacy questions, contact us at <a href="mailto:moviewalaofficial5@gmail.com">moviewalaofficial5@gmail.com</a>.</p>
-</div>
+  <div class="page-head">
+    <div class="eyebrow">LEGAL &amp; PRIVACY</div>
+    <h1>Privacy Policy</h1>
+    <p class="lead">This Privacy Policy explains, in simple terms, how Movie Wala handles information while you use the website and its movie-related features.</p>
+    <div class="meta">
+      <span><strong>Effective:</strong> September 9, 2026</span>
+      <span><strong>Website:</strong> Movie Wala</span>
+    </div>
+  </div>
+
+  <div class="policy-wrap">
+    <nav class="toc" aria-label="Privacy Policy sections">
+      <div class="toc-title">CONTENTS</div>
+      <a href="#browser">1. Browser Storage</a>
+      <a href="#tmdb">2. TMDB Requests</a>
+      <a href="#cookies">3. Cookies</a>
+      <a href="#third-party">4. Third-Party Services</a>
+      <a href="#contact">5. Contact</a>
+    </nav>
+
+    <article class="card">
+      <section class="section" id="browser">
+        <h2><span class="num">01</span>Information Stored in Your Browser</h2>
+        <p class="muted">Movie Wala may store your TMDB API key and My List data in your browser's local storage. This information is used to make the website's features work on your device.</p>
+      </section>
+
+      <section class="section" id="tmdb">
+        <h2><span class="num">02</span>Search and TMDB Requests</h2>
+        <p class="muted">When you search or browse titles, the website sends requests to TMDB to retrieve movie and series information. TMDB's own policies and privacy practices apply to information handled by TMDB.</p>
+      </section>
+
+      <section class="section" id="cookies">
+        <h2><span class="num">03</span>Cookies</h2>
+        <p class="muted">The Movie Wala interface does not require cookies for its core movie-list functionality. Your browser may still handle cookies or storage used by third-party services you interact with.</p>
+      </section>
+
+      <section class="section" id="third-party">
+        <h2><span class="num">04</span>Third-Party Services</h2>
+        <p class="muted">Movie Wala uses TMDB and may display YouTube trailers. Those services operate under their own terms and privacy policies.</p>
+      </section>
+
+      <section class="section" id="contact">
+        <h2><span class="num">05</span>Contact</h2>
+        <p class="muted">For privacy questions or concerns regarding this website, you can contact Movie Wala using the email address below.</p>
+        <div class="contact-box">
+          <strong>Privacy Contact</strong>
+          <a href="mailto:moviewalaofficial5@gmail.com">moviewalaofficial5@gmail.com</a>
+        </div>
+      </section>
+    </article>
+  </div>
 </main>
-<footer><div class="footer-brand">MOVIE <span>WALA</span></div>
-<div>© 2026 Movie Wala. All Rights Reserved. &nbsp; • &nbsp; Har Scene Mein Entertainment ❤️</div>
-<div class="footer-links">
-<a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="disclaimer.html">Disclaimer</a>
-</div><div class="tmdb"><strong>TMDB</strong><br>This product uses the TMDB API but is not endorsed or certified by TMDB.</div>
-</footer></div></body></html>
+
+<footer>
+  <div class="footer-brand">MOVIE <span>WALA</span></div>
+  <div>© 2026 Movie Wala. All Rights Reserved. &nbsp; • &nbsp; Har Scene Mein Entertainment ❤️</div>
+  <div class="footer-links">
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <a href="disclaimer.html">Disclaimer</a>
+  </div>
+  <div class="tmdb"><strong>TMDB</strong><br>This product uses the TMDB API but is not endorsed or certified by TMDB.</div>
+</footer>
+
+</div>
+</body>
+</html>
