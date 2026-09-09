@@ -1704,6 +1704,50 @@ footer{background:#050505!important;border-top:1px solid #1e2123!important;}
   }
 }
 
+
+/* FINAL DESKTOP LAYOUT FIX
+   The catalog is intended to use the full Movie Wala content width.
+   The old 2-column layout leaves a large empty right area on desktop.
+   Keep LIVE ZONE below the catalog instead of reserving a blank sidebar.
+*/
+.layout{
+  display:block !important;
+  width:100% !important;
+  max-width:100% !important;
+  min-width:0 !important;
+}
+.layout > section,
+.layout > aside{
+  display:block !important;
+  width:100% !important;
+  max-width:100% !important;
+  min-width:0 !important;
+  margin-bottom:12px;
+}
+.layout > aside{
+  margin-top:12px;
+}
+#catalogContent{
+  width:100% !important;
+  max-width:100% !important;
+  min-width:0 !important;
+}
+#catalogContent > section,
+#catalogContent > .two,
+#catalogContent > .ad-slot{
+  width:100% !important;
+  max-width:100% !important;
+  min-width:0 !important;
+}
+#catalogContent .two{
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+}
+@media(max-width:800px){
+  #catalogContent .two{
+    grid-template-columns:1fr !important;
+  }
+}
+
 </style>
 
 </head>
