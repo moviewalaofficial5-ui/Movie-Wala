@@ -1970,6 +1970,86 @@ footer{background:#050505!important;border-top:1px solid #1e2123!important;}
   .hero-arrow{width:36px !important;height:36px !important}
 }
 
+
+/* FINAL TARGETED FIX: clean full-width hero + full-width Top Rated */
+.hero{
+  width:100vw !important;
+  max-width:100vw !important;
+  margin-left:calc(50% - 50vw) !important;
+  margin-right:calc(50% - 50vw) !important;
+  height:600px !important;
+  min-height:600px !important;
+}
+.trailer-frame{
+  width:100% !important;
+  height:100% !important;
+  transform:none !important;
+}
+.trailer-info{
+  left:6% !important;
+  bottom:78px !important;
+  width:min(540px,42vw) !important;
+  max-width:540px !important;
+}
+.trailer-info h1{
+  font-size:52px !important;
+  line-height:1 !important;
+  margin:6px 0 10px !important;
+}
+.trailer-info p{
+  max-width:520px !important;
+  margin:9px 0 15px !important;
+  -webkit-line-clamp:3 !important;
+}
+.trailer-shade{
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.90) 0%,rgba(0,0,0,.58) 34%,rgba(0,0,0,.12) 72%,rgba(0,0,0,.34) 100%),
+    linear-gradient(0deg,rgba(0,0,0,.88) 0%,rgba(0,0,0,.10) 60%,rgba(0,0,0,.22) 100%) !important;
+}
+/* Top Rated has only one panel; give that row the entire available width. */
+#trending{
+  display:block !important;
+  width:100% !important;
+  max-width:100% !important;
+  min-width:0 !important;
+  margin-top:12px !important;
+}
+#trending > .panel{
+  width:100% !important;
+  max-width:100% !important;
+  min-width:0 !important;
+}
+#topRated{
+  width:100% !important;
+  max-width:100% !important;
+}
+@media(max-width:800px){
+  .hero{
+    width:100vw !important;
+    max-width:100vw !important;
+    margin-left:calc(50% - 50vw) !important;
+    height:520px !important;
+    min-height:520px !important;
+  }
+  .trailer-info{
+    left:5% !important;
+    bottom:66px !important;
+    width:84% !important;
+    max-width:84% !important;
+  }
+  .trailer-info h1{font-size:38px !important;}
+}
+@media(max-width:520px){
+  .hero{height:460px !important;min-height:460px !important;}
+  .trailer-info{
+    left:5% !important;
+    bottom:58px !important;
+    width:88% !important;
+    max-width:88% !important;
+  }
+  .trailer-info h1{font-size:30px !important;}
+}
+
 </style>
 
 </head>
