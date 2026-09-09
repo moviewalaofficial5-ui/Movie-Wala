@@ -1668,12 +1668,24 @@ footer{background:#050505!important;border-top:1px solid #1e2123!important;}
 .detail-fact b{font-size:13px;color:#fff}
 .detail-genres{display:flex;gap:8px;flex-wrap:wrap}
 .detail-genre{padding:7px 11px;border:1px solid #3b4043;border-radius:20px;background:#0f1214;font-size:11px}
-.cast-row,.similar-row{display:flex;gap:13px;overflow-x:auto;padding:3px 2px 12px;scrollbar-width:none}
-.cast-row::-webkit-scrollbar,.similar-row::-webkit-scrollbar{display:none}
-.cast-card{flex:0 0 125px;width:125px}
-.cast-photo{width:125px;height:170px;object-fit:cover;border-radius:7px;background:#111;border:1px solid #292d30}
-.cast-name{font-size:11px;font-weight:900;margin-top:7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.cast-role{font-size:9px;color:#888;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.detail-section-heading{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:15px}
+.detail-section-heading .detail-section-title{margin-bottom:0}
+.cast-controls{display:flex;gap:7px}
+.cast-nav{width:38px;height:38px;border:1px solid #34393c;background:#111416;color:#fff;border-radius:50%;font-size:23px;line-height:1;display:grid;place-items:center;cursor:pointer;transition:.2s}
+.cast-nav:hover{background:#e50914;border-color:#e50914;transform:scale(1.05)}
+.cast-nav:disabled{opacity:.28;cursor:default;transform:none}
+.cast-carousel{position:relative}
+.cast-viewport{overflow:hidden}
+.cast-row{display:flex;gap:15px;overflow-x:auto;padding:4px 2px 18px;scrollbar-width:none;scroll-behavior:smooth;scroll-snap-type:x proximity;overscroll-behavior-x:contain}
+.cast-row::-webkit-scrollbar{display:none}
+.cast-card{position:relative;flex:0 0 145px;width:145px;scroll-snap-align:start}
+.cast-photo-wrap{position:relative;width:145px;height:195px;overflow:hidden;border-radius:9px;background:#111;border:1px solid #292d30;box-shadow:0 8px 20px rgba(0,0,0,.28)}
+.cast-photo{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s ease,filter .3s ease}
+.cast-card:hover .cast-photo{transform:scale(1.06);filter:brightness(.72)}
+.cast-photo-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.8),transparent 55%);opacity:.8}
+.cast-index{position:absolute;left:9px;bottom:8px;font-size:22px;font-weight:950;color:#fff;text-shadow:0 2px 8px #000;font-style:italic}
+.cast-name{font-size:12px;font-weight:900;margin-top:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#fff}
+.cast-role{font-size:10px;color:#8f8f8f;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .similar-card{flex:0 0 155px;width:155px;cursor:pointer}
 .similar-card img{width:155px;height:225px;object-fit:cover;border-radius:7px;border:1px solid #292d30;display:block}
 .similar-card b{display:block;font-size:11px;margin-top:7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -1711,6 +1723,8 @@ footer{background:#050505!important;border-top:1px solid #1e2123!important;}
 }
 @media(max-width:480px){.similar-card{flex-basis:125px;width:125px}.similar-nav{display:none}}
 
+@media(max-width:800px){.detail-section-heading{margin-bottom:12px}.cast-row{gap:11px}.cast-card{flex-basis:130px;width:130px}.cast-photo-wrap{width:130px;height:175px}.cast-nav{width:34px;height:34px;font-size:20px}}
+@media(max-width:480px){.cast-controls{display:none}.cast-card{flex-basis:112px;width:112px}.cast-photo-wrap{width:112px;height:155px}.cast-name{font-size:11px}.cast-role{font-size:9px}}
 .provider-grid{display:flex;flex-wrap:wrap;gap:10px}
 .provider-card{display:flex;align-items:center;gap:9px;background:#101315;border:1px solid #292d30;border-radius:7px;padding:8px 11px}
 .provider-card img{width:36px;height:36px;border-radius:7px;object-fit:cover}
@@ -2893,8 +2907,18 @@ async function openMovieModal(movie){
           <div class="detail-trailer-wrap"><iframe id="detailTrailerFrame" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
         </section>
         <section class="detail-section">
-          <div class="detail-section-title">CAST</div>
-          <div class="cast-row" id="detailCast"><div class="detail-loading">Loading cast...</div></div>
+          <div class="detail-section-heading">
+            <div class="detail-section-title">CAST</div>
+            <div class="cast-controls">
+              <button class="cast-nav prev" id="castPrev" type="button" aria-label="Previous cast">‹</button>
+              <button class="cast-nav next" id="castNext" type="button" aria-label="Next cast">›</button>
+            </div>
+          </div>
+          <div class="cast-carousel" id="castCarousel">
+            <div class="cast-viewport">
+              <div class="cast-row" id="detailCast"><div class="detail-loading">Loading cast...</div></div>
+            </div>
+          </div>
         </section>
         <section class="detail-section">
           <div class="detail-section-title">WHERE TO WATCH</div>
@@ -2962,14 +2986,40 @@ async function openMovieModal(movie){
       <div class="detail-fact"><small>${type==="tv" ? "CREATOR" : "DIRECTOR"}</small><b>${escapeHtml(director)}</b></div>
     `;
 
-    const cast=(detail.credits?.cast||[]).filter(a=>a.profile_path).slice(0,12);
-    document.getElementById("detailCast").innerHTML = cast.length ? cast.map(a=>`
-      <div class="cast-card">
-        <img class="cast-photo" src="${TMDB_IMAGE}${a.profile_path}" alt="${escapeHtml(a.name)}" loading="lazy">
-        <div class="cast-name">${escapeHtml(a.name)}</div>
-        <div class="cast-role">${escapeHtml(a.character || "")}</div>
-      </div>
+    const cast=(detail.credits?.cast||[]).filter(a=>a.profile_path).slice(0,18);
+    const castBox=document.getElementById("detailCast");
+    castBox.innerHTML = cast.length ? cast.map((a,i)=>`
+      <article class="cast-card">
+        <div class="cast-photo-wrap">
+          <img class="cast-photo" src="${TMDB_IMAGE}${a.profile_path}" alt="${escapeHtml(a.name)}" loading="lazy">
+          <div class="cast-photo-shade"></div>
+          <span class="cast-index">${i+1}</span>
+        </div>
+        <div class="cast-name" title="${escapeHtml(a.name)}">${escapeHtml(a.name)}</div>
+        <div class="cast-role" title="${escapeHtml(a.character || "")}">${escapeHtml(a.character || "")}</div>
+      </article>
     `).join("") : '<div class="detail-note">Cast information unavailable.</div>';
+
+    const castPrev=document.getElementById("castPrev");
+    const castNext=document.getElementById("castNext");
+    const updateCastNav=()=>{
+      if(!castPrev || !castNext) return;
+      const max=Math.max(0,castBox.scrollWidth-castBox.clientWidth-2);
+      castPrev.disabled=castBox.scrollLeft<=2;
+      castNext.disabled=castBox.scrollLeft>=max;
+      const visible=max>0;
+      castPrev.style.display=visible?"grid":"none";
+      castNext.style.display=visible?"grid":"none";
+    };
+    const scrollCast=(direction)=>{
+      const amount=Math.max(320,Math.floor(castBox.clientWidth*.82));
+      castBox.scrollBy({left:direction*amount,behavior:"smooth"});
+      setTimeout(updateCastNav,350);
+    };
+    castPrev?.addEventListener("click",()=>scrollCast(-1));
+    castNext?.addEventListener("click",()=>scrollCast(1));
+    castBox.addEventListener("scroll",updateCastNav,{passive:true});
+    requestAnimationFrame(updateCastNav);
 
     const providers = detail["watch/providers"]?.results?.IN;
     const providerMap = new Map();
