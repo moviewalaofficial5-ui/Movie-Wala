@@ -2064,17 +2064,17 @@ footer{background:#050505!important;border-top:1px solid #1e2123!important;}
 </style>
 
 
-<style id="hero-fullscreen-clean-fix">
-/* Hero only: make the YouTube trailer behave like a true full-bleed cinematic background. */
+<style id="hero-youtube-cover-final">
+/* HERO ONLY: make the YouTube trailer fill the cinematic hero cleanly */
 .hero{
   width:100vw !important;
   max-width:100vw !important;
   margin-left:calc(50% - 50vw) !important;
-  margin-right:0 !important;
+  margin-right:calc(50% - 50vw) !important;
   overflow:hidden !important;
-  background:#000 !important;
 }
 .trailer-slide{
+  position:absolute !important;
   inset:0 !important;
   width:100% !important;
   height:100% !important;
@@ -2084,58 +2084,39 @@ footer{background:#050505!important;border-top:1px solid #1e2123!important;}
   position:absolute !important;
   left:50% !important;
   top:50% !important;
-  width:100vw !important;
-  height:56.25vw !important;
-  min-width:100% !important;
-  min-height:100% !important;
+  width:100% !important;
+  height:100% !important;
   max-width:none !important;
-  max-height:none !important;
   border:0 !important;
-  transform:translate(-50%,-50%) !important;
+  transform:translate(-50%,-50%) scale(1.30) !important;
   transform-origin:center center !important;
 }
-/* Keep the cinematic text area readable without adding visual clutter. */
 .trailer-shade{
-  background:
-    linear-gradient(90deg,rgba(0,0,0,.94) 0%,rgba(0,0,0,.68) 30%,rgba(0,0,0,.16) 70%,rgba(0,0,0,.32) 100%),
-    linear-gradient(0deg,rgba(0,0,0,.90) 0%,rgba(0,0,0,.08) 58%,rgba(0,0,0,.24) 100%) !important;
+  position:absolute !important;
+  inset:0 !important;
+  z-index:2 !important;
+  pointer-events:none !important;
 }
 .trailer-info{
-  left:5.5% !important;
+  z-index:12 !important;
+  left:6% !important;
   bottom:78px !important;
   top:auto !important;
-  width:min(570px,44vw) !important;
-  max-width:570px !important;
+  width:min(540px,42vw) !important;
+  max-width:540px !important;
 }
-.trailer-info h1{
-  font-size:clamp(44px,4.4vw,62px) !important;
-  line-height:.98 !important;
-  margin:9px 0 12px !important;
-}
-.trailer-info p{
-  max-width:510px !important;
-  margin:10px 0 16px !important;
-  -webkit-line-clamp:2 !important;
-  line-height:1.55 !important;
-}
+.live-now{z-index:12 !important;}
+.hero-arrow{z-index:25 !important;}
+.hero-playback,.dots,.hero-progress{z-index:30 !important;}
 @media(max-width:800px){
-  .hero{width:100vw !important;max-width:100vw !important;}
-  .trailer-frame{
-    width:177.78vh !important;
-    height:100vh !important;
-    min-width:0 !important;
-    min-height:100% !important;
-  }
-  .trailer-info{left:6% !important;bottom:60px !important;width:82% !important;max-width:none !important;}
+  .trailer-frame{transform:translate(-50%,-50%) scale(1.30) !important;}
+  .trailer-info{left:5% !important;bottom:64px !important;width:82% !important;}
 }
 @media(max-width:520px){
-  .trailer-frame{width:177.78vh !important;height:100vh !important;}
-  .trailer-info{left:5% !important;bottom:52px !important;width:88% !important;}
-  .trailer-info h1{font-size:31px !important;}
-  .trailer-info p{font-size:11px !important;}
+  .trailer-frame{transform:translate(-50%,-50%) scale(1.30) !important;}
+  .trailer-info{left:5% !important;bottom:56px !important;width:88% !important;}
 }
 </style>
-
 </head>
 <body>
 <noscript><div style="padding:12px;background:#e50914;color:#fff;text-align:center;font-weight:700;">JavaScript is required to load live movie data and search on Movie Wala.</div></noscript>
