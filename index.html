@@ -1638,6 +1638,72 @@ footer{background:#050505!important;border-top:1px solid #1e2123!important;}
   }
 }
 
+
+/* FINAL FEATURE FIXES: search, My List, genre results, active navigation */
+.nav-count,.section-count{
+  display:inline-grid;
+  place-items:center;
+  min-width:18px;
+  height:18px;
+  padding:0 5px;
+  margin-left:4px;
+  border-radius:10px;
+  background:#e50914;
+  color:#fff;
+  font-size:9px;
+  line-height:18px;
+  font-weight:900;
+  vertical-align:middle;
+}
+.mw-results-panel{
+  margin-bottom:12px;
+}
+.mw-results-panel[hidden]{
+  display:none !important;
+}
+.results-toolbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:0 14px 12px;
+}
+.results-status{
+  color:#999;
+  font-size:11px;
+  min-width:0;
+}
+.results-reset{
+  flex:0 0 auto;
+  border:1px solid #3b3f42;
+  background:#151719;
+  color:#fff;
+  border-radius:5px;
+  padding:8px 11px;
+  font-size:9px;
+  font-weight:900;
+  cursor:pointer;
+}
+.results-reset:hover{
+  border-color:#e50914;
+  background:#1b1d1f;
+}
+.main.search-mode #catalogContent{
+  display:none !important;
+}
+.main.search-mode{
+  min-height:55vh;
+}
+@media(max-width:600px){
+  .results-toolbar{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+  .results-reset{
+    width:100%;
+  }
+}
+
 </style>
 
 </head>
@@ -1760,7 +1826,22 @@ stroke="none"/>
 </section>
 <main class="main">
 <div class="layout">
-<section>
+<section class="panel mw-results-panel" id="searchResultsPanel" hidden>
+<div class="title">
+<i class="bar"></i>
+<span id="resultsTitle">SEARCH RESULTS</span>
+<span class="section-count" id="resultsCount">0</span>
+</div>
+<div class="results-toolbar">
+<div class="results-status" id="resultsStatus">Search movies and web series.</div>
+<button type="button" class="results-reset" id="resultsReset">← BACK TO HOME</button>
+</div>
+<div class="movie-row" id="searchResultsMovies">
+<div class="empty">Search for a movie or series.</div>
+</div>
+</section>
+
+<section id="catalogContent">
 <section
 class="panel"
 id="movies">
@@ -2602,103 +2683,134 @@ location.reload();
 }
 }
 let searchTimer = null;
-const searchInput =
-document.getElementById(
-"searchInput"
-);
+let resultsRequestId = 0;
+let currentResultsMode = "";
+
+const searchInput = document.getElementById("searchInput");
+const searchResultsPanel = document.getElementById("searchResultsPanel");
+const searchResultsMovies = document.getElementById("searchResultsMovies");
+const resultsTitle = document.getElementById("resultsTitle");
+const resultsCount = document.getElementById("resultsCount");
+const resultsStatus = document.getElementById("resultsStatus");
+const resultsReset = document.getElementById("resultsReset");
+const mainEl = document.querySelector(".main");
+
+function showResultsPanel(title, status, mode){
+  currentResultsMode = mode || "search";
+  if(resultsTitle) resultsTitle.textContent = title || "SEARCH RESULTS";
+  if(resultsStatus) resultsStatus.textContent = status || "";
+  if(resultsCount) resultsCount.textContent = "0";
+  if(searchResultsPanel) searchResultsPanel.hidden = false;
+  if(mainEl) mainEl.classList.add("search-mode");
+}
+
+function hideResultsPanel(){
+  currentResultsMode = "";
+  if(searchResultsPanel) searchResultsPanel.hidden = true;
+  if(mainEl) mainEl.classList.remove("search-mode");
+}
+
+function renderResultCards(movies){
+  if(!searchResultsMovies) return;
+  searchResultsMovies.innerHTML = "";
+  const list = (movies || []).filter(movie => movie && movie.poster_path).slice(0,30);
+  if(resultsCount) resultsCount.textContent = String(list.length);
+  if(!list.length){
+    searchResultsMovies.innerHTML = '<div class="empty">No movies or web series found.</div>';
+    return;
+  }
+  list.forEach(movie => searchResultsMovies.appendChild(createMovieCard(movie)));
+}
+
+function setResultsLoading(message){
+  if(searchResultsMovies) searchResultsMovies.innerHTML = '<div class="loading">' + escapeHtml(message || "Loading...") + '</div>';
+  if(resultsCount) resultsCount.textContent = "0";
+}
+
 if(searchInput){
-searchInput.addEventListener(
-"input",
-function(){
-const query =
-this.value.trim();
-clearTimeout(
-searchTimer
-);
-if(!query){
-loadTrending();
-return;
+  searchInput.addEventListener("input", function(){
+    const query = this.value.trim();
+    clearTimeout(searchTimer);
+    if(!query){
+      hideResultsPanel();
+      loadTrending();
+      return;
+    }
+    showResultsPanel("SEARCH RESULTS", 'Searching for "' + query + '"…', "search");
+    setResultsLoading("Searching movies and web series...");
+    searchTimer = setTimeout(() => searchMovies(query), 450);
+  });
 }
-searchTimer =
-setTimeout(
-() => searchMovies(query),
-450
-);
-}
-);
-}
+
 async function searchMovies(query){
-try{
-const data =
-await tmdbFetch(
-"/search/multi" +
-"?query=" +
-encodeURIComponent(query) +
-"&include_adult=false"
-);
-const filtered =
-(data.results || [])
-.filter(
-item =>
-item.media_type === "movie" ||
-item.media_type === "tv"
-);
-renderMovies(
-"trendingMovies",
-filtered
-);
-document
-.getElementById(
-"movies"
-)
-.scrollIntoView({
-behavior:"smooth",
-block:"start"
+  const requestId = ++resultsRequestId;
+  try{
+    const data = await tmdbFetch(
+      "/search/multi?query=" + encodeURIComponent(query) +
+      "&include_adult=false"
+    );
+    if(requestId !== resultsRequestId) return;
+
+    const filtered = (data.results || []).filter(
+      item => item.media_type === "movie" || item.media_type === "tv"
+    );
+
+    showResultsPanel("SEARCH RESULTS", '"' + query + '" — ' + filtered.length + " result" + (filtered.length === 1 ? "" : "s"), "search");
+    renderResultCards(filtered);
+    searchResultsPanel?.scrollIntoView({behavior:"smooth", block:"start"});
+  }catch(error){
+    if(requestId !== resultsRequestId) return;
+    console.error("Search:", error);
+    showResultsPanel("SEARCH RESULTS", "Search could not be completed.", "search");
+    showError("searchResultsMovies", error);
+  }
+}
+
+document.querySelectorAll(".genre").forEach(button => {
+  button.addEventListener("click", async function(){
+    const genre = this.dataset.genre;
+    const genreName = this.textContent.replace(/^[^A-Za-z]+/, "").trim();
+
+    clearTimeout(searchTimer);
+    if(searchInput) searchInput.value = "";
+    const clearBtn = document.getElementById("searchClear");
+    if(clearBtn) clearBtn.hidden = true;
+
+    showResultsPanel((genreName || "GENRE") + " MOVIES", "Loading " + (genreName || "genre") + " movies…", "genre");
+    setResultsLoading("Loading " + (genreName || "genre") + " movies...");
+
+    try{
+      const data = await tmdbFetch(
+        "/discover/movie?with_genres=" + encodeURIComponent(genre) +
+        "&sort_by=popularity.desc"
+      );
+      const results = data.results || [];
+      showResultsPanel((genreName || "GENRE") + " MOVIES", results.length + " movies found", "genre");
+      renderResultCards(results);
+      searchResultsPanel?.scrollIntoView({behavior:"smooth", block:"start"});
+    }catch(error){
+      console.error("Genre:", error);
+      showResultsPanel((genreName || "GENRE") + " MOVIES", "Unable to load this genre.", "genre");
+      showError("searchResultsMovies", error);
+    }
+  });
 });
+
+if(resultsReset){
+  resultsReset.addEventListener("click", function(){
+    clearTimeout(searchTimer);
+    if(searchInput){
+      searchInput.value = "";
+      searchInput.blur();
+    }
+    const clearBtn = document.getElementById("searchClear");
+    if(clearBtn) clearBtn.hidden = true;
+    hideResultsPanel();
+    loadTrending();
+    document.getElementById("home")?.scrollIntoView({behavior:"smooth", block:"start"});
+  });
 }
-catch(error){
-  console.error("Search:",error);
-  showError("trendingMovies",error);
-}
-}
-document
-.querySelectorAll(".genre")
-.forEach(
-button => {
-button.addEventListener(
-"click",
-async function(){
-const genre =
-this.dataset.genre;
-try{
-const data =
-await tmdbFetch(
-"/discover/movie" +
-"?with_genres=" +
-genre +
-"&sort_by=popularity.desc"
-);
-renderMovies(
-"trendingMovies",
-data.results
-);
-document
-.getElementById(
-"movies"
-)
-.scrollIntoView({
-behavior:"smooth",
-block:"start"
-});
-}
-catch(error){
-  console.error("Genre:",error);
-  showError("trendingMovies",error);
-}
-}
-);
-}
-);
+
 const modal =
 document.getElementById(
 "movieModal"
@@ -3008,12 +3120,54 @@ if(mobileMenuBtn && nav){
     mobileMenuBtn.textContent="☰";
   }));
 }
+/* Active navigation: highlight the section currently visible on screen. */
+(function initActiveNavigation(){
+  if(!nav) return;
+  const navLinks = Array.from(nav.querySelectorAll('a[href^="#"]'));
+  const sections = navLinks
+    .map(link => ({link, section: document.getElementById(link.getAttribute("href").slice(1))}))
+    .filter(item => item.section);
+
+  function setActive(id){
+    sections.forEach(({link,section}) => {
+      link.classList.toggle("active", section.id === id);
+    });
+  }
+
+  navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      const id = link.getAttribute("href").slice(1);
+      setActive(id);
+    });
+  });
+
+  if("IntersectionObserver" in window){
+    const observer = new IntersectionObserver(entries => {
+      const visible = entries
+        .filter(entry => entry.isIntersecting)
+        .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if(visible) setActive(visible.target.id);
+    }, {
+      root:null,
+      rootMargin:"-18% 0px -62% 0px",
+      threshold:[0.05,0.2,0.5]
+    });
+    sections.forEach(({section}) => observer.observe(section));
+  }
+})();
+
 const searchClear=document.getElementById("searchClear");
 if(searchInput && searchClear){
   searchInput.addEventListener("focus",()=>searchInput.closest(".search")?.classList.add("search-open"));
   searchInput.addEventListener("blur",()=>{if(!searchInput.value.trim())searchInput.closest(".search")?.classList.remove("search-open");});
   searchInput.addEventListener("input",()=>{searchClear.hidden=!searchInput.value.trim();});
-  searchClear.addEventListener("click",()=>{searchInput.value="";searchClear.hidden=true;searchInput.focus();loadTrending();});
+  searchClear.addEventListener("click",()=>{
+  searchInput.value="";
+  searchClear.hidden=true;
+  searchInput.focus();
+  hideResultsPanel();
+  loadTrending();
+});
 }
 async function init(){
 const trending = await loadTrending();
