@@ -1608,6 +1608,36 @@ footer{background:#050505!important;border-top:1px solid #1e2123!important;}
 .ott-error{padding:50px;text-align:center;color:#bbb}
 @media(max-width:800px){.ott-detail-hero{min-height:610px;padding:0 20px 42px}.ott-detail-copy{padding-top:180px}.ott-detail-title{font-size:42px}.ott-detail-overview{font-size:13px;line-height:1.6}.ott-detail-body{padding:25px 20px 55px}.ott-detail-grid{grid-template-columns:130px minmax(0,1fr);gap:18px}.ott-poster{width:130px}.ott-info-grid{grid-template-columns:repeat(2,1fr)}.modal-close{top:12px!important;right:12px!important;width:40px!important;height:40px!important}.ott-sim-card{flex-basis:125px}.ott-sim-card img{width:125px;height:185px}}
 @media(max-width:520px){.ott-detail-hero{min-height:590px}.ott-detail-copy{padding-top:170px}.ott-detail-title{font-size:34px}.ott-detail-grid{grid-template-columns:1fr}.ott-poster{width:145px}.ott-info-grid{grid-template-columns:repeat(2,1fr)}.ott-section-title{font-size:18px}.ott-cast-card{flex-basis:90px}.ott-cast-card img{width:90px;height:125px}.ott-trailer{border-radius:5px}}
+
+/* FINAL MODAL WIDTH FIX
+   #modalContent uses the legacy .modal-content class. The OTT detail page
+   must occupy the full modal width instead of being placed in the old
+   230px + 1fr grid.
+*/
+#modalContent.modal-content{
+  display:block !important;
+  width:100% !important;
+  max-width:none !important;
+  min-width:0 !important;
+  grid-template-columns:none !important;
+  gap:0 !important;
+}
+#modalContent .ott-detail{
+  width:100% !important;
+  max-width:none !important;
+  min-width:0 !important;
+}
+#modalContent .ott-detail-hero,
+#modalContent .ott-detail-body{
+  width:100% !important;
+  box-sizing:border-box !important;
+}
+@media(max-width:520px){
+  #modalContent.modal-content{
+    display:block !important;
+  }
+}
+
 </style>
 
 </head>
