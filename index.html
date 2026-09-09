@@ -1637,6 +1637,7 @@ Har Scene Mein Entertainment
 <a href="#series">WEB SERIES</a>
 <a href="#trending">TRENDING</a>
 <a href="#genres">GENRES</a>
+<a href="#myList">MY LIST <span id="myListNavCount" class="nav-count">0</span></a>
 <a href="#about">ABOUT</a>
 </nav>
 <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
@@ -1763,6 +1764,15 @@ Loading...
 </section>
 
 </div>
+<section class="panel" id="myList" style="margin-top:10px">
+<div class="title">
+<i class="bar"></i>
+MY LIST <span class="section-count" id="myListCount">0</span>
+</div>
+<div class="movie-row" id="myListMovies">
+<div class="empty">Your My List is empty. Add movies with the ＋ button.</div>
+</div>
+</section>
 <section
 class="panel"
 style="margin-top:10px">
@@ -2180,42 +2190,30 @@ const TMDB_IMAGE =
 "https://image.tmdb.org/t/p/w500";
 const TMDB_BACKDROP =
 "https://image.tmdb.org/t/p/original";
+const TMDB_CACHE_TTL = 5 * 60 * 1000;
 async function tmdbFetch(endpoint){
-if(
-!TMDB_API_KEY ||
-TMDB_API_KEY ===
-"PASTE_YOUR_TMDB_API_KEY_HERE"
-){
-throw new Error(
-"TMDB API key is missing."
-);
-}
-const separator =
-endpoint.includes("?")
-? "&"
-: "?";
-const url =
-TMDB_BASE +
-endpoint +
-separator +
-"api_key=" +
-encodeURIComponent(TMDB_API_KEY) +
-"&language=en-US";
-const controller = new AbortController();
-const timeoutId = setTimeout(() => controller.abort(), 12000);
-let response;
-try{
-response = await fetch(url, { signal: controller.signal });
-}finally{
-clearTimeout(timeoutId);
-}
-if(!response.ok){
-throw new Error(
-"TMDB error: " +
-response.status
-);
-}
-return await response.json();
+  if(!TMDB_API_KEY || TMDB_API_KEY === "PASTE_YOUR_TMDB_API_KEY_HERE") throw new Error("TMDB API key is missing.");
+  const cacheKey = "movieWalaTMDB:" + endpoint;
+  try{
+    const cached = JSON.parse(sessionStorage.getItem(cacheKey) || "null");
+    if(cached && cached.time && Date.now() - cached.time < TMDB_CACHE_TTL) return cached.data;
+  }catch(e){}
+  const separator = endpoint.includes("?") ? "&" : "?";
+  const url = TMDB_BASE + endpoint + separator + "api_key=" + encodeURIComponent(TMDB_API_KEY) + "&language=en-US";
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 12000);
+  let response;
+  try{ response = await fetch(url, {signal:controller.signal, headers:{"Accept":"application/json"}}); }
+  catch(e){ throw new Error(e.name === "AbortError" ? "TMDB request timed out." : "Network error. Internet connection check karo."); }
+  finally{ clearTimeout(timeoutId); }
+  if(!response.ok){
+    if(response.status === 401) throw new Error("TMDB API key invalid hai.");
+    if(response.status === 429) throw new Error("TMDB rate limit reached. Thodi der baad try karo.");
+    throw new Error("TMDB error: " + response.status);
+  }
+  const data = await response.json();
+  try{ sessionStorage.setItem(cacheKey, JSON.stringify({time:Date.now(),data})); }catch(e){}
+  return data;
 }
 function posterUrl(path){
 if(!path){
@@ -2234,6 +2232,30 @@ function saveMyList(list){
 try{
 localStorage.setItem("movieWalaMyList", JSON.stringify(list.slice(-50)));
 }catch(error){}
+}
+function updateMyListUI(){
+  const list=getMyList();
+  const count=list.length;
+  const countEl=document.getElementById("myListCount");
+  const navCount=document.getElementById("myListNavCount");
+  if(countEl) countEl.textContent=count;
+  if(navCount) navCount.textContent=count;
+  const host=document.getElementById("myListMovies");
+  if(!host) return;
+  if(!count){ host.innerHTML='<div class="empty">Your My List is empty. Add movies with the ＋ button.</div>'; return; }
+  host.innerHTML="";
+  list.slice().reverse().forEach(movie=>host.appendChild(createMovieCard(movie)));
+}
+function toggleMyList(movie){
+  const title=movie.title||movie.name||"Untitled";
+  const key=String(movie.id||title);
+  const list=getMyList();
+  const idx=list.findIndex(item=>String(item.id||item.title)===key);
+  if(idx>=0) list.splice(idx,1);
+  else list.push({id:movie.id,title,poster_path:movie.poster_path,vote_average:movie.vote_average,release_date:movie.release_date,first_air_date:movie.first_air_date,media_type:movie.media_type});
+  saveMyList(list);
+  updateMyListUI();
+  return idx<0;
 }
 function createMovieCard(movie){
 const title =
@@ -2305,27 +2327,18 @@ openMovieModal(movie);
 }
 const listBtn = card.querySelector(".card-list");
 if(listBtn){
-const list = getMyList();
-const key = String(movie.id || title);
-if(list.some(item => String(item.id || item.title) === key)){
-listBtn.classList.add("saved");
-listBtn.textContent = "✓";
-}
-listBtn.addEventListener("click", function(event){
-event.stopPropagation();
-const current = getMyList();
-const index = current.findIndex(item => String(item.id || item.title) === key);
-if(index >= 0){
-current.splice(index,1);
-listBtn.classList.remove("saved");
-listBtn.textContent = "＋";
-}else{
-current.push({id: movie.id, title, poster_path: movie.poster_path, vote_average: movie.vote_average, release_date: date, first_air_date: movie.first_air_date, media_type: movie.media_type});
-listBtn.classList.add("saved");
-listBtn.textContent = "✓";
-}
-saveMyList(current);
-});
+  const key=String(movie.id||title);
+  const saved=getMyList().some(item=>String(item.id||item.title)===key);
+  listBtn.classList.toggle("saved",saved);
+  listBtn.textContent=saved?"✓":"＋";
+  listBtn.setAttribute("aria-label",saved?"Remove "+title+" from My List":"Add "+title+" to My List");
+  listBtn.addEventListener("click",function(event){
+    event.stopPropagation();
+    const added=toggleMyList(movie);
+    listBtn.classList.toggle("saved",added);
+    listBtn.textContent=added?"✓":"＋";
+    listBtn.setAttribute("aria-label",added?"Remove "+title+" from My List":"Add "+title+" to My List");
+  });
 }
 return card;
 }
@@ -2614,10 +2627,8 @@ block:"start"
 });
 }
 catch(error){
-console.error(
-"Search:",
-error
-);
+  console.error("Search:",error);
+  showError("trendingMovies",error);
 }
 }
 document
@@ -2651,10 +2662,8 @@ block:"start"
 });
 }
 catch(error){
-console.error(
-"Genre:",
-error
-);
+  console.error("Genre:",error);
+  showError("trendingMovies",error);
 }
 }
 );
@@ -2714,7 +2723,7 @@ try{
   modalContent.innerHTML = `
   <article class="ott-detail">
     <section class="ott-detail-hero">
-      <div class="ott-detail-backdrop" style="background-image:url('${TMDB_BACKDROP + encodeURIComponent(backdrop || "")}')"></div>
+      <div class="ott-detail-backdrop" style="background-image:url('${TMDB_BACKDROP + (backdrop || "")}')"></div>
       <div class="ott-detail-gradient"></div>
       <div class="ott-detail-copy">
         <div class="ott-detail-kicker">
@@ -2726,6 +2735,7 @@ try{
         <p class="ott-detail-overview">${escapeHtml(overview)}</p>
         <div class="ott-detail-actions">
           ${trailer ? `<button class="ott-btn ott-btn-red" type="button" id="ottTrailerBtn">▶ Watch Trailer</button>` : ""}
+          ${watchUrl ? `<a class="ott-btn ott-btn-dark" href="${escapeHtml(watchUrl)}" target="_blank" rel="noopener">▶ Where to Watch</a>` : ""}
           <button class="ott-btn ott-btn-dark" type="button" id="ottListBtn">＋ My List</button>
         </div>
       </div>
@@ -2762,6 +2772,7 @@ try{
       if(idx >= 0){ current.splice(idx,1); listBtn.textContent = "＋ My List"; }
       else { current.push({id:details.id,title,poster_path:details.poster_path,vote_average:details.vote_average,release_date:details.release_date,first_air_date:details.first_air_date,media_type:mediaType}); listBtn.textContent = "✓ In My List"; }
       saveMyList(current);
+      updateMyListUI();
     });
   }
   const trailerBtn = document.getElementById("ottTrailerBtn");
@@ -2781,7 +2792,9 @@ try{
   });
 }catch(error){
   console.error("Movie details:", error);
-  modalContent.innerHTML = `<div class="ott-error"><h2>Unable to load details</h2><p>Please try again.</p><button class="ott-btn ott-btn-red" type="button" onclick="openMovieModal(${JSON.stringify({id:movie.id,title:movie.title||movie.name,poster_path:movie.poster_path,backdrop_path:movie.backdrop_path,vote_average:movie.vote_average,release_date:movie.release_date,first_air_date:movie.first_air_date,media_type:movie.media_type})})">Try Again</button></div>`;
+  modalContent.innerHTML = `<div class="ott-error"><h2>Unable to load details</h2><p>${escapeHtml(error.message || "Please try again.")}</p><button class="ott-btn ott-btn-red" type="button" id="ottRetryBtn">Try Again</button></div>`;
+  const retry=document.getElementById("ottRetryBtn");
+  if(retry) retry.addEventListener("click",()=>openMovieModal(movie));
 }
 }
 function closeModal(){
@@ -2977,6 +2990,7 @@ const trending = await loadTrending();
 try{ await loadHeroTrailers(trending); }catch(error){ console.error("Hero trailers:",error); const loading=document.getElementById("trailerLoading"); if(loading) loading.textContent="Trailer load nahi ho paaya. TMDB key/network check karo."; }
 await Promise.allSettled([loadPopular(),loadTopRated(),loadLatest(),loadIndian(),loadHollywood(),loadSeries()]);
 setTimeout(startAllRowSliders,1200);
+updateMyListUI();
 }
 init();
 </script>
