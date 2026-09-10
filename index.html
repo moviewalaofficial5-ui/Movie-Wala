@@ -3200,52 +3200,94 @@ error
 
 async function loadBhojpuri(){
 try{
-/*
-  Bhojpuri is not consistently represented by a dedicated ISO-639-1
-  code in TMDB, so this section combines TMDB text search + a known
-  Bhojpuri collection, then sorts everything by release date.
-*/
 const byId = new Map();
 
-async function addSearch(term, page){
+function addMovies(list){
+  (list || []).forEach(function(movie){
+    if(movie && movie.id && movie.poster_path){
+      byId.set(movie.id, movie);
+    }
+  });
+}
+
+/*
+  Bhojpuri is inconsistently stored in TMDB's language field.
+  First find the TMDB "Bhojpuri" keyword dynamically, then use
+  Discover with that keyword + Indian release dates. This is much
+  broader than maintaining a fixed list of movie IDs.
+*/
+let keywordIds = [];
+
+try{
+  const keywordData = await tmdbFetch(
+    "/search/keyword" +
+    "?query=" + encodeURIComponent("Bhojpuri") +
+    "&page=1"
+  );
+
+  keywordIds = (keywordData.results || [])
+    .filter(function(k){
+      return k && k.id && /bhojpuri/i.test(String(k.name || ""));
+    })
+    .slice(0,3)
+    .map(function(k){ return k.id; });
+}catch(e){
+  console.warn("Bhojpuri keyword search unavailable:", e);
+}
+
+/* Main automatic Bhojpuri feed. */
+if(keywordIds.length){
+  try{
+    const data = await discoverMovies({
+      include_adult:"false",
+      include_video:"false",
+      region:"IN",
+      sort_by:"primary_release_date.desc",
+      "primary_release_date.gte":movieDateDaysAgo(730),
+      "primary_release_date.lte":new Date().toISOString().slice(0,10),
+      with_keywords:keywordIds.join("|"),
+      with_release_type:"2|3|4|6",
+      pages:3
+    });
+    addMovies(data);
+  }catch(e){
+    console.warn("Bhojpuri keyword discover unavailable:", e);
+  }
+}
+
+/* Also include older titles from the verified franchise. */
+try{
+  const collection = await tmdbFetch(
+    "/collection/1365051?language=en-US"
+  );
+  addMovies(collection.parts);
+}catch(e){
+  console.warn("Bhojpuri collection unavailable:", e);
+}
+
+/* Text search catches movies whose keyword metadata is missing. */
+const searchTerms = [
+  "Bhojpuri",
+  "Bhojpuri movie",
+  "Bhojpuri film"
+];
+
+for(const term of searchTerms){
   try{
     const data = await tmdbFetch(
       "/search/movie" +
       "?query=" + encodeURIComponent(term) +
       "&region=IN" +
       "&include_adult=false" +
-      "&page=" + page
+      "&page=1"
     );
-    (data.results || []).forEach(function(movie){
-      if(movie && movie.id && movie.poster_path){
-        byId.set(movie.id, movie);
-      }
-    });
+    addMovies(data.results);
   }catch(e){
-    console.warn("Bhojpuri search unavailable:", term, page, e);
+    console.warn("Bhojpuri text search unavailable:", term, e);
   }
 }
 
-try{
-  const collection = await tmdbFetch(
-    "/collection/1365051?language=en-US"
-  );
-  (collection.parts || []).forEach(function(movie){
-    if(movie && movie.id && movie.poster_path){
-      byId.set(movie.id, movie);
-    }
-  });
-}catch(e){
-  console.warn("Bhojpuri collection unavailable:", e);
-}
-
-/* Search terms catch newly-added titles even when their language field
-   is Hindi/English instead of a Bhojpuri-specific code. */
-await addSearch("Bhojpuri", 1);
-await addSearch("Bhojpuri movie", 1);
-await addSearch("Bhojpuri film", 1);
-
-/* Known verified titles remain a fallback for older/poorly-tagged films. */
+/* Verified fallback titles for older TMDB entries. */
 const knownIds = [
   634594,1193290,1036580,1107083,1137590,
   1138984,1138995,1138993,1137588
@@ -3268,16 +3310,18 @@ const results = Array.from(byId.values())
   return movie && movie.poster_path;
 })
 .sort(function(a,b){
-  return String(b.release_date || "").localeCompare(String(a.release_date || ""));
+  return String(b.release_date || "").localeCompare(
+    String(a.release_date || "")
+  );
 });
 
 if(!results.length){
-  throw new Error("No Bhojpuri movies returned by TMDB.");
+  throw new Error("TMDB Bhojpuri keyword data unavailable.");
 }
 
 renderMovies(
 "bhojpuriMovies",
-results
+results.slice(0,30)
 );
 }
 catch(error){
@@ -3290,6 +3334,7 @@ showError(
 error
 );
 }
+
 }
 
 async function loadHollywood(){
