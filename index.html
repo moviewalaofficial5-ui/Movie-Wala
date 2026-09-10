@@ -22,6 +22,11 @@
 <meta name="twitter:image:alt" content="Movie Wala — Movies and Web Series">
 <link rel="canonical" id="canonicalLink" href="https://moviewalaofficial5-ui.github.io/Movie-Wala/">
 <link rel="preload" as="image" href="movie-wala-main-banner.png">
+<link rel="preconnect" href="https://api.themoviedb.org">
+<link rel="preconnect" href="https://image.tmdb.org" crossorigin>
+<meta name="format-detection" content="telephone=no">
+<meta name="application-name" content="Movie Wala">
+<meta name="apple-mobile-web-app-title" content="Movie Wala">
 <title>Movie Wala | Movies, Web Series, Trailers & Entertainment</title>
 <style>
 *{
@@ -1461,6 +1466,7 @@ main{overflow:visible !important;}
 .trailer-info p{max-width:500px !important;margin:10px 0 16px !important;-webkit-line-clamp:2 !important;line-height:1.55 !important;}
 .live-now{right:4.5% !important;}
 
+.footer-disclosure{max-width:760px;margin:10px auto;color:#777;font-size:10px;line-height:1.5;text-align:center}
 </style>
 <script type="application/ld+json">
 {
@@ -1469,6 +1475,18 @@ main{overflow:visible !important;}
   "name":"Movie Wala",
   "description":"Movie Wala — discover movies, web series, trailers, ratings, genres and entertainment updates.",
   "potentialAction":{"@type":"SearchAction","target":"?q={search_term_string}","query-input":"required name=search_term_string"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"What can I find on Movie Wala?","acceptedAnswer":{"@type":"Answer","text":"Movie Wala helps visitors discover Bollywood, South Indian, Bhojpuri and Hollywood movies, Indian web series, trailers, ratings, genres and cast information."}},
+    {"@type":"Question","name":"Does Movie Wala host or upload movies?","acceptedAnswer":{"@type":"Answer","text":"Movie Wala is a movie discovery and information website and does not provide pirated movie downloads or unauthorized copies."}},
+    {"@type":"Question","name":"Where does the movie information come from?","acceptedAnswer":{"@type":"Answer","text":"Movie Wala uses The Movie Database (TMDB) API for movie and TV information and images."}},
+    {"@type":"Question","name":"How often are new releases updated?","acceptedAnswer":{"@type":"Answer","text":"Latest-release sections request current data when the website loads, subject to the source database having the release and metadata available."}}
+  ]
 }
 </script>
 
@@ -2382,6 +2400,7 @@ Loading movies...
 </div>
 </section>
 <div class="ad-slot" id="adSlotContent" data-ad-slot="content-inline" aria-label="Advertisement">Advertisement</div>
+<div class="ad-slot" id="adSlotMid" data-ad-slot="mid-content" aria-label="Advertisement">Advertisement</div>
 <section
 class="panel"
 id="bollywood"
@@ -2522,6 +2541,63 @@ data-genre="16">
 </button>
 </div>
 </section>
+
+<section class="panel mw-earning-content" id="guides" style="margin-top:10px">
+<div class="title">
+<i class="bar"></i>
+MOVIE WALA ENTERTAINMENT GUIDE
+</div>
+<div class="mw-guide-grid">
+<article class="mw-guide-card">
+<h2>How to discover a movie worth watching</h2>
+<p>Movie Wala brings ratings, genres, release information, trailers and cast details together so visitors can compare titles before deciding what to watch. Use the category rows to move from the newest releases to popular and top-rated movies.</p>
+</article>
+<article class="mw-guide-card">
+<h2>Bollywood, South Indian & Bhojpuri</h2>
+<p>Indian cinema has different industries, languages and storytelling styles. Movie Wala keeps Hindi, Tamil, Telugu, Malayalam, Kannada and Bhojpuri discovery in separate sections so visitors can quickly explore the part of Indian cinema they enjoy most.</p>
+</article>
+<article class="mw-guide-card">
+<h2>Indian web series discovery</h2>
+<p>The Indian Web Series section focuses on India-origin TV and streaming titles and sorts recent releases first. Open a title to see its available details and use the information page to decide what belongs on your watchlist.</p>
+</article>
+<article class="mw-guide-card">
+<h2>Movie information at a glance</h2>
+<p>Every Movie Wala card is designed for quick discovery, while the details view provides a deeper look at the title, rating, release year, genres, cast and related information. This makes the site useful for both browsing and researching a title.</p>
+</article>
+<article class="mw-guide-card">
+<h2>Latest releases</h2>
+<p>The latest sections are refreshed from the movie database when the page loads. Because database coverage and release metadata can change, a title may appear later after its information has been added or updated by the source.</p>
+</article>
+<article class="mw-guide-card">
+<h2>About ratings and movie data</h2>
+<p>Movie Wala uses The Movie Database (TMDB) for movie and TV data and images. Ratings, dates, posters and other database fields can change over time, so they should be treated as discovery information rather than an official review or certification.</p>
+</article>
+</div>
+</section>
+
+<section class="panel mw-faq" id="faq" style="margin-top:10px">
+<div class="title">
+<i class="bar"></i>
+MOVIE WALA FAQ
+</div>
+<details>
+<summary>What can I find on Movie Wala?</summary>
+<p>You can discover Bollywood, South Indian, Bhojpuri and Hollywood movies, along with Indian web series, trailers, ratings, genres, cast information and related titles.</p>
+</details>
+<details>
+<summary>Does Movie Wala host or upload movies?</summary>
+<p>Movie Wala is designed as a discovery and information website. It does not provide pirated movie downloads or unauthorized copies of films.</p>
+</details>
+<details>
+<summary>Where does the movie information come from?</summary>
+<p>Movie Wala uses The Movie Database (TMDB) API for movie and TV information and images. TMDB data can change as titles are added or updated.</p>
+</details>
+<details>
+<summary>How often are new releases updated?</summary>
+<p>The latest-release sections request current data when the website loads. Availability depends on the release and metadata being present in the source database.</p>
+</details>
+</section>
+
 <section
 class="panel about-section"
 id="about"
@@ -2697,7 +2773,10 @@ Entertainment
 </small>
 </div>
 </div>
-<div class="tmdb-notice">
+<div class="tmdb-notice" style="margin-bottom:8px">
+Movie Wala is a discovery and information platform. It does not provide unauthorized movie downloads or pirated streams.
+</div>
+
 This product uses the TMDB API but is not endorsed
 or certified by TMDB.
 </div>
@@ -2783,6 +2862,9 @@ Har Scene Mein Entertainment ❤️
 <a href="privacy.html">Privacy</a>
 <a href="terms.html">Terms</a>
 <a href="disclaimer.html">Disclaimer</a>
+</div>
+<div class="footer-disclosure">
+Movie Wala may display advertising or lawful affiliate links in the future. Any sponsored or affiliate placement will be clearly identified.
 </div>
 <div class="tmdb-footer">
 <strong>TMDB</strong><br>
