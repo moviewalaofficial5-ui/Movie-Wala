@@ -2178,6 +2178,21 @@ footer{background:#050505!important;border-top:1px solid #1e2123!important;}
   .trailer-frame{transform:translate(-50%,-50%) scale(1.30) !important;}
   .trailer-info{left:5% !important;bottom:56px !important;width:88% !important;}
 }
+
+/* ===== Movie Wala earning guide + FAQ polished layout ===== */
+.mw-earning-content .mw-guide-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:6px;}
+.mw-earning-content .mw-guide-card{background:linear-gradient(145deg,#111719,#080a0b);border:1px solid #292d30;border-radius:10px;padding:18px;min-height:150px;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;}
+.mw-earning-content .mw-guide-card:hover{transform:translateY(-2px);border-color:#444;box-shadow:0 8px 25px rgba(0,0,0,.25);}
+.mw-earning-content .mw-guide-card h2{margin:0 0 9px;color:#fff;font-size:17px;line-height:1.3;font-weight:800;}
+.mw-earning-content .mw-guide-card p{margin:0;color:#aaa;font-size:13px;line-height:1.65;}
+.mw-faq details{background:#0b0e10;border:1px solid #292d30;border-radius:8px;margin:9px 0;overflow:hidden;}
+.mw-faq summary{cursor:pointer;list-style:none;padding:14px 44px 14px 16px;color:#fff;font-size:14px;font-weight:700;line-height:1.4;position:relative;}
+.mw-faq summary::-webkit-details-marker{display:none;}
+.mw-faq summary:after{content:'+';position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:20px;font-weight:400;color:#aaa;}
+.mw-faq details[open] summary:after{content:'−';}
+.mw-faq details p{margin:0;padding:0 16px 15px;color:#999;font-size:13px;line-height:1.65;}
+@media(max-width:900px){.mw-earning-content .mw-guide-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:600px){.mw-earning-content .mw-guide-grid{grid-template-columns:1fr;gap:10px;}.mw-earning-content .mw-guide-card{min-height:0;padding:15px;}.mw-earning-content .mw-guide-card h2{font-size:16px;}.mw-earning-content .mw-guide-card p,.mw-faq details p{font-size:12px;}.mw-faq summary{font-size:13px;padding:13px 40px 13px 14px;}}
 </style>
 <link id="canonicalLink" rel="canonical" href="">
 </head>
