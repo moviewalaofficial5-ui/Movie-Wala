@@ -17,7 +17,6 @@
 <meta name="twitter:description" content="Discover movies, web series, trailers, ratings and entertainment updates with Movie Wala.">
 <meta name="twitter:image" content="movie-wala-main-banner.png">
 <link rel="preload" as="image" href="movie-wala-main-banner.png">
-<link rel="canonical" id="canonicalLink" href="">
 <title>Movie Wala | Movies, Web Series, Trailers & Entertainment</title>
 <style>
 *{
@@ -2118,6 +2117,7 @@ footer{background:#050505!important;border-top:1px solid #1e2123!important;}
   .trailer-info{left:5% !important;bottom:56px !important;width:88% !important;}
 }
 </style>
+<link id="canonicalLink" rel="canonical" href="">
 </head>
 <body>
 <noscript><div style="padding:12px;background:#e50914;color:#fff;text-align:center;font-weight:700;">JavaScript is required to load live movie data and search on Movie Wala.</div></noscript>
@@ -3246,99 +3246,151 @@ const modalClose =
 document.getElementById(
 "modalClose"
 );
-async function movieUrl(id, mediaType){
-const url = new URL(window.location.href);
-url.search = "";
-url.searchParams.set("movie", String(id));
-url.searchParams.set("type", mediaType === "tv" ? "tv" : "movie");
-url.hash = "";
-return url.href;
+
+function movieUrl(id, mediaType){
+  const url = new URL(window.location.href);
+  url.search = "";
+  url.searchParams.set("movie", String(id));
+  url.searchParams.set("type", mediaType === "tv" ? "tv" : "movie");
+  url.hash = "";
+  return url.href;
 }
 function siteBaseUrl(){
-const url = new URL(window.location.href);
-url.search = "";
-url.hash = "";
-return url.href;
+  const url = new URL(window.location.href);
+  url.search = "";
+  url.hash = "";
+  return url.href;
 }
-function setMeta(selector, attr, value){
-let el = document.querySelector(selector);
-if(!el){
-  el = document.createElement("meta");
-  if(attr === "name") el.setAttribute("name", selector.includes("description") ? "description" : selector.includes("twitter:title") ? "twitter:title" : "twitter:description");
-  if(attr === "property") el.setAttribute("property", selector.includes("og:title") ? "og:title" : selector.includes("og:description") ? "og:description" : selector.includes("og:url") ? "og:url" : "og:type");
-  document.head.appendChild(el);
-}
-el.setAttribute(attr, value);
+function setSeoMeta(selector, attr, value){
+  let el = document.querySelector(selector);
+  if(!el){
+    el = document.createElement("meta");
+    if(attr === "name"){
+      const name = selector.includes("twitter:title") ? "twitter:title" :
+                   selector.includes("twitter:description") ? "twitter:description" :
+                   "description";
+      el.setAttribute("name", name);
+    }else{
+      const property = selector.includes("og:title") ? "og:title" :
+                       selector.includes("og:description") ? "og:description" :
+                       selector.includes("og:url") ? "og:url" : "og:type";
+      el.setAttribute("property", property);
+    }
+    document.head.appendChild(el);
+  }
+  el.setAttribute(attr, value);
 }
 function updateMovieSEO(details, mediaType, fallbackMovie){
-const title = details.title || details.name || fallbackMovie?.title || fallbackMovie?.name || "Movie";
-const overview = details.overview || fallbackMovie?.overview || "Discover movies, web series, trailers and entertainment on Movie Wala.";
-const year = (details.release_date || details.first_air_date || fallbackMovie?.release_date || fallbackMovie?.first_air_date || "").slice(0,4);
-const typeLabel = mediaType === "tv" ? "Web Series" : "Movie";
-const seoTitle = `${title} | Movie Wala`;
-const seoDescription = `${typeLabel}${year ? ` (${year})` : ""}: ${overview}`.slice(0,160);
-const canonical = movieUrl(details.id || fallbackMovie?.id, mediaType);
-document.title = seoTitle;
-setMeta('meta[name="description"]', "name", seoDescription);
-setMeta('meta[property="og:type"]', "property", "video.movie");
-setMeta('meta[property="og:title"]', "property", seoTitle);
-setMeta('meta[property="og:description"]', "property", seoDescription);
-setMeta('meta[property="og:url"]', "property", canonical);
-setMeta('meta[name="twitter:title"]', "name", seoTitle);
-setMeta('meta[name="twitter:description"]', "name", seoDescription);
-const canonicalLink = document.getElementById("canonicalLink");
-if(canonicalLink) canonicalLink.href = canonical;
-let schema = document.getElementById("movieSeoSchema");
-if(!schema){ schema = document.createElement("script"); schema.type="application/ld+json"; schema.id="movieSeoSchema"; document.head.appendChild(schema); }
-schema.textContent = JSON.stringify({
-  "@context":"https://schema.org",
-  "@type": mediaType === "tv" ? "TVSeries" : "Movie",
-  "name": title,
-  "description": overview,
-  "url": canonical,
-  ...(details.poster_path ? {"image": TMDB_IMAGE + details.poster_path} : {}),
-  ...(details.vote_average ? {"aggregateRating":{"@type":"AggregateRating","ratingValue":Number(details.vote_average),"bestRating":10,"worstRating":0,"ratingCount":Number(details.vote_count || 1)}} : {})
-});
+  const title = details.title || details.name || fallbackMovie?.title || fallbackMovie?.name || "Movie";
+  const overview = details.overview || fallbackMovie?.overview ||
+    "Discover movies, web series, trailers and entertainment on Movie Wala.";
+  const date = details.release_date || details.first_air_date ||
+    fallbackMovie?.release_date || fallbackMovie?.first_air_date || "";
+  const year = date.slice(0,4);
+  const typeLabel = mediaType === "tv" ? "Web Series" : "Movie";
+  const seoTitle = `${title} | Movie Wala`;
+  const seoDescription = `${typeLabel}${year ? ` (${year})` : ""}: ${overview}`.slice(0,160);
+  const canonical = movieUrl(details.id || fallbackMovie?.id, mediaType);
+
+  document.title = seoTitle;
+  setSeoMeta('meta[name="description"]', "name", seoDescription);
+  setSeoMeta('meta[property="og:type"]', "property", mediaType === "tv" ? "video.tv_show" : "video.movie");
+  setSeoMeta('meta[property="og:title"]', "property", seoTitle);
+  setSeoMeta('meta[property="og:description"]', "property", seoDescription);
+  setSeoMeta('meta[property="og:url"]', "property", canonical);
+  setSeoMeta('meta[name="twitter:title"]', "name", seoTitle);
+  setSeoMeta('meta[name="twitter:description"]', "name", seoDescription);
+
+  const canonicalLink = document.getElementById("canonicalLink");
+  if(canonicalLink) canonicalLink.href = canonical;
+
+  let schema = document.getElementById("movieSeoSchema");
+  if(!schema){
+    schema = document.createElement("script");
+    schema.type = "application/ld+json";
+    schema.id = "movieSeoSchema";
+    document.head.appendChild(schema);
+  }
+  schema.textContent = JSON.stringify({
+    "@context":"https://schema.org",
+    "@type": mediaType === "tv" ? "TVSeries" : "Movie",
+    "name": title,
+    "description": overview,
+    "url": canonical,
+    ...(details.poster_path ? {"image": TMDB_IMAGE + details.poster_path} : {}),
+    ...(details.vote_average ? {
+      "aggregateRating":{
+        "@type":"AggregateRating",
+        "ratingValue":Number(details.vote_average),
+        "bestRating":10,
+        "worstRating":0,
+        "ratingCount":Number(details.vote_count || 1)
+      }
+    } : {})
+  });
 }
 function resetHomeSEO(){
-document.title = "Movie Wala | Movies, Web Series, Trailers & Entertainment";
-const description = "Movie Wala — discover movies, web series, trailers, ratings, genres and entertainment updates in one place.";
-setMeta('meta[name="description"]', "name", description);
-setMeta('meta[property="og:type"]', "property", "website");
-setMeta('meta[property="og:title"]', "property", "Movie Wala | Movies, Web Series & Trailers");
-setMeta('meta[property="og:description"]', "property", "Discover movies, web series, trailers, ratings and entertainment updates with Movie Wala.");
-setMeta('meta[property="og:url"]', "property", siteBaseUrl());
-setMeta('meta[name="twitter:title"]', "name", "Movie Wala | Movies, Web Series & Trailers");
-setMeta('meta[name="twitter:description"]', "name", "Discover movies, web series, trailers, ratings and entertainment updates with Movie Wala.");
-const canonicalLink=document.getElementById("canonicalLink"); if(canonicalLink) canonicalLink.href=siteBaseUrl();
-const schema=document.getElementById("movieSeoSchema"); if(schema) schema.remove();
+  document.title = "Movie Wala | Movies, Web Series, Trailers & Entertainment";
+  setSeoMeta(
+    'meta[name="description"]',
+    "name",
+    "Movie Wala — discover movies, web series, trailers, ratings, genres and entertainment updates in one place."
+  );
+  setSeoMeta('meta[property="og:type"]', "property", "website");
+  setSeoMeta('meta[property="og:title"]', "property", "Movie Wala | Movies, Web Series & Trailers");
+  setSeoMeta(
+    'meta[property="og:description"]',
+    "property",
+    "Discover movies, web series, trailers, ratings and entertainment updates with Movie Wala."
+  );
+  setSeoMeta('meta[property="og:url"]', "property", siteBaseUrl());
+  setSeoMeta('meta[name="twitter:title"]', "name", "Movie Wala | Movies, Web Series & Trailers");
+  setSeoMeta(
+    'meta[name="twitter:description"]',
+    "name",
+    "Discover movies, web series, trailers, ratings and entertainment updates with Movie Wala."
+  );
+  const canonicalLink = document.getElementById("canonicalLink");
+  if(canonicalLink) canonicalLink.href = siteBaseUrl();
+  const schema = document.getElementById("movieSeoSchema");
+  if(schema) schema.remove();
 }
 function syncMovieUrl(movie, replace=false){
-const mediaType = movie.media_type === "tv" || movie.first_air_date ? "tv" : "movie";
-const target = movieUrl(movie.id, mediaType);
-if(window.location.href !== target){
-  const state={movieId:String(movie.id),mediaType};
-  if(replace) history.replaceState(state,"",target); else history.pushState(state,"",target);
-}
+  const mediaType = movie.media_type === "tv" || movie.first_air_date ? "tv" : "movie";
+  const target = movieUrl(movie.id, mediaType);
+  if(window.location.href !== target){
+    const state = {movieId:String(movie.id), mediaType};
+    if(replace) history.replaceState(state, "", target);
+    else history.pushState(state, "", target);
+  }
 }
 function getMovieFromUrl(){
-const params=new URLSearchParams(window.location.search);
-const id=params.get("movie");
-const type=params.get("type")==="tv" ? "tv" : "movie";
-return id ? {id,type} : null;
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("movie");
+  if(!id) return null;
+  return {
+    id,
+    type: params.get("type") === "tv" ? "tv" : "movie"
+  };
 }
 async function openMovieFromUrl(){
-const target=getMovieFromUrl();
-if(!target) return;
-try{
-  await openMovieModal({id:target.id,media_type:target.type}, {fromUrl:true, updateUrl:false});
-}catch(error){ console.error("URL movie load:",error); }
+  const target = getMovieFromUrl();
+  if(!target) return;
+  try{
+    await openMovieModal(
+      {id:target.id, media_type:target.type},
+      {updateUrl:false, fromUrl:true}
+    );
+  }catch(error){
+    console.error("URL movie load:", error);
+  }
 }
 
 async function openMovieModal(movie, options={}){
 const title = movie.title || movie.name || "Untitled";
-const mediaType = movie.media_type === "tv" || movie.first_air_date ? "tv" : "movie";
 if(options.updateUrl !== false) syncMovieUrl(movie);
+const title = movie.title || movie.name || "Untitled";
+const mediaType = movie.media_type === "tv" || movie.first_air_date ? "tv" : "movie";
 const date = movie.release_date || movie.first_air_date || "";
 const year = date ? date.substring(0,4) : "N/A";
 const rating = movie.vote_average ? (Number(movie.vote_average) / 2).toFixed(1) : "N/A";
@@ -3457,8 +3509,8 @@ function closeModal(fromHistory=false){
 modal.classList.remove("show");
 document.body.style.overflow = "";
 if(!fromHistory){
-  const base=siteBaseUrl();
-  if(window.location.href !== base) history.pushState({},"",base);
+  const base = siteBaseUrl();
+  if(window.location.href !== base) history.pushState({}, "", base);
 }
 resetHomeSEO();
 }
@@ -3486,6 +3538,14 @@ closeModal();
 }
 }
 );
+window.addEventListener("popstate", async function(){
+const target = getMovieFromUrl();
+if(target){
+  await openMovieFromUrl();
+}else{
+  closeModal(true);
+}
+});
 const rowSliderTimers = new Map();
 function startRowSlider(row){
 if(!row || row.dataset.autoSlider === "1") return;
@@ -3789,21 +3849,16 @@ if(searchInput && searchClear){
   loadTrending();
 });
 }
-window.addEventListener("popstate", function(){
-  const target=getMovieFromUrl();
-  if(target) openMovieFromUrl();
-  else closeModal(true);
-});
-
 async function init(){
 const trending = await loadTrending();
 try{ await loadHeroTrailers(trending); }catch(error){ console.error("Hero trailers:",error); const loading=document.getElementById("trailerLoading"); if(loading) loading.textContent="Trailer load nahi ho paaya. TMDB key/network check karo."; }
 await Promise.allSettled([loadPopular(),loadTopRated(),loadLatest(),loadIndian(),loadHollywood(),loadSeries()]);
 setTimeout(startAllRowSliders,1200);
 updateMyListUI();
-await openMovieFromUrl();
 }
 init();
 </script>
 </body>
 </html>
+
+<script>setTimeout(openMovieFromUrl, 0);</script>
