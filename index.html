@@ -2452,7 +2452,7 @@ id="series"
 style="margin-top:10px">
 <div class="title">
 <i class="bar"></i>
-WEB SERIES
+INDIAN WEB SERIES
 </div>
 <div
 class="movie-row"
@@ -3368,18 +3368,45 @@ error
 }
 async function loadSeries(){
 try{
-const data =
-await tmdbFetch(
-"/trending/tv/week"
-);
+const byId = new Map();
+
+for(let page = 1; page <= 3; page++){
+  const query = new URLSearchParams({
+    include_adult:"false",
+    include_null_first_air_dates:"false",
+    sort_by:"first_air_date.desc",
+    "first_air_date.gte":movieDateDaysAgo(730),
+    "first_air_date.lte":new Date().toISOString().slice(0,10),
+    with_origin_country:"IN",
+    page:String(page)
+  });
+
+  const data = await tmdbFetch(
+    "/discover/tv?" + query.toString()
+  );
+
+  (data.results || []).forEach(function(show){
+    if(show && show.id && show.poster_path){
+      byId.set(show.id, show);
+    }
+  });
+}
+
+const results = Array.from(byId.values())
+.sort(function(a,b){
+  return String(b.first_air_date || "").localeCompare(
+    String(a.first_air_date || "")
+  );
+});
+
 renderMovies(
 "seriesMovies",
-data.results
+results
 );
 }
 catch(error){
 console.error(
-"Series:",
+"Indian Web Series:",
 error
 );
 showError(
