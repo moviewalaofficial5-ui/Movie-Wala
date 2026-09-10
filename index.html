@@ -2988,7 +2988,7 @@ movies
 movie =>
 movie.poster_path
 )
-.slice(0,15)
+.slice(0,30)
 .forEach(
 movie => {
 container.appendChild(
@@ -3065,15 +3065,51 @@ error
 );
 }
 }
+function movieDateDaysAgo(days){
+const d = new Date();
+d.setDate(d.getDate() - days);
+return d.toISOString().slice(0,10);
+}
+
+async function discoverMovies(params){
+const pages = params.pages || 1;
+const all = [];
+for(let page = 1; page <= pages; page++){
+  const query = new URLSearchParams();
+  Object.keys(params).forEach(function(key){
+    if(key !== "pages" && params[key] !== undefined && params[key] !== null){
+      query.set(key, String(params[key]));
+    }
+  });
+  query.set("page", String(page));
+  const data = await tmdbFetch("/discover/movie?" + query.toString());
+  (data.results || []).forEach(function(movie){
+    if(movie && movie.id) all.push(movie);
+  });
+}
+const seen = new Set();
+return all.filter(function(movie){
+  if(seen.has(movie.id)) return false;
+  seen.add(movie.id);
+  return !!movie.poster_path;
+});
+}
+
 async function loadLatest(){
 try{
-const data =
-await tmdbFetch(
-"/movie/now_playing"
-);
+const data = await discoverMovies({
+include_adult:"false",
+include_video:"false",
+region:"IN",
+sort_by:"primary_release_date.desc",
+"primary_release_date.gte":movieDateDaysAgo(180),
+"primary_release_date.lte":new Date().toISOString().slice(0,10),
+with_release_type:"2|3|4|6",
+pages:2
+});
 renderMovies(
 "latestMovies",
-data.results
+data
 );
 }
 catch(error){
@@ -3089,17 +3125,21 @@ error
 }
 async function loadIndian(){
 try{
-const data =
-await tmdbFetch(
-"/discover/movie" +
-"?sort_by=popularity.desc" +
-"&with_origin_country=IN" +
-"&with_original_language=hi" +
-"&region=IN"
-);
+const data = await discoverMovies({
+include_adult:"false",
+include_video:"false",
+region:"IN",
+sort_by:"primary_release_date.desc",
+"primary_release_date.gte":movieDateDaysAgo(365),
+"primary_release_date.lte":new Date().toISOString().slice(0,10),
+with_origin_country:"IN",
+with_original_language:"hi",
+with_release_type:"2|3|4|6",
+pages:2
+});
 renderMovies(
 "indianMovies",
-data.results
+data
 );
 }
 catch(error){
@@ -3113,36 +3153,37 @@ error
 );
 }
 }
+
 async function loadSouth(){
 try{
 const languages = ["ta","te","ml","kn"];
-const responses = await Promise.all(
-languages.map(function(lang){
-return tmdbFetch(
-"/discover/movie" +
-"?sort_by=popularity.desc" +
-"&with_origin_country=IN" +
-"&with_original_language=" + encodeURIComponent(lang) +
-"&region=IN"
-);
-})
-);
-const seen = new Set();
-const results = [];
-responses.forEach(function(data){
-(data.results || []).forEach(function(movie){
-if(movie && movie.id && !seen.has(movie.id)){
-seen.add(movie.id);
-results.push(movie);
+const byId = new Map();
+
+for(const lang of languages){
+  const data = await discoverMovies({
+    include_adult:"false",
+    include_video:"false",
+    region:"IN",
+    sort_by:"primary_release_date.desc",
+    "primary_release_date.gte":movieDateDaysAgo(365),
+    "primary_release_date.lte":new Date().toISOString().slice(0,10),
+    with_origin_country:"IN",
+    with_original_language:lang,
+    with_release_type:"2|3|4|6",
+    pages:1
+  });
+  data.forEach(function(movie){
+    if(!byId.has(movie.id)) byId.set(movie.id, movie);
+  });
 }
+
+const results = Array.from(byId.values()).sort(function(a,b){
+  return String(b.release_date || "").localeCompare(String(a.release_date || ""));
 });
-});
-results.sort(function(a,b){
-return (Number(b.popularity)||0) - (Number(a.popularity)||0);
-});
+
 renderMovies(
 "southMovies",
-results.slice(0,20)
+results
 );
 }
 catch(error){
@@ -3156,80 +3197,87 @@ error
 );
 }
 }
+
 async function loadBhojpuri(){
 try{
 /*
-  Bhojpuri titles are inconsistently tagged in TMDB. Some are
-  marked Hindi/English, so `with_original_language=bho` alone
-  is not reliable. Use a small number of requests instead of
-  many parallel searches to avoid TMDB rate limiting.
+  Bhojpuri is not consistently represented by a dedicated ISO-639-1
+  code in TMDB, so this section combines TMDB text search + a known
+  Bhojpuri collection, then sorts everything by release date.
 */
 const byId = new Map();
 
-/* A verified Bhojpuri franchise collection on TMDB. */
-try{
-const collection = await tmdbFetch(
-"/collection/1365051?language=en-US"
-);
-(collection.parts || []).forEach(function(movie){
-if(movie && movie.id && movie.poster_path){
-byId.set(movie.id, movie);
-}
-});
-}catch(e){
-console.warn("Bhojpuri collection unavailable:", e);
-}
-
-/* Text search is supported by TMDB for original/translated/
-   alternative movie titles. */
-try{
-const data = await tmdbFetch(
-"/search/movie" +
-"?query=" + encodeURIComponent("Bhojpuri") +
-"&region=IN" +
-"&include_adult=false" +
-"&page=1"
-);
-(data.results || []).forEach(function(movie){
-if(movie && movie.id && movie.poster_path){
-byId.set(movie.id, movie);
-}
-});
-}catch(e){
-console.warn("Bhojpuri search unavailable:", e);
+async function addSearch(term, page){
+  try{
+    const data = await tmdbFetch(
+      "/search/movie" +
+      "?query=" + encodeURIComponent(term) +
+      "&region=IN" +
+      "&include_adult=false" +
+      "&page=" + page
+    );
+    (data.results || []).forEach(function(movie){
+      if(movie && movie.id && movie.poster_path){
+        byId.set(movie.id, movie);
+      }
+    });
+  }catch(e){
+    console.warn("Bhojpuri search unavailable:", term, page, e);
+  }
 }
 
-/* Verified Bhojpuri titles on TMDB, fetched only as fallback. */
-const knownIds = [634594,1193290,1036580];
+try{
+  const collection = await tmdbFetch(
+    "/collection/1365051?language=en-US"
+  );
+  (collection.parts || []).forEach(function(movie){
+    if(movie && movie.id && movie.poster_path){
+      byId.set(movie.id, movie);
+    }
+  });
+}catch(e){
+  console.warn("Bhojpuri collection unavailable:", e);
+}
+
+/* Search terms catch newly-added titles even when their language field
+   is Hindi/English instead of a Bhojpuri-specific code. */
+await addSearch("Bhojpuri", 1);
+await addSearch("Bhojpuri movie", 1);
+await addSearch("Bhojpuri film", 1);
+
+/* Known verified titles remain a fallback for older/poorly-tagged films. */
+const knownIds = [
+  634594,1193290,1036580,1107083,1137590,
+  1138984,1138995,1138993,1137588
+];
+
 for(const id of knownIds){
-if(byId.has(id)) continue;
-try{
-const movie = await tmdbFetch(
-"/movie/" + id + "?region=IN"
-);
-if(movie && movie.id && movie.poster_path){
-byId.set(movie.id, movie);
-}
-}catch(e){
-console.warn("Bhojpuri movie unavailable:", id, e);
-}
+  if(byId.has(id)) continue;
+  try{
+    const movie = await tmdbFetch("/movie/" + id + "?region=IN");
+    if(movie && movie.id && movie.poster_path){
+      byId.set(movie.id, movie);
+    }
+  }catch(e){
+    console.warn("Bhojpuri fallback unavailable:", id, e);
+  }
 }
 
 const results = Array.from(byId.values())
 .filter(function(movie){
-return movie && movie.poster_path;
+  return movie && movie.poster_path;
 })
 .sort(function(a,b){
-return (Number(b.popularity)||0) - (Number(a.popularity)||0);
+  return String(b.release_date || "").localeCompare(String(a.release_date || ""));
 });
 
 if(!results.length){
-throw new Error("No Bhojpuri movies returned by TMDB.");
+  throw new Error("No Bhojpuri movies returned by TMDB.");
 }
 
 renderMovies(
 "bhojpuriMovies",
-results.slice(0,24)
+results
 );
 }
 catch(error){
@@ -3243,18 +3291,23 @@ error
 );
 }
 }
+
 async function loadHollywood(){
 try{
-const data =
-await tmdbFetch(
-"/discover/movie" +
-"?sort_by=popularity.desc" +
-"&with_origin_country=US" +
-"&with_original_language=en"
-);
+const data = await discoverMovies({
+include_adult:"false",
+include_video:"false",
+sort_by:"primary_release_date.desc",
+"primary_release_date.gte":movieDateDaysAgo(365),
+"primary_release_date.lte":new Date().toISOString().slice(0,10),
+with_origin_country:"US",
+with_original_language:"en",
+with_release_type:"2|3|4|6",
+pages:2
+});
 renderMovies(
 "hollywoodMovies",
-data.results
+data
 );
 }
 catch(error){
