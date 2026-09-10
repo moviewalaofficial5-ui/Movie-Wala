@@ -1049,6 +1049,45 @@ font-size:13px;
 html,body{ overflow-x:hidden; }
 .movie-row{ scrollbar-width:none; }
 .movie-row::-webkit-scrollbar{ display:none; }
+.movie-row-shell{position:relative;width:100%;min-width:0;}
+.row-nav{
+  position:absolute;
+  z-index:8;
+  top:50%;
+  transform:translateY(-55%);
+  width:38px;
+  height:64px;
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:8px;
+  background:rgba(0,0,0,.72);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  font-weight:900;
+  line-height:1;
+  cursor:pointer;
+  opacity:0;
+  transition:opacity .2s ease,background .2s ease,transform .2s ease;
+  backdrop-filter:blur(4px);
+}
+.movie-row-shell:hover .row-nav,
+.movie-row-shell:focus-within .row-nav{opacity:1;}
+.row-nav:hover{background:#e50914;border-color:#e50914;transform:translateY(-55%) scale(1.04);}
+.row-nav.prev{left:3px;}
+.row-nav.next{right:3px;}
+.movie-row-shell .movie-row{padding-left:48px;padding-right:48px;scroll-behavior:smooth;}
+.small-row-shell .small-row{padding-left:44px;padding-right:44px;}
+@media(max-width:700px){
+  .row-nav{width:32px;height:52px;font-size:24px;opacity:.85;}
+  .movie-row-shell .movie-row{padding-left:40px;padding-right:40px;}
+  .small-row-shell .small-row{padding-left:38px;padding-right:38px;}
+}
+@media (hover:none){
+  .row-nav{opacity:.82;}
+}
+
 .api-message{ min-height:70px !important; padding:20px !important; display:flex; align-items:center; justify-content:center; text-align:center; }
 .api-key-btn{margin-top:10px;padding:9px 14px;border:0;border-radius:6px;background:#e50914;color:#fff;font-weight:800;cursor:pointer;}
 @media(max-width:1100px){
@@ -3590,27 +3629,114 @@ closeModal();
 );
 window.addEventListener("popstate", movieWalaHandleHistory);
 const rowSliderTimers = new Map();
+
+function scrollMovieRow(row, direction){
+  if(!row) return;
+  const step = row.classList.contains("small-row")
+    ? Math.max(180, Math.floor(row.clientWidth * 0.75))
+    : Math.max(240, Math.floor(row.clientWidth * 0.82));
+  const max = row.scrollWidth - row.clientWidth;
+  const target = Math.max(0, Math.min(max, row.scrollLeft + direction * step));
+  row.scrollTo({left:target, behavior:"smooth"});
+}
+
+function addRowNavigation(row){
+  if(!row || row.dataset.rowNav === "1") return;
+  row.dataset.rowNav = "1";
+  row.tabIndex = 0;
+  row.setAttribute("aria-label", "Movie list. Use left and right arrow keys to navigate.");
+
+  const parent = row.parentElement;
+  if(!parent) return;
+
+  const shell = document.createElement("div");
+  shell.className = "movie-row-shell" + (row.classList.contains("small-row") ? " small-row-shell" : "");
+
+  parent.insertBefore(shell, row);
+  shell.appendChild(row);
+
+  const prev = document.createElement("button");
+  prev.type = "button";
+  prev.className = "row-nav prev";
+  prev.setAttribute("aria-label", "Previous movies");
+  prev.innerHTML = "‹";
+
+  const next = document.createElement("button");
+  next.type = "button";
+  next.className = "row-nav next";
+  next.setAttribute("aria-label", "Next movies");
+  next.innerHTML = "›";
+
+  prev.addEventListener("click", function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    scrollMovieRow(row, -1);
+  });
+  next.addEventListener("click", function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    scrollMovieRow(row, 1);
+  });
+
+  row.addEventListener("keydown", function(e){
+    if(e.key === "ArrowLeft"){
+      e.preventDefault();
+      scrollMovieRow(row, -1);
+    }else if(e.key === "ArrowRight"){
+      e.preventDefault();
+      scrollMovieRow(row, 1);
+    }else if(e.key === "Home"){
+      e.preventDefault();
+      row.scrollTo({left:0, behavior:"smooth"});
+    }else if(e.key === "End"){
+      e.preventDefault();
+      row.scrollTo({left:row.scrollWidth, behavior:"smooth"});
+    }
+  });
+
+  shell.appendChild(prev);
+  shell.appendChild(next);
+}
+
 function startRowSlider(row){
-if(!row || row.dataset.autoSlider === "1") return;
-row.dataset.autoSlider = "1";
-let paused = false;
-const tick = () => {
-if(paused || row.scrollWidth <= row.clientWidth + 10) return;
-const max = row.scrollWidth - row.clientWidth;
-const step = row.classList.contains("small-row") ? 150 : 210;
-const next = row.scrollLeft + step;
-row.scrollTo({left: next >= max - 5 ? 0 : next, behavior:"smooth"});
-};
-const timer = setInterval(tick, 2500);
-rowSliderTimers.set(row,timer);
-row.addEventListener("mouseenter",()=>paused=true);
-row.addEventListener("mouseleave",()=>paused=false);
-row.addEventListener("touchstart",()=>paused=true,{passive:true});
-row.addEventListener("touchend",()=>setTimeout(()=>paused=false,1600),{passive:true});
+  if(!row || row.dataset.autoSlider === "1") return;
+  row.dataset.autoSlider = "1";
+  let paused = false;
+
+  const tick = () => {
+    if(paused || row.scrollWidth <= row.clientWidth + 10) return;
+    const max = row.scrollWidth - row.clientWidth;
+    const step = row.classList.contains("small-row") ? 150 : 210;
+    const next = row.scrollLeft + step;
+    row.scrollTo({left: next >= max - 5 ? 0 : next, behavior:"smooth"});
+  };
+
+  const timer = setInterval(tick, 2500);
+  rowSliderTimers.set(row,timer);
+
+  row.addEventListener("mouseenter",()=>paused=true);
+  row.addEventListener("mouseleave",()=>paused=false);
+  row.addEventListener("touchstart",()=>paused=true,{passive:true});
+  row.addEventListener("touchend",()=>setTimeout(()=>paused=false,1600),{passive:true});
 }
+
+function setupMovieRow(row){
+  addRowNavigation(row);
+  startRowSlider(row);
+}
+
 function startAllRowSliders(){
-document.querySelectorAll(".movie-row,.small-row").forEach(startRowSlider);
+  document.querySelectorAll(".movie-row,.small-row").forEach(setupMovieRow);
 }
+
+const rowNavObserver = new MutationObserver(function(){
+  document.querySelectorAll(".movie-row:not([data-row-nav]),.small-row:not([data-row-nav])")
+    .forEach(setupMovieRow);
+});
+
+rowNavObserver.observe(document.body,{childList:true,subtree:true});
+setTimeout(startAllRowSliders,100);
+
 let heroTrailerSlides = [];
 let currentSlide = 0;
 let sliderTimer = null;
