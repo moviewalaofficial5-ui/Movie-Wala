@@ -2384,17 +2384,49 @@ Loading movies...
 <div class="ad-slot" id="adSlotContent" data-ad-slot="content-inline" aria-label="Advertisement">Advertisement</div>
 <section
 class="panel"
-id="indian"
+id="bollywood"
 style="margin-top:10px">
 <div class="title">
 <i class="bar"></i>
-INDIAN / BOLLYWOOD
+BOLLYWOOD
 </div>
 <div
 class="movie-row"
 id="indianMovies">
 <div class="loading">
-Loading Indian movies...
+Loading Bollywood movies...
+</div>
+</div>
+</section>
+<section
+class="panel"
+id="south"
+style="margin-top:10px">
+<div class="title">
+<i class="bar"></i>
+SOUTH INDIAN
+</div>
+<div
+class="movie-row"
+id="southMovies">
+<div class="loading">
+Loading South Indian movies...
+</div>
+</div>
+</section>
+<section
+class="panel"
+id="bhojpuri"
+style="margin-top:10px">
+<div class="title">
+<i class="bar"></i>
+BHOJPURI
+</div>
+<div
+class="movie-row"
+id="bhojpuriMovies">
+<div class="loading">
+Loading Bhojpuri movies...
 </div>
 </div>
 </section>
@@ -3072,11 +3104,80 @@ data.results
 }
 catch(error){
 console.error(
-"Indian:",
+"Bollywood:",
 error
 );
 showError(
 "indianMovies",
+error
+);
+}
+}
+async function loadSouth(){
+try{
+const languages = ["ta","te","ml","kn"];
+const responses = await Promise.all(
+languages.map(function(lang){
+return tmdbFetch(
+"/discover/movie" +
+"?sort_by=popularity.desc" +
+"&with_origin_country=IN" +
+"&with_original_language=" + encodeURIComponent(lang) +
+"&region=IN"
+);
+})
+);
+const seen = new Set();
+const results = [];
+responses.forEach(function(data){
+(data.results || []).forEach(function(movie){
+if(movie && movie.id && !seen.has(movie.id)){
+seen.add(movie.id);
+results.push(movie);
+}
+});
+});
+results.sort(function(a,b){
+return (Number(b.popularity)||0) - (Number(a.popularity)||0);
+});
+renderMovies(
+"southMovies",
+results.slice(0,20)
+);
+}
+catch(error){
+console.error(
+"South Indian:",
+error
+);
+showError(
+"southMovies",
+error
+);
+}
+}
+async function loadBhojpuri(){
+try{
+const data =
+await tmdbFetch(
+"/discover/movie" +
+"?sort_by=popularity.desc" +
+"&with_origin_country=IN" +
+"&with_original_language=bho" +
+"&region=IN"
+);
+renderMovies(
+"bhojpuriMovies",
+data.results
+);
+}
+catch(error){
+console.error(
+"Bhojpuri:",
+error
+);
+showError(
+"bhojpuriMovies",
 error
 );
 }
@@ -4021,7 +4122,7 @@ if(searchInput && searchClear){
 async function init(){
 const trending = await loadTrending();
 try{ await loadHeroTrailers(trending); }catch(error){ console.error("Hero trailers:",error); const loading=document.getElementById("trailerLoading"); if(loading) loading.textContent="Trailer load nahi ho paaya. TMDB key/network check karo."; }
-await Promise.allSettled([loadPopular(),loadTopRated(),loadLatest(),loadIndian(),loadHollywood(),loadSeries()]);
+await Promise.allSettled([loadPopular(),loadTopRated(),loadLatest(),loadIndian(),loadSouth(),loadBhojpuri(),loadHollywood(),loadSeries()]);
 setTimeout(startAllRowSliders,1200);
 updateMyListUI();
 }
