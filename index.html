@@ -3159,102 +3159,78 @@ error
 async function loadBhojpuri(){
 try{
 /*
-  TMDB has many Bhojpuri films whose `original_language` is
-  stored as Hindi/English, so filtering only with
-  with_original_language=bho can return an empty list.
-  We therefore combine Bhojpuri title searches with a few
-  known Bhojpuri movie records and deduplicate them.
+  Bhojpuri titles are inconsistently tagged in TMDB. Some are
+  marked Hindi/English, so `with_original_language=bho` alone
+  is not reliable. Use a small number of requests instead of
+  many parallel searches to avoid TMDB rate limiting.
 */
-const queries = [
-  "Bhojpuri",
-  "Nirahua",
-  "Khesari Lal Yadav",
-  "Pawan Singh",
-  "Amrapali Dubey",
-  "Ravi Kishan",
-  "Rani Chatterjee"
-];
-
-const searchResults = await Promise.all(
-  queries.map(function(query){
-    return tmdbFetch(
-      "/search/movie" +
-      "?query=" + encodeURIComponent(query) +
-      "&region=IN" +
-      "&include_adult=false" +
-      "&language=en-US"
-    ).catch(function(){
-      return {results:[]};
-    });
-  })
-);
-
-const knownIds = [
-  634594,   // Lallu Ki Laila
-  1193290,  // Nirahua Rickshawala 2
-  1036580   // Devra Bada Satawela
-];
-
 const byId = new Map();
 
-searchResults.forEach(function(data){
-  (data.results || []).forEach(function(movie){
-    if(movie && movie.id && movie.poster_path){
-      const text = (
-        (movie.title || "") + " " +
-        (movie.original_title || "") + " " +
-        (movie.overview || "")
-      ).toLowerCase();
-
-      const bhojpuriHint =
-        text.includes("bhojpuri") ||
-        text.includes("nirahua") ||
-        text.includes("khesari") ||
-        text.includes("pawan singh") ||
-        text.includes("amrapali") ||
-        text.includes("ravi kishan") ||
-        text.includes("rani chatterjee");
-
-      if(bhojpuriHint || movie.origin_country?.includes("IN")){
-        byId.set(movie.id, movie);
-      }
-    }
-  });
-});
-
-const knownDetails = await Promise.all(
-  knownIds.map(function(id){
-    return tmdbFetch(
-      "/movie/" + id +
-      "?language=en-US&region=IN"
-    ).catch(function(){
-      return null;
-    });
-  })
+/* A verified Bhojpuri franchise collection on TMDB. */
+try{
+const collection = await tmdbFetch(
+"/collection/1365051?language=en-US"
 );
-
-knownDetails.forEach(function(movie){
-  if(movie && movie.id){
-    byId.set(movie.id, movie);
-  }
+(collection.parts || []).forEach(function(movie){
+if(movie && movie.id && movie.poster_path){
+byId.set(movie.id, movie);
+}
 });
+}catch(e){
+console.warn("Bhojpuri collection unavailable:", e);
+}
+
+/* Text search is supported by TMDB for original/translated/
+   alternative movie titles. */
+try{
+const data = await tmdbFetch(
+"/search/movie" +
+"?query=" + encodeURIComponent("Bhojpuri") +
+"&region=IN" +
+"&include_adult=false" +
+"&page=1"
+);
+(data.results || []).forEach(function(movie){
+if(movie && movie.id && movie.poster_path){
+byId.set(movie.id, movie);
+}
+});
+}catch(e){
+console.warn("Bhojpuri search unavailable:", e);
+}
+
+/* Verified Bhojpuri titles on TMDB, fetched only as fallback. */
+const knownIds = [634594,1193290,1036580];
+for(const id of knownIds){
+if(byId.has(id)) continue;
+try{
+const movie = await tmdbFetch(
+"/movie/" + id + "?region=IN"
+);
+if(movie && movie.id && movie.poster_path){
+byId.set(movie.id, movie);
+}
+}catch(e){
+console.warn("Bhojpuri movie unavailable:", id, e);
+}
+}
 
 const results = Array.from(byId.values())
-  .filter(function(movie){
-    return movie && movie.poster_path;
-  })
-  .sort(function(a,b){
-    return (Number(b.popularity)||0) - (Number(a.popularity)||0);
-  });
-
-renderMovies(
-  "bhojpuriMovies",
-  results.slice(0,24)
-);
+.filter(function(movie){
+return movie && movie.poster_path;
+})
+.sort(function(a,b){
+return (Number(b.popularity)||0) - (Number(a.popularity)||0);
+});
 
 if(!results.length){
-  throw new Error("Bhojpuri movies could not be loaded.");
+throw new Error("No Bhojpuri movies returned by TMDB.");
 }
+
+renderMovies(
+"bhojpuriMovies",
+results.slice(0,24)
+);
 }
 catch(error){
 console.error(
