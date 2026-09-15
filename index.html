@@ -1467,6 +1467,17 @@ main{overflow:visible !important;}
 .live-now{right:4.5% !important;}
 
 .footer-disclosure{max-width:760px;margin:10px auto;color:#777;font-size:10px;line-height:1.5;text-align:center}
+
+/* Movie Wala editorial hub */
+.mw-editorial-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.mw-editorial-card{display:flex;flex-direction:column;min-height:210px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:18px;box-sizing:border-box}
+.mw-editorial-card h2{margin:0 0 9px;color:#fff;font-size:17px;line-height:1.35}
+.mw-editorial-card p{margin:0;color:rgba(255,255,255,.72);font-size:14px;line-height:1.65;flex:1}
+.mw-editorial-card a{margin-top:14px;color:#fff;font-weight:800;text-decoration:none;font-size:13px}
+.mw-editorial-card a:hover{text-decoration:underline}
+@media(max-width:900px){.mw-editorial-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.mw-editorial-grid{grid-template-columns:1fr}.mw-editorial-card{min-height:0}}
+
 </style>
 <script type="application/ld+json">
 {
@@ -2195,6 +2206,7 @@ footer{background:#050505!important;border-top:1px solid #1e2123!important;}
 @media(max-width:600px){.mw-earning-content .mw-guide-grid{grid-template-columns:1fr;gap:10px;}.mw-earning-content .mw-guide-card{min-height:0;padding:15px;}.mw-earning-content .mw-guide-card h2{font-size:16px;}.mw-earning-content .mw-guide-card p,.mw-faq details p{font-size:12px;}.mw-faq summary{font-size:13px;padding:13px 40px 13px 14px;}}
 </style>
 <link id="canonicalLink" rel="canonical" href="">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Movie Wala Movie Guides","description":"Original movie discovery guides covering Bollywood, South Indian cinema, Bhojpuri movies, Indian web series and movie ratings.","url":"https://moviewalaofficial5-ui.github.io/Movie-Wala/","isPartOf":{"@type":"WebSite","name":"Movie Wala","url":"https://moviewalaofficial5-ui.github.io/Movie-Wala/"}}</script>
 </head>
 <body>
 <noscript><div style="padding:12px;background:#e50914;color:#fff;text-align:center;font-weight:700;">JavaScript is required to load live movie data and search on Movie Wala.</div></noscript>
@@ -2554,6 +2566,20 @@ class="genre"
 data-genre="16">
 🎬 ANIMATION
 </button>
+</div>
+</section>
+
+
+<section class="panel mw-editorial" id="articles" style="margin-top:10px">
+<div class="title"><i class="bar"></i>MOVIE WALA MOVIE GUIDES</div>
+<p style="margin:0 0 16px;color:rgba(255,255,255,.7);font-size:14px;line-height:1.65">Helpful, original guides for movie fans — from choosing what to watch to exploring Indian cinema, Bhojpuri films and web series.</p>
+<div class="mw-editorial-grid">
+<article class="mw-editorial-card"><h2>How to Choose a Movie You’ll Actually Enjoy</h2><p>A practical way to use genre, rating, runtime, cast and story style without relying on a single score.</p><a href="movie-guide-how-to-choose.html">READ GUIDE →</a></article>
+<article class="mw-editorial-card"><h2>Bollywood Movies: A Simple Guide for Viewers</h2><p>Understand the basics of Hindi cinema categories, genres and what to look for when building a watchlist.</p><a href="bollywood-movie-guide.html">READ GUIDE →</a></article>
+<article class="mw-editorial-card"><h2>South Indian Cinema: Where Should You Start?</h2><p>A beginner-friendly guide to exploring Tamil, Telugu, Malayalam and Kannada movies by genre and style.</p><a href="south-indian-movie-guide.html">READ GUIDE →</a></article>
+<article class="mw-editorial-card"><h2>Bhojpuri Movies: A Beginner’s Watchlist Guide</h2><p>Learn how to explore Bhojpuri cinema by stars, genres, eras and popular storytelling styles.</p><a href="bhojpuri-movie-guide.html">READ GUIDE →</a></article>
+<article class="mw-editorial-card"><h2>How to Find a Good Indian Web Series</h2><p>Use genre, episode length, release status and premise to choose a series that fits your time and mood.</p><a href="indian-web-series-guide.html">READ GUIDE →</a></article>
+<article class="mw-editorial-card"><h2>Movie Ratings Explained: What Do They Really Tell You?</h2><p>Why ratings are useful for discovery, why they can change, and why your own taste still matters.</p><a href="movie-ratings-explained.html">READ GUIDE →</a></article>
 </div>
 </section>
 
