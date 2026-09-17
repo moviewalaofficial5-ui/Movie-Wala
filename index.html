@@ -3008,8 +3008,24 @@ main{overflow:visible !important;}
    TMDB API
    ========================================================= */
 
+/*
+   IMPORTANT:
+   Sirf neeche wali line mein apni TMDB API KEY paste karo.
+
+   Example:
+
+   const TMDB_API_KEY = "123456789abcdef";
+
+   Apni real key mujhe mat bhejna.
+*/
+
+const TMDB_API_KEY =
+    localStorage.getItem("movieWalaTmdbKey") ||
+    "PASTE_YOUR_TMDB_API_KEY_HERE";
+
+
 const TMDB_BASE =
-"https://api.moviewalaofficial.in/3";
+"https://api.themoviedb.org/3";
 
 
 const TMDB_IMAGE =
@@ -3548,14 +3564,14 @@ function showError(containerId, error){
 
     container.innerHTML = `
         <div class="empty api-message">
-            <b>TMDB data load nahi ho paaya.</b><br>
-            <button class="api-key-btn retry-btn" type="button">RETRY</button>
+            <b>TMDB data load nahi ho paaya.</b><br><button class="api-key-btn retry-btn" type="button">RETRY</button>
         </div>`;
 
     const btn = container.querySelector(".api-key-btn");
     if(!btn) return;
 
     btn.onclick = () => location.reload();
+
 }
 
 /* =========================================================
